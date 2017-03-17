@@ -12,10 +12,11 @@ namespace Human_Resources_Department
 {
     public partial class Form1 : Form
     {
+        Staff staff;
+
         public Form1()
         {
             InitializeComponent();
-            findField.Width = this.Width;
 
             listStaff.View = View.Details;
             listStaff.GridLines = true;
@@ -24,26 +25,34 @@ namespace Human_Resources_Department
             textData();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            staff = new Staff();
+
+            staff.add();
+        }
+
         private void findField_TextChanged(object sender, EventArgs e)
         {
             // Данные получать с класса Staff
             // Реализовать поиск по 1-му индексу
-            if (findField.Text != "" && findField.Text != "Пошук")
+            if (findField.Text != "" && findField.Text != "Пошук по ПІБ")
             {
                 for (int i = listStaff.Items.Count - 1; i >= 0; i--)
                 {
-                    var item = listStaff.Items[i];
+                    var item = listStaff.Items[i].SubItems[1];
+
                     if (item.Text.ToLower().Contains(findField.Text.ToLower()))
                     {
-                        // Изменить цвета
-                        item.BackColor = SystemColors.Highlight;
-                        item.ForeColor = SystemColors.HighlightText;
+                        listStaff.Items[i].ForeColor = SystemColors.Highlight;
+                        // listStaff.Items[i].ForeColor = SystemColors.HighlightText;
                     }
                     else
                     {
-                        listStaff.Items.Remove(item);
+                        // listStaff.Items.Remove(item);
                     }
                 }
+
                 if (listStaff.SelectedItems.Count == 1)
                 {
                     listStaff.Focus();
@@ -53,18 +62,6 @@ namespace Human_Resources_Department
             {
                 // Вернуть данные
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Новая форма для добавления в БД/форму
-            string[] arr = new string[3];
-            ListViewItem itm;
-            arr[0] = "photo";
-            arr[1] = "name";
-            arr[2] = "age";
-            itm = new ListViewItem(arr);
-            listStaff.Items.Add(itm);
         }
 
         private void textData()
@@ -81,7 +78,7 @@ namespace Human_Resources_Department
          */
         private void findField_Enter(object sender, EventArgs e)
         {
-            if (findField.Text.Equals("Пошук"))
+            if (findField.Text.Equals("Пошук по ПІБ"))
             {
                 findField.Text = "";
             }
@@ -94,7 +91,7 @@ namespace Human_Resources_Department
         {
             if (string.IsNullOrWhiteSpace(findField.Text))
             {
-                findField.Text = "Пошук";
+                findField.Text = "Пошук по ПІБ";
             }
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Human_Resources_Department
 {
-    class DB
+    class DB : classes.db.DBInterface
     {
         /**
          * Example.
@@ -48,6 +48,26 @@ namespace Human_Resources_Department
             reader = command.ExecuteReader();
             while (reader.Read())
                 Console.WriteLine("Name: " + reader["name"] + "\tScore: " + reader["score"]);
+        }
+
+        public object select()
+        {
+            return "";
+        }
+
+        public object insert()
+        {
+            return "";
+        }
+
+        public object update()
+        {
+            return "";
+        }
+
+        public object delete()
+        {
+            return "";
         }
     }
 }
