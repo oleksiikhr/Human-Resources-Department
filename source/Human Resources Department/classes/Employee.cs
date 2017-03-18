@@ -6,42 +6,44 @@ using System.Threading.Tasks;
 
 namespace Human_Resources_Department
 {
-    class Staff
+    class Employee
     {
         private string fName;
         private string mName;
         private string lName;
         private string job;
+        private string city;
         private string email;
         private string tel;
-        private int age;
-        private bool active;
+        private string family;
+
+        private int salary;
+        
+        private bool is_active;
+        private bool is_fulltime;
+
+        private DateTime birthday;
         private DateTime join;
         private DateTime leave;
 
-        public Staff()
-        {
-            Console.WriteLine("Test");
-        }
-
-        public void add()
+        public Employee()
         {
 
         }
 
-        public object load()
+        public bool add()
+        {
+            return true;
+        }
+
+        public object get()
         {
             return "";
         }
 
-        public object getStaff()
+        public bool del()
         {
-            return "";
-        }
-
-        public object delStaff()
-        {
-            return "";
+            return true;
         }
     }
 }

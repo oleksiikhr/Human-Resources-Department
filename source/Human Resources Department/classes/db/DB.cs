@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,45 +10,61 @@ namespace Human_Resources_Department
 {
     class DB : classes.db.DBInterface
     {
-        /**
-         * Example.
-         * ID, FName, MName, LName, PhotoUrl, Age, Salary, Job, Email, Tel, Active
-         * 
-         * @see http://blog.tigrangasparian.com/2012/02/09/getting-started-with-sqlite-in-c-part-one/
-         * @see http://www.cyberforum.ru/ado-net/thread362189.html
-         */
-        public DB()
+        private bool is_connect = false;
+        private SQLiteConnection sql_con = null;
+
+        public void createTableUsers()
         {
-            SQLiteConnection.CreateFile("MyDatabase.sqlite");
-            SQLiteConnection m_dbConnection;
+            string sql = "CREATE TABLE users (" +
+                "id           BIGINT (20)  AUTO_INCREMENT, UNIQUE" +
+                "fName        VARCHAR(100) NOT NULL," +
+                "mName        VARCHAR(100) NULL" +
+                "lName        VARCHAR(100) NOT NULL" +
+                "job          VARCHAR(100) NOT NULL" +
+                "city         VARCHAR(50)  NULL" +
+                "email        VARCHAR(50)  NULL" +
+                "tel          VARCHAR(20)  NULL" +
+                "family       VARCHAR(20)  NULL" +
+                "salary       INT(20)      NOT NULL" +
+                "is_active    BOOLEAN      NOT NULL DEFAULT true" +
+                "is_fulltime  BOOLEAN      NOT NULL" +
+                "birthday     TIMESTAMP    NULL" +
+                "joinCompany  TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP" +
+                "leaveCompany TIMESTAMP    NULL" +
+            ")";
 
-            m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-            m_dbConnection.Open();
-            string sql = "CREATE TABLE highscores (name VARCHAR(20), score INT)";
-
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteCommand command = this.sql_con.CreateCommand();
             command.ExecuteNonQuery();
+        }
 
-            sql = "insert into highscores (name, score) values ('Me', 3000)";
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-            sql = "insert into highscores (name, score) values ('Myself', 6000)";
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-            sql = "insert into highscores (name, score) values ('And I', 9001)";
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
+        public bool load(string name)
+        {
+            try
+            {
+                this.sql_con = new SQLiteConnection("Data Source=" + name);
+                Console.WriteLine("ok");
+                this.sql_con.Open();
+                Console.WriteLine("ok");
+                Console.WriteLine("ok");
+                this.is_connect = true;
+            }
+            catch
+            {
+                return false;
+            }
 
-            sql = "select * from highscores order by score desc";
-            command = new SQLiteCommand(sql, m_dbConnection);
+            return true;
+        }
 
-            SQLiteDataReader reader = command.ExecuteReader();
+        public bool save(string name)
+        {
+            return true;
+        }
 
-            sql = "select * from highscores order by score desc";
-            command = new SQLiteCommand(sql, m_dbConnection);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-                Console.WriteLine("Name: " + reader["name"] + "\tScore: " + reader["score"]);
+        public void close()
+        {
+            this.sql_con.Close();
+            this.is_connect = false;
         }
 
         public object select()
@@ -68,6 +85,16 @@ namespace Human_Resources_Department
         public object delete()
         {
             return "";
+        }
+
+        public bool is_connected()
+        {
+            return this.is_connect;
+        }
+
+        public void simpleData()
+        {
+            string sql = "INSERT INTO ";
         }
     }
 }
