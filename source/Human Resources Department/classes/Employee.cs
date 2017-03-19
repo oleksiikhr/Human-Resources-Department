@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Human_Resources_Department
+namespace Human_Resources_Department.classes
 {
     class Employee
     {
@@ -25,23 +21,24 @@ namespace Human_Resources_Department
         private DateTime birthday;
         private DateTime join;
         private DateTime leave;
+        private DateTime update_at;
 
-        public Employee()
-        {
-
-        }
-
-        public bool add()
+        public bool Add()
         {
             return true;
         }
 
-        public object get()
+        public bool Update()
+        {
+            return true;
+        }
+
+        public object Get()
         {
             return "";
         }
 
-        public bool del()
+        public bool Del()
         {
             return true;
         }

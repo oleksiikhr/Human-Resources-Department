@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.findField = new System.Windows.Forms.TextBox();
-            this.listStaff = new System.Windows.Forms.ListView();
-            this.photo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.age = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.detailStaff = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -85,39 +81,9 @@
             this.findField.Size = new System.Drawing.Size(295, 20);
             this.findField.TabIndex = 1;
             this.findField.Text = "Пошук по ПІБ";
-            this.findField.TextChanged += new System.EventHandler(this.findField_TextChanged);
-            this.findField.Enter += new System.EventHandler(this.findField_Enter);
-            this.findField.Leave += new System.EventHandler(this.findField_Leave);
-            // 
-            // listStaff
-            // 
-            this.listStaff.AllowColumnReorder = true;
-            this.listStaff.AllowDrop = true;
-            this.listStaff.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.photo,
-            this.name,
-            this.age});
-            this.listStaff.FullRowSelect = true;
-            this.listStaff.Location = new System.Drawing.Point(0, 53);
-            this.listStaff.Name = "listStaff";
-            this.listStaff.Size = new System.Drawing.Size(295, 377);
-            this.listStaff.TabIndex = 2;
-            this.listStaff.UseCompatibleStateImageBehavior = false;
-            this.listStaff.View = System.Windows.Forms.View.Details;
-            // 
-            // photo
-            // 
-            this.photo.Text = "Фото";
-            // 
-            // name
-            // 
-            this.name.Text = "ПІБ";
-            this.name.Width = 170;
-            // 
-            // age
-            // 
-            this.age.Text = "Вік";
-            this.age.Width = 61;
+            this.findField.TextChanged += new System.EventHandler(this.FindField_TextChanged);
+            this.findField.Enter += new System.EventHandler(this.FindField_Enter);
+            this.findField.Leave += new System.EventHandler(this.FindField_Leave);
             // 
             // detailStaff
             // 
@@ -280,9 +246,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(126, 287);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 13);
+            this.label9.Size = new System.Drawing.Size(107, 13);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Дата звільнення";
+            this.label9.Text = "Останнє оновлення";
             // 
             // textBox7
             // 
@@ -297,9 +263,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(4, 287);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.Size = new System.Drawing.Size(123, 13);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Дата прийняття";
+            this.label7.Text = "Прийнятий/звільнений";
             // 
             // label8
             // 
@@ -445,21 +411,21 @@
             this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
             this.newFileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.newFileToolStripMenuItem.Text = "Новий файл";
-            this.newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
+            this.newFileToolStripMenuItem.Click += new System.EventHandler(this.NewFileToolStripMenuItem_Click);
             // 
             // saveFileToolStripMenuItem
             // 
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
             this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.saveFileToolStripMenuItem.Text = "Зберегти";
-            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_click);
+            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.SaveFileToolStripMenuItem_click);
             // 
             // loadFileToolStripMenuItem
             // 
             this.loadFileToolStripMenuItem.Name = "loadFileToolStripMenuItem";
             this.loadFileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.loadFileToolStripMenuItem.Text = "Завантажити";
-            this.loadFileToolStripMenuItem.Click += new System.EventHandler(this.loadFileToolStripMenuItem_Click);
+            this.loadFileToolStripMenuItem.Click += new System.EventHandler(this.LoadFileToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -504,7 +470,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 437);
             this.Controls.Add(this.detailStaff);
-            this.Controls.Add(this.listStaff);
             this.Controls.Add(this.findField);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -523,10 +488,6 @@
 
         #endregion
         private System.Windows.Forms.TextBox findField;
-        private System.Windows.Forms.ListView listStaff;
-        private System.Windows.Forms.ColumnHeader photo;
-        private System.Windows.Forms.ColumnHeader name;
-        private System.Windows.Forms.ColumnHeader age;
         private System.Windows.Forms.Panel detailStaff;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;
