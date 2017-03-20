@@ -23,8 +23,9 @@ namespace Human_Resources_Department.classes
         private DateTime leave;
         private DateTime update_at;
 
-        public bool Add()
+        public bool Add(string fName = "")
         {
+            this.fName = fName;
             return true;
         }
 

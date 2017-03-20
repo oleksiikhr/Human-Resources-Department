@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SQLite;
 
 namespace Human_Resources_Department.classes
@@ -14,6 +15,7 @@ namespace Human_Resources_Department.classes
         {
             this.table = table;
             this.con = new SQLiteConnection("Data Source=" + uri);
+            this.con.Open();
             
             TableCreate();
             InsertCustomData();
@@ -43,9 +45,7 @@ namespace Human_Resources_Department.classes
             using ( SQLiteCommand cmd = new SQLiteCommand(sql, this.con) )
             {
                 cmd.Parameters.AddWithValue("@table", this.table);
-                this.con.Open();
                 cmd.ExecuteNonQuery();
-                this.con.Close();
             }
         }
 
@@ -55,10 +55,9 @@ namespace Human_Resources_Department.classes
 
             using ( SQLiteCommand cmd = new SQLiteCommand(sql, this.con) )
             {
-                this.con.Open();
                 cmd.Parameters.AddWithValue("@table", this.table);
                 SQLiteDataReader reader = cmd.ExecuteReader();
-                this.con.Close();
+
                 return reader;
             }
         }
@@ -70,10 +69,8 @@ namespace Human_Resources_Department.classes
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, this.con))
             {
-                this.con.Open();
                 cmd.Parameters.AddWithValue("@table", this.table);
                 cmd.ExecuteNonQuery();
-                this.con.Close();
             }
         }
 

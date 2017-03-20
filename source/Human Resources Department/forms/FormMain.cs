@@ -5,11 +5,11 @@ using Human_Resources_Department.classes;
 
 namespace Human_Resources_Department
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         const string TEXT_SEARCH = "Пошук по ПІБ";
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -17,6 +17,8 @@ namespace Human_Resources_Department
         private void Form1_Load(object sender, EventArgs e)
         {
             //
+            Employees em = new Employees();
+            em.Load("1");
         }
 
         private void FindField_TextChanged(object sender, EventArgs e)

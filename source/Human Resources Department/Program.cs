@@ -16,7 +16,7 @@ namespace Human_Resources_Department
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new InitialForm());
         }
     }
 }

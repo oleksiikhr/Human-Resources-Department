@@ -1,6 +1,6 @@
 ﻿namespace Human_Resources_Department
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -69,6 +69,7 @@
             this.фільтриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.detailStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -121,7 +122,7 @@
             this.detailStaff.Controls.Add(this.textBox1);
             this.detailStaff.Location = new System.Drawing.Point(301, 27);
             this.detailStaff.Name = "detailStaff";
-            this.detailStaff.Size = new System.Drawing.Size(255, 403);
+            this.detailStaff.Size = new System.Drawing.Size(255, 407);
             this.detailStaff.TabIndex = 4;
             // 
             // button3
@@ -464,11 +465,20 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(0, 53);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(295, 381);
+            this.listBox1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 437);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.detailStaff);
             this.Controls.Add(this.findField);
             this.Controls.Add(this.menuStrip1);
@@ -528,6 +538,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

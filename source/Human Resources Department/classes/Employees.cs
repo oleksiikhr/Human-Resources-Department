@@ -11,8 +11,17 @@ namespace Human_Resources_Department.classes
 
         public bool Load(string uri)
         {
+
+            /*
             DB db = new DB(TABLE, uri);
+
             var data = db.GetCustomData();
+            
+            while ( data.Read() )
+            {
+                Console.WriteLine(data["fName"]);
+            }
+            */
 
             return true;
         }
