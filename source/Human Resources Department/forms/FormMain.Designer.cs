@@ -60,11 +60,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.працівникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.фільтриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -396,43 +392,12 @@
             this.textBox1.Size = new System.Drawing.Size(120, 20);
             this.textBox1.TabIndex = 1;
             // 
-            // файлToolStripMenuItem
+            // formChooseToolStripMenuItem
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newFileToolStripMenuItem,
-            this.saveFileToolStripMenuItem,
-            this.loadFileToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
-            // 
-            // newFileToolStripMenuItem
-            // 
-            this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.newFileToolStripMenuItem.Text = "Новий файл";
-            this.newFileToolStripMenuItem.Click += new System.EventHandler(this.NewFileToolStripMenuItem_Click);
-            // 
-            // saveFileToolStripMenuItem
-            // 
-            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.saveFileToolStripMenuItem.Text = "Зберегти";
-            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.SaveFileToolStripMenuItem_click);
-            // 
-            // loadFileToolStripMenuItem
-            // 
-            this.loadFileToolStripMenuItem.Name = "loadFileToolStripMenuItem";
-            this.loadFileToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.loadFileToolStripMenuItem.Text = "Завантажити";
-            this.loadFileToolStripMenuItem.Click += new System.EventHandler(this.LoadFileToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.exitToolStripMenuItem.Text = "Вийти";
+            this.formChooseToolStripMenuItem.Name = "formChooseToolStripMenuItem";
+            this.formChooseToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
+            this.formChooseToolStripMenuItem.Text = "Вибрати фірму";
+            this.formChooseToolStripMenuItem.Click += new System.EventHandler(this.FormChooseToolStripMenuItem_Click);
             // 
             // працівникиToolStripMenuItem
             // 
@@ -455,13 +420,13 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
+            this.formChooseToolStripMenuItem,
             this.працівникиToolStripMenuItem,
             this.фільтриToolStripMenuItem,
             this.пошукToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(564, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(557, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -473,18 +438,20 @@
             this.listBox1.Size = new System.Drawing.Size(295, 381);
             this.listBox1.TabIndex = 5;
             // 
-            // Form1
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 437);
+            this.ClientSize = new System.Drawing.Size(557, 437);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.detailStaff);
             this.Controls.Add(this.findField);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Автоматизована система \"Кадри\"";
+            this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Human Resources Department";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.detailStaff.ResumeLayout(false);
             this.detailStaff.PerformLayout();
@@ -524,15 +491,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formChooseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem працівникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem фільтриToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пошукToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem newFileToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox12;

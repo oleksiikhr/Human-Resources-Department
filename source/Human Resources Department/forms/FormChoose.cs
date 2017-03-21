@@ -4,56 +4,103 @@ using System.Windows.Forms;
 
 namespace Human_Resources_Department
 {
-    public partial class InitialForm : Form
+    public partial class FormChoose : Form
     {
-        public InitialForm()
+        string my_doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+        const string FOLDER = "HRD";
+
+        public FormChoose()
         {
             InitializeComponent();
         }
 
         private void InitialForm_Load(object sender, EventArgs e)
         {
-            DirectoryInfo dir;
-
             try
             {
-                Directory.CreateDirectory("saves");
-
-                dir = new DirectoryInfo( Directory.GetCurrentDirectory() + "\\saves" );
-
-                foreach (var item in dir.GetDirectories())
+                if (Directory.Exists(this.my_doc + "\\" + FOLDER) == false)
                 {
-                    listBox1.Items.Add(item.Name);
+                    Directory.CreateDirectory(this.my_doc + "\\" + FOLDER);
                 }
+
+                GetFolders();
             }
             catch
             {
-                MessageBox.Show("Помилка доступу до папки");
+                MessageBox.Show("Неможливо створити папку для фірм", "Помилка");
                 this.Close();
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
+            if ( String.IsNullOrWhiteSpace(textBox1.Text) )
+            {
+                MessageBox.Show("Введіть ім'я нової фірми", "Помилка");
+                return;
+            }
+
             CreateNewProject();
         }
 
         private void CreateNewProject()
         {
             DialogResult result = MessageBox.Show(
-                "Створити новий файл с іменем: " + textBox1.Text + "?",
-                "Файл: " + textBox1.Text,
+                "Створити нову фірму з назвою: " + textBox1.Text + "?",
+                "Папка: " + textBox1.Text,
                 MessageBoxButtons.YesNo
             );
 
-            if (DialogResult.Yes == result)
+            if (result == DialogResult.Yes)
             {
+                CloseForm();
                 //
             }
-            else
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            GetFolders();
+            label3.Visible = true;
+            timer1.Enabled = true;
+        }
+
+        private void GetFolders()
+        {
+            listBox1.Items.Clear();
+            
+            DirectoryInfo dir = new DirectoryInfo(this.my_doc + "\\" + FOLDER);
+
+            foreach (var item in dir.GetDirectories())
             {
-                //
+                listBox1.Items.Add(item.Name);
             }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            label3.Visible = false;
+            timer1.Enabled = false;
+        }
+
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button3.Enabled = true;
+            button4.Enabled = true;
+            this.Text = "HRD - " + listBox1.SelectedItem;
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo(this.my_doc + "\\" + FOLDER + "\\" + listBox1.SelectedItem);
+            dir.Delete(true);
+            GetFolders();
+        }
+
+        private void CloseForm()
+        {
+            FormMain f = new FormMain();
         }
     }
 }

@@ -42,31 +42,10 @@ namespace Human_Resources_Department
             }
         }
 
-        private void SaveFileToolStripMenuItem_click(object sender, EventArgs e)
+        private void FormChooseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            //
-        }
-
-        private void NewFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Сохранить|нет текущие данные в файл и очистить программу
-        }
-
-        private void LoadFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "Файлы sqlite|*.sqlite";
-
-            if (opf.ShowDialog() == DialogResult.OK)
-            {
-                if ( new Employees().Load(opf.FileName) )
-                {
-                    this.Text += " - " + opf.SafeFileName;
-
-                    MessageBox.Show("Завантажено");
-                }
-            }
+            FormChoose f = new FormChoose();
+            f.ShowDialog();
         }
     }
 }
