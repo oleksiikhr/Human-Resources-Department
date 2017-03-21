@@ -7,7 +7,10 @@ namespace Human_Resources_Department
 {
     public partial class FormMain : Form
     {
-        const string TEXT_SEARCH = "Пошук по ПІБ";
+        private string path;
+        private string nameFolder;
+
+        private const string TEXT_SEARCH = "Пошук по ПІБ";
 
         public FormMain()
         {
@@ -16,14 +19,8 @@ namespace Human_Resources_Department
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //
-            Employees em = new Employees();
-            em.Load("1");
-        }
-
-        private void FindField_TextChanged(object sender, EventArgs e)
-        {
-            // Search
+            OpenProject();
+            new Employees().Load("1");
         }
         
         private void FindField_Enter(object sender, EventArgs e)
@@ -44,8 +41,20 @@ namespace Human_Resources_Department
 
         private void FormChooseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenProject();
+        }
+
+        private void OpenProject()
+        {
             FormChoose f = new FormChoose();
             f.ShowDialog();
+
+            if ( f.IsOpen() )
+            {
+                this.path = f.GetURI();
+                this.nameFolder = "Human Resources Department - " + f.GetNameFolder();
+                this.Text = this.nameFolder;
+            }
         }
     }
 }

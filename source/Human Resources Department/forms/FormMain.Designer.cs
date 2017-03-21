@@ -61,8 +61,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.працівникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.фільтриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -78,7 +76,6 @@
             this.findField.Size = new System.Drawing.Size(295, 20);
             this.findField.TabIndex = 1;
             this.findField.Text = "Пошук по ПІБ";
-            this.findField.TextChanged += new System.EventHandler(this.FindField_TextChanged);
             this.findField.Enter += new System.EventHandler(this.FindField_Enter);
             this.findField.Leave += new System.EventHandler(this.FindField_Leave);
             // 
@@ -395,21 +392,9 @@
             // formChooseToolStripMenuItem
             // 
             this.formChooseToolStripMenuItem.Name = "formChooseToolStripMenuItem";
-            this.formChooseToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
-            this.formChooseToolStripMenuItem.Text = "Вибрати фірму";
+            this.formChooseToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
+            this.formChooseToolStripMenuItem.Text = "Завантажити фірму";
             this.formChooseToolStripMenuItem.Click += new System.EventHandler(this.FormChooseToolStripMenuItem_Click);
-            // 
-            // працівникиToolStripMenuItem
-            // 
-            this.працівникиToolStripMenuItem.Name = "працівникиToolStripMenuItem";
-            this.працівникиToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.працівникиToolStripMenuItem.Text = "Працівники";
-            // 
-            // фільтриToolStripMenuItem
-            // 
-            this.фільтриToolStripMenuItem.Name = "фільтриToolStripMenuItem";
-            this.фільтриToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.фільтриToolStripMenuItem.Text = "Фільтри";
             // 
             // пошукToolStripMenuItem
             // 
@@ -421,8 +406,6 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.formChooseToolStripMenuItem,
-            this.працівникиToolStripMenuItem,
-            this.фільтриToolStripMenuItem,
             this.пошукToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -492,8 +475,6 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ToolStripMenuItem formChooseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem працівникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem фільтриToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пошукToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TextBox textBox13;

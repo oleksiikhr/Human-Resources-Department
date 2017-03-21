@@ -1,25 +1,30 @@
-﻿using System;
-using System.Data;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 
 namespace Human_Resources_Department.classes
 {
     class DB
     {
-        private SQLiteConnection con = null;
+        private SQLiteConnection con;
         private string table;
 
         /// <see cref="https://www.tutorialspoint.com/sqlite/index.htm"/>
         /// <seealso cref="https://habrahabr.ru/post/149356/"/>
         public DB(string table, string uri = "")
         {
-            this.table = table;
-            this.con = new SQLiteConnection("Data Source=" + uri);
-            this.con.Open();
-            
-            TableCreate();
-            InsertCustomData();
-            GetCustomData();
+            try
+            {
+                this.table = table;
+                this.con = new SQLiteConnection("Data Source=" + uri);
+                this.con.Open();
+
+                TableCreate();
+                // InsertCustomData();
+                GetCustomData();
+            }
+            catch
+            {
+                return;
+            }
         }
 
         public void TableCreate()
@@ -38,8 +43,7 @@ namespace Human_Resources_Department.classes
                     "is_active    BOOLEAN      NULL DEFAULT true," +
                     "is_fulltime  BOOLEAN      NULL," +
                     "birthday     TIMESTAMP    NULL," +
-                    "joinCompany  TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP," +
-                    "leaveCompany TIMESTAMP    NULL" +
+                    "setCompany   TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP" +
                 ")";
 
             using ( SQLiteCommand cmd = new SQLiteCommand(sql, this.con) )
