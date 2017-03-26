@@ -12,6 +12,7 @@ namespace Human_Resources_Department
         private bool is_open;
 
         Config cfg = new Config();
+        Files fls = new Files();
 
         public FormChoose()
         {
@@ -28,6 +29,7 @@ namespace Human_Resources_Department
             }
             catch
             {
+                fls.WriteToFile("Failed to create a new folder", fls.errorFile);
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
                 this.Close();
             }
@@ -52,9 +54,17 @@ namespace Human_Resources_Department
                 MessageBoxButtons.YesNo
             );
 
+            fls.WriteToFile("Failed to create a new folder", fls.errorFile);
+
             if (result == DialogResult.Yes)
             {
                 string folder = cfg.projectFolder + "\\" + textBox1.Text;
+
+                if ( Directory.Exists(folder) )
+                {
+                    MessageBox.Show("Фірма вже існує");
+                    return;
+                }
 
                 try
                 {
@@ -66,6 +76,7 @@ namespace Human_Resources_Department
                 }
                 catch
                 {
+                    fls.WriteToFile("Failed to create a new folder", fls.errorFile);
                     MessageBox.Show("Не вдалося створити нову фірму", "Помилка");
                     return;
                 }
@@ -136,7 +147,7 @@ namespace Human_Resources_Department
 
         public string GetURI()
         {
-            return cfg.projectFolder + "\\" + this.listBox1.SelectedItem;
+            return cfg.projectFolder + "\\" + listBox1.SelectedItem;
         }
 
         public string GetNameFolder()

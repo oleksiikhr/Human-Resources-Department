@@ -1,15 +1,20 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 
 namespace Human_Resources_Department.classes
 {
     class Files
     {
-        public void WriteToFile(string text, string uriFile)
+        public string errorFile = new Config().projectFolder + "\\error.txt";
+
+        public void WriteToFile(string text, string uriFile, bool cur_time = true)
         {
             using ( StreamWriter writer = new StreamWriter(uriFile, true, Encoding.Default) )
             {
-                writer.WriteLine(text);
+                string time = cur_time ? DateTime.Now.ToString() + " " : "";
+
+                writer.WriteLine(time + text);
             }
         }
     }

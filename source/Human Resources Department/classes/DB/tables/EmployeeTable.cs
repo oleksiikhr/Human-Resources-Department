@@ -28,7 +28,7 @@
                     "setCompany   TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP" +
                 ")";
 
-            base.ExecuteNonQuery(sql);
+            ExecuteNonQuery(sql);
         }
     }
 }

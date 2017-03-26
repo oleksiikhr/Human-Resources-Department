@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.DB.tables;
 
 namespace Human_Resources_Department
 {
@@ -46,14 +45,18 @@ namespace Human_Resources_Department
 
         private void SelectProject()
         {
-            FormChoose f = new FormChoose();
-            f.ShowDialog();
-
-            if ( f.IsOpen() )
+            using ( FormChoose f = new FormChoose() )
             {
-                path = f.GetURI();
-                nameFolder = Config.PROJECT_NAME + " - " + f.GetNameFolder();
-                this.Text = nameFolder;
+                f.ShowDialog();
+
+                if (f.IsOpen())
+                {
+                    path = f.GetURI();
+                    nameFolder = Config.PROJECT_NAME + " - " + f.GetNameFolder();
+                    this.Text = nameFolder;
+
+                    // Fill DataGridView
+                }
             }
         }
     }

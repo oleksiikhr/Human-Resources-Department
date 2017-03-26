@@ -8,6 +8,7 @@ namespace Human_Resources_Department.classes.DB
         private SQLiteConnection con;
 
         Config cfg = new Config();
+        Files fls = new Files();
 
         /// <see cref="https://www.tutorialspoint.com/sqlite/index.htm"/>
         /// <seealso cref="https://habrahabr.ru/post/149356/"/>
@@ -19,7 +20,7 @@ namespace Human_Resources_Department.classes.DB
             }
             catch (Exception e)
             {
-                new Files().WriteToFile( e.ToString(), cfg.currentFolder + "\\errors.txt" );
+                fls.WriteToFile( "No connection to BD: " + e.ToString(), fls.errorFile );
             }
         }
 

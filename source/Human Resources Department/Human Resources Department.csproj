@@ -79,8 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\Config.cs" />
-    <Compile Include="classes\DB\Database.cs" />
-    <Compile Include="classes\DB\tables\EmployeeTable.cs" />
+    <Compile Include="classes\db\Database.cs" />
+    <Compile Include="classes\db\tables\EmployeeTable.cs" />
     <Compile Include="classes\Employees.cs" />
     <Compile Include="classes\Files.cs" />
     <Compile Include="forms\FormMain.cs">

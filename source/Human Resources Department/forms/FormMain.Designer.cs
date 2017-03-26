@@ -63,7 +63,9 @@
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.фільтрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
             this.detailStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -407,12 +409,19 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.formChooseToolStripMenuItem,
-            this.пошукToolStripMenuItem});
+            this.пошукToolStripMenuItem,
+            this.фільтрToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(556, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // фільтрToolStripMenuItem
+            // 
+            this.фільтрToolStripMenuItem.Name = "фільтрToolStripMenuItem";
+            this.фільтрToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.фільтрToolStripMenuItem.Text = "Фільтр";
             // 
             // dataGridView1
             // 
@@ -422,11 +431,26 @@
             this.dataGridView1.Size = new System.Drawing.Size(295, 381);
             this.dataGridView1.TabIndex = 5;
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Black;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(220, 27);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 20);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Пошук";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 435);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.detailStaff);
             this.Controls.Add(this.findField);
@@ -485,6 +509,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem фільтрToolStripMenuItem;
+        private System.Windows.Forms.Button button4;
     }
 }
 
