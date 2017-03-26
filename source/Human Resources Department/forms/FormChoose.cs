@@ -2,28 +2,28 @@
 using System.IO;
 using System.Windows.Forms;
 
+using Human_Resources_Department.classes;
+using Human_Resources_Department.classes.DB;
+
 namespace Human_Resources_Department
 {
     public partial class FormChoose : Form
     {
-        private string my_doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
-            + "\\" + NAME_FOLDER;
-
         private bool is_open;
 
-        private const string NAME_FOLDER = "Human Resources Department";
+        Config cfg = new Config();
 
         public FormChoose()
         {
             InitializeComponent();
-            this.Text = NAME_FOLDER + " - Вибір фірми";
+            this.Text = Config.PROJECT_NAME + " - Вибір фірми";
         }
 
         private void InitialForm_Load(object sender, EventArgs e)
         {
             try
             {
-                Directory.CreateDirectory(this.my_doc);
+                Directory.CreateDirectory(cfg.projectFolder);
                 GetFolders();
             }
             catch
@@ -54,14 +54,15 @@ namespace Human_Resources_Department
 
             if (result == DialogResult.Yes)
             {
-                string folder = this.my_doc + "\\" + textBox1.Text;
+                string folder = cfg.projectFolder + "\\" + textBox1.Text;
 
                 try
                 {
                     Directory.CreateDirectory(folder);
-                    // Create a new table
-                    // ..
-                    // Fill a folder
+                    Database.CreateDatabase(folder, "users");
+                    Directory.CreateDirectory(folder + "\\img");
+                    
+                    cfg.CurrentFolder = folder;
                 }
                 catch
                 {
@@ -84,7 +85,7 @@ namespace Human_Resources_Department
         {
             listBox1.Items.Clear();
             
-            DirectoryInfo dir = new DirectoryInfo(this.my_doc);
+            DirectoryInfo dir = new DirectoryInfo(cfg.projectFolder);
 
             foreach ( var item in dir.GetDirectories() )
             {
@@ -104,7 +105,7 @@ namespace Human_Resources_Department
             {
                 button3.Enabled = true;
                 button4.Enabled = true;
-                this.Text = NAME_FOLDER + " - " + listBox1.SelectedItem;
+                this.Text = Config.PROJECT_NAME + " - " + listBox1.SelectedItem;
             }
         }
 
@@ -118,7 +119,7 @@ namespace Human_Resources_Department
 
             if (result == DialogResult.Yes)
             {
-                DirectoryInfo dir = new DirectoryInfo(this.my_doc + "\\" + listBox1.SelectedItem);
+                DirectoryInfo dir = new DirectoryInfo(cfg.projectFolder + "\\" + listBox1.SelectedItem);
                 dir.Delete(true);
                 GetFolders();
 
@@ -135,7 +136,7 @@ namespace Human_Resources_Department
 
         public string GetURI()
         {
-            return this.my_doc + "\\" + this.listBox1.SelectedItem;
+            return cfg.projectFolder + "\\" + this.listBox1.SelectedItem;
         }
 
         public string GetNameFolder()

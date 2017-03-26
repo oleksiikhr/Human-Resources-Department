@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
+using Human_Resources_Department.classes.DB.tables;
 
 namespace Human_Resources_Department
 {
@@ -19,8 +20,7 @@ namespace Human_Resources_Department
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            OpenProject();
-            new Employees().Load("1");
+            SelectProject();
         }
         
         private void FindField_Enter(object sender, EventArgs e)
@@ -41,19 +41,19 @@ namespace Human_Resources_Department
 
         private void FormChooseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenProject();
+            SelectProject();
         }
 
-        private void OpenProject()
+        private void SelectProject()
         {
             FormChoose f = new FormChoose();
             f.ShowDialog();
 
             if ( f.IsOpen() )
             {
-                this.path = f.GetURI();
-                this.nameFolder = "Human Resources Department - " + f.GetNameFolder();
-                this.Text = this.nameFolder;
+                path = f.GetURI();
+                nameFolder = Config.PROJECT_NAME + " - " + f.GetNameFolder();
+                this.Text = nameFolder;
             }
         }
     }
