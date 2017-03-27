@@ -34,9 +34,9 @@ namespace Human_Resources_Department.classes.DB
             }
         }
 
-        public static void CreateDatabase(string uri, string table)
+        public static void CreateDatabase(string uri)
         {
-            SQLiteConnection.CreateFile(uri + "\\" + table + ".sqlite");
+            SQLiteConnection.CreateFile(uri);
         }
     }
 }

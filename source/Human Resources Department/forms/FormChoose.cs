@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.DB;
+using Human_Resources_Department.classes.DB.tables;
 
 namespace Human_Resources_Department
 {
@@ -69,8 +70,9 @@ namespace Human_Resources_Department
                 try
                 {
                     Directory.CreateDirectory(folder);
-                    Database.CreateDatabase(folder, "users");
+                    Database.CreateDatabase(folder + "\\users.sqlite");
                     Directory.CreateDirectory(folder + "\\img");
+                    new UsersTable(folder + "\\users.sqlite").CreateTable();
                     
                     cfg.CurrentFolder = folder;
                 }
@@ -81,7 +83,7 @@ namespace Human_Resources_Department
                     return;
                 }
 
-                GetFolders();
+                listBox1.Items.Add(textBox1.Text);
             }
         }
 
@@ -90,6 +92,8 @@ namespace Human_Resources_Department
             GetFolders();
             label3.Visible = true;
             timer1.Enabled = true;
+            button3.Enabled = false;
+            button4.Enabled = false;
         }
 
         private void GetFolders()
@@ -132,7 +136,7 @@ namespace Human_Resources_Department
             {
                 DirectoryInfo dir = new DirectoryInfo(cfg.projectFolder + "\\" + listBox1.SelectedItem);
                 dir.Delete(true);
-                GetFolders();
+                listBox1.Items.Remove(listBox1.Text);
 
                 button3.Enabled = false;
                 button4.Enabled = false;

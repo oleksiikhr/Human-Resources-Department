@@ -1,10 +1,10 @@
 ﻿namespace Human_Resources_Department.classes.DB.tables
 {
-    class EmployeeTable : Database
+    class UsersTable : Database
     {
         private const string TABLE_NAME = "employee";
 
-        public EmployeeTable(string uri) : base(uri)
+        public UsersTable(string uri) : base(uri)
         {
             //
         }
