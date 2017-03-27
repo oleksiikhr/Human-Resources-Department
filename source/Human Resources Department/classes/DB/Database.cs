@@ -20,7 +20,7 @@ namespace Human_Resources_Department.classes.db
             }
             catch (Exception e)
             {
-                fls.WriteToFile( "No connection to BD: " + e.ToString(), fls.errorFile );
+                fls.WriteToFile( e.ToString(), fls.errorFile );
             }
         }
 

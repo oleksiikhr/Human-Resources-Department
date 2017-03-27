@@ -28,9 +28,9 @@ namespace Human_Resources_Department
                 Directory.CreateDirectory(cfg.projectFolder);
                 GetFolders();
             }
-            catch
+            catch (Exception ex)
             {
-                fls.WriteToFile("Failed to create a new folder", fls.errorFile);
+                fls.WriteToFile(ex.ToString(), fls.errorFile);
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
                 this.Close();
             }
@@ -74,9 +74,9 @@ namespace Human_Resources_Department
                     
                     cfg.CurrentFolder = folder;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    fls.WriteToFile("Failed to create a new folder", fls.errorFile);
+                    fls.WriteToFile(ex.ToString(), fls.errorFile);
                     MessageBox.Show("Не вдалося створити нову фірму", "Помилка");
                     return;
                 }

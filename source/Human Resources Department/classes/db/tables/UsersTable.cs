@@ -25,7 +25,8 @@
                     "is_active    BOOLEAN      NULL DEFAULT true," +
                     "is_fulltime  BOOLEAN      NULL," +
                     "birthday     TIMESTAMP    NULL," +
-                    "setCompany   TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP" +
+                    "setCompany   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP," +
+                    "update_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP" +
                 ")";
 
             ExecuteNonQuery(sql);
