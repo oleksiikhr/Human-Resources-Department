@@ -3,8 +3,8 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.DB;
-using Human_Resources_Department.classes.DB.tables;
+using Human_Resources_Department.classes.db;
+using Human_Resources_Department.classes.db.tables;
 
 namespace Human_Resources_Department
 {
@@ -54,8 +54,6 @@ namespace Human_Resources_Department
                 "Фірма: " + textBox1.Text,
                 MessageBoxButtons.YesNo
             );
-
-            fls.WriteToFile("Failed to create a new folder", fls.errorFile);
 
             if (result == DialogResult.Yes)
             {

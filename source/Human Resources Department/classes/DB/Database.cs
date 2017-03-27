@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 
-namespace Human_Resources_Department.classes.DB
+namespace Human_Resources_Department.classes.db
 {
     abstract class Database
     {

@@ -1,6 +1,6 @@
-﻿namespace Human_Resources_Department.classes.DB.tables
+﻿namespace Human_Resources_Department.classes.db.tables
 {
-    class UsersTable : Database
+    class UsersTable : Database, IBasicTable
     {
         private const string TABLE_NAME = "employee";
 

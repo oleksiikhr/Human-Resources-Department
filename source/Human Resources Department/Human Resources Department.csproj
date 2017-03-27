@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="classes\Config.cs" />
     <Compile Include="classes\db\Database.cs" />
+    <Compile Include="classes\db\tables\IBasicTable.cs" />
     <Compile Include="classes\db\tables\UsersTable.cs" />
     <Compile Include="classes\Files.cs" />
     <Compile Include="forms\FormMain.cs">
