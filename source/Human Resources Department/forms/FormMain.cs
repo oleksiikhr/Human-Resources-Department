@@ -45,7 +45,7 @@ namespace Human_Resources_Department
                 "City123", "asd@asd.asd", "+38012351", "Неодружений", 1000, "Повний",
                 "11.11.11", "Так", "27.03.2017", "27.03.2017"});
             dtSales.Rows.Add(new object[] { 1, "Belgium", "greh" });
-            dtSales.Rows.Add(new object[] { 2, "User123", null, "asd" });
+            dtSales.Rows.Add(new object[] { 5000, "User123", null, "asd" });
             dataGridView1.DataSource = dtSales;
 
             dataGridView1.Columns[12].Visible = false;
@@ -103,7 +103,7 @@ namespace Human_Resources_Department
                 return;
             }
 
-            label15.Text = "Співробітник: №" + dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            label15.Text = "Співробітник: № " + dataGridView1.CurrentRow.Cells[0].Value.ToString();
             textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             textBox10.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
