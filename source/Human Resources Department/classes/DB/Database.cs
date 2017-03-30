@@ -1,42 +1,46 @@
-﻿using System;
-using System.Data.SQLite;
+﻿using SQLite;
 
 namespace Human_Resources_Department.classes.db
 {
-    abstract class Database
+    class Database
     {
-        private SQLiteConnection con;
+        protected SQLiteConnection con;
 
-        Config cfg = new Config();
-        Files fls = new Files();
-
-        /// <see cref="https://www.tutorialspoint.com/sqlite/index.htm"/>
-        /// <seealso cref="https://habrahabr.ru/post/149356/"/>
-        public Database(string uri)
+        /// <see cref="http://www.sergechel.info/ru/content/using-sqllite-with-c-sharp-part-4-sqlite-net"/>
+        /// <seealso cref="https://github.com/praeclarum/sqlite-net"/>
+        public Database(string uriFile)
         {
-            try
+            con = new SQLiteConnection(uriFile, true);
+
+            /*
+            var employee = new EmployeesTable
             {
-                con = new SQLiteConnection("Data Source=" + uri);
-            }
-            catch (Exception e)
+                FName = "123"
+            };
+
+            con.Insert(employee);
+
+            var employees = con.Table<EmployeesTable>();
+            foreach (var a in employees)
             {
-                fls.WriteToFile( e.ToString(), fls.errorFile );
+                MessageBox.Show(a.FName);
             }
+            */
         }
 
-        public void ExecuteNonQuery(string sql)
+        public void CreateTable<T>()
         {
-            using ( SQLiteCommand cmd = new SQLiteCommand(sql, con) )
-            {
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
+            con.CreateTable<T>();
         }
 
-        public static void CreateDatabase(string uri)
+        public void Insert<T>(object ob)
         {
-            SQLiteConnection.CreateFile(uri);
+            con.Insert(ob);
+        }
+
+        public void CloseConnection()
+        {
+            con.Close();
         }
     }
 }

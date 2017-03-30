@@ -507,7 +507,7 @@
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label15.Location = new System.Drawing.Point(606, 35);
+            this.label15.Location = new System.Drawing.Point(453, 32);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 15);
             this.label15.TabIndex = 10;
@@ -521,7 +521,7 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(453, 33);
+            this.button5.Location = new System.Drawing.Point(602, 33);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(106, 21);
             this.button5.TabIndex = 11;

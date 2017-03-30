@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using Human_Resources_Department.classes;
 
 using System.Data; // Test
+using Human_Resources_Department.classes.db;
+using Human_Resources_Department.classes.db.tables;
 
 namespace Human_Resources_Department
 {
@@ -45,7 +47,7 @@ namespace Human_Resources_Department
                 "City123", "asd@asd.asd", "+38012351", "Неодружений", 1000, "Повний",
                 "11.11.11", "Так", "27.03.2017", "27.03.2017"});
             dtSales.Rows.Add(new object[] { 1, "Belgium", "greh" });
-            dtSales.Rows.Add(new object[] { 5000, "User123", null, "asd" });
+            dtSales.Rows.Add(new object[] { 2, "User123", null, "asd" });
             dataGridView1.DataSource = dtSales;
 
             dataGridView1.Columns[12].Visible = false;

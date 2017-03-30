@@ -18,6 +18,13 @@ namespace Human_Resources_Department
         public FormChoose()
         {
             InitializeComponent();
+
+            // For new Data. Simple
+            //new Database(cfg.projectFolder + "\\users.sqlite").Insert<EmployeesTable>(new EmployeesTable
+            //{
+            //    FName = "Alexey"
+            //});
+
             this.Text = Config.PROJECT_NAME + " - Вибір фірми";
         }
 
@@ -68,10 +75,10 @@ namespace Human_Resources_Department
                 try
                 {
                     Directory.CreateDirectory(folder);
-                    Database.CreateDatabase(folder + "\\users.sqlite");
                     Directory.CreateDirectory(folder + "\\img");
-                    new UsersTable(folder + "\\users.sqlite").CreateTable();
-                    
+
+                    new Database(folder + "\\employees.sqlite").CreateTable<EmployeesTable>();
+
                     cfg.CurrentFolder = folder;
                 }
                 catch (Exception ex)
