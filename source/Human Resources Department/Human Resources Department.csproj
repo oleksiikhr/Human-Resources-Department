@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="classes\Config.cs" />
     <Compile Include="classes\db\Database.cs" />
+    <Compile Include="classes\db\models\EmployeesModel.cs" />
     <Compile Include="classes\db\tables\EmployeesTable.cs" />
     <Compile Include="classes\Files.cs" />
     <Compile Include="forms\FormMain.cs">
@@ -97,8 +98,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQLite.cs" />
-    <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="classes\libs\SQLite.cs" />
+    <Compile Include="classes\libs\SQLiteAsync.cs" />
     <EmbeddedResource Include="forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

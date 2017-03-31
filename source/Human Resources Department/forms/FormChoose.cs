@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.db;
+using Human_Resources_Department.classes.db.models;
 using Human_Resources_Department.classes.db.tables;
 
 namespace Human_Resources_Department
@@ -18,12 +18,6 @@ namespace Human_Resources_Department
         public FormChoose()
         {
             InitializeComponent();
-
-            // For new Data. Simple
-            //new Database(cfg.projectFolder + "\\users.sqlite").Insert<EmployeesTable>(new EmployeesTable
-            //{
-            //    FName = "Alexey"
-            //});
 
             this.Text = Config.PROJECT_NAME + " - Вибір фірми";
         }
@@ -75,11 +69,7 @@ namespace Human_Resources_Department
                 try
                 {
                     Directory.CreateDirectory(folder);
-                    Directory.CreateDirectory(folder + "\\img");
-
-                    new Database(folder + "\\employees.sqlite").CreateTable<EmployeesTable>();
-
-                    cfg.CurrentFolder = folder;
+                    new EmployeesModel(folder + "\\" + EmployeesModel.nameFile).CreateTable<EmployeesTable>();
                 }
                 catch (Exception ex)
                 {
@@ -139,8 +129,7 @@ namespace Human_Resources_Department
 
             if (result == DialogResult.Yes)
             {
-                DirectoryInfo dir = new DirectoryInfo(cfg.projectFolder + "\\" + listBox1.SelectedItem);
-                dir.Delete(true);
+                new DirectoryInfo(cfg.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);
                 listBox1.Items.Remove(listBox1.Text);
 
                 button3.Enabled = false;
@@ -150,6 +139,7 @@ namespace Human_Resources_Department
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            cfg.CurrentFolder = cfg.projectFolder + "\\" + textBox1.Text;
             this.is_open = true;
             this.Close();
         }

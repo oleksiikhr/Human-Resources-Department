@@ -2,7 +2,7 @@
 
 namespace Human_Resources_Department.classes.db
 {
-    class Database
+    abstract class Database
     {
         protected SQLiteConnection con;
 
@@ -10,7 +10,7 @@ namespace Human_Resources_Department.classes.db
         /// <seealso cref="https://github.com/praeclarum/sqlite-net"/>
         public Database(string uriFile)
         {
-            con = new SQLiteConnection(uriFile, true);
+            con = new SQLiteConnection(uriFile);
 
             /*
             var employee = new EmployeesTable
@@ -33,7 +33,7 @@ namespace Human_Resources_Department.classes.db
             con.CreateTable<T>();
         }
 
-        public void Insert<T>(object ob)
+        public void Insert(object ob)
         {
             con.Insert(ob);
         }

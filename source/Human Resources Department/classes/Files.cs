@@ -12,9 +12,9 @@ namespace Human_Resources_Department.classes
         {
             using ( StreamWriter writer = new StreamWriter(uriFile, true, Encoding.Default) )
             {
-                string time = cur_time ? DateTime.Now.ToString() + " " : "";
+                string time = cur_time ? DateTime.Now.ToString() + "\n" : "";
 
-                writer.WriteLine(time + text);
+                writer.WriteLine(time + text + "\n");
             }
         }
     }
