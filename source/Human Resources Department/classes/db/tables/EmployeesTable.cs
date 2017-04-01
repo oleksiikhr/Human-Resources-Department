@@ -5,6 +5,8 @@ namespace Human_Resources_Department.classes.db.tables
 {
     class EmployeesTable
     {
+        public const string nameFile = "employees.sqlite";
+
         [PrimaryKey, AutoIncrement, Unique]
         public int Id { get; set; }
         

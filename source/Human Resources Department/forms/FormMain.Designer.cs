@@ -1,4 +1,4 @@
-﻿namespace Human_Resources_Department
+﻿namespace Human_Resources_Department.forms
 {
     partial class FormMain
     {
@@ -64,6 +64,7 @@
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.додатиПрацівникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.фільтрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.налаштуванняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -72,7 +73,6 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label15 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.додатиПрацівникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detailStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -135,6 +135,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
             this.button3.Enabled = false;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(130, 369);
@@ -200,6 +201,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
             this.button2.Enabled = false;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(5, 369);
@@ -213,6 +215,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(5, 340);
@@ -431,6 +434,14 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // додатиПрацівникаToolStripMenuItem
+            // 
+            this.додатиПрацівникаToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.додатиПрацівникаToolStripMenuItem.Name = "додатиПрацівникаToolStripMenuItem";
+            this.додатиПрацівникаToolStripMenuItem.Size = new System.Drawing.Size(123, 20);
+            this.додатиПрацівникаToolStripMenuItem.Text = "Додати працівника";
+            this.додатиПрацівникаToolStripMenuItem.Click += new System.EventHandler(this.AddNewEmployeeToolStripMenuItem_Click);
+            // 
             // фільтрToolStripMenuItem
             // 
             this.фільтрToolStripMenuItem.ForeColor = System.Drawing.Color.White;
@@ -471,7 +482,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(343, 518);
             this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
+            this.dataGridView1.CurrentCellChanged += new System.EventHandler(this.DataGridView1_CurrentCellChanged);
             // 
             // button4
             // 
@@ -538,13 +549,6 @@
             this.button5.TabIndex = 11;
             this.button5.Text = "Відкрити папку";
             this.button5.UseVisualStyleBackColor = false;
-            // 
-            // додатиПрацівникаToolStripMenuItem
-            // 
-            this.додатиПрацівникаToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.додатиПрацівникаToolStripMenuItem.Name = "додатиПрацівникаToolStripMenuItem";
-            this.додатиПрацівникаToolStripMenuItem.Size = new System.Drawing.Size(123, 20);
-            this.додатиПрацівникаToolStripMenuItem.Text = "Додати працівника";
             // 
             // FormMain
             // 

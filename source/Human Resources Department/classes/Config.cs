@@ -10,18 +10,6 @@ namespace Human_Resources_Department.classes
             Environment.GetFolderPath(Environment.SpecialFolder.Personal)
             + "\\" + PROJECT_NAME;
 
-        public string currentFolder;
-
-        public string CurrentFolder
-        {
-            get
-            {
-                return currentFolder;
-            }
-            set
-            {
-                currentFolder = value;
-            }
-        }
+        public static string currentFolder;
     }
 }

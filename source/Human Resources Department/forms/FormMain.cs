@@ -2,9 +2,10 @@
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.db.models;
+using Human_Resources_Department.classes.db;
+using Human_Resources_Department.classes.db.tables;
 
-namespace Human_Resources_Department
+namespace Human_Resources_Department.forms
 {
     public partial class FormMain : Form
     {
@@ -21,33 +22,6 @@ namespace Human_Resources_Department
         private void Form1_Load(object sender, EventArgs e)
         {
             SelectProject();
-
-            // Test, old
-            //DataTable dtSales = new DataTable();
-            //dtSales.Columns.Add("id");
-            //dtSales.Columns.Add("Ім'я");
-            //dtSales.Columns.Add("По-батькові");
-            //dtSales.Columns.Add("Прізвище");
-            //dtSales.Columns.Add("Посада");
-            //dtSales.Columns.Add("Місто");
-            //dtSales.Columns.Add("Email");
-            //dtSales.Columns.Add("Телефон");
-            //dtSales.Columns.Add("Сімейний стан");
-            //dtSales.Columns.Add("Зарплата");
-            //dtSales.Columns.Add("Зайнятість");
-            //dtSales.Columns.Add("День народження");
-            //dtSales.Columns.Add("Працює");
-            //dtSales.Columns.Add("Прийнятий/звільнений");
-            //dtSales.Columns.Add("Останнє оновлення");
-
-            //dtSales.Rows.Add(new object[] { 0, "Alexey", "ASD", "FAS", "Developer",
-            //    "City123", "asd@asd.asd", "+38012351", "Неодружений", 1000, "Повний",
-            //    "11.11.11", "Так", "27.03.2017", "27.03.2017"});
-            //dtSales.Rows.Add(new object[] { 1, "Belgium", "greh" });
-            //dtSales.Rows.Add(new object[] { 2, "User123", null, "asd" });
-            //dataGridView1.DataSource = dtSales;
-
-            //dataGridView1.Columns[12].Visible = false;
         }
         
         private void FindField_Enter(object sender, EventArgs e)
@@ -79,18 +53,15 @@ namespace Human_Resources_Department
 
                 if ( f.IsOpen() )
                 {
-                    dataGridView1.DataSource = null;
                     ClearAllTextBox();
 
                     path = f.GetURI();
                     nameFolder = Config.PROJECT_NAME + " - " + f.GetNameFolder();
                     this.Text = nameFolder;
-
-                    // Clear current project, add new
-                    // Fill DataGridView
                     
-                    dataGridView1.DataSource = new EmployeesModel(path + "\\" + EmployeesModel.nameFile)
-                        .Query("SELECT * FROM EmployeesTable");
+                    dataGridView1.DataSource = new Database(path + "\\" + EmployeesTable.nameFile)
+                        .QueryEmployees("SELECT * FROM EmployeesTable");
+                    dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
                 }
             }
         }
@@ -99,12 +70,12 @@ namespace Human_Resources_Department
         {
             foreach (Control c in Controls)
             {
-                if (c.GetType() == typeof(Panel))
+                if ( c.GetType() == typeof(Panel) )
                     foreach (Control d in c.Controls)
-                        if (d.GetType() == typeof(TextBox))
+                        if ( d.GetType() == typeof(TextBox) )
                             d.Text = string.Empty;
 
-                if (c.GetType() == typeof(TextBox))
+                if ( c.GetType() == typeof(TextBox) )
                     c.Text = string.Empty;
             }
         }
@@ -114,28 +85,42 @@ namespace Human_Resources_Department
             // Search - btn find
         }
 
-        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void DataGridView1_CurrentCellChanged(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
             {
                 return;
             }
             
-            /*
-            textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBox10.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            textBox6.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            textBox12.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            textBox5.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-            textBox8.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-            textBox11.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
-            textBox3.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString();
-            textBox13.Text = dataGridView1.CurrentRow.Cells[10].Value.ToString();
-            textBox4.Text = dataGridView1.CurrentRow.Cells[11].Value.ToString();
-            textBox7.Text = dataGridView1.CurrentRow.Cells[13].Value.ToString();
-            textBox9.Text = dataGridView1.CurrentRow.Cells[14].Value.ToString();
-            */
+            AddInfoOnDetailStaff(textBox1,  1);
+            AddInfoOnDetailStaff(textBox2,  2);
+            AddInfoOnDetailStaff(textBox10, 3);
+            AddInfoOnDetailStaff(textBox6,  4);
+            AddInfoOnDetailStaff(textBox12, 5);
+            AddInfoOnDetailStaff(textBox5,  6);
+            AddInfoOnDetailStaff(textBox8,  7);
+            AddInfoOnDetailStaff(textBox11, 8);
+            AddInfoOnDetailStaff(textBox3,  9);
+            AddInfoOnDetailStaff(textBox13, 10);
+            AddInfoOnDetailStaff(textBox4,  11);
+            AddInfoOnDetailStaff(textBox7,  13);
+            AddInfoOnDetailStaff(textBox9,  14);
+        }
+
+        private void AddInfoOnDetailStaff(TextBox t, int cell)
+        {
+            if (dataGridView1.CurrentRow.Cells[cell].Value != null)
+            {
+                t.Text = dataGridView1.CurrentRow.Cells[cell].Value.ToString();
+            }
+        }
+
+        private void AddNewEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using ( FormInsert f = new FormInsert() )
+            {
+                f.ShowDialog();
+            }
         }
     }
 }

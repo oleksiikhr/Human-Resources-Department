@@ -1,8 +1,10 @@
 ﻿using SQLite;
 
+using Human_Resources_Department.classes.db.tables;
+
 namespace Human_Resources_Department.classes.db
 {
-    abstract class Database
+    public class Database
     {
         protected SQLiteConnection con;
 
@@ -36,6 +38,11 @@ namespace Human_Resources_Department.classes.db
         public void Insert(object ob)
         {
             con.Insert(ob);
+        }
+
+        public object QueryEmployees(string q)
+        {
+            return con.Query<EmployeesTable>(q);
         }
 
         public void CloseConnection()

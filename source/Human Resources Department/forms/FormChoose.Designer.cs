@@ -1,4 +1,4 @@
-﻿namespace Human_Resources_Department
+﻿namespace Human_Resources_Department.forms
 {
     partial class FormChoose
     {

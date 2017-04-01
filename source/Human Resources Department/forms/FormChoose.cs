@@ -3,10 +3,10 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.db.models;
+using Human_Resources_Department.classes.db;
 using Human_Resources_Department.classes.db.tables;
 
-namespace Human_Resources_Department
+namespace Human_Resources_Department.forms
 {
     public partial class FormChoose : Form
     {
@@ -69,7 +69,7 @@ namespace Human_Resources_Department
                 try
                 {
                     Directory.CreateDirectory(folder);
-                    new EmployeesModel(folder + "\\" + EmployeesModel.nameFile).CreateTable<EmployeesTable>();
+                    new Database(folder + "\\" + EmployeesTable.nameFile).CreateTable<EmployeesTable>();
                 }
                 catch (Exception ex)
                 {
@@ -139,7 +139,7 @@ namespace Human_Resources_Department
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            cfg.CurrentFolder = cfg.projectFolder + "\\" + textBox1.Text;
+            Config.currentFolder = cfg.projectFolder + "\\" + listBox1.SelectedItem;
             this.is_open = true;
             this.Close();
         }
