@@ -21,7 +21,10 @@ namespace Human_Resources_Department.forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SelectProject();
+            if ( ! SelectProject() )
+            {
+                Close();
+            }
         }
         
         private void FindField_Enter(object sender, EventArgs e)
@@ -45,7 +48,7 @@ namespace Human_Resources_Department.forms
             SelectProject();
         }
 
-        private void SelectProject()
+        private bool SelectProject()
         {
             using ( FormChoose f = new FormChoose() )
             {
@@ -62,22 +65,32 @@ namespace Human_Resources_Department.forms
                     dataGridView1.DataSource = new Database(path + "\\" + EmployeesTable.nameFile)
                         .QueryEmployees("SELECT * FROM EmployeesTable");
                     dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
+                    SetNameColumnsAndHide();
+
+                    return true;
                 }
+
+                return false;
             }
         }
 
-        private void ClearAllTextBox()
+        private void SetNameColumnsAndHide()
         {
-            foreach (Control c in Controls)
-            {
-                if ( c.GetType() == typeof(Panel) )
-                    foreach (Control d in c.Controls)
-                        if ( d.GetType() == typeof(TextBox) )
-                            d.Text = string.Empty;
-
-                if ( c.GetType() == typeof(TextBox) )
-                    c.Text = string.Empty;
-            }
+            dataGridView1.Columns[0].HeaderText  = "#";
+            dataGridView1.Columns[1].HeaderText  = "Ім'я";
+            dataGridView1.Columns[2].HeaderText  = "Прізвище";
+            dataGridView1.Columns[3].HeaderText  = "По-батькові";
+            dataGridView1.Columns[4].HeaderText  = "Посада";
+            dataGridView1.Columns[5].HeaderText  = "Місто";
+            dataGridView1.Columns[6].HeaderText  = "Email";
+            dataGridView1.Columns[7].HeaderText  = "Телефон";
+            dataGridView1.Columns[8].HeaderText  = "Сімейний стан";
+            dataGridView1.Columns[9].HeaderText  = "Зарплата";
+            dataGridView1.Columns[10].Visible    = false; // "Активний"
+            dataGridView1.Columns[11].HeaderText = "Повна зайнятість";
+            dataGridView1.Columns[12].HeaderText = "День народження";
+            dataGridView1.Columns[13].HeaderText = "Назначений";
+            dataGridView1.Columns[14].HeaderText = "Оновлення";
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -102,7 +115,7 @@ namespace Human_Resources_Department.forms
             AddInfoOnDetailStaff(textBox11, 8);
             AddInfoOnDetailStaff(textBox3,  9);
             AddInfoOnDetailStaff(textBox13, 10);
-            AddInfoOnDetailStaff(textBox4,  11);
+            AddInfoOnDetailStaff(textBox4,  12);
             AddInfoOnDetailStaff(textBox7,  13);
             AddInfoOnDetailStaff(textBox9,  14);
         }
@@ -120,6 +133,28 @@ namespace Human_Resources_Department.forms
             using ( FormInsert f = new FormInsert() )
             {
                 f.ShowDialog();
+            }
+        }
+
+        private void ClearAllTextBox()
+        {
+            foreach (Control c in Controls)
+            {
+                if (c.GetType() == typeof(Panel))
+                {
+                    foreach (Control d in c.Controls)
+                    {
+                        if (d.GetType() == typeof(TextBox))
+                        {
+                            d.Text = string.Empty;
+                        }
+                    }
+                }
+
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.Text = string.Empty;
+                }
             }
         }
     }

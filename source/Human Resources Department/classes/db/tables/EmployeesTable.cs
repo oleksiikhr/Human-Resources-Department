@@ -27,7 +27,7 @@ namespace Human_Resources_Department.classes.db.tables
         
         public string Family { get; set; }
         
-        public int Salary { get; set; }
+        public double Salary { get; set; }
         
         public bool IsActivity { get; set; }
         
