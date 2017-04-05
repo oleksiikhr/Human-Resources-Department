@@ -9,8 +9,14 @@ namespace Human_Resources_Department.forms
 {
     public partial class FormInsert : Form
     {
-        public FormInsert()
+        public bool isChanged;
+
+        private DataGridView dg;
+
+        public FormInsert(DataGridView dg)
         {
+            this.dg = dg;
+
             InitializeComponent();
         }
 
@@ -48,6 +54,16 @@ namespace Human_Resources_Department.forms
                 SetCompany = dateTimePicker2.Value.Date,
                 UpdateAt = DateTime.Today,
             });
+
+            label9.Visible = true;
+            timer1.Enabled = true;
+            isChanged = true;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            label9.Visible = false;
+            timer1.Enabled = false;
         }
     }
 }

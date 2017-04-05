@@ -17,6 +17,7 @@ namespace Human_Resources_Department.forms
         public FormMain()
         {
             InitializeComponent();
+            this.AcceptButton = button4;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,6 +26,7 @@ namespace Human_Resources_Department.forms
             {
                 Close();
             }
+            this.WindowState = FormWindowState.Maximized;
         }
         
         private void FindField_Enter(object sender, EventArgs e)
@@ -64,9 +66,15 @@ namespace Human_Resources_Department.forms
                     
                     dataGridView1.DataSource = new Database(path + "\\" + EmployeesTable.nameFile)
                         .QueryEmployees("SELECT * FROM EmployeesTable");
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     SetNameColumnsEmployeesTable();
 
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[8].Visible = false;
                     dataGridView1.Columns[10].Visible = false;
+                    dataGridView1.Columns[12].Visible = false;
+                    dataGridView1.Columns[13].Visible = false;
+                    dataGridView1.Columns[14].Visible = false;
 
                     return true;
                 }
@@ -88,7 +96,7 @@ namespace Human_Resources_Department.forms
             dataGridView1.Columns[8].HeaderText  = "Сімейний стан";
             dataGridView1.Columns[9].HeaderText  = "Зарплата";
             dataGridView1.Columns[10].HeaderText = "Активний";
-            dataGridView1.Columns[11].HeaderText = "Повна зайнятість";
+            dataGridView1.Columns[11].HeaderText = "Зайнятість";
             dataGridView1.Columns[12].HeaderText = "День народження";
             dataGridView1.Columns[13].HeaderText = "Назначений";
             dataGridView1.Columns[14].HeaderText = "Оновлення";
@@ -96,7 +104,21 @@ namespace Human_Resources_Department.forms
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            // Search - btn find
+            if ( string.IsNullOrEmpty(findField.Text) )
+            {
+                return;
+            }
+
+            int count = dataGridView1.Rows.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                if ( findField.Text.ToLower().Equals(
+                    dataGridView1.Rows[i].Cells[2].Value.ToString().ToLower() )
+                ) {
+                    dataGridView1.Rows[i].Cells[2].Selected = true;
+                }
+            }
         }
 
         private void DataGridView1_CurrentCellChanged(object sender, EventArgs e)
@@ -142,7 +164,16 @@ namespace Human_Resources_Department.forms
 
         private void AddNewEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FormInsert().Show();
+            using ( FormInsert f = new FormInsert(dataGridView1) )
+            {
+                f.ShowDialog();
+
+                if (f.isChanged)
+                {
+                    dataGridView1.DataSource = new Database(path + "\\" + EmployeesTable.nameFile)
+                        .QueryEmployees("SELECT * FROM EmployeesTable");
+                }
+            }
         }
 
         private void ClearAllTextBox()

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.findField = new System.Windows.Forms.TextBox();
             this.detailStaff = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -84,10 +84,11 @@
             // 
             this.findField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.findField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.findField.Location = new System.Drawing.Point(285, 31);
             this.findField.Name = "findField";
-            this.findField.Size = new System.Drawing.Size(343, 20);
-            this.findField.TabIndex = 1;
+            this.findField.Size = new System.Drawing.Size(275, 20);
+            this.findField.TabIndex = 0;
             this.findField.Text = "Швидкий пошук по Прізвищу";
             this.findField.Enter += new System.EventHandler(this.FindField_Enter);
             this.findField.Leave += new System.EventHandler(this.FindField_Leave);
@@ -152,7 +153,7 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(120, 20);
-            this.textBox13.TabIndex = 28;
+            this.textBox13.TabIndex = 7;
             // 
             // label13
             // 
@@ -169,7 +170,7 @@
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(120, 20);
-            this.textBox12.TabIndex = 26;
+            this.textBox12.TabIndex = 6;
             // 
             // label12
             // 
@@ -186,7 +187,7 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(120, 20);
-            this.textBox11.TabIndex = 24;
+            this.textBox11.TabIndex = 11;
             // 
             // label11
             // 
@@ -241,7 +242,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(120, 20);
-            this.textBox10.TabIndex = 19;
+            this.textBox10.TabIndex = 3;
             // 
             // textBox9
             // 
@@ -249,7 +250,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(120, 20);
-            this.textBox9.TabIndex = 18;
+            this.textBox9.TabIndex = 13;
             // 
             // label9
             // 
@@ -266,7 +267,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(120, 20);
-            this.textBox7.TabIndex = 16;
+            this.textBox7.TabIndex = 12;
             // 
             // label7
             // 
@@ -301,7 +302,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(120, 20);
-            this.textBox8.TabIndex = 13;
+            this.textBox8.TabIndex = 8;
             // 
             // textBox5
             // 
@@ -309,7 +310,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(120, 20);
-            this.textBox5.TabIndex = 12;
+            this.textBox5.TabIndex = 9;
             // 
             // label5
             // 
@@ -335,7 +336,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(120, 20);
-            this.textBox6.TabIndex = 9;
+            this.textBox6.TabIndex = 5;
             // 
             // textBox3
             // 
@@ -343,7 +344,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(120, 20);
-            this.textBox3.TabIndex = 8;
+            this.textBox3.TabIndex = 10;
             // 
             // label3
             // 
@@ -369,7 +370,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(120, 20);
-            this.textBox4.TabIndex = 5;
+            this.textBox4.TabIndex = 4;
             // 
             // textBox2
             // 
@@ -377,7 +378,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(120, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBox2.TabIndex = 2;
             // 
             // label2
             // 
@@ -467,14 +468,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView1.Location = new System.Drawing.Point(285, 57);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -489,15 +490,17 @@
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(553, 31);
+            this.button4.Location = new System.Drawing.Point(557, 31);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 20);
+            this.button4.Size = new System.Drawing.Size(71, 20);
             this.button4.TabIndex = 6;
             this.button4.Text = "Знайти";
+            this.button4.UseMnemonic = false;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
