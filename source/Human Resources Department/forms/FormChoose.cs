@@ -26,7 +26,7 @@ namespace Human_Resources_Department.forms
         {
             try
             {
-                Directory.CreateDirectory(cfg.projectFolder);
+                Directory.CreateDirectory(Config.projectFolder);
                 GetFolders();
             }
             catch (Exception ex)
@@ -58,7 +58,7 @@ namespace Human_Resources_Department.forms
 
             if (result == DialogResult.Yes)
             {
-                string folder = cfg.projectFolder + "\\" + textBox1.Text;
+                string folder = Config.projectFolder + "\\" + textBox1.Text;
 
                 if ( Directory.Exists(folder) )
                 {
@@ -95,7 +95,7 @@ namespace Human_Resources_Department.forms
         {
             listBox1.Items.Clear();
             
-            DirectoryInfo dir = new DirectoryInfo(cfg.projectFolder);
+            DirectoryInfo dir = new DirectoryInfo(Config.projectFolder);
 
             foreach ( var item in dir.GetDirectories() )
             {
@@ -129,7 +129,7 @@ namespace Human_Resources_Department.forms
 
             if (result == DialogResult.Yes)
             {
-                new DirectoryInfo(cfg.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);
+                new DirectoryInfo(Config.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);
                 listBox1.Items.Remove(listBox1.Text);
 
                 button3.Enabled = false;
@@ -139,14 +139,14 @@ namespace Human_Resources_Department.forms
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Config.currentFolder = cfg.projectFolder + "\\" + listBox1.SelectedItem;
+            Config.currentFolder = Config.projectFolder + "\\" + listBox1.SelectedItem;
             this.is_open = true;
             this.Close();
         }
 
         public string GetURI()
         {
-            return cfg.projectFolder + "\\" + listBox1.SelectedItem;
+            return Config.projectFolder + "\\" + listBox1.SelectedItem;
         }
 
         public string GetNameFolder()

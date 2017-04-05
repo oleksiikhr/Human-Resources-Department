@@ -64,8 +64,9 @@ namespace Human_Resources_Department.forms
                     
                     dataGridView1.DataSource = new Database(path + "\\" + EmployeesTable.nameFile)
                         .QueryEmployees("SELECT * FROM EmployeesTable");
-                    dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
-                    SetNameColumnsAndHide();
+                    SetNameColumnsEmployeesTable();
+
+                    dataGridView1.Columns[10].Visible = false;
 
                     return true;
                 }
@@ -74,7 +75,7 @@ namespace Human_Resources_Department.forms
             }
         }
 
-        private void SetNameColumnsAndHide()
+        private void SetNameColumnsEmployeesTable()
         {
             dataGridView1.Columns[0].HeaderText  = "#";
             dataGridView1.Columns[1].HeaderText  = "Ім'я";
@@ -86,7 +87,7 @@ namespace Human_Resources_Department.forms
             dataGridView1.Columns[7].HeaderText  = "Телефон";
             dataGridView1.Columns[8].HeaderText  = "Сімейний стан";
             dataGridView1.Columns[9].HeaderText  = "Зарплата";
-            dataGridView1.Columns[10].Visible    = false; // "Активний"
+            dataGridView1.Columns[10].HeaderText = "Активний";
             dataGridView1.Columns[11].HeaderText = "Повна зайнятість";
             dataGridView1.Columns[12].HeaderText = "День народження";
             dataGridView1.Columns[13].HeaderText = "Назначений";
@@ -122,36 +123,44 @@ namespace Human_Resources_Department.forms
 
         private void AddInfoOnDetailStaff(TextBox t, int cell)
         {
-            if (dataGridView1.CurrentRow.Cells[cell].Value != null)
+            var value = dataGridView1.CurrentRow.Cells[cell].Value;
+
+            if (value == null)
             {
-                t.Text = dataGridView1.CurrentRow.Cells[cell].Value.ToString();
+                return;
+            }
+
+            if ( DateTime.TryParse(value.ToString(), out DateTime d) )
+            {
+                t.Text = d.ToString("dd.MM.yyyy");
+            }
+            else
+            {
+                t.Text = value.ToString();
             }
         }
 
         private void AddNewEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using ( FormInsert f = new FormInsert() )
-            {
-                f.ShowDialog();
-            }
+            new FormInsert().Show();
         }
 
         private void ClearAllTextBox()
         {
             foreach (Control c in Controls)
             {
-                if (c.GetType() == typeof(Panel))
+                if ( c.GetType() == typeof(Panel) )
                 {
                     foreach (Control d in c.Controls)
                     {
-                        if (d.GetType() == typeof(TextBox))
+                        if ( d.GetType() == typeof(TextBox) )
                         {
                             d.Text = string.Empty;
                         }
                     }
                 }
 
-                if (c.GetType() == typeof(TextBox))
+                if ( c.GetType() == typeof(TextBox) )
                 {
                     c.Text = string.Empty;
                 }

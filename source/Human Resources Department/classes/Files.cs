@@ -6,7 +6,7 @@ namespace Human_Resources_Department.classes
 {
     class Files
     {
-        public string errorFile = new Config().projectFolder + "\\error.txt";
+        public string errorFile = Config.projectFolder + "\\error.txt";
 
         public void WriteToFile(string text, string uriFile, bool cur_time = true)
         {

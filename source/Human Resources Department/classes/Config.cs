@@ -6,7 +6,7 @@ namespace Human_Resources_Department.classes
     {
         public const string PROJECT_NAME = "Human Resources Department";
 
-        public string projectFolder =
+        public static string projectFolder =
             Environment.GetFolderPath(Environment.SpecialFolder.Personal)
             + "\\" + PROJECT_NAME;
 

@@ -13,21 +13,6 @@ namespace Human_Resources_Department.classes.db
         public Database(string uriFile)
         {
             con = new SQLiteConnection(uriFile);
-
-            /*
-            var employee = new EmployeesTable
-            {
-                FName = "123"
-            };
-
-            con.Insert(employee);
-
-            var employees = con.Table<EmployeesTable>();
-            foreach (var a in employees)
-            {
-                MessageBox.Show(a.FName);
-            }
-            */
         }
 
         public void CreateTable<T>()
@@ -38,6 +23,11 @@ namespace Human_Resources_Department.classes.db
         public void Insert(object ob)
         {
             con.Insert(ob);
+        }
+
+        public void Update(object ob)
+        {
+            con.Update(ob);
         }
 
         public object QueryEmployees(string q)

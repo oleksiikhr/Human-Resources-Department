@@ -17,16 +17,20 @@ namespace Human_Resources_Department.forms
         private void Button1_Click(object sender, EventArgs e)
         {
             Database db = new Database(Config.currentFolder + "\\" + EmployeesTable.nameFile);
-
+            
             bool isCorrectSalary = double.TryParse(textBox12.Text, out double salary);
-
-            if (!isCorrectSalary && !string.IsNullOrWhiteSpace(textBox12.Text))
+            if ( ! isCorrectSalary && ! string.IsNullOrWhiteSpace(textBox12.Text) )
             {
                 MessageBox.Show("В зарплаті повинні бути тільки числа", "Помилка");
                 return;
             }
 
-            // Test
+            if ( string.IsNullOrWhiteSpace(textBox1.Text) )
+            {
+                MessageBox.Show("Повинно бути вказано ім'я", "Помилка");
+                return;
+            }
+            
             db.Insert(new EmployeesTable
             {
                 FName = textBox1.Text,
@@ -42,7 +46,7 @@ namespace Human_Resources_Department.forms
                 IsFulltime = true,
                 Birthday = dateTimePicker1.Value.Date,
                 SetCompany = dateTimePicker2.Value.Date,
-                UpdateAt = DateTime.Now,
+                UpdateAt = DateTime.Today,
             });
         }
     }
