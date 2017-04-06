@@ -202,11 +202,12 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(362, 0);
+            this.label9.Location = new System.Drawing.Point(368, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.Padding = new System.Windows.Forms.Padding(2);
+            this.label9.Size = new System.Drawing.Size(50, 17);
             this.label9.TabIndex = 69;
-            this.label9.Text = "Оновлено";
+            this.label9.Text = "Додано";
             this.label9.Visible = false;
             // 
             // dateTimePicker2

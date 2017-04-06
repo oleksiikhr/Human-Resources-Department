@@ -1,10 +1,8 @@
 ﻿using SQLite;
 
-using Human_Resources_Department.classes.db.tables;
-
-namespace Human_Resources_Department.classes.db
+namespace Human_Resources_Department.classes
 {
-    public class Database
+    public abstract class Database
     {
         protected SQLiteConnection con;
 
@@ -28,11 +26,6 @@ namespace Human_Resources_Department.classes.db
         public void Update(object ob)
         {
             con.Update(ob);
-        }
-
-        public object QueryEmployees(string q)
-        {
-            return con.Query<EmployeesTable>(q);
         }
 
         public void CloseConnection()

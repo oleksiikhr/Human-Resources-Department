@@ -3,8 +3,8 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.db;
-using Human_Resources_Department.classes.db.tables;
+using Human_Resources_Department.classes.employees;
+using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.forms
 {
@@ -69,7 +69,7 @@ namespace Human_Resources_Department.forms
                 try
                 {
                     Directory.CreateDirectory(folder);
-                    new Database(folder + "\\" + EmployeesTable.nameFile).CreateTable<EmployeesTable>();
+                    new EmployeesModel(folder + "\\" + EmployeesModel.nameFile).CreateTable<EmployeesTable>();
                 }
                 catch (Exception ex)
                 {

@@ -2,8 +2,7 @@
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.db;
-using Human_Resources_Department.classes.db.tables;
+using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.forms
 {
@@ -22,7 +21,7 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Database db = new Database(Config.currentFolder + "\\" + EmployeesTable.nameFile);
+            Database db = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
             
             bool isCorrectSalary = double.TryParse(textBox12.Text, out double salary);
             if ( ! isCorrectSalary && ! string.IsNullOrWhiteSpace(textBox12.Text) )
@@ -40,16 +39,16 @@ namespace Human_Resources_Department.forms
             db.Insert(new EmployeesTable
             {
                 FName = textBox1.Text,
-                MName = textBox3.Text,
                 LName = textBox2.Text,
+                MName = textBox3.Text,
                 Job = textBox5.Text,
                 City = textBox4.Text,
                 Family = textBox9.Text,
                 Email = textBox8.Text,
                 Tel = textBox10.Text,
                 Salary = salary,
-                IsActivity = checkBox1.Checked,
-                IsFulltime = true,
+                IsActivity = true,
+                IsFulltime = checkBox1.Checked,
                 Birthday = dateTimePicker1.Value.Date,
                 SetCompany = dateTimePicker2.Value.Date,
                 UpdateAt = DateTime.Today,

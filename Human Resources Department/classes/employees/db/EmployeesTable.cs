@@ -1,12 +1,10 @@
-﻿using SQLite;
-using System;
+﻿using System;
+using SQLite;
 
-namespace Human_Resources_Department.classes.db.tables
+namespace Human_Resources_Department.classes.employees.db
 {
     class EmployeesTable
     {
-        public const string nameFile = "employees.sqlite";
-
         [PrimaryKey, AutoIncrement, Unique]
         public int Id { get; set; }
         
@@ -30,7 +28,7 @@ namespace Human_Resources_Department.classes.db.tables
         public double Salary { get; set; }
         
         public bool IsActivity { get; set; }
-        
+
         public bool IsFulltime { get; set; }
         
         public DateTime Birthday { get; set; }
