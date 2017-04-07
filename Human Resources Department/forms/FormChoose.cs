@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.forms
@@ -79,6 +78,7 @@ namespace Human_Resources_Department.forms
                 }
 
                 listBox1.Items.Add(textBox1.Text);
+                listBox1.SelectedItem = textBox1.Text;
             }
         }
 
@@ -129,7 +129,17 @@ namespace Human_Resources_Department.forms
 
             if (result == DialogResult.Yes)
             {
-                new DirectoryInfo(Config.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);
+                try
+                {
+                    new DirectoryInfo(Config.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);
+                }
+                catch (Exception ex)
+                {
+                    fls.WriteToFile(ex.ToString(), fls.errorFile);
+                    MessageBox.Show("Закрийте проект, перш ніж видалити", "Помилка");
+                    return;
+                }
+
                 listBox1.Items.Remove(listBox1.Text);
 
                 button3.Enabled = false;

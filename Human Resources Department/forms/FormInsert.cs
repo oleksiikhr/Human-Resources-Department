@@ -39,8 +39,8 @@ namespace Human_Resources_Department.forms
             db.Insert(new EmployeesTable
             {
                 FName = textBox1.Text,
-                LName = textBox2.Text,
                 MName = textBox3.Text,
+                LName = textBox2.Text,
                 Job = textBox5.Text,
                 City = textBox4.Text,
                 Family = textBox9.Text,

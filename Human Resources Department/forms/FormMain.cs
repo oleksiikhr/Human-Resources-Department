@@ -70,7 +70,7 @@ namespace Human_Resources_Department.forms
             if ( string.IsNullOrEmpty(findField.Text) || findField.Text.Equals(TEXT_SEARCH) )
                 return;
 
-            d.FindCellAndSetFocus(findField.Text, 2);
+            d.FindCellAndSetFocus(findField.Text, EmployeesDataGridView.CELL_LNAME, true);
         }
 
         private void DataGridView1_CurrentCellChanged(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace Human_Resources_Department.forms
             d.AddInfoOnDetailStaff(fieldIsFulltime,  EmployeesDataGridView.CELL_IS_FULLTIME);
             d.AddInfoOnDetailStaff(fieldBirthday,    EmployeesDataGridView.CELL_BIRTHDAY);
             d.AddInfoOnDetailStaff(fieldSetCompany,  EmployeesDataGridView.CELL_SETCOMPANY);
-            d.AddInfoOnDetailStaff(fieldUpdateAt,    EmployeesDataGridView.CELLS_UPDATE_AT);
+            d.AddInfoOnDetailStaff(fieldUpdateAt,    EmployeesDataGridView.CELL_UPDATE_AT);
             
             if ( d.GetCellIsActivity() )
             {
@@ -120,6 +120,7 @@ namespace Human_Resources_Department.forms
             d = new EmployeesDataGridView(dataGridView1);
             d.NewDataSource();
             d.SetNameColumns();
+            d.SetColorIsActivity();
 
             /*
              *  Set Visible from config.

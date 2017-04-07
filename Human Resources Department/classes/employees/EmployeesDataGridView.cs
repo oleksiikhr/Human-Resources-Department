@@ -1,6 +1,8 @@
-﻿using Human_Resources_Department.classes.employees.db;
-using System;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+
+using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.classes.employees
 {
@@ -22,7 +24,7 @@ namespace Human_Resources_Department.classes.employees
         public const int CELL_IS_FULLTIME  = 11;
         public const int CELL_BIRTHDAY     = 12;
         public const int CELL_SETCOMPANY   = 13;
-        public const int CELLS_UPDATE_AT   = 14;
+        public const int CELL_UPDATE_AT    = 14;
 
         public EmployeesDataGridView(DataGridView d)
         {
@@ -45,19 +47,19 @@ namespace Human_Resources_Department.classes.employees
             d.Columns[CELL_IS_FULLTIME].HeaderText  = "Зайнятість";
             d.Columns[CELL_BIRTHDAY].HeaderText     = "Народження";
             d.Columns[CELL_SETCOMPANY].HeaderText   = "Назначений";
-            d.Columns[CELLS_UPDATE_AT].HeaderText   = "Оновлення";
+            d.Columns[CELL_UPDATE_AT].HeaderText    = "Оновлення";
         }
 
         public void AddInfoOnDetailStaff(TextBox t, int cell)
         {
-            var value = d.CurrentRow.Cells[cell].Value;
+            var val = d.CurrentRow.Cells[cell].Value;
 
-            if (value == null)
+            if (val == null)
                 return;
 
-            t.Text = DateTime.TryParse(value.ToString(), out DateTime dt)
+            t.Text = DateTime.TryParse(val.ToString(), out DateTime dt)
                 ? t.Text = dt.ToString("dd.MM.yyyy")
-                : value.ToString();
+                : val.ToString();
         }
 
         public bool GetCellIsActivity()
@@ -67,9 +69,17 @@ namespace Human_Resources_Department.classes.employees
 
         public void SetColorIsActivity()
         {
+            DataGridViewCellStyle color = new DataGridViewCellStyle()
+            {
+                BackColor = Color.FromArgb(255, 205, 210)
+            };
+
             foreach (DataGridViewRow row in d.Rows)
             {
-                // IF NO_ACTIVE => COLOR CHANGE
+                if ( ! Boolean.Parse( row.Cells[CELL_IS_ACTIVITY].Value.ToString() ) )
+                {
+                    row.DefaultCellStyle = color;
+                }
             }
         }
 
@@ -80,13 +90,20 @@ namespace Human_Resources_Department.classes.employees
             d.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        public void FindCellAndSetFocus(string text, int cell)
+        public void FindCellAndSetFocus(string text, int cell, bool isLower = false)
         {
-            for (int i = 0; i < d.Rows.Count; i++)
+            int count = (d.CurrentRow != null) ? d.CurrentRow.Index + 1 : 0;
+
+            if (isLower)
             {
-                if ( text.ToLower().Equals(d.Rows[i].Cells[cell].Value.ToString().ToLower()) )
+                text = text.ToLower();
+            }
+            
+            for (int i = count; i < d.Rows.Count + count; i++)
+            {
+                if ( text.Equals(d.Rows[i % d.Rows.Count].Cells[cell].Value.ToString().ToLower()) )
                 {
-                    d.Rows[i].Cells[cell].Selected = true;
+                    d.Rows[i % d.Rows.Count].Cells[cell].Selected = true;
                     break;
                 }
             }
