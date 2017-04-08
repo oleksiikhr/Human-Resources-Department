@@ -127,14 +127,14 @@ namespace Human_Resources_Department.forms
              */
 
             // Test
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[10].Visible = false;
-            dataGridView1.Columns[11].Visible = false;
-            dataGridView1.Columns[12].Visible = false;
-            dataGridView1.Columns[13].Visible = false;
-            dataGridView1.Columns[14].Visible = false;
+            dataGridView1.Columns[0].visible = false;
+            datagridview1.columns[5].visible = false;
+            datagridview1.columns[8].visible = false;
+            datagridview1.columns[10].visible = false;
+            datagridview1.columns[11].visible = false;
+            datagridview1.columns[12].visible = false;
+            datagridview1.columns[13].visible = false;
+            datagridview1.Columns[14].Visible = false;
             // End Test
         }
     }

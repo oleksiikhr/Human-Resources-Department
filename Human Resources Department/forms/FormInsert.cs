@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees.db;
+using System.IO;
 
 namespace Human_Resources_Department.forms
 {
@@ -21,6 +22,12 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            if ( ! File.Exists( Config.currentFolder + "\\" + EmployeesModel.nameFile ) )
+            {
+                MessageBox.Show("Файл не знайдено", "Помилка");
+                return;
+            }
+
             Database db = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
             
             bool isCorrectSalary = double.TryParse(textBox12.Text, out double salary);
@@ -36,7 +43,7 @@ namespace Human_Resources_Department.forms
                 return;
             }
             
-            db.Insert(new EmployeesTable
+            db.Insert( new EmployeesTable
             {
                 FName = textBox1.Text,
                 MName = textBox3.Text,
