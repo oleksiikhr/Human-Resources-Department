@@ -11,11 +11,11 @@ namespace Human_Resources_Department.forms
     {
         public bool isChanged;
 
-        private DataGridView dg;
+        private DataGridView d;
 
-        public FormInsert(DataGridView dg)
+        public FormInsert(DataGridView d)
         {
-            this.dg = dg;
+            this.d = d;
 
             InitializeComponent();
         }

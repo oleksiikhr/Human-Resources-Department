@@ -57,6 +57,8 @@ namespace Human_Resources_Department.forms
                     this.Text = Config.PROJECT_NAME + " - " + f.GetNameFolder();
 
                     SetNewDataGridView1();
+                    dataGridView1.CurrentCell = null;
+                    ClearTextBoxInPanel();
 
                     return true;
                 }
@@ -137,5 +139,24 @@ namespace Human_Resources_Department.forms
             datagridview1.Columns[14].Visible = false;
             // End Test
         }
+
+        private void ClearTextBoxInPanel()
+        {
+            foreach (Control c1 in this.Controls)
+            {
+                if (c1.GetType() == typeof(Panel))
+                {
+                    foreach (Control c in c1.Controls)
+                    {
+                        if (c.GetType() == typeof(TextBox))
+                        {
+                            c.Text = string.Empty;
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
 }

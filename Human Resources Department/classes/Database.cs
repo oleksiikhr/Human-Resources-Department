@@ -10,6 +10,7 @@ namespace Human_Resources_Department.classes
         /// <seealso cref="https://github.com/praeclarum/sqlite-net"/>
         public Database(string uriFile)
         {
+            // DLL FILE!!!!!!!!!! TRY CATCH
             con = new SQLiteConnection(uriFile);
         }
 

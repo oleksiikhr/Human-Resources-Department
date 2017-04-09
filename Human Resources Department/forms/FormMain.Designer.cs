@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.findField = new System.Windows.Forms.TextBox();
-            this.detailStaff = new System.Windows.Forms.Panel();
+            this.panelDetailStaff = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.fieldIsFulltime = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.detailStaff.SuspendLayout();
+            this.panelDetailStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -95,42 +95,42 @@
             // 
             // detailStaff
             // 
-            this.detailStaff.BackColor = System.Drawing.Color.White;
-            this.detailStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.detailStaff.Controls.Add(this.button3);
-            this.detailStaff.Controls.Add(this.fieldIsFulltime);
-            this.detailStaff.Controls.Add(this.label13);
-            this.detailStaff.Controls.Add(this.fieldCity);
-            this.detailStaff.Controls.Add(this.label12);
-            this.detailStaff.Controls.Add(this.fieldFamily);
-            this.detailStaff.Controls.Add(this.label11);
-            this.detailStaff.Controls.Add(this.button2);
-            this.detailStaff.Controls.Add(this.button1);
-            this.detailStaff.Controls.Add(this.label10);
-            this.detailStaff.Controls.Add(this.fieldLName);
-            this.detailStaff.Controls.Add(this.fieldMName);
-            this.detailStaff.Controls.Add(this.label2);
-            this.detailStaff.Controls.Add(this.fieldUpdateAt);
-            this.detailStaff.Controls.Add(this.label9);
-            this.detailStaff.Controls.Add(this.fieldSetCompany);
-            this.detailStaff.Controls.Add(this.label7);
-            this.detailStaff.Controls.Add(this.label8);
-            this.detailStaff.Controls.Add(this.pictureBox1);
-            this.detailStaff.Controls.Add(this.fieldTel);
-            this.detailStaff.Controls.Add(this.fieldEmail);
-            this.detailStaff.Controls.Add(this.label5);
-            this.detailStaff.Controls.Add(this.label6);
-            this.detailStaff.Controls.Add(this.fieldJob);
-            this.detailStaff.Controls.Add(this.fieldSalary);
-            this.detailStaff.Controls.Add(this.label3);
-            this.detailStaff.Controls.Add(this.label4);
-            this.detailStaff.Controls.Add(this.fieldBirthday);
-            this.detailStaff.Controls.Add(this.label1);
-            this.detailStaff.Controls.Add(this.fieldFName);
-            this.detailStaff.Location = new System.Drawing.Point(12, 50);
-            this.detailStaff.Name = "detailStaff";
-            this.detailStaff.Size = new System.Drawing.Size(255, 400);
-            this.detailStaff.TabIndex = 4;
+            this.panelDetailStaff.BackColor = System.Drawing.Color.White;
+            this.panelDetailStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDetailStaff.Controls.Add(this.button3);
+            this.panelDetailStaff.Controls.Add(this.fieldIsFulltime);
+            this.panelDetailStaff.Controls.Add(this.label13);
+            this.panelDetailStaff.Controls.Add(this.fieldCity);
+            this.panelDetailStaff.Controls.Add(this.label12);
+            this.panelDetailStaff.Controls.Add(this.fieldFamily);
+            this.panelDetailStaff.Controls.Add(this.label11);
+            this.panelDetailStaff.Controls.Add(this.button2);
+            this.panelDetailStaff.Controls.Add(this.button1);
+            this.panelDetailStaff.Controls.Add(this.label10);
+            this.panelDetailStaff.Controls.Add(this.fieldLName);
+            this.panelDetailStaff.Controls.Add(this.fieldMName);
+            this.panelDetailStaff.Controls.Add(this.label2);
+            this.panelDetailStaff.Controls.Add(this.fieldUpdateAt);
+            this.panelDetailStaff.Controls.Add(this.label9);
+            this.panelDetailStaff.Controls.Add(this.fieldSetCompany);
+            this.panelDetailStaff.Controls.Add(this.label7);
+            this.panelDetailStaff.Controls.Add(this.label8);
+            this.panelDetailStaff.Controls.Add(this.pictureBox1);
+            this.panelDetailStaff.Controls.Add(this.fieldTel);
+            this.panelDetailStaff.Controls.Add(this.fieldEmail);
+            this.panelDetailStaff.Controls.Add(this.label5);
+            this.panelDetailStaff.Controls.Add(this.label6);
+            this.panelDetailStaff.Controls.Add(this.fieldJob);
+            this.panelDetailStaff.Controls.Add(this.fieldSalary);
+            this.panelDetailStaff.Controls.Add(this.label3);
+            this.panelDetailStaff.Controls.Add(this.label4);
+            this.panelDetailStaff.Controls.Add(this.fieldBirthday);
+            this.panelDetailStaff.Controls.Add(this.label1);
+            this.panelDetailStaff.Controls.Add(this.fieldFName);
+            this.panelDetailStaff.Location = new System.Drawing.Point(12, 50);
+            this.panelDetailStaff.Name = "detailStaff";
+            this.panelDetailStaff.Size = new System.Drawing.Size(255, 400);
+            this.panelDetailStaff.TabIndex = 4;
             // 
             // button3
             // 
@@ -581,7 +581,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.detailStaff);
+            this.Controls.Add(this.panelDetailStaff);
             this.Controls.Add(this.findField);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -589,8 +589,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Human Resources Department";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.detailStaff.ResumeLayout(false);
-            this.detailStaff.PerformLayout();
+            this.panelDetailStaff.ResumeLayout(false);
+            this.panelDetailStaff.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -602,7 +602,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox findField;
-        private System.Windows.Forms.Panel detailStaff;
+        private System.Windows.Forms.Panel panelDetailStaff;
         private System.Windows.Forms.TextBox fieldSetCompany;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

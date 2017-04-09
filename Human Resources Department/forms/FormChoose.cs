@@ -11,9 +11,6 @@ namespace Human_Resources_Department.forms
     {
         private bool is_open;
 
-        Config cfg = new Config();
-        Files fls = new Files();
-
         public FormChoose()
         {
             InitializeComponent();
@@ -30,7 +27,7 @@ namespace Human_Resources_Department.forms
             }
             catch (Exception ex)
             {
-                fls.WriteToFile(ex.ToString(), fls.errorFile);
+                Files.WriteToFile(ex.ToString(), Files.errorFile);
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
                 this.Close();
             }
@@ -44,11 +41,6 @@ namespace Human_Resources_Department.forms
                 return;
             }
 
-            CreateNewProject();
-        }
-
-        private void CreateNewProject()
-        {
             DialogResult result = MessageBox.Show(
                 "Створити нову фірму з назвою: " + textBox1.Text + "?",
                 "Фірма: " + textBox1.Text,
@@ -59,7 +51,7 @@ namespace Human_Resources_Department.forms
             {
                 string folder = Config.projectFolder + "\\" + textBox1.Text;
 
-                if ( Directory.Exists(folder) )
+                if (Directory.Exists(folder))
                 {
                     MessageBox.Show("Фірма вже існує");
                     return;
@@ -72,7 +64,7 @@ namespace Human_Resources_Department.forms
                 }
                 catch (Exception ex)
                 {
-                    fls.WriteToFile(ex.ToString(), fls.errorFile);
+                    Files.WriteToFile(ex.ToString(), Files.errorFile);
                     MessageBox.Show("Не вдалося створити нову фірму", "Помилка");
                     return;
                 }
@@ -129,14 +121,15 @@ namespace Human_Resources_Department.forms
 
             if (result == DialogResult.Yes)
             {
+                // IF delete project => Error. Block folder/files
                 try
                 {
                     new DirectoryInfo(Config.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);
                 }
                 catch (Exception ex)
                 {
-                    fls.WriteToFile(ex.ToString(), fls.errorFile);
-                    MessageBox.Show("Закрийте проект, перш ніж видалити", "Помилка");
+                    Files.WriteToFile(ex.ToString(), Files.errorFile);
+                    MessageBox.Show("Закрийте проект, перш ніж видаляти", "Помилка");
                     return;
                 }
 

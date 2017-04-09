@@ -6,9 +6,9 @@ namespace Human_Resources_Department.classes
 {
     class Files
     {
-        public string errorFile = Config.projectFolder + "\\error.txt";
+        public static string errorFile = Config.projectFolder + "\\error.txt";
 
-        public void WriteToFile(string text, string uriFile, bool cur_time = true)
+        public static void WriteToFile(string text, string uriFile, bool cur_time = true)
         {
             using ( StreamWriter writer = new StreamWriter(uriFile, true, Encoding.Default) )
             {
