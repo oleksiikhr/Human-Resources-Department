@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees;
+using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.forms
 {
@@ -12,6 +13,7 @@ namespace Human_Resources_Department.forms
         private const string TEXT_SEARCH = "Швидкий пошук по Прізвищу";
 
         EmployeesDataGridView d;
+        EmployeesPanel p;
 
         public FormMain()
         {
@@ -21,9 +23,9 @@ namespace Human_Resources_Department.forms
         private void Form1_Load(object sender, EventArgs e)
         {
             if ( ! SelectProject() )
-            {
                 Application.ExitThread();
-            }
+
+            Files.DeleteFile(Config.currentFolder + "\\" + Files.errorFile);
 
             this.WindowState = FormWindowState.Maximized;
             this.AcceptButton = button4;
@@ -48,6 +50,8 @@ namespace Human_Resources_Department.forms
 
         private bool SelectProject()
         {
+            this.Visible = false;
+
             using ( FormChoose f = new FormChoose() )
             {
                 f.ShowDialog();
@@ -56,14 +60,14 @@ namespace Human_Resources_Department.forms
                 {
                     this.Text = Config.PROJECT_NAME + " - " + f.GetNameFolder();
 
-                    SetNewDataGridView1();
-                    dataGridView1.CurrentCell = null;
-                    ClearTextBoxInPanel();
+                    UpdatePlace();
 
+                    this.Visible = true;
                     return true;
                 }
             }
 
+            this.Visible = true;
             return false;
         }
 
@@ -77,26 +81,32 @@ namespace Human_Resources_Department.forms
 
         private void DataGridView1_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null || d == null)
+            if (d.GetCountSelectedRows() < 1 || d == null || p == null)
                 return;
-            
-            d.AddInfoOnDetailStaff(fieldFName,       EmployeesDataGridView.CELL_FNAME);
-            d.AddInfoOnDetailStaff(fieldMName,       EmployeesDataGridView.CELL_MNAME);
-            d.AddInfoOnDetailStaff(fieldLName,       EmployeesDataGridView.CELL_LNAME);
-            d.AddInfoOnDetailStaff(fieldJob,         EmployeesDataGridView.CELL_JOB);
-            d.AddInfoOnDetailStaff(fieldCity,        EmployeesDataGridView.CELL_CITY);
-            d.AddInfoOnDetailStaff(fieldEmail,       EmployeesDataGridView.CELL_EMAIL);
-            d.AddInfoOnDetailStaff(fieldTel,         EmployeesDataGridView.CELL_TEL);
-            d.AddInfoOnDetailStaff(fieldFamily,      EmployeesDataGridView.CELL_FAMILY);
-            d.AddInfoOnDetailStaff(fieldSalary,      EmployeesDataGridView.CELL_SALARY);
-            d.AddInfoOnDetailStaff(fieldIsFulltime,  EmployeesDataGridView.CELL_IS_FULLTIME);
-            d.AddInfoOnDetailStaff(fieldBirthday,    EmployeesDataGridView.CELL_BIRTHDAY);
-            d.AddInfoOnDetailStaff(fieldSetCompany,  EmployeesDataGridView.CELL_SETCOMPANY);
-            d.AddInfoOnDetailStaff(fieldUpdateAt,    EmployeesDataGridView.CELL_UPDATE_AT);
-            
-            if ( d.GetCellIsActivity() )
+
+            FillDetailStaff();
+            p.ToggleButton();
+        }
+
+        private void FillDetailStaff()
+        {
+            p.AddInfo(fieldFName,      d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_FNAME));
+            p.AddInfo(fieldMName,      d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_MNAME));
+            p.AddInfo(fieldLName,      d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_LNAME));
+            p.AddInfo(fieldJob,        d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_JOB));
+            p.AddInfo(fieldCity,       d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_CITY));
+            p.AddInfo(fieldEmail,      d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_EMAIL));
+            p.AddInfo(fieldTel,        d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_TEL));
+            p.AddInfo(fieldFamily,     d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_FAMILY));
+            p.AddInfo(fieldSalary,     d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_SALARY));
+            p.AddInfo(fieldIsFulltime, d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_IS_FULLTIME));
+            p.AddInfo(fieldBirthday,   d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_BIRTHDAY));
+            p.AddInfo(fieldSetCompany, d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_SETCOMPANY));
+            p.AddInfo(fieldUpdateAt,   d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_UPDATE_AT));
+
+            if ( d.EmployeeIsActivity() )
             {
-                button5.BackColor = Color.Brown; // Rename..
+                button5.BackColor = Color.Brown;
                 button5.Text = "Звільнити";
             }
             else
@@ -104,59 +114,82 @@ namespace Human_Resources_Department.forms
                 button5.BackColor = Color.FromArgb(84, 110, 122);
                 button5.Text = "Поновити";
             }
+
+            if ( ! p.IsReadOnly() )
+                p.ChangeAllTextBox("readonly", true);
         }
 
         private void AddNewEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            p.ToggleButton();
             using ( FormInsert f = new FormInsert(dataGridView1) )
             {
                 f.ShowDialog();
 
                 if (f.isChanged)
-                    SetNewDataGridView1();
-            }
-        }
-
-        private void SetNewDataGridView1()
-        {
-            d = new EmployeesDataGridView(dataGridView1);
-            d.NewDataSource();
-            d.SetNameColumns();
-            d.SetColorIsActivity();
-
-            /*
-             *  Set Visible from config.
-             */
-
-            // Test
-            dataGridView1.Columns[0].visible = false;
-            datagridview1.columns[5].visible = false;
-            datagridview1.columns[8].visible = false;
-            datagridview1.columns[10].visible = false;
-            datagridview1.columns[11].visible = false;
-            datagridview1.columns[12].visible = false;
-            datagridview1.columns[13].visible = false;
-            datagridview1.Columns[14].Visible = false;
-            // End Test
-        }
-
-        private void ClearTextBoxInPanel()
-        {
-            foreach (Control c1 in this.Controls)
-            {
-                if (c1.GetType() == typeof(Panel))
                 {
-                    foreach (Control c in c1.Controls)
-                    {
-                        if (c.GetType() == typeof(TextBox))
-                        {
-                            c.Text = string.Empty;
-                        }
-                    }
+                    UpdatePlace();
                 }
             }
         }
 
+        private void UpdatePlace()
+        {
+            if (p != null)
+                p.ToggleButton();
 
+            p = new EmployeesPanel(panelEmployee);
+            d = new EmployeesDataGridView(dataGridView1);
+
+            int selectedRow = (d.GetCountSelectedRows() > 0) ? d.GetIndexSelectedRow() : 0;
+            int countRows = d.GetCountRows();
+
+            if ( ! d.SetDataSource() )
+            {
+                MessageBox.Show("Файл не знайдений або пошкоджений", "Помилка");
+
+                if ( ! SelectProject() )
+                    Application.ExitThread();
+
+                return;
+            }
+
+            d.RenameColumns();
+            d.SetColorRows();
+
+            if (dataGridView1.Rows.Count > 0)
+            {
+                if (countRows == d.GetCountRows())
+                    dataGridView1.Rows[selectedRow].Selected = true;
+                else
+                    dataGridView1.Rows[0].Selected = true;
+
+                FillDetailStaff();
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (d.GetCountSelectedRows() < 0)
+            {
+                MessageBox.Show("Оберіть працівника");
+                return;
+            }
+
+            p.ChangeAllTextBox("readonly");
+            
+            p.ToggleButton(true);
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
+                .UpdateActivity(
+                    Convert.ToInt32( d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_ID) ),
+                    (Boolean.Parse(d.GetSelectedRowValueCell(EmployeesDataGridView.CELL_IS_ACTIVITY).ToString()) ? false : true)
+                );
+
+            UpdatePlace();
+        }
     }
 }

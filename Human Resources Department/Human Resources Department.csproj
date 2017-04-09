@@ -84,6 +84,7 @@
     <Compile Include="classes\employees\EmployeesDataGridView.cs" />
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\employees\db\EmployeesTable.cs" />
+    <Compile Include="classes\employees\EmployeesPanel.cs" />
     <Compile Include="classes\Files.cs" />
     <Compile Include="forms\FormInsert.cs">
       <SubType>Form</SubType>

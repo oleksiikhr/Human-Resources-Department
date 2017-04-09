@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System;
 
 namespace Human_Resources_Department.classes
 {
@@ -10,23 +11,39 @@ namespace Human_Resources_Department.classes
         /// <seealso cref="https://github.com/praeclarum/sqlite-net"/>
         public Database(string uriFile)
         {
-            // DLL FILE!!!!!!!!!! TRY CATCH
-            con = new SQLiteConnection(uriFile);
+            try
+            {
+                con = new SQLiteConnection(uriFile);
+            }
+            catch (Exception ex)
+            {
+                Files.WriteToFile(ex.ToString(), Files.errorFile);
+            }
         }
 
         public void CreateTable<T>()
         {
-            con.CreateTable<T>();
+            try
+            {
+                con.CreateTable<T>();
+            }
+            catch (Exception ex)
+            {
+                Files.WriteToFile(ex.ToString(), Files.errorFile);
+            }
         }
 
-        public void Insert(object ob)
+        public int Insert(object ob)
         {
-            con.Insert(ob);
-        }
-
-        public void Update(object ob)
-        {
-            con.Update(ob);
+            try
+            {
+                return con.Insert(ob);
+            }
+            catch (Exception ex)
+            {
+                Files.WriteToFile(ex.ToString(), Files.errorFile);
+                return 0;
+            }
         }
 
         public void CloseConnection()

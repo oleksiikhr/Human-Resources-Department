@@ -1,9 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees.db;
-using System.IO;
 
 namespace Human_Resources_Department.forms
 {
@@ -15,9 +15,10 @@ namespace Human_Resources_Department.forms
 
         public FormInsert(DataGridView d)
         {
-            this.d = d;
-
             InitializeComponent();
+
+            this.d = d;
+            this.Text = Config.PROJECT_NAME + " - Додавання нового співробітника";
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace Human_Resources_Department.forms
                 return;
             }
 
-            Database db = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
+            EmployeesModel db = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
             
             bool isCorrectSalary = double.TryParse(textBox12.Text, out double salary);
             if ( ! isCorrectSalary && ! string.IsNullOrWhiteSpace(textBox12.Text) )
@@ -43,7 +44,7 @@ namespace Human_Resources_Department.forms
                 return;
             }
             
-            db.Insert( new EmployeesTable
+            int isInsert = db.Insert( new EmployeesTable
             {
                 FName = textBox1.Text,
                 MName = textBox3.Text,
@@ -61,9 +62,12 @@ namespace Human_Resources_Department.forms
                 UpdateAt = DateTime.Today,
             });
 
-            label9.Visible = true;
-            timer1.Enabled = true;
-            isChanged = true;
+            if (isInsert == 1)
+            {
+                label9.Visible = true;
+                timer1.Enabled = true;
+                isChanged = true;
+            }
         }
 
         private void Timer1_Tick(object sender, EventArgs e)

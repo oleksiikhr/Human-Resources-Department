@@ -17,5 +17,18 @@ namespace Human_Resources_Department.classes
                 writer.WriteLine(time + text + "\n");
             }
         }
+
+        public static bool Exists(string path)
+        {
+            return File.Exists(path);
+        }
+
+        public static void DeleteFile(string path)
+        {
+            if ( File.Exists(path) )
+            {
+                File.Delete(path);
+            }
+        }
     }
 }

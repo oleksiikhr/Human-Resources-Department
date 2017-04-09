@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.findField = new System.Windows.Forms.TextBox();
-            this.panelDetailStaff = new System.Windows.Forms.Panel();
+            this.panelEmployee = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.fieldIsFulltime = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -41,7 +41,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.fieldLName = new System.Windows.Forms.TextBox();
             this.fieldMName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.fieldUpdateAt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.fieldSetCompany = new System.Windows.Forms.TextBox();
@@ -57,8 +59,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.fieldBirthday = new System.Windows.Forms.TextBox();
-            this.fieldLName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.fieldFName = new System.Windows.Forms.TextBox();
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +74,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.panelDetailStaff.SuspendLayout();
+            this.panelEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -93,44 +93,44 @@
             this.findField.Enter += new System.EventHandler(this.FindField_Enter);
             this.findField.Leave += new System.EventHandler(this.FindField_Leave);
             // 
-            // detailStaff
+            // panelEmployee
             // 
-            this.panelDetailStaff.BackColor = System.Drawing.Color.White;
-            this.panelDetailStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelDetailStaff.Controls.Add(this.button3);
-            this.panelDetailStaff.Controls.Add(this.fieldIsFulltime);
-            this.panelDetailStaff.Controls.Add(this.label13);
-            this.panelDetailStaff.Controls.Add(this.fieldCity);
-            this.panelDetailStaff.Controls.Add(this.label12);
-            this.panelDetailStaff.Controls.Add(this.fieldFamily);
-            this.panelDetailStaff.Controls.Add(this.label11);
-            this.panelDetailStaff.Controls.Add(this.button2);
-            this.panelDetailStaff.Controls.Add(this.button1);
-            this.panelDetailStaff.Controls.Add(this.label10);
-            this.panelDetailStaff.Controls.Add(this.fieldLName);
-            this.panelDetailStaff.Controls.Add(this.fieldMName);
-            this.panelDetailStaff.Controls.Add(this.label2);
-            this.panelDetailStaff.Controls.Add(this.fieldUpdateAt);
-            this.panelDetailStaff.Controls.Add(this.label9);
-            this.panelDetailStaff.Controls.Add(this.fieldSetCompany);
-            this.panelDetailStaff.Controls.Add(this.label7);
-            this.panelDetailStaff.Controls.Add(this.label8);
-            this.panelDetailStaff.Controls.Add(this.pictureBox1);
-            this.panelDetailStaff.Controls.Add(this.fieldTel);
-            this.panelDetailStaff.Controls.Add(this.fieldEmail);
-            this.panelDetailStaff.Controls.Add(this.label5);
-            this.panelDetailStaff.Controls.Add(this.label6);
-            this.panelDetailStaff.Controls.Add(this.fieldJob);
-            this.panelDetailStaff.Controls.Add(this.fieldSalary);
-            this.panelDetailStaff.Controls.Add(this.label3);
-            this.panelDetailStaff.Controls.Add(this.label4);
-            this.panelDetailStaff.Controls.Add(this.fieldBirthday);
-            this.panelDetailStaff.Controls.Add(this.label1);
-            this.panelDetailStaff.Controls.Add(this.fieldFName);
-            this.panelDetailStaff.Location = new System.Drawing.Point(12, 50);
-            this.panelDetailStaff.Name = "detailStaff";
-            this.panelDetailStaff.Size = new System.Drawing.Size(255, 400);
-            this.panelDetailStaff.TabIndex = 4;
+            this.panelEmployee.BackColor = System.Drawing.Color.White;
+            this.panelEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelEmployee.Controls.Add(this.button3);
+            this.panelEmployee.Controls.Add(this.fieldIsFulltime);
+            this.panelEmployee.Controls.Add(this.label13);
+            this.panelEmployee.Controls.Add(this.fieldCity);
+            this.panelEmployee.Controls.Add(this.label12);
+            this.panelEmployee.Controls.Add(this.fieldFamily);
+            this.panelEmployee.Controls.Add(this.label11);
+            this.panelEmployee.Controls.Add(this.button2);
+            this.panelEmployee.Controls.Add(this.button1);
+            this.panelEmployee.Controls.Add(this.label10);
+            this.panelEmployee.Controls.Add(this.fieldLName);
+            this.panelEmployee.Controls.Add(this.fieldMName);
+            this.panelEmployee.Controls.Add(this.label2);
+            this.panelEmployee.Controls.Add(this.fieldUpdateAt);
+            this.panelEmployee.Controls.Add(this.label9);
+            this.panelEmployee.Controls.Add(this.fieldSetCompany);
+            this.panelEmployee.Controls.Add(this.label7);
+            this.panelEmployee.Controls.Add(this.label8);
+            this.panelEmployee.Controls.Add(this.pictureBox1);
+            this.panelEmployee.Controls.Add(this.fieldTel);
+            this.panelEmployee.Controls.Add(this.fieldEmail);
+            this.panelEmployee.Controls.Add(this.label5);
+            this.panelEmployee.Controls.Add(this.label6);
+            this.panelEmployee.Controls.Add(this.fieldJob);
+            this.panelEmployee.Controls.Add(this.fieldSalary);
+            this.panelEmployee.Controls.Add(this.label3);
+            this.panelEmployee.Controls.Add(this.label4);
+            this.panelEmployee.Controls.Add(this.fieldBirthday);
+            this.panelEmployee.Controls.Add(this.label1);
+            this.panelEmployee.Controls.Add(this.fieldFName);
+            this.panelEmployee.Location = new System.Drawing.Point(12, 50);
+            this.panelEmployee.Name = "panelEmployee";
+            this.panelEmployee.Size = new System.Drawing.Size(255, 400);
+            this.panelEmployee.TabIndex = 4;
             // 
             // button3
             // 
@@ -147,10 +147,10 @@
             this.button3.Text = "Відмінити";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // textBox13
+            // fieldIsFulltime
             // 
             this.fieldIsFulltime.Location = new System.Drawing.Point(129, 181);
-            this.fieldIsFulltime.Name = "textBox13";
+            this.fieldIsFulltime.Name = "fieldIsFulltime";
             this.fieldIsFulltime.ReadOnly = true;
             this.fieldIsFulltime.Size = new System.Drawing.Size(120, 20);
             this.fieldIsFulltime.TabIndex = 7;
@@ -164,10 +164,10 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "Повна зайнятість";
             // 
-            // textBox12
+            // fieldCity
             // 
             this.fieldCity.Location = new System.Drawing.Point(4, 181);
-            this.fieldCity.Name = "textBox12";
+            this.fieldCity.Name = "fieldCity";
             this.fieldCity.ReadOnly = true;
             this.fieldCity.Size = new System.Drawing.Size(120, 20);
             this.fieldCity.TabIndex = 6;
@@ -181,10 +181,10 @@
             this.label12.TabIndex = 25;
             this.label12.Text = "Місто";
             // 
-            // textBox11
+            // fieldFamily
             // 
             this.fieldFamily.Location = new System.Drawing.Point(129, 264);
-            this.fieldFamily.Name = "textBox11";
+            this.fieldFamily.Name = "fieldFamily";
             this.fieldFamily.ReadOnly = true;
             this.fieldFamily.Size = new System.Drawing.Size(120, 20);
             this.fieldFamily.TabIndex = 11;
@@ -226,6 +226,7 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "Режим редагування";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label10
             // 
@@ -236,6 +237,14 @@
             this.label10.TabIndex = 20;
             this.label10.Text = "По-батькові";
             // 
+            // fieldLName
+            // 
+            this.fieldLName.Location = new System.Drawing.Point(129, 100);
+            this.fieldLName.Name = "fieldLName";
+            this.fieldLName.ReadOnly = true;
+            this.fieldLName.Size = new System.Drawing.Size(120, 20);
+            this.fieldLName.TabIndex = 2;
+            // 
             // fieldMName
             // 
             this.fieldMName.Location = new System.Drawing.Point(129, 61);
@@ -244,10 +253,19 @@
             this.fieldMName.Size = new System.Drawing.Size(120, 20);
             this.fieldMName.TabIndex = 3;
             // 
-            // textBox9
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(126, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Прізвище";
+            // 
+            // fieldUpdateAt
             // 
             this.fieldUpdateAt.Location = new System.Drawing.Point(129, 303);
-            this.fieldUpdateAt.Name = "textBox9";
+            this.fieldUpdateAt.Name = "fieldUpdateAt";
             this.fieldUpdateAt.ReadOnly = true;
             this.fieldUpdateAt.Size = new System.Drawing.Size(120, 20);
             this.fieldUpdateAt.TabIndex = 13;
@@ -261,10 +279,10 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Останнє оновлення";
             // 
-            // textBox7
+            // fieldSetCompany
             // 
             this.fieldSetCompany.Location = new System.Drawing.Point(4, 303);
-            this.fieldSetCompany.Name = "textBox7";
+            this.fieldSetCompany.Name = "fieldSetCompany";
             this.fieldSetCompany.ReadOnly = true;
             this.fieldSetCompany.Size = new System.Drawing.Size(120, 20);
             this.fieldSetCompany.TabIndex = 12;
@@ -296,18 +314,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox8
+            // fieldTel
             // 
             this.fieldTel.Location = new System.Drawing.Point(4, 222);
-            this.fieldTel.Name = "textBox8";
+            this.fieldTel.Name = "fieldTel";
             this.fieldTel.ReadOnly = true;
             this.fieldTel.Size = new System.Drawing.Size(120, 20);
             this.fieldTel.TabIndex = 8;
             // 
-            // textBox5
+            // fieldEmail
             // 
             this.fieldEmail.Location = new System.Drawing.Point(129, 222);
-            this.fieldEmail.Name = "textBox5";
+            this.fieldEmail.Name = "fieldEmail";
             this.fieldEmail.ReadOnly = true;
             this.fieldEmail.Size = new System.Drawing.Size(120, 20);
             this.fieldEmail.TabIndex = 9;
@@ -330,18 +348,18 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Посада";
             // 
-            // textBox6
+            // fieldJob
             // 
             this.fieldJob.Location = new System.Drawing.Point(129, 142);
-            this.fieldJob.Name = "textBox6";
+            this.fieldJob.Name = "fieldJob";
             this.fieldJob.ReadOnly = true;
             this.fieldJob.Size = new System.Drawing.Size(120, 20);
             this.fieldJob.TabIndex = 5;
             // 
-            // textBox3
+            // fieldSalary
             // 
             this.fieldSalary.Location = new System.Drawing.Point(4, 264);
-            this.fieldSalary.Name = "textBox3";
+            this.fieldSalary.Name = "fieldSalary";
             this.fieldSalary.ReadOnly = true;
             this.fieldSalary.Size = new System.Drawing.Size(120, 20);
             this.fieldSalary.TabIndex = 10;
@@ -364,30 +382,13 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Дата народження";
             // 
-            // textBox4
+            // fieldBirthday
             // 
             this.fieldBirthday.Location = new System.Drawing.Point(4, 142);
-            this.fieldBirthday.Name = "textBox4";
+            this.fieldBirthday.Name = "fieldBirthday";
             this.fieldBirthday.ReadOnly = true;
             this.fieldBirthday.Size = new System.Drawing.Size(120, 20);
             this.fieldBirthday.TabIndex = 4;
-            // 
-            // fieldLName
-            // 
-            this.fieldLName.Location = new System.Drawing.Point(129, 100);
-            this.fieldLName.Name = "fieldLName";
-            this.fieldLName.ReadOnly = true;
-            this.fieldLName.Size = new System.Drawing.Size(120, 20);
-            this.fieldLName.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(126, 84);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Прізвище";
             // 
             // label1
             // 
@@ -468,14 +469,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView1.Location = new System.Drawing.Point(285, 57);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -554,6 +555,7 @@
             this.button5.TabIndex = 11;
             this.button5.Text = "Звільнити";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // button6
             // 
@@ -581,7 +583,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panelDetailStaff);
+            this.Controls.Add(this.panelEmployee);
             this.Controls.Add(this.findField);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -589,8 +591,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Human Resources Department";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panelDetailStaff.ResumeLayout(false);
-            this.panelDetailStaff.PerformLayout();
+            this.panelEmployee.ResumeLayout(false);
+            this.panelEmployee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -602,7 +604,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox findField;
-        private System.Windows.Forms.Panel panelDetailStaff;
+        private System.Windows.Forms.Panel panelEmployee;
         private System.Windows.Forms.TextBox fieldSetCompany;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

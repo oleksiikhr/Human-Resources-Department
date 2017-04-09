@@ -31,8 +31,11 @@ namespace Human_Resources_Department.classes.employees
             this.d = d;
         }
 
-        public void SetNameColumns()
+        public void RenameColumns()
         {
+            if (d.Columns.Count == 0)
+                return;
+
             d.Columns[CELL_ID].HeaderText           = "#";
             d.Columns[CELL_FNAME].HeaderText        = "Ім'я";
             d.Columns[CELL_LNAME].HeaderText        = "Прізвище";
@@ -48,26 +51,29 @@ namespace Human_Resources_Department.classes.employees
             d.Columns[CELL_BIRTHDAY].HeaderText     = "Народження";
             d.Columns[CELL_SETCOMPANY].HeaderText   = "Назначений";
             d.Columns[CELL_UPDATE_AT].HeaderText    = "Оновлення";
+
+            /*
+             * Set Visible from config.
+             */
+
+            // Test
+            d.Columns[0].Visible = false;
+            d.Columns[5].Visible = false;
+            d.Columns[8].Visible = false;
+            //dataGridView1.Columns[10].Visible = false;
+            d.Columns[11].Visible = false;
+            d.Columns[12].Visible = false;
+            d.Columns[13].Visible = false;
+            d.Columns[14].Visible = false;
+            // End Test
         }
 
-        public void AddInfoOnDetailStaff(TextBox t, int cell)
+        public bool EmployeeIsActivity()
         {
-            var val = d.CurrentRow.Cells[cell].Value;
-
-            if (val == null)
-                return;
-
-            t.Text = DateTime.TryParse(val.ToString(), out DateTime dt)
-                ? t.Text = dt.ToString("dd.MM.yyyy")
-                : val.ToString();
+            return Boolean.Parse( d.SelectedRows[0].Cells[CELL_IS_ACTIVITY].Value.ToString() );
         }
 
-        public bool GetCellIsActivity()
-        {
-            return Boolean.Parse( d.CurrentRow.Cells[CELL_IS_ACTIVITY].Value.ToString() );
-        }
-
-        public void SetColorIsActivity()
+        public void SetColorRows()
         {
             DataGridViewCellStyle color = new DataGridViewCellStyle()
             {
@@ -83,21 +89,33 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public void NewDataSource()
+        public bool SetDataSource()
         {
-            d.DataSource = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-                .GetAllData();
+            try
+            {
+                d.DataSource = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
+                    .GetAllData();
+
+                ResizeGrid();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Files.WriteToFile(ex.ToString(), Files.errorFile);
+                return false;
+            }
+        }
+
+        public void ResizeGrid()
+        {
             d.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public void FindCellAndSetFocus(string text, int cell, bool isLower = false)
         {
-            int count = (d.CurrentRow != null) ? d.CurrentRow.Index + 1 : 0;
-
-            if (isLower)
-            {
-                text = text.ToLower();
-            }
+            int count = (d.SelectedRows.Count > 0) ? d.SelectedRows[0].Index + 1 : 0;
+            
+            text = isLower ? text.ToLower() : text;
             
             for (int i = count; i < d.Rows.Count + count; i++)
             {
@@ -107,6 +125,26 @@ namespace Human_Resources_Department.classes.employees
                     break;
                 }
             }
+        }
+
+        public object GetSelectedRowValueCell(int cell)
+        {
+            return d.SelectedRows[0].Cells[cell].Value;
+        }
+
+        public int GetCountSelectedRows()
+        {
+            return d.SelectedRows.Count;
+        }
+
+        public int GetIndexSelectedRow()
+        {
+            return d.SelectedRows[0].Index;
+        }
+
+        public int GetCountRows()
+        {
+            return d.Rows.Count;
         }
     }
 }
