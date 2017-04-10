@@ -46,6 +46,18 @@ namespace Human_Resources_Department.classes
             }
         }
 
+        public void Update(string q, object[] args)
+        {
+            try
+            {
+                con.Execute(q, args);
+            }
+            catch (Exception ex)
+            {
+                Files.WriteToFile(ex.ToString(), Files.errorFile);
+            }
+        }
+
         public void CloseConnection()
         {
             con.Close();

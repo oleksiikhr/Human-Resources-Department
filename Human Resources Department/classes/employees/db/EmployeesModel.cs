@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Human_Resources_Department.classes.employees.db
 {
@@ -23,11 +24,6 @@ namespace Human_Resources_Department.classes.employees.db
                 return "";
             }
         }
-
-        //public object ExecuteEmployees(string q, object[] arg)
-        //{
-        //    return con.Execute(q, arg);
-        //}
 
         public void CreateTable()
         {
@@ -59,8 +55,23 @@ namespace Human_Resources_Department.classes.employees.db
 
         public void UpdateActivity(int id, bool value)
         {
-            con.Execute("UPDATE " + typeof(EmployeesTable).Name
-                + " SET IsActivity = ? WHERE id = ?", value, id);
+            try
+            {
+                con.Execute("UPDATE " + typeof(EmployeesTable).Name
+                     + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?", value, DateTime.Today, id);
+            }
+            catch (Exception ex)
+            {
+                Files.WriteToFile(ex.ToString(), Files.errorFile);
+            }
+        }
+
+        public void UpdateFromPanelTextBox(object[] args)
+        {
+            MessageBox.Show( con.Execute("UPDATE " + typeof(EmployeesTable).Name
+                + " SET FName = ?, MName = ?, LName = ?, Job = ?, City = ?, Email = ?, Tel = ?,"
+                + " Family = ?, Salary = ?, IsFulltime = ?, Birthday = ?,"
+                + " SetCompany = ?, UpdateAt = ? WHERE id = ?", args).ToString() );
         }
     }
 }

@@ -5,9 +5,6 @@ namespace Human_Resources_Department.classes.employees
 {
     class EmployeesPanel
     {
-        private bool readOnly;
-        private bool toggle;
-
         private Panel p;
 
         public EmployeesPanel(Panel p)
@@ -15,52 +12,30 @@ namespace Human_Resources_Department.classes.employees
             this.p = p;
         }
 
-        public void AddInfo(TextBox t, object value)
+        public void AddInfo(Control c, object val)
         {
-            if (value == null)
+            if (val == null)
                 return;
-
-            t.Text = DateTime.TryParse(value.ToString(), out DateTime dt)
-                ? t.Text = dt.ToString("dd.MM.yyyy")
-                : value.ToString();
+            
+            if ( c.GetType() == typeof(TextBox) )
+                (c as TextBox).Text = val.ToString();
+            else if ( c.GetType() == typeof(DateTimePicker) )
+                (c as DateTimePicker).Value = DateTime.Parse( val.ToString() );
+            else if ( c.GetType() == typeof(CheckBox) )
+                (c as CheckBox).Checked = Boolean.Parse( val.ToString() );
         }
 
-        public void ChangeAllTextBox(string command, bool toggle = false)
+        public void ClearAllData()
         {
             foreach (Control c in p.Controls)
             {
                 if ( c.GetType() == typeof(TextBox) )
-                {
-                    if ( command.ToLower().Equals("clear") )
-                        c.Text = string.Empty;
-                    else if ( command.ToLower().Equals("readonly") )
-                    {
-                        (c as TextBox).ReadOnly = toggle;
-                        readOnly = toggle;
-                    }
-                }
+                    (c as TextBox).Text = string.Empty;
+                else if ( c.GetType() == typeof(DateTimePicker) )
+                    (c as DateTimePicker).Value = DateTime.Today;
+                else if ( c.GetType() == typeof(CheckBox) )
+                    (c as CheckBox).Checked = false;
             }
-        }
-
-        public void ToggleButton(bool toggle = false)
-        {
-            if (this.toggle == toggle)
-                return;
-
-            foreach (Control c in p.Controls)
-            {
-                if ( c.GetType() == typeof(Button) )
-                {
-                    c.Enabled = !c.Enabled;
-                }
-            }
-
-            this.toggle = !this.toggle;
-        }
-
-        public bool IsReadOnly()
-        {
-            return readOnly;
         }
     }
 }

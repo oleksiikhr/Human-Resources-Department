@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.employees;
 
 namespace Human_Resources_Department.forms
 {
@@ -18,7 +19,7 @@ namespace Human_Resources_Department.forms
             InitializeComponent();
 
             this.d = d;
-            this.Text = Config.PROJECT_NAME + " - Додавання нового співробітника";
+            this.Text = Config.PROJECT_NAME + " - Додати працівника";
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -64,10 +65,18 @@ namespace Human_Resources_Department.forms
 
             if (isInsert == 1)
             {
+                UpdateDataGridView();
                 label9.Visible = true;
                 timer1.Enabled = true;
                 isChanged = true;
             }
+        }
+
+        private void UpdateDataGridView()
+        {
+            EmployeesDGV e = new EmployeesDGV(this.d);
+            e.SetDataSource();
+            e.SetColorRows();
         }
 
         private void Timer1_Tick(object sender, EventArgs e)

@@ -6,14 +6,14 @@ using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.classes.employees
 {
-    class EmployeesDataGridView
+    class EmployeesDGV
     {
         private DataGridView d;
 
         public const int CELL_ID           = 0;
         public const int CELL_FNAME        = 1;
-        public const int CELL_MNAME        = 2;
-        public const int CELL_LNAME        = 3;
+        public const int CELL_LNAME        = 2;
+        public const int CELL_MNAME        = 3;
         public const int CELL_JOB          = 4;
         public const int CELL_CITY         = 5;
         public const int CELL_EMAIL        = 6;
@@ -26,7 +26,7 @@ namespace Human_Resources_Department.classes.employees
         public const int CELL_SETCOMPANY   = 13;
         public const int CELL_UPDATE_AT    = 14;
 
-        public EmployeesDataGridView(DataGridView d)
+        public EmployeesDGV(DataGridView d)
         {
             this.d = d;
         }
@@ -51,21 +51,6 @@ namespace Human_Resources_Department.classes.employees
             d.Columns[CELL_BIRTHDAY].HeaderText     = "Народження";
             d.Columns[CELL_SETCOMPANY].HeaderText   = "Назначений";
             d.Columns[CELL_UPDATE_AT].HeaderText    = "Оновлення";
-
-            /*
-             * Set Visible from config.
-             */
-
-            // Test
-            d.Columns[0].Visible = false;
-            d.Columns[5].Visible = false;
-            d.Columns[8].Visible = false;
-            //dataGridView1.Columns[10].Visible = false;
-            d.Columns[11].Visible = false;
-            d.Columns[12].Visible = false;
-            d.Columns[13].Visible = false;
-            d.Columns[14].Visible = false;
-            // End Test
         }
 
         public bool EmployeeIsActivity()
@@ -83,9 +68,7 @@ namespace Human_Resources_Department.classes.employees
             foreach (DataGridViewRow row in d.Rows)
             {
                 if ( ! Boolean.Parse( row.Cells[CELL_IS_ACTIVITY].Value.ToString() ) )
-                {
                     row.DefaultCellStyle = color;
-                }
             }
         }
 
@@ -96,7 +79,7 @@ namespace Human_Resources_Department.classes.employees
                 d.DataSource = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
                     .GetAllData();
 
-                ResizeGrid();
+                d.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 return true;
             }
             catch (Exception ex)
@@ -104,11 +87,6 @@ namespace Human_Resources_Department.classes.employees
                 Files.WriteToFile(ex.ToString(), Files.errorFile);
                 return false;
             }
-        }
-
-        public void ResizeGrid()
-        {
-            d.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public void FindCellAndSetFocus(string text, int cell, bool isLower = false)
@@ -127,7 +105,7 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public object GetSelectedRowValueCell(int cell)
+        public object GetSelectedCell(int cell)
         {
             return d.SelectedRows[0].Cells[cell].Value;
         }
