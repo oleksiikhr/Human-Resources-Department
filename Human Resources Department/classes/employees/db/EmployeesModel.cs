@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace Human_Resources_Department.classes.employees.db
 {
@@ -11,16 +10,12 @@ namespace Human_Resources_Department.classes.employees.db
 
         public object QueryEmployees(string q)
         {
-            object res;
-
             try
             {
-                res = con.Query<EmployeesTable>(q);
-                return res;
+                return con.Query<EmployeesTable>(q);
             }
-            catch (Exception ex)
+            catch
             {
-                Files.WriteToFile(ex.ToString(), Files.errorFile);
                 return "";
             }
         }
@@ -31,24 +26,17 @@ namespace Human_Resources_Department.classes.employees.db
             {
                 CreateTable<EmployeesTable>();
             }
-            catch (Exception ex)
-            {
-                Files.WriteToFile(ex.ToString(), Files.errorFile);
-            }
+            catch { }
         }
 
         public object GetAllData()
         {
-            object data;
-
             try
             {
-                data = QueryEmployees("SELECT * FROM " + typeof(EmployeesTable).Name);
-                return data;
+                return QueryEmployees("SELECT * FROM " + typeof(EmployeesTable).Name);
             }
-            catch (Exception ex)
+            catch
             {
-                Files.WriteToFile(ex.ToString(), Files.errorFile);
                 return "";
             }
         }
@@ -60,18 +48,19 @@ namespace Human_Resources_Department.classes.employees.db
                 con.Execute("UPDATE " + typeof(EmployeesTable).Name
                      + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?", value, DateTime.Today, id);
             }
-            catch (Exception ex)
-            {
-                Files.WriteToFile(ex.ToString(), Files.errorFile);
-            }
+            catch { }
         }
 
         public void UpdateFromPanelTextBox(object[] args)
         {
-            MessageBox.Show( con.Execute("UPDATE " + typeof(EmployeesTable).Name
-                + " SET FName = ?, MName = ?, LName = ?, Job = ?, City = ?, Email = ?, Tel = ?,"
-                + " Family = ?, Salary = ?, IsFulltime = ?, Birthday = ?,"
-                + " SetCompany = ?, UpdateAt = ? WHERE id = ?", args).ToString() );
+            try
+            {
+                con.Execute("UPDATE " + typeof(EmployeesTable).Name
+                    + " SET FName = ?, MName = ?, LName = ?, Job = ?, City = ?, Email = ?, Tel = ?,"
+                    + " Family = ?, Salary = ?, IsFulltime = ?, Birthday = ?,"
+                    + " SetCompany = ?, UpdateAt = ? WHERE id = ?", args).ToString();
+            }
+            catch { }
         }
     }
 }

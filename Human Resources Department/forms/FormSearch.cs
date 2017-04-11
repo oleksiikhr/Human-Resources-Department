@@ -18,7 +18,7 @@ namespace Human_Resources_Department.forms
             this.Text = Config.PROJECT_NAME + " - Пошук";
         }
 
-        private void Button1_Click(object sender, System.EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             int count = (d.SelectedRows.Count > 0) ? d.SelectedRows[0].Index + 1 : 0;
 
@@ -39,6 +39,7 @@ namespace Human_Resources_Department.forms
                     && IsEqualsCheckBox(checkBox1, checkBox5, index, EmployeesDGV.CELL_IS_FULLTIME)
                     && IsEqualsDateTimePicker(dateTimePicker1, checkBox2, index, EmployeesDGV.CELL_BIRTHDAY)
                     && IsEqualsDateTimePicker(dateTimePicker2, checkBox3, index, EmployeesDGV.CELL_SETCOMPANY)
+                    && d.Rows[index].Visible
                 ) {
                     d.Rows[index].Selected = true;
                     return;

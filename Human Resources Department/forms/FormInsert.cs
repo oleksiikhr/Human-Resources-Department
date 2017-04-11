@@ -3,14 +3,14 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.employees.db;
 using Human_Resources_Department.classes.employees;
+using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.forms
 {
     public partial class FormInsert : Form
     {
-        public bool isChanged;
+        private string pathImage = null;
 
         private DataGridView d;
 
@@ -68,7 +68,20 @@ namespace Human_Resources_Department.forms
                 UpdateDataGridView();
                 label9.Visible = true;
                 timer1.Enabled = true;
-                isChanged = true;
+                
+                try
+                {
+                    Directory.CreateDirectory(Config.currentFolder + "\\img");
+
+                    File.Copy(
+                        pathImage,
+                        Config.currentFolder + "\\img\\" + d.Rows.Count + Path.GetExtension(pathImage)
+                    );
+                }
+                catch
+                {
+                    MessageBox.Show("Файл не зберігся", "Помилка");
+                }
             }
         }
 
@@ -83,6 +96,20 @@ namespace Human_Resources_Department.forms
         {
             label9.Visible = false;
             timer1.Enabled = false;
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*"
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK) //если в окне была нажата кнопка "ОК"
+            {
+                pathImage = dialog.FileName;
+                label14.Text = "Файл: " + pathImage;
+            }
         }
     }
 }

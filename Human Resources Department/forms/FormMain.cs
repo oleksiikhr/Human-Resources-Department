@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -25,8 +26,6 @@ namespace Human_Resources_Department.forms
             if ( ! SelectProject() )
                 Application.ExitThread();
 
-            Files.DeleteFile(Config.currentFolder + "\\" + Files.errorFile);
-
             this.WindowState = FormWindowState.Maximized;
             this.AcceptButton = button4;
         }
@@ -45,8 +44,6 @@ namespace Human_Resources_Department.forms
 
         private bool SelectProject()
         {
-            this.Visible = false;
-
             using ( FormChoose f = new FormChoose() )
             {
                 f.ShowDialog();
@@ -54,15 +51,12 @@ namespace Human_Resources_Department.forms
                 if ( f.IsOpen() )
                 {
                     this.Text = Config.PROJECT_NAME + " - " + f.GetNameFolder();
-
                     UpdatePlace();
 
-                    this.Visible = true;
                     return true;
                 }
             }
-
-            this.Visible = true;
+            
             return false;
         }
 
@@ -90,6 +84,14 @@ namespace Human_Resources_Department.forms
             p.AddInfo(fieldSetCompany, d.GetSelectedCell(EmployeesDGV.CELL_SETCOMPANY));
             p.AddInfo(fieldUpdateAt,   d.GetSelectedCell(EmployeesDGV.CELL_UPDATE_AT));
 
+            // START. Transfer to Panel class. Check on img
+            string[] files = Directory.GetFiles(Config.currentFolder + "\\img",
+                dataGridView1.SelectedRows[0].Index + ".*");
+
+            foreach (string file in files)
+                pictureBox1.Image = Image.FromFile(Path.GetFullPath(file));
+            // END
+
             if ( d.EmployeeIsActivity() )
             {
                 button5.BackColor = Color.Brown;
@@ -104,7 +106,8 @@ namespace Human_Resources_Department.forms
 
         private void UpdatePlace()
         {
-            panelEmployee.Enabled = false;
+            if (p != null)
+                p.Enabled();
 
             p = new EmployeesPanel(panelEmployee);
             d = new EmployeesDGV(dataGridView1);
@@ -135,21 +138,19 @@ namespace Human_Resources_Department.forms
                 FillPanelEmployee();
             }
             else
-            {
                 p.ClearAllData();
-            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (d.GetCountSelectedRows() < 0)
+            if (d.GetCountSelectedRows() <= 0)
             {
                 MessageBox.Show("Оберіть працівника");
                 return;
             }
             
+            p.Enabled(true);
             fieldUpdateAt.Enabled = false;
-            panelEmployee.Enabled = true;
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -183,7 +184,7 @@ namespace Human_Resources_Department.forms
 
         private void FormInsertToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            panelEmployee.Enabled = false;
+            p.Enabled();
 
             FormInsert f = new FormInsert(dataGridView1);
             f.Show(this);
@@ -195,23 +196,37 @@ namespace Human_Resources_Department.forms
             f.Show(this);
         }
 
+        private void FormFilterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormFilter f = new FormFilter(dataGridView1, panelEmployee);
+            f.Show(this);
+        }
+
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (d.GetCountSelectedRows() < 1 || d == null || p == null)
                 return;
 
             FillPanelEmployee();
-            panelEmployee.Enabled = false;
+            p.Enabled();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-                .UpdateFromPanelTextBox(new object[] { fieldFName.Text, fieldMName.Text,
-                    fieldLName.Text, fieldJob.Text, fieldCity.Text, fieldEmail.Text,
-                    fieldTel.Text, fieldFamily.Text, fieldSalary.Text, fieldIsFulltime.Text,
-                    fieldBirthday.Text, fieldSetCompany.Text, DateTime.Today,
-                    d.GetSelectedCell(EmployeesDGV.CELL_ID)});
+            bool isCorrectSalary = Double.TryParse(fieldSalary.Text, out double salary);
+
+            if (!isCorrectSalary)
+            {
+                MessageBox.Show("Зарплата вказана невірно", "Помилка");
+                return;
+            }
+            
+            p.UpdateData( new object[] {
+                fieldFName.Text, fieldLName.Text, fieldMName.Text, fieldJob.Text,
+                fieldCity.Text, fieldEmail.Text, fieldTel.Text, fieldFamily.Text,
+                salary, fieldIsFulltime.Checked, fieldBirthday.Text, fieldSetCompany.Text,
+                DateTime.Today, d.GetSelectedCell(EmployeesDGV.CELL_ID)
+            } );
 
             UpdatePlace();
         }

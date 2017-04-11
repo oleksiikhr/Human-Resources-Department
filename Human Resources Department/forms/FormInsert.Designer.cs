@@ -41,6 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -66,7 +68,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(19, 285);
+            this.button1.Location = new System.Drawing.Point(19, 301);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(372, 23);
             this.button1.TabIndex = 12;
@@ -168,6 +170,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.dateTimePicker2);
@@ -196,8 +200,31 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(419, 327);
+            this.panel1.Size = new System.Drawing.Size(419, 341);
             this.panel1.TabIndex = 53;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(18, 273);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(90, 13);
+            this.label14.TabIndex = 72;
+            this.label14.Text = "Файл не вибран";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(21, 247);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 23);
+            this.button2.TabIndex = 71;
+            this.button2.Text = "Додати зображення";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label13
             // 
@@ -334,7 +361,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 352);
+            this.ClientSize = new System.Drawing.Size(445, 363);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -377,5 +404,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label14;
     }
 }

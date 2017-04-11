@@ -25,9 +25,8 @@ namespace Human_Resources_Department.forms
                 Directory.CreateDirectory(Config.projectFolder);
                 GetFolders();
             }
-            catch (Exception ex)
+            catch
             {
-                Files.WriteToFile(ex.ToString(), Files.errorFile);
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
                 this.Close();
             }
@@ -51,7 +50,7 @@ namespace Human_Resources_Department.forms
             {
                 string folder = Config.projectFolder + "\\" + textBox1.Text;
 
-                if (Directory.Exists(folder))
+                if ( Directory.Exists(folder) )
                 {
                     MessageBox.Show("Фірма вже існує");
                     return;
@@ -60,11 +59,11 @@ namespace Human_Resources_Department.forms
                 try
                 {
                     Directory.CreateDirectory(folder);
+                    Directory.CreateDirectory(folder + "\\img");
                     new EmployeesModel(folder + "\\" + EmployeesModel.nameFile).CreateTable<EmployeesTable>();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Files.WriteToFile(ex.ToString(), Files.errorFile);
                     MessageBox.Show("Не вдалося створити нову фірму", "Помилка");
                     return;
                 }
@@ -121,14 +120,12 @@ namespace Human_Resources_Department.forms
 
             if (result == DialogResult.Yes)
             {
-                // IF delete project => Error. Block folder/files
                 try
                 {
                     new DirectoryInfo(Config.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Files.WriteToFile(ex.ToString(), Files.errorFile);
                     MessageBox.Show("Закрийте проект, перш ніж видаляти", "Помилка");
                     return;
                 }

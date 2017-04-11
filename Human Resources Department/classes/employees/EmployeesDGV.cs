@@ -48,7 +48,7 @@ namespace Human_Resources_Department.classes.employees
             d.Columns[CELL_SALARY].HeaderText       = "Зарплата";
             d.Columns[CELL_IS_ACTIVITY].HeaderText  = "Активний";
             d.Columns[CELL_IS_FULLTIME].HeaderText  = "Зайнятість";
-            d.Columns[CELL_BIRTHDAY].HeaderText     = "Народження";
+            d.Columns[CELL_BIRTHDAY].HeaderText     = "Народився";
             d.Columns[CELL_SETCOMPANY].HeaderText   = "Назначений";
             d.Columns[CELL_UPDATE_AT].HeaderText    = "Оновлення";
         }
@@ -82,9 +82,8 @@ namespace Human_Resources_Department.classes.employees
                 d.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                Files.WriteToFile(ex.ToString(), Files.errorFile);
                 return false;
             }
         }
