@@ -40,27 +40,5 @@ namespace Human_Resources_Department.classes.employees.db
                 return "";
             }
         }
-
-        public void UpdateActivity(int id, bool value)
-        {
-            try
-            {
-                con.Execute("UPDATE " + typeof(EmployeesTable).Name
-                     + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?", value, DateTime.Today, id);
-            }
-            catch { }
-        }
-
-        public void UpdateFromPanelTextBox(object[] args)
-        {
-            try
-            {
-                con.Execute("UPDATE " + typeof(EmployeesTable).Name
-                    + " SET FName = ?, MName = ?, LName = ?, Job = ?, City = ?, Email = ?, Tel = ?,"
-                    + " Family = ?, Salary = ?, IsFulltime = ?, Birthday = ?,"
-                    + " SetCompany = ?, UpdateAt = ? WHERE id = ?", args).ToString();
-            }
-            catch { }
-        }
     }
 }

@@ -8,36 +8,40 @@ namespace Human_Resources_Department.forms
 {
     public partial class FormFilter : Form
     {
-        private DataGridView d;
-        private EmployeesPanel p;
-
-        public FormFilter(DataGridView d, Panel p)
+        public FormFilter()
         {
             InitializeComponent();
-
-            this.d = d;
-            this.p = new EmployeesPanel(p);
-            this.Text = Config.PROJECT_NAME + " - Фільтри";
+            
+            Text = Config.PROJECT_NAME + " - Фільтри";
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < d.Rows.Count; i++)
+            for (int i = 0; i < EmployeesDGV.GetCountRows(); i++)
             {
-                if ( IsEqualsTextBox(textBox1, i, EmployeesDGV.CELL_FNAME) )
+                // !!!
+                if (   IsEqualsTextBox(textBox1,  i, EmployeesDGV.CELL_FNAME)
+                    && IsEqualsTextBox(textBox2,  i, EmployeesDGV.CELL_LNAME)
+                    && IsEqualsTextBox(textBox3,  i, EmployeesDGV.CELL_MNAME)
+                    && IsEqualsTextBox(textBox4,  i, EmployeesDGV.CELL_CITY)
+                    && IsEqualsTextBox(textBox5,  i, EmployeesDGV.CELL_JOB)
+                    && IsEqualsTextBox(textBox9,  i, EmployeesDGV.CELL_FAMILY)
+                    && IsEqualsTextBox(textBox8,  i, EmployeesDGV.CELL_EMAIL)
+                    && IsEqualsTextBox(textBox10, i, EmployeesDGV.CELL_TEL)
+                    && IsEqualsTextBox(textBox12, i, EmployeesDGV.CELL_SALARY))
                 {
-                    d.Rows[i].Visible = true;
+                    EmployeesDGV.SetVisible(i, true);
                 }
                 else
                 {
-                    if ( d.SelectedRows.Count > 0 && d.SelectedRows[0].Index.Equals(i) )
+                    if ( EmployeesDGV.GetCountSelectedRows() > 0 && EmployeesDGV.GetSelectedIndex().Equals(i) )
                     {
-                        d.CurrentCell = null;
-                        d.ClearSelection();
-                        p.ClearAllData();
+                        EmployeesDGV.LostCurrentCell();
+                        EmployeesDGV.ClearSelected();
+                        EmployeesPanel.ClearAllData();
                     }
 
-                    d.Rows[i].Visible = false;
+                    EmployeesDGV.SetVisible(i, false);
                 }
             }
         }
@@ -47,7 +51,9 @@ namespace Human_Resources_Department.forms
             if ( string.IsNullOrWhiteSpace(t.Text) )
                 return true;
 
-            return string.Equals(t.Text.Trim(), d.Rows[iRow].Cells[iCell].Value.ToString(), StringComparison.OrdinalIgnoreCase);
+            return string.Equals(t.Text.Trim(),
+                EmployeesDGV.GetValueCell(iRow, iCell).ToString(),
+                StringComparison.OrdinalIgnoreCase);
         }
     }
 }

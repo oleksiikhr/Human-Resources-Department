@@ -10,10 +10,10 @@ namespace Human_Resources_Department.classes.employees.db
         
         [NotNull]
         public string FName { get; set; }
-        
-        public string MName { get; set; }
-        
+
         public string LName { get; set; }
+
+        public string MName { get; set; }
         
         public string Job { get; set; }
         

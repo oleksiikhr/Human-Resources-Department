@@ -12,14 +12,11 @@ namespace Human_Resources_Department.forms
     {
         private string pathImage = null;
 
-        private DataGridView d;
-
-        public FormInsert(DataGridView d)
+        public FormInsert()
         {
             InitializeComponent();
-
-            this.d = d;
-            this.Text = Config.PROJECT_NAME + " - Додати працівника";
+            
+            Text = Config.PROJECT_NAME + " - Додати працівника";
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -30,7 +27,8 @@ namespace Human_Resources_Department.forms
                 return;
             }
 
-            EmployeesModel db = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
+            EmployeesModel db =
+                new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
             
             bool isCorrectSalary = double.TryParse(textBox12.Text, out double salary);
             if ( ! isCorrectSalary && ! string.IsNullOrWhiteSpace(textBox12.Text) )
@@ -44,12 +42,12 @@ namespace Human_Resources_Department.forms
                 MessageBox.Show("Повинно бути вказано ім'я", "Помилка");
                 return;
             }
-            
+
             int isInsert = db.Insert( new EmployeesTable
             {
                 FName = textBox1.Text,
-                MName = textBox3.Text,
                 LName = textBox2.Text,
+                MName = textBox3.Text,
                 Job = textBox5.Text,
                 City = textBox4.Text,
                 Family = textBox9.Text,
@@ -65,7 +63,9 @@ namespace Human_Resources_Department.forms
 
             if (isInsert == 1)
             {
-                UpdateDataGridView();
+                EmployeesDGV.UpdateDataSource();
+                EmployeesDGV.SetColorRows();
+
                 label9.Visible = true;
                 timer1.Enabled = true;
 
@@ -74,11 +74,13 @@ namespace Human_Resources_Department.forms
 
                 try
                 {
+                    int count = (EmployeesDGV.GetCountRows() > 0) ? EmployeesDGV.GetCountRows() : 1;
+
                     Directory.CreateDirectory(Config.currentFolder + "\\img");
 
                     File.Copy(
                         pathImage,
-                        Config.currentFolder + "\\img\\" + (d.Rows.Count-1) + Path.GetExtension(pathImage)
+                        Config.currentFolder + "\\img\\" + count + Path.GetExtension(pathImage)
                     );
                 }
                 catch
@@ -86,19 +88,6 @@ namespace Human_Resources_Department.forms
                     MessageBox.Show("Файл не зберігся", "Помилка");
                 }
             }
-        }
-
-        private void UpdateDataGridView()
-        {
-            EmployeesDGV e = new EmployeesDGV(this.d);
-            e.SetDataSource();
-            e.SetColorRows();
-        }
-
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            label9.Visible = false;
-            timer1.Enabled = false;
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -113,6 +102,12 @@ namespace Human_Resources_Department.forms
                 pathImage = dialog.FileName;
                 label14.Text = "Файл: " + pathImage;
             }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            label9.Visible = false;
+            timer1.Enabled = false;
         }
     }
 }

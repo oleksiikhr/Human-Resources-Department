@@ -8,14 +8,9 @@ namespace Human_Resources_Department.classes.employees
 {
     class EmployeesPanel
     {
-        private Panel p;
+        private static Panel p;
 
-        public EmployeesPanel(Panel p)
-        {
-            this.p = p;
-        }
-
-        public void AddInfo(Control c, object val)
+        public static void AddInfo(Control c, object val)
         {
             if ( c.GetType() == typeof(TextBox) )
                 (c as TextBox).Text = val.ToString();
@@ -27,7 +22,7 @@ namespace Human_Resources_Department.classes.employees
                 (c as PictureBox).Image = (val as Image);
         }
 
-        public void ClearAllData()
+        public static void ClearAllData()
         {
             foreach (Control c in p.Controls)
             {
@@ -42,7 +37,7 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public void Enabled(bool toggle = false)
+        public static void Enabled(bool toggle = false)
         {
             foreach (Control c in p.Controls)
             {
@@ -57,15 +52,42 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public void UpdateData(object[] args)
+        public static void UpdateData(object[] args)
         {
             new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
                 .Update(
                     "UPDATE " + typeof(EmployeesTable).Name
-                    + " SET FName = ?, MName = ?, LName = ?, Job = ?, City = ?, Email = ?,"
+                    + " SET FName = ?, LName = ?, MName = ?, Job = ?, City = ?, Email = ?,"
                     + " Tel = ?, Family = ?, Salary = ?, IsFulltime = ?, Birthday = ?,"
                     + " SetCompany = ?, UpdateAt = ? WHERE id = ?", args
                 );
+        }
+
+        public static void UpdateActivity(bool isActivity, int id)
+        {
+            new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
+                .Update(
+                    "UPDATE " + typeof(EmployeesTable).Name
+                     + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?", new object[]
+                     {
+                         isActivity, DateTime.Today, id
+                     }
+                );
+        }
+
+        public static void SetPanel(Panel panel)
+        {
+            p = panel;
+        }
+
+        public static bool IsNull()
+        {
+            return p == null;
+        }
+
+        public static void Close()
+        {
+            p = null;
         }
     }
 }

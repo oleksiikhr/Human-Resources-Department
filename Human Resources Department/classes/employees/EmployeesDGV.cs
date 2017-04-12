@@ -8,7 +8,10 @@ namespace Human_Resources_Department.classes.employees
 {
     class EmployeesDGV
     {
-        private DataGridView d;
+        private static DataGridView d;
+
+        private static int[] ids;
+        private static int len = 0;
 
         public const int CELL_ID           = 0;
         public const int CELL_FNAME        = 1;
@@ -25,13 +28,19 @@ namespace Human_Resources_Department.classes.employees
         public const int CELL_BIRTHDAY     = 12;
         public const int CELL_SETCOMPANY   = 13;
         public const int CELL_UPDATE_AT    = 14;
-
-        public EmployeesDGV(DataGridView d)
+        
+        public static void SetDataGridView(DataGridView dataGridView)
         {
-            this.d = d;
+            d = dataGridView;
         }
 
-        public void RenameColumns()
+        // !!!
+        public static void SetID(int id)
+        {
+            ids[len] = id;
+        }
+
+        public static void RenameColumns()
         {
             if (d.Columns.Count == 0)
                 return;
@@ -53,12 +62,12 @@ namespace Human_Resources_Department.classes.employees
             d.Columns[CELL_UPDATE_AT].HeaderText    = "Оновлення";
         }
 
-        public bool EmployeeIsActivity()
+        public static bool EmployeeIsActivity()
         {
             return Boolean.Parse( d.SelectedRows[0].Cells[CELL_IS_ACTIVITY].Value.ToString() );
         }
 
-        public void SetColorRows()
+        public static void SetColorRows()
         {
             DataGridViewCellStyle color = new DataGridViewCellStyle()
             {
@@ -72,10 +81,11 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public bool SetDataSource()
+        public static bool UpdateDataSource()
         {
             try
             {
+                // If active filter => ????
                 d.DataSource = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
                     .GetAllData();
 
@@ -88,7 +98,7 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public void FindCellAndSetFocus(string text, int cell, bool isLower = false)
+        public static void FindCellAndSetFocus(string text, int cell, bool isLower = false)
         {
             int count = (d.SelectedRows.Count > 0) ? d.SelectedRows[0].Index + 1 : 0;
             
@@ -104,24 +114,71 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public object GetSelectedCell(int cell)
+        public static void SetVisible(int index, bool toggle)
         {
-            return d.SelectedRows[0].Cells[cell].Value;
+            d.Rows[index].Visible = toggle;
         }
 
-        public int GetCountSelectedRows()
-        {
-            return d.SelectedRows.Count;
-        }
-
-        public int GetIndexSelectedRow()
+        public static int GetSelectedIndex()
         {
             return d.SelectedRows[0].Index;
         }
 
-        public int GetCountRows()
+        public static void ClearSelected()
+        {
+            d.ClearSelection();
+        }
+
+        public static void LostCurrentCell()
+        {
+            d.CurrentCell = null;
+        }
+
+        public static object GetSelectedCell(int cell)
+        {
+            return d.SelectedRows[0].Cells[cell].Value;
+        }
+
+        public static int GetCountSelectedRows()
+        {
+            return d.SelectedRows.Count;
+        }
+
+        public static int GetIndexSelectedRow()
+        {
+            return d.SelectedRows[0].Index;
+        }
+
+        public static void SetSelected(int index, bool toggle)
+        {
+            d.Rows[index].Selected = true;
+        }
+
+        public static int GetCountRows()
         {
             return d.Rows.Count;
+        }
+
+        public static object GetValueCell(int row, int cell)
+        {
+            return d.Rows[row].Cells[cell].Value;
+        }
+
+        public static bool IsVisibleRow(int row)
+        {
+            return d.Rows[row].Visible;
+        }
+
+        public static bool IsNull()
+        {
+            return d == null;
+        }
+
+        public static void Close()
+        {
+            d = null;
+            ids = null;
+            len = 0;
         }
     }
 }
