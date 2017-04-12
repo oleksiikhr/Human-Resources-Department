@@ -68,14 +68,17 @@ namespace Human_Resources_Department.forms
                 UpdateDataGridView();
                 label9.Visible = true;
                 timer1.Enabled = true;
-                
+
+                if (pathImage == null)
+                    return;
+
                 try
                 {
                     Directory.CreateDirectory(Config.currentFolder + "\\img");
 
                     File.Copy(
                         pathImage,
-                        Config.currentFolder + "\\img\\" + d.Rows.Count + Path.GetExtension(pathImage)
+                        Config.currentFolder + "\\img\\" + (d.Rows.Count-1) + Path.GetExtension(pathImage)
                     );
                 }
                 catch
@@ -102,10 +105,10 @@ namespace Human_Resources_Department.forms
         {
             OpenFileDialog dialog = new OpenFileDialog()
             {
-                Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*"
+                Filter = "Image Files(*.JPG, *.PNG) | *.JPG; *.PNG"
             };
 
-            if (dialog.ShowDialog() == DialogResult.OK) //если в окне была нажата кнопка "ОК"
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 pathImage = dialog.FileName;
                 label14.Text = "Файл: " + pathImage;

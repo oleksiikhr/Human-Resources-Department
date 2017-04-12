@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes.employees.db;
@@ -16,16 +17,14 @@ namespace Human_Resources_Department.classes.employees
 
         public void AddInfo(Control c, object val)
         {
-            if (val == null)
-                return;
-            
             if ( c.GetType() == typeof(TextBox) )
                 (c as TextBox).Text = val.ToString();
             else if ( c.GetType() == typeof(DateTimePicker) )
                 (c as DateTimePicker).Value = DateTime.Parse( val.ToString() );
             else if ( c.GetType() == typeof(CheckBox) )
                 (c as CheckBox).Checked = Boolean.Parse( val.ToString() );
-            // For PictureBox
+            else if ( c.GetType() == typeof(PictureBox) )
+                (c as PictureBox).Image = (val as Image);
         }
 
         public void ClearAllData()
@@ -39,7 +38,7 @@ namespace Human_Resources_Department.classes.employees
                 else if ( c.GetType() == typeof(CheckBox) )
                     (c as CheckBox).Checked = false;
                 else if ( c.GetType() == typeof(PictureBox) )
-                    (c as PictureBox).Image = null; // Not working..
+                    (c as PictureBox).Image = null;
             }
         }
 

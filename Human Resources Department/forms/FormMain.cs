@@ -83,14 +83,7 @@ namespace Human_Resources_Department.forms
             p.AddInfo(fieldIsFulltime, d.GetSelectedCell(EmployeesDGV.CELL_IS_FULLTIME));
             p.AddInfo(fieldSetCompany, d.GetSelectedCell(EmployeesDGV.CELL_SETCOMPANY));
             p.AddInfo(fieldUpdateAt,   d.GetSelectedCell(EmployeesDGV.CELL_UPDATE_AT));
-
-            // START. Transfer to Panel class. Check on img
-            string[] files = Directory.GetFiles(Config.currentFolder + "\\img",
-                dataGridView1.SelectedRows[0].Index + ".*");
-
-            foreach (string file in files)
-                pictureBox1.Image = Image.FromFile(Path.GetFullPath(file));
-            // END
+            p.AddInfo(pictureBox1,     GetImageUrl());
 
             if ( d.EmployeeIsActivity() )
             {
@@ -102,6 +95,19 @@ namespace Human_Resources_Department.forms
                 button5.BackColor = Color.FromArgb(84, 110, 122);
                 button5.Text = "Поновити";
             }
+        }
+
+        private Image GetImageUrl()
+        {
+            Image img = null;
+            int index = dataGridView1.SelectedRows[0].Index;
+
+            if ( File.Exists(Config.currentFolder + "\\img\\" + index + ".jpg") )
+                img = Image.FromFile( Config.currentFolder + "\\img\\" + index + ".jpg" );
+            else if ( File.Exists(Config.currentFolder + "\\img\\" + index + ".png") )
+                img = Image.FromFile( Config.currentFolder + "\\img\\" + index + ".png" );
+
+            return img;
         }
 
         private void UpdatePlace()
