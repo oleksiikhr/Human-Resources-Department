@@ -28,18 +28,6 @@ namespace Human_Resources_Department.forms
         }
 
         /// <summary>
-        /// Event when the selected employee is changed.
-        /// </summary>
-        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (EmployeesDGV.GetCountSelectedRows() < 1 || EmployeesDGV.IsNull() || EmployeesPanel.IsNull())
-                return;
-
-            FillPanelEmployee();
-            EmployeesPanel.Enabled();
-        }
-
-        /// <summary>
         /// Quick search bar. Focus set.
         /// </summary>
         private void FindField_Enter(object sender, EventArgs e)
@@ -58,12 +46,27 @@ namespace Human_Resources_Department.forms
         }
 
         /// <summary>
+        /// Event when the selected employee is changed.
+        /// </summary>
+        private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // If the focus is lost, delete the panel.
+            if ( ! EmployeesLV.IsSelected() )
+            {
+                EmployeesPanel.ClearAllData();
+                return;
+            }
+
+            FillPanelEmployee();
+        }
+
+        /// <summary>
         /// Edit mode for panelEmployee.
         /// </summary>
         private void Button1_Click(object sender, EventArgs e)
         {
             // If an employee is not selected => return.
-            if ( EmployeesDGV.GetCountSelectedRows() <= 0 )
+            if ( ! EmployeesLV.IsSelected() )
             {
                 MessageBox.Show("Оберіть працівника");
                 return;
@@ -78,23 +81,32 @@ namespace Human_Resources_Department.forms
         /// </summary>
         private void Button2_Click(object sender, EventArgs e)
         {
-            bool isCorrectSalary = Double.TryParse(fieldSalary.Text, out double salary);
+            double salary = 0;
 
-            if ( ! isCorrectSalary )
+            if ( ! string.IsNullOrEmpty(fieldSalary.Text) )
             {
-                MessageBox.Show("Зарплата вказана невірно", "Помилка");
-                return;
+                bool isCorrectSalary = Double.TryParse(fieldSalary.Text, out salary);
+
+                if (!isCorrectSalary)
+                {
+                    MessageBox.Show("Зарплата вказана невірно", "Помилка");
+                    return;
+                }
             }
 
             // Updating the database with new data from the Panel.
-            EmployeesPanel.UpdateData( new object[] {
+            int isUpdated = EmployeesPanel.UpdateData( new object[] {
                 fieldFName.Text, fieldLName.Text, fieldMName.Text, fieldJob.Text,
                 fieldCity.Text, fieldEmail.Text, fieldTel.Text, fieldFamily.Text,
                 salary, fieldIsFulltime.Checked, fieldBirthday.Text, fieldSetCompany.Text,
-                DateTime.Today, EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_ID)
+                DateTime.Today, EmployeesLV.GetSelectedCell(EmployeesLV.I_ID)
             });
 
-            UpdatePlace();
+            if (isUpdated == 1)
+            {
+                EmployeesLV.UpdateSelectedData();
+                EmployeesPanel.Enabled();
+            }
         }
 
         /// <summary>
@@ -114,7 +126,7 @@ namespace Human_Resources_Department.forms
             if ( string.IsNullOrEmpty(findField.Text) || findField.Text.Equals(TEXT_SEARCH) )
                 return;
 
-            EmployeesDGV.FindCellAndSetFocus(findField.Text, EmployeesDGV.CELL_LNAME, true);
+            EmployeesLV.FindCellAndSetFocus(findField.Text, EmployeesLV.I_LNAME, true);
         }
 
         /// <summary>
@@ -123,7 +135,7 @@ namespace Human_Resources_Department.forms
         private void Button5_Click(object sender, EventArgs e)
         {
             // If the employee is working, we confirm the action.
-            if ( EmployeesDGV.EmployeeIsActivity() )
+            if ( EmployeesLV.EmployeeIsActivity() )
             {
                 DialogResult result = MessageBox.Show(
                     "Ви дійсно хочете звільнити " + fieldFName.Text + " " + fieldLName.Text + "?",
@@ -136,12 +148,16 @@ namespace Human_Resources_Department.forms
             }
 
             // Update the DB.
-            EmployeesPanel.UpdateActivity(
-                (EmployeesDGV.EmployeeIsActivity() ? false : true),
-                Convert.ToInt32(EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_ID))
+            int isUpdated = EmployeesPanel.UpdateActivity(
+                !EmployeesLV.EmployeeIsActivity(),
+                Convert.ToInt32(EmployeesLV.GetSelectedCell(EmployeesLV.I_ID))
             );
 
-            UpdatePlace();
+            if (isUpdated == 1)
+            {
+                EmployeesLV.UpdateSelectedData();
+                FillPanelEmployee();
+            }
         }
         
         private void FormChooseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,15 +171,18 @@ namespace Human_Resources_Department.forms
             if (result == DialogResult.No)
                 return;
 
+            Hide();
+
             // Close and clear all data.
-            EmployeesDGV.ClearSelected();
+            EmployeesLV.ClearAllData();
             EmployeesPanel.ClearAllData();
 
-            EmployeesDGV.Close();
+            EmployeesLV.Close();
             EmployeesPanel.Close();
 
-            Hide();
-            SelectProject();
+            if ( ! SelectProject() )
+                Application.ExitThread();
+
             Show();
         }
 
@@ -188,7 +207,7 @@ namespace Human_Resources_Department.forms
         }
 
         /// <summary>
-        /// Project selection.
+        /// Project selection. Setting up a new environment.
         /// </summary>
         private bool SelectProject()
         {
@@ -198,11 +217,21 @@ namespace Human_Resources_Department.forms
 
                 if ( f.IsOpen() )
                 {
-                    EmployeesDGV.SetDataGridView(dataGridView1);
-                    EmployeesPanel.SetPanel(panelEmployee);
+                    try
+                    {
+                        EmployeesLV.SetListBox(listView1);
+                        EmployeesLV.SetNameColumns();
+                        EmployeesLV.GetAllData();
 
-                    Text = Config.PROJECT_NAME + " - " + f.GetNameFolder();
-                    UpdatePlace();
+                        EmployeesPanel.SetPanel(panelEmployee);
+                        EmployeesPanel.Enabled();
+                        Text = Config.PROJECT_NAME + " - " + f.GetNameFolder();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Файл пошкоджений");
+                        return false;
+                    }
 
                     return true;
                 }
@@ -216,22 +245,24 @@ namespace Human_Resources_Department.forms
         /// </summary>
         private void FillPanelEmployee()
         {
-            EmployeesPanel.AddInfo(fieldFName,       EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_FNAME));
-            EmployeesPanel.AddInfo(fieldLName,       EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_LNAME));
-            EmployeesPanel.AddInfo(fieldMName,       EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_MNAME));
-            EmployeesPanel.AddInfo(fieldJob,         EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_JOB));
-            EmployeesPanel.AddInfo(fieldCity,        EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_CITY));
-            EmployeesPanel.AddInfo(fieldEmail,       EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_EMAIL));
-            EmployeesPanel.AddInfo(fieldTel,         EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_TEL));
-            EmployeesPanel.AddInfo(fieldFamily,      EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_FAMILY));
-            EmployeesPanel.AddInfo(fieldSalary,      EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_SALARY));
-            EmployeesPanel.AddInfo(fieldBirthday,    EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_BIRTHDAY));
-            EmployeesPanel.AddInfo(fieldIsFulltime,  EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_IS_FULLTIME));
-            EmployeesPanel.AddInfo(fieldSetCompany,  EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_SETCOMPANY));
-            EmployeesPanel.AddInfo(fieldUpdateAt,    EmployeesDGV.GetSelectedCell(EmployeesDGV.CELL_UPDATE_AT));
+            EmployeesPanel.Enabled();
+
+            EmployeesPanel.AddInfo(fieldFName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
+            EmployeesPanel.AddInfo(fieldLName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
+            EmployeesPanel.AddInfo(fieldMName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
+            EmployeesPanel.AddInfo(fieldJob,         EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB));
+            EmployeesPanel.AddInfo(fieldCity,        EmployeesLV.GetSelectedCell(EmployeesLV.I_CITY));
+            EmployeesPanel.AddInfo(fieldEmail,       EmployeesLV.GetSelectedCell(EmployeesLV.I_EMAIL));
+            EmployeesPanel.AddInfo(fieldTel,         EmployeesLV.GetSelectedCell(EmployeesLV.I_TEL));
+            EmployeesPanel.AddInfo(fieldFamily,      EmployeesLV.GetSelectedCell(EmployeesLV.I_FAMILY));
+            EmployeesPanel.AddInfo(fieldSalary,      EmployeesLV.GetSelectedCell(EmployeesLV.I_SALARY));
+            EmployeesPanel.AddInfo(fieldIsFulltime,  EmployeesLV.GetSelectedCell(EmployeesLV.I_IS_FULLTIME).Equals("Так"));
+            EmployeesPanel.AddInfo(fieldBirthday,    EmployeesLV.GetSelectedCell(EmployeesLV.I_BIRTHDAY));
+            EmployeesPanel.AddInfo(fieldSetCompany,  EmployeesLV.GetSelectedCell(EmployeesLV.I_SETCOMPANY));
+            EmployeesPanel.AddInfo(fieldUpdateAt,    EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));
             EmployeesPanel.AddInfo(pictureBox1,      GetImageUrl());
 
-            if ( EmployeesDGV.EmployeeIsActivity() )
+            if ( EmployeesLV.EmployeeIsActivity() )
             {
                 button5.BackColor = Color.Brown;
                 button5.Text = "Звільнити";
@@ -249,56 +280,29 @@ namespace Human_Resources_Department.forms
         private Image GetImageUrl()
         {
             Image img = null;
-            int index = EmployeesDGV.GetSelectedIndex() + 1;
+            string path = Config.currentFolder + "\\img\\" + (EmployeesLV.GetSelectedIndex() + 1);
 
-            if ( File.Exists(Config.currentFolder + "\\img\\" + index + ".jpg") )
-                img = Image.FromFile( Config.currentFolder + "\\img\\" + index + ".jpg" );
-            else if ( File.Exists(Config.currentFolder + "\\img\\" + index + ".png") )
-                img = Image.FromFile( Config.currentFolder + "\\img\\" + index + ".png" );
+            try
+            {
+                if ( File.Exists(path + ".jpg") )
+                    img = Image.FromFile(path + ".jpg");
+                else if ( File.Exists(path + ".png") )
+                    img = Image.FromFile(path + ".png");
+            }
+            catch { }
 
             return img;
         }
 
         /// <summary>
-        /// Updating / setting up a new environment.
+        /// Reset filters.
         /// </summary>
-        private void UpdatePlace()
+        private void Button6_Click(object sender, EventArgs e)
         {
-            if ( ! EmployeesPanel.IsNull() )
-                EmployeesPanel.Enabled();
-
-            int selectedRow = (EmployeesDGV.GetCountSelectedRows() > 0) ? EmployeesDGV.GetIndexSelectedRow() : 0;
-            int countRows = EmployeesDGV.GetCountRows();
-
-            EmployeesDGV.UpdateDataSource();
-
-            // If the file is damaged / no access => return | exit.
-            if ( ! EmployeesDGV.UpdateDataSource() )
-            {
-                MessageBox.Show("Файл не знайдений або пошкоджений", "Помилка");
-
-                if ( ! SelectProject() )
-                    Application.ExitThread();
-
-                return;
-            }
-
-            // Rename the columns and set the colors.
-            EmployeesDGV.RenameColumns();
-            EmployeesDGV.SetColorRows();
-
-            // Clean / update the panel.
-            if (EmployeesDGV.GetCountRows() > 0)
-            {
-                if ( countRows == EmployeesDGV.GetCountRows() )
-                    EmployeesDGV.SetSelected(selectedRow, true);
-                else
-                    EmployeesDGV.SetSelected(0, true);
-
-                FillPanelEmployee();
-            }
-            else
-                EmployeesPanel.ClearAllData();
+            EmployeesPanel.ClearAllData();
+            EmployeesLV.ClearAllData();
+            EmployeesLV.SetNameColumns();
+            EmployeesLV.GetAllData();
         }
     }
 }

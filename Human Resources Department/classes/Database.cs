@@ -1,5 +1,4 @@
 ﻿using SQLite;
-using System;
 
 namespace Human_Resources_Department.classes
 {
@@ -37,13 +36,16 @@ namespace Human_Resources_Department.classes
             }
         }
 
-        public void Update(string q, object[] args)
+        public int Update(string q, object[] args)
         {
             try
             {
-                con.Execute(q, args);
+                return con.Execute(q, args);
             }
-            catch { }
+            catch
+            {
+                return 0;
+            }
         }
 
         public void CloseConnection()

@@ -21,17 +21,14 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if ( ! File.Exists( Config.currentFolder + "\\" + EmployeesModel.nameFile ) )
+            if ( ! File.Exists(Config.currentFolder + "\\" + EmployeesModel.nameFile) )
             {
                 MessageBox.Show("Файл не знайдено", "Помилка");
                 return;
             }
 
-            EmployeesModel db =
-                new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
-            
             bool isCorrectSalary = double.TryParse(textBox12.Text, out double salary);
-            if ( ! isCorrectSalary && ! string.IsNullOrWhiteSpace(textBox12.Text) )
+            if ( !isCorrectSalary && !string.IsNullOrWhiteSpace(textBox12.Text) )
             {
                 MessageBox.Show("В зарплаті повинні бути тільки числа", "Помилка");
                 return;
@@ -42,6 +39,9 @@ namespace Human_Resources_Department.forms
                 MessageBox.Show("Повинно бути вказано ім'я", "Помилка");
                 return;
             }
+
+            EmployeesModel db =
+                new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
 
             int isInsert = db.Insert( new EmployeesTable
             {
@@ -63,8 +63,7 @@ namespace Human_Resources_Department.forms
 
             if (isInsert == 1)
             {
-                EmployeesDGV.UpdateDataSource();
-                EmployeesDGV.SetColorRows();
+                EmployeesLV.AddNew();
 
                 label9.Visible = true;
                 timer1.Enabled = true;
@@ -74,7 +73,7 @@ namespace Human_Resources_Department.forms
 
                 try
                 {
-                    int count = (EmployeesDGV.GetCountRows() > 0) ? EmployeesDGV.GetCountRows() : 1;
+                    int count = (EmployeesLV.GetCountItems() > 0) ? EmployeesLV.GetCountItems() : 1;
 
                     Directory.CreateDirectory(Config.currentFolder + "\\img");
 
@@ -108,6 +107,12 @@ namespace Human_Resources_Department.forms
         {
             label9.Visible = false;
             timer1.Enabled = false;
+        }
+
+        private void Label15_Click(object sender, EventArgs e)
+        {
+            label14.Text = "Файл не вибран";
+            pathImage = null;
         }
     }
 }

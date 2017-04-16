@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Human_Resources_Department.classes.employees.db
 {
@@ -8,19 +8,22 @@ namespace Human_Resources_Department.classes.employees.db
 
         public EmployeesModel(string uriFile) : base(uriFile) { }
 
-        public object QueryEmployees(string q)
+        public IEnumerable<EmployeesTable> QueryEmployees(string q, object[] args = null)
         {
             try
             {
-                return con.Query<EmployeesTable>(q);
+                if ( args == null )
+                    return con.Query<EmployeesTable>(q);
+
+                return con.Query<EmployeesTable>(q, args);
             }
             catch
             {
-                return "";
+                return null;
             }
         }
 
-        public void CreateTable()
+        public void CreateTableEmployees()
         {
             try
             {
@@ -29,16 +32,15 @@ namespace Human_Resources_Department.classes.employees.db
             catch { }
         }
 
-        public object GetAllData()
+        public IEnumerable<EmployeesTable> GetAllData()
         {
-            try
-            {
-                return QueryEmployees("SELECT * FROM " + typeof(EmployeesTable).Name);
-            }
-            catch
-            {
-                return "";
-            }
+            return QueryEmployees("SELECT * FROM " + typeof(EmployeesTable).Name);
+        }
+
+        public IEnumerable<EmployeesTable> GetOneData(int id)
+        {
+            return QueryEmployees("SELECT * FROM " + typeof(EmployeesTable).Name
+                + " WHERE id = ?", new object[] { id });
         }
     }
 }

@@ -81,10 +81,11 @@
   <ItemGroup>
     <Compile Include="classes\Config.cs" />
     <Compile Include="classes\employees\db\EmployeesModel.cs" />
-    <Compile Include="classes\employees\EmployeesDGV.cs" />
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\employees\db\EmployeesTable.cs" />
+    <Compile Include="classes\employees\EmployeesLV.cs" />
     <Compile Include="classes\employees\EmployeesPanel.cs" />
+    <Compile Include="classes\employees\EmployeesSearch.cs" />
     <Compile Include="forms\FormFilter.cs">
       <SubType>Form</SubType>
     </Compile>

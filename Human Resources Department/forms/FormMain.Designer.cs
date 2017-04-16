@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.findField = new System.Windows.Forms.TextBox();
             this.panelEmployee = new System.Windows.Forms.Panel();
             this.fieldIsFulltime = new System.Windows.Forms.CheckBox();
@@ -66,15 +65,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.додатиПрацівникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.фільтрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panelStatistics = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.button6 = new System.Windows.Forms.Button();
             this.panelEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // findField
@@ -84,7 +83,7 @@
             this.findField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.findField.Location = new System.Drawing.Point(285, 31);
             this.findField.Name = "findField";
-            this.findField.Size = new System.Drawing.Size(275, 20);
+            this.findField.Size = new System.Drawing.Size(226, 20);
             this.findField.TabIndex = 0;
             this.findField.Text = "Швидкий пошук по Прізвищу";
             this.findField.Enter += new System.EventHandler(this.FindField_Enter);
@@ -154,7 +153,7 @@
             this.button5.Location = new System.Drawing.Point(4, 363);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(120, 23);
-            this.button5.TabIndex = 11;
+            this.button5.TabIndex = 20;
             this.button5.Text = "Звільнити";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
@@ -424,7 +423,7 @@
             this.фільтрToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(640, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(705, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -444,35 +443,6 @@
             this.фільтрToolStripMenuItem.Text = "Фільтри";
             this.фільтрToolStripMenuItem.Click += new System.EventHandler(this.FormFilterToolStripMenuItem_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(285, 57);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(343, 518);
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
-            // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -482,7 +452,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(557, 31);
+            this.button4.Location = new System.Drawing.Point(508, 31);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(71, 20);
             this.button4.TabIndex = 6;
@@ -526,20 +496,52 @@
             this.panelStatistics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelStatistics.Location = new System.Drawing.Point(12, 478);
             this.panelStatistics.Name = "panelStatistics";
-            this.panelStatistics.Size = new System.Drawing.Size(255, 97);
+            this.panelStatistics.Size = new System.Drawing.Size(255, 102);
             this.panelStatistics.TabIndex = 22;
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.listView1.Location = new System.Drawing.Point(285, 57);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(408, 523);
+            this.listView1.TabIndex = 23;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(585, 31);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(108, 20);
+            this.button6.TabIndex = 24;
+            this.button6.Text = "Скинути фільтри";
+            this.button6.UseMnemonic = false;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(640, 582);
+            this.ClientSize = new System.Drawing.Size(705, 588);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.panelStatistics);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelEmployee);
             this.Controls.Add(this.findField);
             this.Controls.Add(this.menuStrip1);
@@ -554,7 +556,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,7 +592,6 @@
         private System.Windows.Forms.TextBox fieldCity;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem фільтрToolStripMenuItem;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label14;
@@ -603,6 +603,8 @@
         private System.Windows.Forms.DateTimePicker fieldUpdateAt;
         private System.Windows.Forms.Panel panelStatistics;
         private System.Windows.Forms.CheckBox fieldIsFulltime;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button button6;
     }
 }
 

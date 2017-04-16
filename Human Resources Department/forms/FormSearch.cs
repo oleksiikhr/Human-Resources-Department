@@ -17,63 +17,30 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            int count = (EmployeesDGV.GetCountSelectedRows() > 0)
-                ? EmployeesDGV.GetSelectedIndex() + 1
-                : 0;
+            int count = EmployeesLV.IsSelected() ? EmployeesLV.GetSelectedIndex() + 1 : 0;
 
-            MessageBox.Show(EmployeesDGV.GetSelectedIndex().ToString());
-
-            for (int i = count; i < EmployeesDGV.GetCountRows() + count; i++)
+            for (int i = count; i < EmployeesLV.GetCountItems() + count; i++)
             {
-                int index = i % EmployeesDGV.GetCountRows();
-
-                if (   IsEqualsTextBox(textBox1,   index, EmployeesDGV.CELL_FNAME) 
-                    && IsEqualsTextBox(textBox2,   index, EmployeesDGV.CELL_LNAME)
-                    && IsEqualsTextBox(textBox3,   index, EmployeesDGV.CELL_MNAME)
-                    && IsEqualsTextBox(textBox4,   index, EmployeesDGV.CELL_CITY)
-                    && IsEqualsTextBox(textBox5,   index, EmployeesDGV.CELL_JOB)
-                    && IsEqualsTextBox(textBox9,   index, EmployeesDGV.CELL_FAMILY)
-                    && IsEqualsTextBox(textBox8,   index, EmployeesDGV.CELL_EMAIL)
-                    && IsEqualsTextBox(textBox10,  index, EmployeesDGV.CELL_TEL)
-                    && IsEqualsTextBox(textBox12,  index, EmployeesDGV.CELL_SALARY)
-                    && IsEqualsCheckBox(checkBox4, checkBox6, index, EmployeesDGV.CELL_IS_ACTIVITY)
-                    && IsEqualsCheckBox(checkBox1, checkBox5, index, EmployeesDGV.CELL_IS_FULLTIME)
-                    && IsEqualsDateTimePicker(dateTimePicker1, checkBox2, index, EmployeesDGV.CELL_BIRTHDAY)
-                    && IsEqualsDateTimePicker(dateTimePicker2, checkBox3, index, EmployeesDGV.CELL_SETCOMPANY)
-                    && EmployeesDGV.IsVisibleRow(index)
-                )
-                {
-                    EmployeesDGV.SetSelected(i, true);
+                int index = i % EmployeesLV.GetCountItems();
+                
+                if (   EmployeesSearch.IsEqualsTextBox(textBox1,  index, EmployeesLV.I_FNAME) 
+                    && EmployeesSearch.IsEqualsTextBox(textBox2,  index, EmployeesLV.I_LNAME)
+                    && EmployeesSearch.IsEqualsTextBox(textBox3,  index, EmployeesLV.I_MNAME)
+                    && EmployeesSearch.IsEqualsTextBox(textBox4,  index, EmployeesLV.I_CITY)
+                    && EmployeesSearch.IsEqualsTextBox(textBox5,  index, EmployeesLV.I_JOB)
+                    && EmployeesSearch.IsEqualsTextBox(textBox9,  index, EmployeesLV.I_FAMILY)
+                    && EmployeesSearch.IsEqualsTextBox(textBox8,  index, EmployeesLV.I_EMAIL)
+                    && EmployeesSearch.IsEqualsTextBox(textBox10, index, EmployeesLV.I_TEL)
+                    && EmployeesSearch.IsEqualsTextBox(textBox12, index, EmployeesLV.I_SALARY)
+                    && EmployeesSearch.IsEqualsCheckBox(checkBox4, checkBox6, index, EmployeesLV.I_IS_ACTIVITY)
+                    && EmployeesSearch.IsEqualsCheckBox(checkBox1, checkBox5, index, EmployeesLV.I_IS_FULLTIME)
+                    && EmployeesSearch.IsEqualsDateTime(dateTimePicker1, checkBox2, index, EmployeesLV.I_BIRTHDAY)
+                    && EmployeesSearch.IsEqualsDateTime(dateTimePicker2, checkBox3, index, EmployeesLV.I_SETCOMPANY)
+                ) {
+                    EmployeesLV.SetSelected(index, true);
                     return;
                 }
             }
-        }
-
-        private bool IsEqualsTextBox(TextBox t, int iRow, int iCell)
-        {
-            if ( string.IsNullOrWhiteSpace(t.Text) )
-                return true;
-
-            return string.Equals(t.Text.Trim(),
-                EmployeesDGV.GetValueCell(iRow, iCell).ToString(),
-                StringComparison.OrdinalIgnoreCase);
-        }
-        
-        private bool IsEqualsCheckBox(CheckBox c, CheckBox isActive, int iRow, int iCell)
-        {
-            if (isActive.Checked)
-                return c.Checked == Boolean.Parse( EmployeesDGV.GetValueCell(iRow, iCell).ToString() );
-
-            return true;
-        }
-
-        private bool IsEqualsDateTimePicker(DateTimePicker dtp, CheckBox isActive, int iRow, int iCell)
-        {
-            if (isActive.Checked)
-                if ( ! dtp.Value.Date.Equals( EmployeesDGV.GetValueCell(iRow, iCell) ) )
-                    return false;
-
-            return true;
         }
     }
 }

@@ -10,6 +10,11 @@ namespace Human_Resources_Department.classes.employees
     {
         private static Panel p;
 
+        public static void SetPanel(Panel panel)
+        {
+            p = panel;
+        }
+
         public static void AddInfo(Control c, object val)
         {
             if ( c.GetType() == typeof(TextBox) )
@@ -52,9 +57,9 @@ namespace Human_Resources_Department.classes.employees
             }
         }
 
-        public static void UpdateData(object[] args)
+        public static int UpdateData(object[] args)
         {
-            new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
+            return new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
                 .Update(
                     "UPDATE " + typeof(EmployeesTable).Name
                     + " SET FName = ?, LName = ?, MName = ?, Job = ?, City = ?, Email = ?,"
@@ -63,21 +68,12 @@ namespace Human_Resources_Department.classes.employees
                 );
         }
 
-        public static void UpdateActivity(bool isActivity, int id)
+        public static int UpdateActivity(bool isActivity, int id)
         {
-            new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-                .Update(
-                    "UPDATE " + typeof(EmployeesTable).Name
-                     + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?", new object[]
-                     {
-                         isActivity, DateTime.Today, id
-                     }
-                );
-        }
-
-        public static void SetPanel(Panel panel)
-        {
-            p = panel;
+            return new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile).Update(
+                "UPDATE " + typeof(EmployeesTable).Name + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?",
+                    new object[] { isActivity, DateTime.Today, id }
+            );
         }
 
         public static bool IsNull()

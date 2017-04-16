@@ -17,43 +17,25 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < EmployeesDGV.GetCountRows(); i++)
+            for (int i = 0; i < EmployeesLV.GetCountItems(); i++)
             {
-                // !!!
-                if (   IsEqualsTextBox(textBox1,  i, EmployeesDGV.CELL_FNAME)
-                    && IsEqualsTextBox(textBox2,  i, EmployeesDGV.CELL_LNAME)
-                    && IsEqualsTextBox(textBox3,  i, EmployeesDGV.CELL_MNAME)
-                    && IsEqualsTextBox(textBox4,  i, EmployeesDGV.CELL_CITY)
-                    && IsEqualsTextBox(textBox5,  i, EmployeesDGV.CELL_JOB)
-                    && IsEqualsTextBox(textBox9,  i, EmployeesDGV.CELL_FAMILY)
-                    && IsEqualsTextBox(textBox8,  i, EmployeesDGV.CELL_EMAIL)
-                    && IsEqualsTextBox(textBox10, i, EmployeesDGV.CELL_TEL)
-                    && IsEqualsTextBox(textBox12, i, EmployeesDGV.CELL_SALARY))
-                {
-                    EmployeesDGV.SetVisible(i, true);
-                }
-                else
-                {
-                    if ( EmployeesDGV.GetCountSelectedRows() > 0 && EmployeesDGV.GetSelectedIndex().Equals(i) )
-                    {
-                        EmployeesDGV.LostCurrentCell();
-                        EmployeesDGV.ClearSelected();
-                        EmployeesPanel.ClearAllData();
-                    }
-
-                    EmployeesDGV.SetVisible(i, false);
+                if (   !EmployeesSearch.IsEqualsTextBox(textBox1,  i, EmployeesLV.I_FNAME)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox2,  i, EmployeesLV.I_LNAME)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox3,  i, EmployeesLV.I_MNAME)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox4,  i, EmployeesLV.I_MNAME)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox5,  i, EmployeesLV.I_JOB)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox9,  i, EmployeesLV.I_FAMILY)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox8,  i, EmployeesLV.I_EMAIL)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox10, i, EmployeesLV.I_TEL)
+                    || !EmployeesSearch.IsEqualsTextBox(textBox12, i, EmployeesLV.I_SALARY)
+                    || !EmployeesSearch.IsEqualsCheckBox(checkBox4, checkBox6, i, EmployeesLV.I_IS_ACTIVITY)
+                    || !EmployeesSearch.IsEqualsCheckBox(checkBox1, checkBox5, i, EmployeesLV.I_IS_FULLTIME)
+                    || !EmployeesSearch.IsEqualsDateTime(dateTimePicker1, checkBox2, i, EmployeesLV.I_BIRTHDAY)
+                    || !EmployeesSearch.IsEqualsDateTime(dateTimePicker2, checkBox3, i, EmployeesLV.I_SETCOMPANY)
+                ) {
+                    EmployeesLV.Delete(i--);
                 }
             }
-        }
-
-        private bool IsEqualsTextBox(TextBox t, int iRow, int iCell)
-        {
-            if ( string.IsNullOrWhiteSpace(t.Text) )
-                return true;
-
-            return string.Equals(t.Text.Trim(),
-                EmployeesDGV.GetValueCell(iRow, iCell).ToString(),
-                StringComparison.OrdinalIgnoreCase);
         }
     }
 }
