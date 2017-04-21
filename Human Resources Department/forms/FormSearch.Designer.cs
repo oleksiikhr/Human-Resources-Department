@@ -289,7 +289,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 30;
-            this.label1.Text = "І\'мя";
+            this.label1.Text = "Ім\'я";
             // 
             // label2
             // 

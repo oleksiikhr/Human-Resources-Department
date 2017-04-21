@@ -163,7 +163,7 @@ namespace Human_Resources_Department.forms
         private void FormChooseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Ви точно хочете залишити поточний проект?",
+                "Ви впевнені, що хочете залишити поточний проект?",
                 Text,
                 MessageBoxButtons.YesNo
             );
@@ -225,6 +225,7 @@ namespace Human_Resources_Department.forms
 
                         EmployeesPanel.SetPanel(panelEmployee);
                         EmployeesPanel.Enabled();
+
                         Text = Config.PROJECT_NAME + " - " + f.GetNameFolder();
                     }
                     catch

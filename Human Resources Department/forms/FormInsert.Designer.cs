@@ -41,6 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,7 +165,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 30;
-            this.label1.Text = "І\'мя";
+            this.label1.Text = "Ім\'я";
             // 
             // panel1
             // 
@@ -204,6 +204,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(419, 341);
             this.panel1.TabIndex = 53;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label15.Location = new System.Drawing.Point(3, 273);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(14, 13);
+            this.label15.TabIndex = 73;
+            this.label15.Text = "X";
+            this.label15.Click += new System.EventHandler(this.Label15_Click);
             // 
             // label14
             // 
@@ -358,17 +369,6 @@
             // 
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label15.Location = new System.Drawing.Point(3, 273);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(14, 13);
-            this.label15.TabIndex = 73;
-            this.label15.Text = "X";
-            this.label15.Click += new System.EventHandler(this.Label15_Click);
             // 
             // FormInsert
             // 
