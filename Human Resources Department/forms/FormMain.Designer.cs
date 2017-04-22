@@ -65,12 +65,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.додатиПрацівникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.фільтрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.зарплатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.panelStatistics = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panelEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -420,7 +423,9 @@
             this.formChooseToolStripMenuItem,
             this.додатиПрацівникаToolStripMenuItem,
             this.пошукToolStripMenuItem,
-            this.фільтрToolStripMenuItem});
+            this.фільтрToolStripMenuItem,
+            this.зарплатаToolStripMenuItem,
+            this.проПрограмуToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(705, 24);
@@ -442,6 +447,22 @@
             this.фільтрToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.фільтрToolStripMenuItem.Text = "Фільтри";
             this.фільтрToolStripMenuItem.Click += new System.EventHandler(this.FormFilterToolStripMenuItem_Click);
+            // 
+            // зарплатаToolStripMenuItem
+            // 
+            this.зарплатаToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.зарплатаToolStripMenuItem.Name = "зарплатаToolStripMenuItem";
+            this.зарплатаToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.зарплатаToolStripMenuItem.Text = "Зарплата";
+            this.зарплатаToolStripMenuItem.Click += new System.EventHandler(this.SalaryToolStripMenuItem_Click);
+            // 
+            // проПрограмуToolStripMenuItem
+            // 
+            this.проПрограмуToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
+            this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.проПрограмуToolStripMenuItem.Text = "Про програму";
+            this.проПрограмуToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // button4
             // 
@@ -469,9 +490,9 @@
             this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label14.Location = new System.Drawing.Point(12, 460);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(67, 15);
+            this.label14.Size = new System.Drawing.Size(138, 15);
             this.label14.TabIndex = 8;
-            this.label14.Text = "Статистика";
+            this.label14.Text = "Статистика (з фільтрами)";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label15
@@ -488,17 +509,6 @@
             this.label15.Text = "Вибраний співробітник";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelStatistics
-            // 
-            this.panelStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelStatistics.BackColor = System.Drawing.Color.White;
-            this.panelStatistics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelStatistics.Location = new System.Drawing.Point(12, 478);
-            this.panelStatistics.Name = "panelStatistics";
-            this.panelStatistics.Size = new System.Drawing.Size(255, 102);
-            this.panelStatistics.TabIndex = 22;
-            // 
             // listView1
             // 
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -507,7 +517,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.Location = new System.Drawing.Point(285, 57);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(408, 523);
+            this.listView1.Size = new System.Drawing.Size(408, 521);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
@@ -530,15 +540,44 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(166, 460);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(101, 19);
+            this.button7.TabIndex = 25;
+            this.button7.Text = "Оновити";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(12, 478);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBox1.Size = new System.Drawing.Size(255, 100);
+            this.listBox1.TabIndex = 0;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(705, 588);
+            this.ClientSize = new System.Drawing.Size(705, 590);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.panelStatistics);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button4);
@@ -601,10 +640,13 @@
         private System.Windows.Forms.DateTimePicker fieldBirthday;
         private System.Windows.Forms.DateTimePicker fieldSetCompany;
         private System.Windows.Forms.DateTimePicker fieldUpdateAt;
-        private System.Windows.Forms.Panel panelStatistics;
         private System.Windows.Forms.CheckBox fieldIsFulltime;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem зарплатаToolStripMenuItem;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

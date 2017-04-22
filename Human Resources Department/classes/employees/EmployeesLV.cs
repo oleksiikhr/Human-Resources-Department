@@ -74,28 +74,34 @@ namespace Human_Resources_Department.classes.employees
                     l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
             }
         }
-
+        
         public static void UpdateSelectedData()
         {
             int index = GetSelectedIndex();
 
             var data = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-                    .GetOneData(index + 1);
-            
+                    .GetOneData(Convert.ToInt32( l.Items[GetSelectedIndex()].SubItems[I_ID].Text) );
+
             foreach (var one in data)
             {
-                l.Items.Insert(index, new ListViewItem(new[] {
-                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
-                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
-                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
-                }));
+                l.Items[index].SubItems[I_FNAME].Text       = T(one.FName);
+                l.Items[index].SubItems[I_LNAME].Text       = T(one.LName);
+                l.Items[index].SubItems[I_MNAME].Text       = T(one.MName);
+                l.Items[index].SubItems[I_JOB].Text         = T(one.Job);
+                l.Items[index].SubItems[I_CITY].Text        = T(one.City);
+                l.Items[index].SubItems[I_EMAIL].Text       = T(one.Email);
+                l.Items[index].SubItems[I_TEL].Text         = T(one.Tel);
+                l.Items[index].SubItems[I_FAMILY].Text      = T(one.Family);
+                l.Items[index].SubItems[I_SALARY].Text      = T(one.Salary);
+                l.Items[index].SubItems[I_IS_ACTIVITY].Text = T(one.IsActivity);
+                l.Items[index].SubItems[I_IS_FULLTIME].Text = T(one.IsFulltime);
+                l.Items[index].SubItems[I_BIRTHDAY].Text    = T(one.Birthday);
+                l.Items[index].SubItems[I_SETCOMPANY].Text  = T(one.SetCompany);
+                l.Items[index].SubItems[I_UPDATE_AT].Text   = T(one.UpdateAt);
 
                 if (!one.IsActivity)
                     l.Items[index].BackColor = Color.FromArgb(255, 205, 210);
             }
-
-            l.Items[index].Selected = true;
-            l.Items[index + 1].Remove();
         }
 
         private static string T(object ob)
@@ -197,6 +203,39 @@ namespace Human_Resources_Department.classes.employees
         public static void Close()
         {
             l = null;
+        }
+
+        // |---------------------------------------
+        // | Basic info for ListBox.
+        // |---------------------------------------
+        // |
+        // | dismissed - Количество уволенных сотрудников.
+        // | salary    - Сумма всех зарплат сотрудников.
+        // | countEdit - Количество редактирований за сегодня.
+        // | countFull - Количество работников на полный рабочий день.
+        // |
+        public static object[] GetBasicInfo()
+        {
+            int dismissed = 0;
+            double salary = 0;
+            int countEdit = 0;
+            int countFull = 0;
+            
+            for (int i = 0; i < GetCountItems(); i++)
+            {
+                if ( ! l.Items[i].SubItems[I_IS_ACTIVITY].Text.Equals("Так") )
+                    dismissed++;
+
+                if (l.Items[i].SubItems[I_UPDATE_AT].Text.Equals(DateTime.Today.ToShortDateString()))
+                    countEdit++;
+
+                if ( l.Items[i].SubItems[I_IS_FULLTIME].Text.Equals("Так") )
+                    countFull++;
+
+                salary += Double.Parse( l.Items[i].SubItems[I_SALARY].Text );
+            }
+
+            return new object[] { dismissed, salary, countEdit, countFull };
         }
     }
 }
