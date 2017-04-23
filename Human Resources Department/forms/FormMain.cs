@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees;
+using System.Drawing.Printing;
 
 namespace Human_Resources_Department.forms
 {
@@ -213,12 +214,10 @@ namespace Human_Resources_Department.forms
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "Автоматизована система \"Кадри\" для обліку працівників " +
-                "і зарахування заробітної плати." + "\n\n"
-                + "Автор: Хрущ Олексій, ФОАІС 2-10.",
-                "Про програму"
-            );
+            using ( BoxAbout b = new BoxAbout() )
+            {
+                b.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -322,6 +321,9 @@ namespace Human_Resources_Department.forms
             EmployeesLV.GetAllData();
         }
 
+        /// <summary>
+        /// Update stats.
+        /// </summary>
         private void Button7_Click(object sender, EventArgs e)
         {
             if (EmployeesLV.GetCountItems() <= 0)
@@ -336,6 +338,7 @@ namespace Human_Resources_Department.forms
             listBox1.Items.Add("Зарплата: "               + data[1]);
             listBox1.Items.Add("Редагувань (сьогодні): "  + data[2]);
             listBox1.Items.Add("На повний робочий день: " + data[3]);
+            // Other..
         }
     }
 }

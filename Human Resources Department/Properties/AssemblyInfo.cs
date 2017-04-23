@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Human Resources Department")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Автоматизована система \"Кадри\"")]
+[assembly: AssemblyDescription("Для обліку кадрів і зарплатні.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Human Resources Department")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("Хрущ Олексій, ФОАІС 2-10")]
+[assembly: AssemblyProduct("Автоматизована система \"Кадри\"")]
+[assembly: AssemblyCopyright("Автоматизована система \"Кадри\" © 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
