@@ -89,9 +89,12 @@
     <Compile Include="classes\employees\db\EmployeesModel.cs" />
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\employees\db\EmployeesTable.cs" />
+    <Compile Include="classes\employees\Employees.cs" />
     <Compile Include="classes\employees\EmployeesLV.cs" />
     <Compile Include="classes\employees\EmployeesPanel.cs" />
     <Compile Include="classes\employees\EmployeesSearch.cs" />
+    <Compile Include="classes\helplers\LV.cs" />
+    <Compile Include="classes\helplers\Salary.cs" />
     <Compile Include="forms\FormFilter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +118,12 @@
     </Compile>
     <Compile Include="forms\FormChoose.Designer.cs">
       <DependentUpon>FormChoose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormSalary.Designer.cs">
+      <DependentUpon>FormSalary.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FormSearch.cs">
       <SubType>Form</SubType>
@@ -140,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormChoose.resx">
       <DependentUpon>FormChoose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormSalary.resx">
+      <DependentUpon>FormSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormSearch.resx">
       <DependentUpon>FormSearch.cs</DependentUpon>

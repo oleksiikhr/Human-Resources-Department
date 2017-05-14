@@ -32,8 +32,12 @@ namespace Human_Resources_Department.classes.employees.db
             catch { }
         }
 
-        public IEnumerable<EmployeesTable> GetAllData()
+        public IEnumerable<EmployeesTable> GetAllData(bool allEmployees = false)
         {
+            if (allEmployees)
+                return QueryEmployees("SELECT * FROM " + typeof(EmployeesTable).Name
+                    + " WHERE IsActivity = 1");
+
             return QueryEmployees("SELECT * FROM " + typeof(EmployeesTable).Name);
         }
 

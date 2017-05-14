@@ -3,10 +3,11 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.helplers;
 
 namespace Human_Resources_Department.classes.employees
 {
-    class EmployeesLV
+    class EmployeesLV : LV
     {
         private static ListView l;
 
@@ -26,16 +27,11 @@ namespace Human_Resources_Department.classes.employees
         public const int I_SETCOMPANY   = 13;
         public const int I_UPDATE_AT    = 14;
 
-        public static void SetListBox(ListView listBox)
+        public static void SetListBox(ListView listView)
         {
-            l = listBox;
+            l = listView;
 
-            l.View = View.Details;
-            l.MultiSelect = false;
-            l.FullRowSelect = true;
-            l.AllowColumnReorder = true;
-            l.HideSelection = false;
-            l.GridLines = true;
+            LV.Normillize(listView);
         }
 
         public static void SetNameColumns()
@@ -65,9 +61,9 @@ namespace Human_Resources_Department.classes.employees
             foreach (var one in data)
             {
                 l.Items.Add( new ListViewItem( new[] {
-                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
-                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
-                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
+                    LV.T(one.Id), LV.T(one.FName), LV.T(one.LName), LV.T(one.MName), LV.T(one.Job), LV.T(one.City),
+                    LV.T(one.Email), LV.T(one.Tel), LV.T(one.Family), LV.T(one.Salary), LV.T(one.IsActivity),
+                    LV.T(one.IsFulltime), LV.T(one.Birthday), LV.T(one.SetCompany), LV.T(one.UpdateAt)
                 }));
 
                 if (!one.IsActivity)
@@ -84,36 +80,24 @@ namespace Human_Resources_Department.classes.employees
 
             foreach (var one in data)
             {
-                l.Items[index].SubItems[I_FNAME].Text       = T(one.FName);
-                l.Items[index].SubItems[I_LNAME].Text       = T(one.LName);
-                l.Items[index].SubItems[I_MNAME].Text       = T(one.MName);
-                l.Items[index].SubItems[I_JOB].Text         = T(one.Job);
-                l.Items[index].SubItems[I_CITY].Text        = T(one.City);
-                l.Items[index].SubItems[I_EMAIL].Text       = T(one.Email);
-                l.Items[index].SubItems[I_TEL].Text         = T(one.Tel);
-                l.Items[index].SubItems[I_FAMILY].Text      = T(one.Family);
-                l.Items[index].SubItems[I_SALARY].Text      = T(one.Salary);
-                l.Items[index].SubItems[I_IS_ACTIVITY].Text = T(one.IsActivity);
-                l.Items[index].SubItems[I_IS_FULLTIME].Text = T(one.IsFulltime);
-                l.Items[index].SubItems[I_BIRTHDAY].Text    = T(one.Birthday);
-                l.Items[index].SubItems[I_SETCOMPANY].Text  = T(one.SetCompany);
-                l.Items[index].SubItems[I_UPDATE_AT].Text   = T(one.UpdateAt);
-
+                l.Items[index].SubItems[I_FNAME].Text       = LV.T(one.FName);
+                l.Items[index].SubItems[I_LNAME].Text       = LV.T(one.LName);
+                l.Items[index].SubItems[I_MNAME].Text       = LV.T(one.MName);
+                l.Items[index].SubItems[I_JOB].Text         = LV.T(one.Job);
+                l.Items[index].SubItems[I_CITY].Text        = LV.T(one.City);
+                l.Items[index].SubItems[I_EMAIL].Text       = LV.T(one.Email);
+                l.Items[index].SubItems[I_TEL].Text         = LV.T(one.Tel);
+                l.Items[index].SubItems[I_FAMILY].Text      = LV.T(one.Family);
+                l.Items[index].SubItems[I_SALARY].Text      = LV.T(one.Salary);
+                l.Items[index].SubItems[I_IS_ACTIVITY].Text = LV.T(one.IsActivity);
+                l.Items[index].SubItems[I_IS_FULLTIME].Text = LV.T(one.IsFulltime);
+                l.Items[index].SubItems[I_BIRTHDAY].Text    = LV.T(one.Birthday);
+                l.Items[index].SubItems[I_SETCOMPANY].Text  = LV.T(one.SetCompany);
+                l.Items[index].SubItems[I_UPDATE_AT].Text   = LV.T(one.UpdateAt);
+                
                 if (!one.IsActivity)
                     l.Items[index].BackColor = Color.FromArgb(255, 205, 210);
             }
-        }
-
-        private static string T(object ob)
-        {
-            if ( ob.GetType() == typeof(bool) )
-                return ((bool) ob) ? "Так" : "Ні";
-            else if ( ob.GetType() == typeof(DateTime) )
-                return ((DateTime) ob).ToShortDateString();
-            else if ( ob.GetType() == typeof(string) )
-                return ((string) ob);
-            else
-                return ob.ToString();
         }
 
         public static void FindCellAndSetFocus(string text, int cell, bool isLower = false)
@@ -140,9 +124,10 @@ namespace Human_Resources_Department.classes.employees
             foreach (var one in data)
             {
                 l.Items.Add( new ListViewItem( new[] {
-                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
-                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
-                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
+                    LV.T(one.Id), LV.T(one.FName), LV.T(one.LName), LV.T(one.MName), LV.T(one.Job),
+                    LV.T(one.City), LV.T(one.Email), LV.T(one.Tel), LV.T(one.Family), LV.T(one.Salary),
+                    LV.T(one.IsActivity), LV.T(one.IsFulltime), LV.T(one.Birthday), LV.T(one.SetCompany),
+                    LV.T(one.UpdateAt)
                 }));
             }
         }

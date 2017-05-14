@@ -1,11 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees;
-using System.Drawing.Printing;
 
 namespace Human_Resources_Department.forms
 {
@@ -209,7 +207,10 @@ namespace Human_Resources_Department.forms
 
         private void SalaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            using ( FormSalary f = new FormSalary() )
+            {
+                f.ShowDialog();
+            }
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -276,7 +277,7 @@ namespace Human_Resources_Department.forms
             EmployeesPanel.AddInfo(fieldBirthday,    EmployeesLV.GetSelectedCell(EmployeesLV.I_BIRTHDAY));
             EmployeesPanel.AddInfo(fieldSetCompany,  EmployeesLV.GetSelectedCell(EmployeesLV.I_SETCOMPANY));
             EmployeesPanel.AddInfo(fieldUpdateAt,    EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));
-            EmployeesPanel.AddInfo(pictureBox1,      GetImageUrl());
+            EmployeesPanel.AddInfo(pictureBox1,      Employees.GetImageUrl(EmployeesLV.GetSelectedIndex() + 1));
 
             if ( EmployeesLV.EmployeeIsActivity() )
             {
@@ -289,27 +290,7 @@ namespace Human_Resources_Department.forms
                 button5.Text = "Поновити";
             }
         }
-
-        /// <summary>
-        /// Get the picture of the active employee from the folder in the format (JPG|PNG).
-        /// </summary>
-        private Image GetImageUrl()
-        {
-            Image img = null;
-            string path = Config.currentFolder + "\\img\\" + (EmployeesLV.GetSelectedIndex() + 1);
-
-            try
-            {
-                if ( File.Exists(path + ".jpg") )
-                    img = Image.FromFile(path + ".jpg");
-                else if ( File.Exists(path + ".png") )
-                    img = Image.FromFile(path + ".png");
-            }
-            catch { }
-
-            return img;
-        }
-
+        
         /// <summary>
         /// Reset filters.
         /// </summary>
@@ -336,7 +317,7 @@ namespace Human_Resources_Department.forms
             listBox1.Items.Add("Працівників: "            + EmployeesLV.GetCountItems());
             listBox1.Items.Add("Звільнених: "             + data[0]);
             listBox1.Items.Add("Зарплата: "               + data[1]);
-            listBox1.Items.Add("Редагувань (сьогодні): "  + data[2]);
+            listBox1.Items.Add("Редагувань сьоогдні: "    + data[2]);
             listBox1.Items.Add("На повний робочий день: " + data[3]);
             // Other..
         }
