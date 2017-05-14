@@ -2,12 +2,12 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using Human_Resources_Department.classes.employees.db;
 using Human_Resources_Department.classes.helplers;
+using Human_Resources_Department.classes.employees.db;
 
-namespace Human_Resources_Department.classes.employees
+namespace Human_Resources_Department.classes.employees.main
 {
-    class EmployeesLV : LV
+    class EmployeesLV
     {
         private static ListView l;
 

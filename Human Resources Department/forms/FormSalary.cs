@@ -39,15 +39,47 @@ namespace Human_Resources_Department.forms
 
                 foreach (var one in data)
                 {
-                    listView1.Items.Add(new ListViewItem(new[] {
+                    listView1.Items.Add( new ListViewItem( new[] {
                         LV.T(one.Id), LV.T(one.FName), LV.T(one.LName), LV.T(one.Salary)
                     }));
                 }
             }
             catch
             {
-                this.Close();
+                Close();
             }
+        }
+
+        private double GetSalary()
+        {
+            if ( ! IsSelected() )
+                return 0;
+            
+            if ( Double.TryParse(listView1.SelectedItems[0].SubItems[3].Text, out double salary) )
+                return salary;
+
+            return 0;
+        }
+
+        private void Test()
+        {
+            if ( GetSalary() == 0 )
+                return;
+
+            MessageBox.Show( Salary.GetClearSalary( GetSalary() ).ToString() );
+        }
+
+        private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ( ! IsSelected() )
+                return;
+
+            Test();
+        }
+
+        private bool IsSelected()
+        {
+            return listView1.SelectedItems.Count != 0;
         }
     }
 }

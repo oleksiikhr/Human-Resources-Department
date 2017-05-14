@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes.employees.db;
 
-namespace Human_Resources_Department.classes.employees
+namespace Human_Resources_Department.classes.employees.main
 {
     class EmployeesPanel
     {
