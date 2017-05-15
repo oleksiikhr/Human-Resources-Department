@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Human_Resources_Department.classes.helplers
 {
-    abstract class LVHelpler
+    class LVHelpler
     {
         public static void Normillize(ListView l)
         {
@@ -17,12 +17,12 @@ namespace Human_Resources_Department.classes.helplers
 
         public static string T(object ob)
         {
-            if (ob.GetType() == typeof(bool))
-                return ((bool)ob) ? "Так" : "Ні";
-            else if (ob.GetType() == typeof(DateTime))
-                return ((DateTime)ob).ToShortDateString();
-            else if (ob.GetType() == typeof(string))
-                return ((string)ob);
+            if ( ob.GetType() == typeof(bool) )
+                return ( (bool)ob ) ? "Так" : "Ні";
+            else if ( ob.GetType() == typeof(DateTime) )
+                return ( (DateTime)ob ).ToShortDateString();
+            else if ( ob.GetType() == typeof(string) )
+                return ( (string)ob );
             else
                 return ob.ToString();
         }

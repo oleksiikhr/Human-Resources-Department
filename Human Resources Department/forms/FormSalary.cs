@@ -5,16 +5,11 @@ using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.db;
-using System.Drawing.Printing;
-using System.Drawing;
-using System.Drawing.Imaging;
 
 namespace Human_Resources_Department.forms
 {
     public partial class FormSalary : Form
     {
-        private const string TEXT_SEARCH = "Швидкий пошук по Прізвищу";
-
         private const int I_ID     = 0;
         private const int I_FNAME  = 1;
         private const int I_LNAME  = 2;
@@ -112,6 +107,11 @@ namespace Human_Resources_Department.forms
             return listView1.SelectedItems[0].SubItems[cell].Text;
         }
 
+        private object GetItem(int row, int cell)
+        {
+            return listView1.Items[row].SubItems[cell].Text;
+        }
+
         private int GetSelectedID()
         {
             if ( ! IsSelected() )
@@ -122,21 +122,22 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog()
+            ScreenshotHelpler.CreateWithDialog(panel1);
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            ExcelHelpler excel = new ExcelHelpler();
+
+            for (int i = 0; i < listView1.Items.Count; i++)
             {
-                Filter = "Image Files(*.jpg, *.png) | *.jpg; *.png"
-            };
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                int width = Convert.ToInt32(panel1.Width);
-                int height = Convert.ToInt32(panel1.Height);
-
-                Bitmap bmp = new Bitmap(width, height);
-
-                panel1.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
-                bmp.Save(dialog.FileName, ImageFormat.Jpeg);
+                excel.SetValue(i + 1, I_ID, GetItem(i, I_ID));
+                excel.SetValue(i + 1, I_FNAME, GetItem(i, I_FNAME));
+                excel.SetValue(i + 1, I_LNAME, GetItem(i, I_LNAME));
+                excel.SetValue(i + 1, I_SALARY, GetItem(i, I_SALARY));
             }
+
+            excel.SetVisible();
         }
     }
 }
