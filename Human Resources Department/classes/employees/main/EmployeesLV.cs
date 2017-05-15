@@ -227,7 +227,9 @@ namespace Human_Resources_Department.classes.employees.main
                     birthdayTomorrow++;
             }
 
-            return new object[] { dismissed, salary, countEdit, countFull, birthdayToday, birthdayTomorrow };
+            return new object[] {
+                dismissed, salary, countEdit, countFull, birthdayToday, birthdayTomorrow
+            };
         }
     }
 }

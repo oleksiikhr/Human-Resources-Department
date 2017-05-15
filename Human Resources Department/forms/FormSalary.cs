@@ -5,19 +5,36 @@ using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.db;
+using System.Drawing.Printing;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Human_Resources_Department.forms
 {
     public partial class FormSalary : Form
     {
+        private const string TEXT_SEARCH = "Швидкий пошук по Прізвищу";
+
+        private const int I_ID     = 0;
+        private const int I_FNAME  = 1;
+        private const int I_LNAME  = 2;
+        private const int I_SALARY = 3;
+        private const int I_NDFL   = 4;
+        private const int I_VZ     = 5;
+        private const int I_ESV    = 6;
+        private const int I_CLEAR  = 7;
+
         public FormSalary()
         {
             InitializeComponent();
 
+            this.Text = Config.PROJECT_NAME + " - Зарплата";
+
             LVHelpler.Normillize(listView1);
+            PanelHelpler.ActivateToggle(panel1);
+
             SetColumns();
             FillData();
-            PanelHelpler.ActivateToggle(panel1);
         }
 
         private void SetColumns()
@@ -41,7 +58,7 @@ namespace Human_Resources_Department.forms
 
                 foreach (var one in data)
                 {
-                    var salary = new Salary(one.Salary);
+                    var salary = new SalaryHelpler(one.Salary);
 
                     listView1.Items.Add( new ListViewItem( new[] {
                         LVHelpler.T(one.Id), LVHelpler.T(one.FName), LVHelpler.T(one.LName), LVHelpler.T(one.Salary),
@@ -72,16 +89,14 @@ namespace Human_Resources_Department.forms
             if ( ! IsSelected() )
                 return;
 
-            MessageBox.Show(GetSelectedID() + "\n" + Employees.GetImageUrl(GetSelectedID()));
-
             pictureBox1.Image = Employees.GetImageUrl( GetSelectedID() );
-            textBox1.Text = GetSelectedItem(1).ToString();
-            textBox2.Text = GetSelectedItem(2).ToString();
-            textBox3.Text = GetSelectedItem(3).ToString();
-            textBox4.Text = GetSelectedItem(4).ToString();
-            textBox5.Text = GetSelectedItem(5).ToString();
-            textBox6.Text = GetSelectedItem(6).ToString();
-            textBox7.Text = GetSelectedItem(7).ToString();
+            textBox1.Text = GetSelectedItem(I_FNAME).ToString();
+            textBox5.Text = GetSelectedItem(I_LNAME).ToString();
+            textBox2.Text = GetSelectedItem(I_SALARY).ToString();
+            textBox3.Text = GetSelectedItem(I_NDFL).ToString();
+            textBox4.Text = GetSelectedItem(I_VZ).ToString();
+            textBox6.Text = GetSelectedItem(I_ESV).ToString();
+            textBox7.Text = GetSelectedItem(I_CLEAR).ToString();
         }
 
         private bool IsSelected()
@@ -102,7 +117,26 @@ namespace Human_Resources_Department.forms
             if ( ! IsSelected() )
                 return 0;
 
-            return Convert.ToInt32( listView1.SelectedItems[0].SubItems[0].Text );
+            return Convert.ToInt32( listView1.SelectedItems[0].SubItems[I_ID].Text );
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog()
+            {
+                Filter = "Image Files(*.jpg, *.png) | *.jpg; *.png"
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                int width = Convert.ToInt32(panel1.Width);
+                int height = Convert.ToInt32(panel1.Height);
+
+                Bitmap bmp = new Bitmap(width, height);
+
+                panel1.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
+                bmp.Save(dialog.FileName, ImageFormat.Jpeg);
+            }
         }
     }
 }

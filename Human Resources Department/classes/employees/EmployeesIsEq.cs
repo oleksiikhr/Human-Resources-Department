@@ -5,9 +5,9 @@ using Human_Resources_Department.classes.employees.main;
 
 namespace Human_Resources_Department.classes.employees
 {
-    class EmployeesSearch
+    class EmployeesIsEq
     {
-        public static bool IsEqualsTextBox(TextBox t, int iRow, int iCell)
+        public static bool TextBox(TextBox t, int iRow, int iCell)
         {
             if ( string.IsNullOrWhiteSpace(t.Text) )
                 return true;
@@ -17,7 +17,7 @@ namespace Human_Resources_Department.classes.employees
                 StringComparison.OrdinalIgnoreCase);
         }
 
-        public static bool IsEqualsCheckBox(CheckBox c, CheckBox isActive, int iRow, int iCell)
+        public static bool CheckBox(CheckBox c, CheckBox isActive, int iRow, int iCell)
         {
             if (isActive.Checked)
                 return c.Checked == EmployeesLV.GetValueItem(iRow, iCell).Equals("Так");
@@ -25,7 +25,7 @@ namespace Human_Resources_Department.classes.employees
             return true;
         }
 
-        public static bool IsEqualsDateTime(DateTimePicker dtp, CheckBox isActive, int iRow, int iCell)
+        public static bool DateTime(DateTimePicker dtp, CheckBox isActive, int iRow, int iCell)
         {
             if (isActive.Checked)
                 if (!dtp.Value.Date.ToShortDateString().Equals(

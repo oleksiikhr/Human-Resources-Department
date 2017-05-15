@@ -1,6 +1,6 @@
 ﻿namespace Human_Resources_Department.classes.helplers
 {
-    class Salary
+    class SalaryHelpler
     {
         double salary;
 
@@ -8,7 +8,7 @@
         const double K_VZ   = 0.015;
         const double K_ESV  = 0.22;
 
-        public Salary(double salary)
+        public SalaryHelpler(double salary)
         {
             this.salary = salary;
         }

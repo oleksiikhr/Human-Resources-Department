@@ -311,14 +311,14 @@ namespace Human_Resources_Department.forms
             if (EmployeesLV.GetCountItems() <= 0)
                 return;
 
-            listBox1.Items.Clear();
-
             var data = EmployeesLV.GetBasicInfo();
 
-            listBox1.Items.Add("Працівників: "            + EmployeesLV.GetCountItems());
-            listBox1.Items.Add("Звільнених: "             + data[0]);
-            listBox1.Items.Add("Зарплата: "               + data[1]);
-            listBox1.Items.Add("Редагувань сьогодні: "    + data[2]);
+            listBox1.Items.Clear();
+
+            listBox1.Items.Add("Працівників: " + EmployeesLV.GetCountItems());
+            listBox1.Items.Add("Звільнених: " + data[0]);
+            listBox1.Items.Add("Зарплата: " + data[1]);
+            listBox1.Items.Add("Редагувань сьогодні: " + data[2]);
             listBox1.Items.Add("На повний робочий день: " + data[3]);
             listBox1.Items.Add("День народжень сьогодні/завтра: " + data[4] + "/" + data[5]);
         }
