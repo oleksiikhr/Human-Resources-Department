@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Human_Resources_Department.classes.helplers
 {
-    class LV
+    abstract class LVHelpler
     {
         public static void Normillize(ListView l)
         {

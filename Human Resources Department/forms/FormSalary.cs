@@ -14,9 +14,10 @@ namespace Human_Resources_Department.forms
         {
             InitializeComponent();
 
-            LV.Normillize(listView1);
+            LVHelpler.Normillize(listView1);
             SetColumns();
             FillData();
+            PanelHelpler.ActivateToggle(panel1);
         }
 
         private void SetColumns()
@@ -28,6 +29,7 @@ namespace Human_Resources_Department.forms
             listView1.Columns.Add("НДФЛ");
             listView1.Columns.Add("ВЗ");
             listView1.Columns.Add("ЄСВ");
+            listView1.Columns.Add("Чиста Зарплата");
         }
 
         private void FillData()
@@ -39,8 +41,12 @@ namespace Human_Resources_Department.forms
 
                 foreach (var one in data)
                 {
+                    var salary = new Salary(one.Salary);
+
                     listView1.Items.Add( new ListViewItem( new[] {
-                        LV.T(one.Id), LV.T(one.FName), LV.T(one.LName), LV.T(one.Salary)
+                        LVHelpler.T(one.Id), LVHelpler.T(one.FName), LVHelpler.T(one.LName), LVHelpler.T(one.Salary),
+                        salary.GetNDFL().ToString(), salary.GetVZ().ToString(),
+                        salary.GetESV().ToString(), salary.GetClearSalary().ToString()
                     }));
                 }
             }
@@ -55,18 +61,10 @@ namespace Human_Resources_Department.forms
             if ( ! IsSelected() )
                 return 0;
             
-            if ( Double.TryParse(listView1.SelectedItems[0].SubItems[3].Text, out double salary) )
+            if ( Double.TryParse(GetSelectedItem(3).ToString(), out double salary) )
                 return salary;
 
             return 0;
-        }
-
-        private void Test()
-        {
-            if ( GetSalary() == 0 )
-                return;
-
-            MessageBox.Show( Salary.GetClearSalary( GetSalary() ).ToString() );
         }
 
         private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,12 +72,37 @@ namespace Human_Resources_Department.forms
             if ( ! IsSelected() )
                 return;
 
-            Test();
+            MessageBox.Show(GetSelectedID() + "\n" + Employees.GetImageUrl(GetSelectedID()));
+
+            pictureBox1.Image = Employees.GetImageUrl( GetSelectedID() );
+            textBox1.Text = GetSelectedItem(1).ToString();
+            textBox2.Text = GetSelectedItem(2).ToString();
+            textBox3.Text = GetSelectedItem(3).ToString();
+            textBox4.Text = GetSelectedItem(4).ToString();
+            textBox5.Text = GetSelectedItem(5).ToString();
+            textBox6.Text = GetSelectedItem(6).ToString();
+            textBox7.Text = GetSelectedItem(7).ToString();
         }
 
         private bool IsSelected()
         {
             return listView1.SelectedItems.Count != 0;
+        }
+
+        private object GetSelectedItem(int cell)
+        {
+            if ( ! IsSelected() )
+                return 0;
+
+            return listView1.SelectedItems[0].SubItems[cell].Text;
+        }
+
+        private int GetSelectedID()
+        {
+            if ( ! IsSelected() )
+                return 0;
+
+            return Convert.ToInt32( listView1.SelectedItems[0].SubItems[0].Text );
         }
     }
 }

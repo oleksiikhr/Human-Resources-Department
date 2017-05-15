@@ -93,8 +93,9 @@
     <Compile Include="classes\employees\main\EmployeesLV.cs" />
     <Compile Include="classes\employees\main\EmployeesPanel.cs" />
     <Compile Include="classes\employees\EmployeesSearch.cs" />
-    <Compile Include="classes\helplers\LV.cs" />
-    <Compile Include="classes\helplers\Salary.cs" />
+    <Compile Include="classes\helplers\LVHelpler.cs" />
+    <Compile Include="classes\helplers\PanelHelpler.cs" />
+    <Compile Include="classes\Salary.cs" />
     <Compile Include="forms\FormFilter.cs">
       <SubType>Form</SubType>
     </Compile>

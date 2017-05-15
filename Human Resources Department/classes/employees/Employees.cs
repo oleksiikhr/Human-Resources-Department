@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Human_Resources_Department.classes.employees
 {
@@ -15,9 +16,9 @@ namespace Human_Resources_Department.classes.employees
 
             try
             {
-                if (File.Exists(path + ".jpg"))
+                if ( File.Exists(path + ".jpg") )
                     img = Image.FromFile(path + ".jpg");
-                else if (File.Exists(path + ".png"))
+                else if ( File.Exists(path + ".png") )
                     img = Image.FromFile(path + ".png");
             }
             catch { }

@@ -318,9 +318,9 @@ namespace Human_Resources_Department.forms
             listBox1.Items.Add("Працівників: "            + EmployeesLV.GetCountItems());
             listBox1.Items.Add("Звільнених: "             + data[0]);
             listBox1.Items.Add("Зарплата: "               + data[1]);
-            listBox1.Items.Add("Редагувань сьоогдні: "    + data[2]);
+            listBox1.Items.Add("Редагувань сьогодні: "    + data[2]);
             listBox1.Items.Add("На повний робочий день: " + data[3]);
-            // Other..
+            listBox1.Items.Add("День народжень сьогодні/завтра: " + data[4] + "/" + data[5]);
         }
     }
 }

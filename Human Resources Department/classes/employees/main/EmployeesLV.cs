@@ -7,7 +7,7 @@ using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.classes.employees.main
 {
-    class EmployeesLV
+    class EmployeesLV : LVHelpler
     {
         private static ListView l;
 
@@ -31,7 +31,7 @@ namespace Human_Resources_Department.classes.employees.main
         {
             l = listView;
 
-            LV.Normillize(listView);
+            Normillize(listView);
         }
 
         public static void SetNameColumns()
@@ -61,9 +61,9 @@ namespace Human_Resources_Department.classes.employees.main
             foreach (var one in data)
             {
                 l.Items.Add( new ListViewItem( new[] {
-                    LV.T(one.Id), LV.T(one.FName), LV.T(one.LName), LV.T(one.MName), LV.T(one.Job), LV.T(one.City),
-                    LV.T(one.Email), LV.T(one.Tel), LV.T(one.Family), LV.T(one.Salary), LV.T(one.IsActivity),
-                    LV.T(one.IsFulltime), LV.T(one.Birthday), LV.T(one.SetCompany), LV.T(one.UpdateAt)
+                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
+                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
+                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
                 }));
 
                 if (!one.IsActivity)
@@ -80,20 +80,20 @@ namespace Human_Resources_Department.classes.employees.main
 
             foreach (var one in data)
             {
-                l.Items[index].SubItems[I_FNAME].Text       = LV.T(one.FName);
-                l.Items[index].SubItems[I_LNAME].Text       = LV.T(one.LName);
-                l.Items[index].SubItems[I_MNAME].Text       = LV.T(one.MName);
-                l.Items[index].SubItems[I_JOB].Text         = LV.T(one.Job);
-                l.Items[index].SubItems[I_CITY].Text        = LV.T(one.City);
-                l.Items[index].SubItems[I_EMAIL].Text       = LV.T(one.Email);
-                l.Items[index].SubItems[I_TEL].Text         = LV.T(one.Tel);
-                l.Items[index].SubItems[I_FAMILY].Text      = LV.T(one.Family);
-                l.Items[index].SubItems[I_SALARY].Text      = LV.T(one.Salary);
-                l.Items[index].SubItems[I_IS_ACTIVITY].Text = LV.T(one.IsActivity);
-                l.Items[index].SubItems[I_IS_FULLTIME].Text = LV.T(one.IsFulltime);
-                l.Items[index].SubItems[I_BIRTHDAY].Text    = LV.T(one.Birthday);
-                l.Items[index].SubItems[I_SETCOMPANY].Text  = LV.T(one.SetCompany);
-                l.Items[index].SubItems[I_UPDATE_AT].Text   = LV.T(one.UpdateAt);
+                l.Items[index].SubItems[I_FNAME].Text       = T(one.FName);
+                l.Items[index].SubItems[I_LNAME].Text       = T(one.LName);
+                l.Items[index].SubItems[I_MNAME].Text       = T(one.MName);
+                l.Items[index].SubItems[I_JOB].Text         = T(one.Job);
+                l.Items[index].SubItems[I_CITY].Text        = T(one.City);
+                l.Items[index].SubItems[I_EMAIL].Text       = T(one.Email);
+                l.Items[index].SubItems[I_TEL].Text         = T(one.Tel);
+                l.Items[index].SubItems[I_FAMILY].Text      = T(one.Family);
+                l.Items[index].SubItems[I_SALARY].Text      = T(one.Salary);
+                l.Items[index].SubItems[I_IS_ACTIVITY].Text = T(one.IsActivity);
+                l.Items[index].SubItems[I_IS_FULLTIME].Text = T(one.IsFulltime);
+                l.Items[index].SubItems[I_BIRTHDAY].Text    = T(one.Birthday);
+                l.Items[index].SubItems[I_SETCOMPANY].Text  = T(one.SetCompany);
+                l.Items[index].SubItems[I_UPDATE_AT].Text   = T(one.UpdateAt);
                 
                 if (!one.IsActivity)
                     l.Items[index].BackColor = Color.FromArgb(255, 205, 210);
@@ -124,10 +124,9 @@ namespace Human_Resources_Department.classes.employees.main
             foreach (var one in data)
             {
                 l.Items.Add( new ListViewItem( new[] {
-                    LV.T(one.Id), LV.T(one.FName), LV.T(one.LName), LV.T(one.MName), LV.T(one.Job),
-                    LV.T(one.City), LV.T(one.Email), LV.T(one.Tel), LV.T(one.Family), LV.T(one.Salary),
-                    LV.T(one.IsActivity), LV.T(one.IsFulltime), LV.T(one.Birthday), LV.T(one.SetCompany),
-                    LV.T(one.UpdateAt)
+                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
+                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
+                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
                 }));
             }
         }
@@ -205,7 +204,9 @@ namespace Human_Resources_Department.classes.employees.main
             double salary = 0;
             int countEdit = 0;
             int countFull = 0;
-            
+            int birthdayToday = 0;
+            int birthdayTomorrow = 0;
+
             for (int i = 0; i < GetCountItems(); i++)
             {
                 if ( ! l.Items[i].SubItems[I_IS_ACTIVITY].Text.Equals("Так") )
@@ -218,9 +219,15 @@ namespace Human_Resources_Department.classes.employees.main
                     countFull++;
 
                 salary += Double.Parse( l.Items[i].SubItems[I_SALARY].Text );
+
+                if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.ToShortDateString()))
+                    birthdayToday++;
+
+                if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.AddDays(1).ToShortDateString()))
+                    birthdayTomorrow++;
             }
 
-            return new object[] { dismissed, salary, countEdit, countFull };
+            return new object[] { dismissed, salary, countEdit, countFull, birthdayToday, birthdayTomorrow };
         }
     }
 }
