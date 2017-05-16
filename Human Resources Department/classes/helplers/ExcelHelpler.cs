@@ -5,29 +5,31 @@ namespace Human_Resources_Department.classes.helplers
 {
     class ExcelHelpler
     {
-        Excel.Application ObjExcel;
-        Excel.Workbook ObjWorkBook;
-        Excel.Worksheet ObjWorkSheet;
+        private Excel.Application excel;
+        private Excel.Workbook workBook;
+        private Excel.Worksheet worksSheet;
 
         public ExcelHelpler()
         {
-            ObjExcel = new Excel.Application();
-            ObjWorkBook = ObjExcel.Workbooks.Add(Type.Missing);
-            ObjWorkSheet = ObjWorkBook.Sheets[1];
+            excel = new Excel.Application();
+            workBook = excel.Workbooks.Add(Type.Missing);
+            worksSheet = workBook.Sheets[1];
         }
 
-        public void SetValue(int row, int col, object val)
+        public void SetValue(int row, int col, object val, bool isFormula = false)
         {
-            if (row < 1 || col < 1)
-                return;
+            row++; col++;
 
-            ObjWorkSheet.Cells[row, col] = val;
+            if (isFormula)
+                worksSheet.Cells[row, col].Formula = val;
+            else
+                worksSheet.Cells[row, col] = val;
         }
 
         public void SetVisible(bool toggle = true)
         {
-            ObjExcel.Visible = toggle;
-            ObjExcel.UserControl = toggle;
+            excel.Visible = toggle;
+            excel.UserControl = toggle;
         }
     }
 }

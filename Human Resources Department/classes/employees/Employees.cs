@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace Human_Resources_Department.classes.employees
 {

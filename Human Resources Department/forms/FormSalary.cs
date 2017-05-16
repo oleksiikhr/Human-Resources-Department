@@ -41,7 +41,7 @@ namespace Human_Resources_Department.forms
             listView1.Columns.Add("НДФЛ");
             listView1.Columns.Add("ВЗ");
             listView1.Columns.Add("ЄСВ");
-            listView1.Columns.Add("Чиста Зарплата");
+            listView1.Columns.Add("Чиста зарплата");
         }
 
         private void FillData()
@@ -122,22 +122,55 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            if ( listView1.Items.Count == 0 )
+                return;
+
             ScreenshotHelpler.CreateWithDialog(panel1);
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if ( listView1.Items.Count == 0 )
+                return;
+
             ExcelHelpler excel = new ExcelHelpler();
+            int row = 0;
+
+            excel.SetValue(row, I_ID,     "#");
+            excel.SetValue(row, I_FNAME,  "Ім'я");
+            excel.SetValue(row, I_LNAME,  "Прізвище");
+            excel.SetValue(row, I_SALARY, "Зарплата");
+            excel.SetValue(row, I_NDFL,   "НДФЛ");
+            excel.SetValue(row, I_VZ,     "ВЗ");
+            excel.SetValue(row, I_ESV,    "ЄСВ");
+            excel.SetValue(row, I_CLEAR,  "Чиста зарплата");
 
             for (int i = 0; i < listView1.Items.Count; i++)
             {
-                excel.SetValue(i + 1, I_ID, GetItem(i, I_ID));
-                excel.SetValue(i + 1, I_FNAME, GetItem(i, I_FNAME));
-                excel.SetValue(i + 1, I_LNAME, GetItem(i, I_LNAME));
-                excel.SetValue(i + 1, I_SALARY, GetItem(i, I_SALARY));
+                row = i + 1;
+
+                excel.SetValue(row, I_ID,     GetItem(i, I_ID));
+                excel.SetValue(row, I_FNAME,  GetItem(i, I_FNAME));
+                excel.SetValue(row, I_LNAME,  GetItem(i, I_LNAME));
+                excel.SetValue(row, I_SALARY, ReplaceComma(GetItem(i, I_SALARY).ToString()));
+                excel.SetValue(row, I_NDFL,   ReplaceComma(GetItem(i, I_NDFL).ToString()));
+                excel.SetValue(row, I_VZ,     ReplaceComma(GetItem(i, I_VZ).ToString()));
+                excel.SetValue(row, I_ESV,    ReplaceComma(GetItem(i, I_ESV).ToString()));
+                excel.SetValue(row, I_CLEAR,  ReplaceComma(GetItem(i, I_CLEAR).ToString()));
             }
 
+            excel.SetValue(row + 1, I_SALARY, "=SUM(D2:D" + row + ")", true);
+            excel.SetValue(row + 1, I_NDFL, "=SUM(E2:E" + row + ")", true);
+            excel.SetValue(row + 1, I_VZ, "=SUM(F2:F" + row + ")", true);
+            excel.SetValue(row + 1, I_ESV, "=SUM(G2:G" + row + ")", true);
+            excel.SetValue(row + 1, I_CLEAR, "=SUM(H2:H" + row + ")", true);
+
             excel.SetVisible();
+        }
+
+        private string ReplaceComma(string text)
+        {
+            return text.Replace(",", ".");
         }
     }
 }
