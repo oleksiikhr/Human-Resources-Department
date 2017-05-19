@@ -92,17 +92,23 @@
     </Compile>
     <Compile Include="classes\Config.cs" />
     <Compile Include="classes\employees\db\EmployeesModel.cs" />
-    <Compile Include="classes\Database.cs" />
+    <Compile Include="classes\db\Database.cs" />
     <Compile Include="classes\employees\db\EmployeesTable.cs" />
     <Compile Include="classes\employees\Employees.cs" />
     <Compile Include="classes\employees\main\EmployeesLV.cs" />
     <Compile Include="classes\employees\main\EmployeesPanel.cs" />
     <Compile Include="classes\employees\EmployeesIsEq.cs" />
-    <Compile Include="classes\helplers\ExcelHelpler.cs" />
-    <Compile Include="classes\helplers\LVHelpler.cs" />
-    <Compile Include="classes\helplers\PanelHelpler.cs" />
-    <Compile Include="classes\helplers\SalaryHelpler.cs" />
-    <Compile Include="classes\helplers\ScreenshotHelpler.cs" />
+    <Compile Include="classes\helplers\HExcel.cs" />
+    <Compile Include="classes\helplers\HListView.cs" />
+    <Compile Include="classes\helplers\HPanel.cs" />
+    <Compile Include="classes\helplers\HSalary.cs" />
+    <Compile Include="classes\helplers\HScreenshot.cs" />
+    <Compile Include="forms\FormEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormEmployee.Designer.cs">
+      <DependentUpon>FormEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\FormFilter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     <Compile Include="libs\SQLiteAsync.cs" />
     <EmbeddedResource Include="boxex\BoxAbout.resx">
       <DependentUpon>BoxAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormEmployee.resx">
+      <DependentUpon>FormEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormFilter.resx">
       <DependentUpon>FormFilter.cs</DependentUpon>

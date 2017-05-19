@@ -64,16 +64,20 @@
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.додатиПрацівникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.імпортЗExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.експортВExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.фільтрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.зарплатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             this.panelEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -434,11 +438,33 @@
             // 
             // додатиПрацівникаToolStripMenuItem
             // 
+            this.додатиПрацівникаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.додатиToolStripMenuItem,
+            this.імпортЗExcelToolStripMenuItem,
+            this.експортВExcelToolStripMenuItem});
             this.додатиПрацівникаToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.додатиПрацівникаToolStripMenuItem.Name = "додатиПрацівникаToolStripMenuItem";
-            this.додатиПрацівникаToolStripMenuItem.Size = new System.Drawing.Size(123, 20);
-            this.додатиПрацівникаToolStripMenuItem.Text = "Додати працівника";
-            this.додатиПрацівникаToolStripMenuItem.Click += new System.EventHandler(this.FormInsertToolStripMenuItem_Click);
+            this.додатиПрацівникаToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.додатиПрацівникаToolStripMenuItem.Text = "Працівники";
+            // 
+            // додатиToolStripMenuItem
+            // 
+            this.додатиToolStripMenuItem.Name = "додатиToolStripMenuItem";
+            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.додатиToolStripMenuItem.Text = "Додати";
+            this.додатиToolStripMenuItem.Click += new System.EventHandler(this.FormInsertToolStripMenuItem_Click);
+            // 
+            // імпортЗExcelToolStripMenuItem
+            // 
+            this.імпортЗExcelToolStripMenuItem.Name = "імпортЗExcelToolStripMenuItem";
+            this.імпортЗExcelToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.імпортЗExcelToolStripMenuItem.Text = "Імпорт в Excel";
+            // 
+            // експортВExcelToolStripMenuItem
+            // 
+            this.експортВExcelToolStripMenuItem.Name = "експортВExcelToolStripMenuItem";
+            this.експортВExcelToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.експортВExcelToolStripMenuItem.Text = "Експорт з Excel";
             // 
             // фільтрToolStripMenuItem
             // 
@@ -482,19 +508,6 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label14.Location = new System.Drawing.Point(12, 460);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(138, 15);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Статистика (з фільтрами)";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label15
             // 
             this.label15.AutoEllipsis = true;
@@ -504,9 +517,9 @@
             this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label15.Location = new System.Drawing.Point(12, 32);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(124, 15);
+            this.label15.Size = new System.Drawing.Size(115, 15);
             this.label15.TabIndex = 10;
-            this.label15.Text = "Вибраний співробітник";
+            this.label15.Text = "Швидке редагування";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listView1
@@ -517,7 +530,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.Location = new System.Drawing.Point(285, 57);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(408, 500);
+            this.listView1.Size = new System.Drawing.Size(408, 521);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
@@ -547,13 +560,13 @@
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(166, 460);
+            this.button7.Location = new System.Drawing.Point(12, 456);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(101, 19);
-            this.button7.TabIndex = 25;
-            this.button7.Text = "Оновити";
+            this.button7.Size = new System.Drawing.Size(255, 23);
+            this.button7.TabIndex = 34;
+            this.button7.Text = "Відкирити картку працівника";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            this.button7.Click += new System.EventHandler(this.EmployeeToolStripMenuItem_Click);
             // 
             // listBox1
             // 
@@ -562,24 +575,53 @@
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 478);
+            this.listBox1.Location = new System.Drawing.Point(12, 509);
             this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBox1.Size = new System.Drawing.Size(255, 79);
-            this.listBox1.TabIndex = 0;
+            this.listBox1.Size = new System.Drawing.Size(255, 64);
+            this.listBox1.TabIndex = 35;
+            // 
+            // label13
+            // 
+            this.label13.AutoEllipsis = true;
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.White;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label13.Location = new System.Drawing.Point(12, 491);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(138, 15);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "Статистика (з фільтрами)";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(166, 490);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(101, 19);
+            this.button8.TabIndex = 37;
+            this.button8.Text = "Оновити";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(705, 569);
+            this.ClientSize = new System.Drawing.Size(705, 589);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panelEmployee);
             this.Controls.Add(this.findField);
@@ -633,7 +675,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem фільтрToolStripMenuItem;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ToolStripMenuItem додатиПрацівникаToolStripMenuItem;
@@ -646,7 +687,12 @@
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem зарплатаToolStripMenuItem;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ToolStripMenuItem додатиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem імпортЗExcelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem експортВExcelToolStripMenuItem;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button8;
     }
 }
 

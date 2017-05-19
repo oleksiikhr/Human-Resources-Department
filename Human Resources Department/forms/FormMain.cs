@@ -27,9 +27,12 @@ namespace Human_Resources_Department.forms
             WindowState = FormWindowState.Maximized;
             AcceptButton = button4;
 
-            ExcelHelpler excel = new ExcelHelpler();
-            excel.OpenExcel();
-            excel.CloseExcel();
+            //ExcelHelpler excel = new ExcelHelpler();
+
+            //if ( ! excel.OpenExcel() )
+            //    return;
+
+            //excel.CloseExcel();
         }
 
         /// <summary>
@@ -167,6 +170,8 @@ namespace Human_Resources_Department.forms
         
         private void FormChooseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Hide();
+
             // Close and clear all data.
             EmployeesLV.ClearAllData();
             EmployeesPanel.ClearAllData();
@@ -176,6 +181,8 @@ namespace Human_Resources_Department.forms
 
             if ( ! SelectProject() )
                 Application.ExitThread();
+
+            Show();
         }
 
         private void FormInsertToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,6 +208,17 @@ namespace Human_Resources_Department.forms
         private void SalaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using ( FormSalary f = new FormSalary() )
+            {
+                f.ShowDialog();
+            }
+        }
+
+        private void EmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ( ! EmployeesLV.IsSelected() )
+                return;
+
+            using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedIndex()) )
             {
                 f.ShowDialog();
             }
@@ -297,8 +315,9 @@ namespace Human_Resources_Department.forms
 
         /// <summary>
         /// Update stats.
+        /// DELETE. ADD NEW STATICS.
         /// </summary>
-        private void Button7_Click(object sender, EventArgs e)
+        private void Button8_Click(object sender, EventArgs e)
         {
             if (EmployeesLV.GetCountItems() <= 0)
                 return;
