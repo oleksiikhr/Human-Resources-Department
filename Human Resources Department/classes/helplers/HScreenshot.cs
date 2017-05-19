@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 
 namespace Human_Resources_Department.classes.helplers
 {
-    class ScreenshotHelpler
+    class HScreenshot
     {
         public static void CreateWithDialog(Control c)
         {

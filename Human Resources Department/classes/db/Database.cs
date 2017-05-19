@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace Human_Resources_Department.classes
+namespace Human_Resources_Department.classes.db
 {
     public abstract class Database
     {

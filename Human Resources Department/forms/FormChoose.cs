@@ -15,7 +15,7 @@ namespace Human_Resources_Department.forms
         {
             InitializeComponent();
 
-            this.Text = Config.PROJECT_NAME + " - Вибір фірми";
+            this.Text = Config.PROJECT_NAME + " - Вибір філіала";
         }
 
         private void InitialForm_Load(object sender, EventArgs e)

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using Human_Resources_Department.classes.db;
+
 namespace Human_Resources_Department.classes.employees.db
 {
     class EmployeesModel : Database

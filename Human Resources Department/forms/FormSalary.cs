@@ -25,8 +25,8 @@ namespace Human_Resources_Department.forms
 
             this.Text = Config.PROJECT_NAME + " - Зарплата";
 
-            LVHelpler.Normillize(listView1);
-            PanelHelpler.ActivateToggle(panel1);
+            HListView.Normillize(listView1);
+            HPanel.ActivateToggle(panel1);
 
             SetColumns();
             FillData();
@@ -53,10 +53,10 @@ namespace Human_Resources_Department.forms
 
                 foreach (var one in data)
                 {
-                    var salary = new SalaryHelpler(one.Salary);
+                    var salary = new HSalary(one.Salary);
 
                     listView1.Items.Add( new ListViewItem( new[] {
-                        LVHelpler.T(one.Id), LVHelpler.T(one.FName), LVHelpler.T(one.LName), LVHelpler.T(one.Salary),
+                        HListView.T(one.Id), HListView.T(one.FName), HListView.T(one.LName), HListView.T(one.Salary),
                         salary.GetNDFL().ToString(), salary.GetVZ().ToString(),
                         salary.GetESV().ToString(), salary.GetClearSalary().ToString()
                     }));
@@ -125,7 +125,7 @@ namespace Human_Resources_Department.forms
             if ( listView1.Items.Count == 0 )
                 return;
 
-            ScreenshotHelpler.CreateWithDialog(panel1);
+            HScreenshot.CreateWithDialog(panel1);
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace Human_Resources_Department.forms
             if ( listView1.Items.Count == 0 )
                 return;
 
-            ExcelHelpler excel = new ExcelHelpler();
+            HExcel excel = new HExcel();
 
             if ( ! excel.ExportExcel() )
                 return;

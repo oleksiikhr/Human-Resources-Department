@@ -26,7 +26,9 @@ namespace Human_Resources_Department.classes.employees.db
         public string Family { get; set; }
         
         public double Salary { get; set; }
-        
+
+        public bool Sex { get; set; }
+
         public bool IsActivity { get; set; }
 
         public bool IsFulltime { get; set; }

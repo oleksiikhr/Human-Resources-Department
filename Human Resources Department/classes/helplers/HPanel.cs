@@ -2,7 +2,7 @@
 
 namespace Human_Resources_Department.classes.helplers
 {
-    class PanelHelpler
+    class HPanel
     {
         public static void ActivateToggle(Panel p, bool toggle = false)
         {

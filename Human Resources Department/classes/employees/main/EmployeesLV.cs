@@ -7,7 +7,7 @@ using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.classes.employees.main
 {
-    class EmployeesLV : LVHelpler
+    class EmployeesLV : HListView
     {
         private static ListView l;
 
