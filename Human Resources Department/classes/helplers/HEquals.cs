@@ -3,11 +3,11 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes.employees.main;
 
-namespace Human_Resources_Department.classes.employees
+namespace Human_Resources_Department.classes.helplers
 {
-    class EmployeesIsEq
+    class HEquals
     {
-        public static bool TextBox(TextBox t, int iRow, int iCell)
+        public static bool E(TextBox t, int iRow, int iCell)
         {
             if ( string.IsNullOrWhiteSpace(t.Text) )
                 return true;
@@ -16,8 +16,8 @@ namespace Human_Resources_Department.classes.employees
                 EmployeesLV.GetValueItem(iRow, iCell).ToString(),
                 StringComparison.OrdinalIgnoreCase);
         }
-
-        public static bool CheckBox(CheckBox c, CheckBox isActive, int iRow, int iCell)
+        
+        public static bool E(CheckBox c, CheckBox isActive, int iRow, int iCell)
         {
             if (isActive.Checked)
                 return c.Checked == EmployeesLV.GetValueItem(iRow, iCell).Equals("Так");
@@ -25,7 +25,7 @@ namespace Human_Resources_Department.classes.employees
             return true;
         }
 
-        public static bool DateTime(DateTimePicker dtp, CheckBox isActive, int iRow, int iCell)
+        public static bool E(DateTimePicker dtp, CheckBox isActive, int iRow, int iCell)
         {
             if (isActive.Checked)
                 if (!dtp.Value.Date.ToShortDateString().Equals(

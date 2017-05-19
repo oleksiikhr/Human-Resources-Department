@@ -1,21 +1,30 @@
-﻿using SQLite;
+﻿using Human_Resources_Department.classes.employees.db;
+using SQLite;
 
 namespace Human_Resources_Department.classes.db
 {
-    public abstract class Database
+    public class Database
     {
-        protected SQLiteConnection con;
-        
-        public Database(string uriFile)
+        public const string FILE_NAME = "db.sqlite";
+
+        private static bool instanse = false;
+
+        protected static SQLiteConnection con;
+
+        public static void SetFile(string uriToFile)
         {
+            if (instanse)
+                return;
+
             try
             {
-                con = new SQLiteConnection(uriFile);
+                con = new SQLiteConnection(uriToFile);
+                instanse = true;
             }
             catch { }
         }
 
-        public void CreateTable<T>()
+        public static void CreateTable<T>()
         {
             try
             {
@@ -24,7 +33,7 @@ namespace Human_Resources_Department.classes.db
             catch { }
         }
 
-        public int Insert(object ob)
+        public static int Insert(object ob)
         {
             try
             {
@@ -36,7 +45,7 @@ namespace Human_Resources_Department.classes.db
             }
         }
 
-        public int Update(string q, object[] args)
+        public static int Update(string q, object[] args)
         {
             try
             {
@@ -48,9 +57,19 @@ namespace Human_Resources_Department.classes.db
             }
         }
 
-        public void CloseConnection()
+        public static void CreateDatabases(string uriToFile)
+        {
+            SetFile(uriToFile);
+
+            CreateTable<MainTable>();
+            // ..
+            instanse = true;
+        }
+
+        public static void CloseConnection()
         {
             con.Close();
+            instanse = false;
         }
     }
 }

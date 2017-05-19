@@ -23,7 +23,7 @@ namespace Human_Resources_Department.forms
         {
             InitializeComponent();
 
-            this.Text = Config.PROJECT_NAME + " - Зарплата";
+            Text = Config.PROJECT_NAME + " - Зарплата";
 
             HListView.Normillize(listView1);
             HPanel.ActivateToggle(panel1);
@@ -46,26 +46,26 @@ namespace Human_Resources_Department.forms
 
         private void FillData()
         {
-            try
-            {
-                var data = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-                    .GetAllData(true);
+            //try
+            //{
+            //    var data = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
+            //        .GetAllData(true);
 
-                foreach (var one in data)
-                {
-                    var salary = new HSalary(one.Salary);
+            //    foreach (var one in data)
+            //    {
+            //        var salary = new HSalary(one.Salary);
 
-                    listView1.Items.Add( new ListViewItem( new[] {
-                        HListView.T(one.Id), HListView.T(one.FName), HListView.T(one.LName), HListView.T(one.Salary),
-                        salary.GetNDFL().ToString(), salary.GetVZ().ToString(),
-                        salary.GetESV().ToString(), salary.GetClearSalary().ToString()
-                    }));
-                }
-            }
-            catch
-            {
-                Close();
-            }
+            //        listView1.Items.Add( new ListViewItem( new[] {
+            //            HListView.T(one.Id), HListView.T(one.FName), HListView.T(one.LName), HListView.T(one.Salary),
+            //            salary.GetNDFL().ToString(), salary.GetVZ().ToString(),
+            //            salary.GetESV().ToString(), salary.GetClearSalary().ToString()
+            //        }));
+            //    }
+            //}
+            //catch
+            //{
+            //    Close();
+            //}
         }
 
         private double GetSalary()

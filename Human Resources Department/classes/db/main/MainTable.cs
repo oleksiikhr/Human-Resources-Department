@@ -3,7 +3,7 @@ using SQLite;
 
 namespace Human_Resources_Department.classes.employees.db
 {
-    class EmployeesTable
+    class MainTable
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int Id { get; set; }

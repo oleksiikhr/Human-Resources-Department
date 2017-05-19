@@ -4,7 +4,6 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees.db;
-using Human_Resources_Department.classes.employees.main;
 
 namespace Human_Resources_Department.forms
 {
@@ -21,12 +20,6 @@ namespace Human_Resources_Department.forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if ( ! File.Exists(Config.currentFolder + "\\" + EmployeesModel.nameFile) )
-            {
-                MessageBox.Show("Файл не знайдено", "Помилка");
-                return;
-            }
-
             bool isCorrectSalary = double.TryParse(textBox12.Text, out double salary);
             if ( !isCorrectSalary && !string.IsNullOrWhiteSpace(textBox12.Text) )
             {
@@ -40,53 +33,53 @@ namespace Human_Resources_Department.forms
                 return;
             }
 
-            EmployeesModel db =
-                new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
+            //EmployeesModel db =
+            //    new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
 
-            int isInsert = db.Insert( new EmployeesTable
-            {
-                FName = textBox1.Text,
-                LName = textBox2.Text,
-                MName = textBox3.Text,
-                Job = textBox5.Text,
-                City = textBox4.Text,
-                Family = textBox9.Text,
-                Email = textBox8.Text,
-                Tel = textBox10.Text,
-                Salary = salary,
-                IsActivity = true,
-                IsFulltime = checkBox1.Checked,
-                Birthday = dateTimePicker1.Value.Date,
-                SetCompany = dateTimePicker2.Value.Date,
-                UpdateAt = DateTime.Today,
-            });
+            //int isInsert = db.Insert( new EmployeesTable
+            //{
+            //    FName = textBox1.Text,
+            //    LName = textBox2.Text,
+            //    MName = textBox3.Text,
+            //    Job = textBox5.Text,
+            //    City = textBox4.Text,
+            //    Family = textBox9.Text,
+            //    Email = textBox8.Text,
+            //    Tel = textBox10.Text,
+            //    Salary = salary,
+            //    IsActivity = true,
+            //    IsFulltime = checkBox1.Checked,
+            //    Birthday = dateTimePicker1.Value.Date,
+            //    SetCompany = dateTimePicker2.Value.Date,
+            //    UpdateAt = DateTime.Today,
+            //});
 
-            if (isInsert == 1)
-            {
-                EmployeesLV.AddNew();
+            //if (isInsert == 1)
+            //{
+            //    EmployeesLV.AddNew();
 
-                label9.Visible = true;
-                timer1.Enabled = true;
+            //    label9.Visible = true;
+            //    timer1.Enabled = true;
 
-                if (pathImage == null)
-                    return;
+            //    if (pathImage == null)
+            //        return;
 
-                try
-                {
-                    int count = (EmployeesLV.GetCountItems() > 0) ? EmployeesLV.GetCountItems() : 1;
+            //    try
+            //    {
+            //        int count = (EmployeesLV.GetCountItems() > 0) ? EmployeesLV.GetCountItems() : 1;
 
-                    Directory.CreateDirectory(Config.currentFolder + "\\img");
+            //        Directory.CreateDirectory(Config.currentFolder + "\\img");
 
-                    File.Copy(
-                        pathImage,
-                        Config.currentFolder + "\\img\\" + count + Path.GetExtension(pathImage)
-                    );
-                }
-                catch
-                {
-                    MessageBox.Show("Файл не зберігся", "Помилка");
-                }
-            }
+            //        File.Copy(
+            //            pathImage,
+            //            Config.currentFolder + "\\img\\" + count + Path.GetExtension(pathImage)
+            //        );
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("Файл не зберігся", "Помилка");
+            //    }
+            //}
         }
 
         private void Button2_Click(object sender, EventArgs e)

@@ -6,6 +6,7 @@ using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.main;
+using Human_Resources_Department.classes.db;
 
 namespace Human_Resources_Department.forms
 {
@@ -173,6 +174,8 @@ namespace Human_Resources_Department.forms
             Hide();
 
             // Close and clear all data.
+            Database.CloseConnection();
+
             EmployeesLV.ClearAllData();
             EmployeesPanel.ClearAllData();
 
@@ -216,7 +219,10 @@ namespace Human_Resources_Department.forms
         private void EmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if ( ! EmployeesLV.IsSelected() )
+            {
+                MessageBox.Show("Оберіть працівника");
                 return;
+            }
 
             using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedIndex()) )
             {
@@ -245,6 +251,8 @@ namespace Human_Resources_Department.forms
                 {
                     try
                     {
+                        Database.SetFile(Config.currentFolder + "\\" + Database.FILE_NAME);
+
                         EmployeesLV.SetListBox(listView1);
                         EmployeesLV.SetNameColumns();
                         EmployeesLV.GetAllData();

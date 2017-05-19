@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Human_Resources_Department.classes;
+using System;
 using System.Windows.Forms;
 
 namespace Human_Resources_Department.forms
@@ -8,13 +9,10 @@ namespace Human_Resources_Department.forms
         private int id;
         private object[] data;
 
-        public FormEmployee()
-        {
-            InitializeComponent();
-        }
-
         public FormEmployee(int id)
         {
+            InitializeComponent();
+
             this.id = id;
 
             try
@@ -25,6 +23,8 @@ namespace Human_Resources_Department.forms
             {
                 return;
             }
+
+            Text = Config.PROJECT_NAME + " - Картка працівника: #" + (id + 1);
         }
     }
 }

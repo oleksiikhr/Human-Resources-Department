@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.db;
 
 namespace Human_Resources_Department.forms
 {
@@ -15,7 +16,7 @@ namespace Human_Resources_Department.forms
         {
             InitializeComponent();
 
-            this.Text = Config.PROJECT_NAME + " - Вибір філіала";
+            Text = Config.PROJECT_NAME + " - Вибір філіала";
         }
 
         private void InitialForm_Load(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace Human_Resources_Department.forms
             catch
             {
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
-                this.Close();
+                Close();
             }
         }
 
@@ -60,7 +61,7 @@ namespace Human_Resources_Department.forms
                 {
                     Directory.CreateDirectory(folder);
                     Directory.CreateDirectory(folder + "\\img");
-                    new EmployeesModel(folder + "\\" + EmployeesModel.nameFile).CreateTable<EmployeesTable>();
+                    Database.CreateDatabases(folder + "\\" + Database.FILE_NAME);
                 }
                 catch
                 {

@@ -91,13 +91,13 @@
       <DependentUpon>BoxAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="classes\Config.cs" />
-    <Compile Include="classes\employees\db\EmployeesModel.cs" />
+    <Compile Include="classes\db\main\MainModel.cs" />
     <Compile Include="classes\db\Database.cs" />
-    <Compile Include="classes\employees\db\EmployeesTable.cs" />
+    <Compile Include="classes\db\main\MainTable.cs" />
     <Compile Include="classes\employees\Employees.cs" />
     <Compile Include="classes\employees\main\EmployeesLV.cs" />
     <Compile Include="classes\employees\main\EmployeesPanel.cs" />
-    <Compile Include="classes\employees\EmployeesIsEq.cs" />
+    <Compile Include="classes\helplers\HEquals.cs" />
     <Compile Include="classes\helplers\HExcel.cs" />
     <Compile Include="classes\helplers\HListView.cs" />
     <Compile Include="classes\helplers\HPanel.cs" />
@@ -214,7 +214,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="classes\db\jobs\" />
+    <Folder Include="classes\db\pass\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.1\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.1\build\net40\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
