@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.employees.db;
 using Human_Resources_Department.classes.db;
 
 namespace Human_Resources_Department.forms
@@ -37,7 +36,7 @@ namespace Human_Resources_Department.forms
         {
             if ( String.IsNullOrWhiteSpace(textBox1.Text) )
             {
-                MessageBox.Show("Введіть ім'я нової фірми", "Помилка");
+                MessageBox.Show("Введіть ім'я нового філіала", "Помилка");
                 return;
             }
 
@@ -107,7 +106,8 @@ namespace Human_Resources_Department.forms
             {
                 button3.Enabled = true;
                 button4.Enabled = true;
-                this.Text = Config.PROJECT_NAME + " - " + listBox1.SelectedItem;
+
+                Text = Config.PROJECT_NAME + " - " + listBox1.SelectedItem;
             }
         }
 
@@ -141,8 +141,8 @@ namespace Human_Resources_Department.forms
         private void Button3_Click(object sender, EventArgs e)
         {
             Config.currentFolder = Config.projectFolder + "\\" + listBox1.SelectedItem;
-            this.is_open = true;
-            this.Close();
+            is_open = true;
+            Close();
         }
 
         public string GetURI()
@@ -157,7 +157,7 @@ namespace Human_Resources_Department.forms
 
         public bool IsOpen()
         {
-            return this.is_open;
+            return is_open;
         }
     }
 }

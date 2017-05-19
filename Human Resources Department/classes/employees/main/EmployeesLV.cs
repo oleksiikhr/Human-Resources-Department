@@ -55,22 +55,21 @@ namespace Human_Resources_Department.classes.employees.main
 
         public static void GetAllData()
         {
-            //var data = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-            //        .GetAllData();
+            var data = MainModel.GetAllData();            
 
-            //foreach (var one in data)
-            //{
-            //    l.Items.Add( new ListViewItem( new[] {
-            //        T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
-            //        T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
-            //        T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
-            //    }));
+            foreach (var one in data)
+            {
+                l.Items.Add (new ListViewItem( new[] {
+                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
+                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
+                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
+                }));
 
-            //    if (!one.IsActivity)
-            //        l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
-            //}
+                if (!one.IsActivity)
+                    l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
+            }
         }
-        
+
         public static void UpdateSelectedData()
         {
             int index = GetSelectedIndex();
@@ -116,19 +115,18 @@ namespace Human_Resources_Department.classes.employees.main
             }
         }
 
-        public static void AddNew()
+        public static void AddNewToBDAndToLV()
         {
-            //var data = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-            //        .GetOneData(GetCountItems() + 1);
+            var data = MainModel.GetOneData(GetCountItems() + 1);
 
-            //foreach (var one in data)
-            //{
-            //    l.Items.Add( new ListViewItem( new[] {
-            //        T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
-            //        T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
-            //        T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
-            //    }));
-            //}
+            foreach (var one in data)
+            {
+                l.Items.Add( new ListViewItem( new[] {
+                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
+                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
+                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
+                }));
+            }
         }
 
         public static void Delete(int index)

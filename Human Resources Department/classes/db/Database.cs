@@ -1,5 +1,7 @@
-﻿using Human_Resources_Department.classes.employees.db;
-using SQLite;
+﻿using SQLite;
+
+using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.db.pass;
 
 namespace Human_Resources_Department.classes.db
 {
@@ -62,6 +64,7 @@ namespace Human_Resources_Department.classes.db
             SetFile(uriToFile);
 
             CreateTable<MainTable>();
+            CreateTable<PassTable>();
             // ..
             instanse = true;
         }

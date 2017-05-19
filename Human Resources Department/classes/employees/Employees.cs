@@ -24,7 +24,5 @@ namespace Human_Resources_Department.classes.employees
 
             return img;
         }
-
-
     }
 }

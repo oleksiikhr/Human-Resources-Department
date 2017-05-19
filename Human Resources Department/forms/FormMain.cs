@@ -3,10 +3,10 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
+using Human_Resources_Department.classes.db;
 using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.main;
-using Human_Resources_Department.classes.db;
 
 namespace Human_Resources_Department.forms
 {
@@ -323,7 +323,6 @@ namespace Human_Resources_Department.forms
 
         /// <summary>
         /// Update stats.
-        /// DELETE. ADD NEW STATICS.
         /// </summary>
         private void Button8_Click(object sender, EventArgs e)
         {

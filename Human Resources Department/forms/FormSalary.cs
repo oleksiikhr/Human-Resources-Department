@@ -5,6 +5,7 @@ using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.employees.main;
 
 namespace Human_Resources_Department.forms
 {

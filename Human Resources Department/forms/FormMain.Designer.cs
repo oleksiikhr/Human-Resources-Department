@@ -78,6 +78,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label13 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panelEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -90,7 +91,7 @@
             this.findField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.findField.Location = new System.Drawing.Point(285, 31);
             this.findField.Name = "findField";
-            this.findField.Size = new System.Drawing.Size(226, 20);
+            this.findField.Size = new System.Drawing.Size(138, 20);
             this.findField.TabIndex = 0;
             this.findField.Text = "Швидкий пошук по Прізвищу";
             this.findField.Enter += new System.EventHandler(this.FindField_Enter);
@@ -432,7 +433,8 @@
             this.проПрограмуToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(705, 24);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip1.Size = new System.Drawing.Size(758, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -450,14 +452,14 @@
             // додатиToolStripMenuItem
             // 
             this.додатиToolStripMenuItem.Name = "додатиToolStripMenuItem";
-            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.додатиToolStripMenuItem.Text = "Додати";
             this.додатиToolStripMenuItem.Click += new System.EventHandler(this.FormInsertToolStripMenuItem_Click);
             // 
             // імпортЗExcelToolStripMenuItem
             // 
             this.імпортЗExcelToolStripMenuItem.Name = "імпортЗExcelToolStripMenuItem";
-            this.імпортЗExcelToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.імпортЗExcelToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.імпортЗExcelToolStripMenuItem.Text = "Імпорт в Excel";
             // 
             // експортВExcelToolStripMenuItem
@@ -499,7 +501,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(508, 31);
+            this.button4.Location = new System.Drawing.Point(422, 31);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(71, 20);
             this.button4.TabIndex = 6;
@@ -517,9 +519,9 @@
             this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label15.Location = new System.Drawing.Point(12, 32);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(115, 15);
+            this.label15.Size = new System.Drawing.Size(124, 15);
             this.label15.TabIndex = 10;
-            this.label15.Text = "Швидке редагування";
+            this.label15.Text = "Вибраний співробітник";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listView1
@@ -530,7 +532,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.Location = new System.Drawing.Point(285, 57);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(408, 521);
+            this.listView1.Size = new System.Drawing.Size(461, 521);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
@@ -544,7 +546,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(585, 31);
+            this.button6.Location = new System.Drawing.Point(499, 31);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(108, 20);
             this.button6.TabIndex = 24;
@@ -555,7 +557,7 @@
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            this.button7.BackColor = System.Drawing.Color.DimGray;
             this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -609,12 +611,24 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(613, 33);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(133, 17);
+            this.checkBox1.TabIndex = 38;
+            this.checkBox1.Text = "Показати звільнених";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(705, 589);
+            this.ClientSize = new System.Drawing.Size(758, 589);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.listBox1);
@@ -693,6 +707,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

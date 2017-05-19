@@ -6,9 +6,7 @@ namespace Human_Resources_Department.classes.employees.db
 {
     class MainModel : Database
     {
-        public const string nameFile = "main.sqlite";
-
-        public IEnumerable<MainTable> QueryEmployees(string q, object[] args = null)
+        public static IEnumerable<MainTable> QueryEmployees(string q, object[] args = null)
         {
             try
             {
@@ -23,7 +21,7 @@ namespace Human_Resources_Department.classes.employees.db
             }
         }
 
-        public void CreateTableEmployees()
+        public static void CreateTableEmployees()
         {
             try
             {
@@ -32,7 +30,7 @@ namespace Human_Resources_Department.classes.employees.db
             catch { }
         }
 
-        public IEnumerable<MainTable> GetAllData(bool allEmployees = false)
+        public static IEnumerable<MainTable> GetAllData(bool allEmployees = false)
         {
             if (allEmployees)
                 return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name
@@ -41,7 +39,7 @@ namespace Human_Resources_Department.classes.employees.db
             return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name);
         }
 
-        public IEnumerable<MainTable> GetOneData(int id)
+        public static IEnumerable<MainTable> GetOneData(int id)
         {
             return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name
                 + " WHERE id = ?", new object[] { id });

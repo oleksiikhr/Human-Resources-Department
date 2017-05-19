@@ -3,7 +3,9 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
+using Human_Resources_Department.classes.db;
 using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.employees.main;
 
 namespace Human_Resources_Department.forms
 {
@@ -32,54 +34,51 @@ namespace Human_Resources_Department.forms
                 MessageBox.Show("Повинно бути вказано ім'я", "Помилка");
                 return;
             }
+            
+            int isInsert = Database.Insert(new MainTable
+            {
+                FName = textBox1.Text,
+                LName = textBox2.Text,
+                MName = textBox3.Text,
+                Job = textBox5.Text,
+                City = textBox4.Text,
+                Family = textBox9.Text,
+                Email = textBox8.Text,
+                Tel = textBox10.Text,
+                Salary = salary,
+                IsActivity = true,
+                IsFulltime = checkBox1.Checked,
+                Birthday = dateTimePicker1.Value.Date,
+                SetCompany = dateTimePicker2.Value.Date,
+                UpdateAt = DateTime.Today,
+            });
 
-            //EmployeesModel db =
-            //    new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile);
+            if (isInsert == 1)
+            {
+                EmployeesLV.AddNewToBDAndToLV();
 
-            //int isInsert = db.Insert( new EmployeesTable
-            //{
-            //    FName = textBox1.Text,
-            //    LName = textBox2.Text,
-            //    MName = textBox3.Text,
-            //    Job = textBox5.Text,
-            //    City = textBox4.Text,
-            //    Family = textBox9.Text,
-            //    Email = textBox8.Text,
-            //    Tel = textBox10.Text,
-            //    Salary = salary,
-            //    IsActivity = true,
-            //    IsFulltime = checkBox1.Checked,
-            //    Birthday = dateTimePicker1.Value.Date,
-            //    SetCompany = dateTimePicker2.Value.Date,
-            //    UpdateAt = DateTime.Today,
-            //});
+                label9.Visible = true;
+                timer1.Enabled = true;
 
-            //if (isInsert == 1)
-            //{
-            //    EmployeesLV.AddNew();
+                if (pathImage == null)
+                    return;
 
-            //    label9.Visible = true;
-            //    timer1.Enabled = true;
+                try
+                {
+                    int count = (EmployeesLV.GetCountItems() > 0) ? EmployeesLV.GetCountItems() : 1;
 
-            //    if (pathImage == null)
-            //        return;
+                    Directory.CreateDirectory(Config.currentFolder + "\\img");
 
-            //    try
-            //    {
-            //        int count = (EmployeesLV.GetCountItems() > 0) ? EmployeesLV.GetCountItems() : 1;
-
-            //        Directory.CreateDirectory(Config.currentFolder + "\\img");
-
-            //        File.Copy(
-            //            pathImage,
-            //            Config.currentFolder + "\\img\\" + count + Path.GetExtension(pathImage)
-            //        );
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Файл не зберігся", "Помилка");
-            //    }
-            //}
+                    File.Copy(
+                        pathImage,
+                        Config.currentFolder + "\\img\\" + count + Path.GetExtension(pathImage)
+                    );
+                }
+                catch
+                {
+                    MessageBox.Show("Файл не зберігся", "Помилка");
+                }
+            }
         }
 
         private void Button2_Click(object sender, EventArgs e)
