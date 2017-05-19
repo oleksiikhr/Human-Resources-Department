@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Human_Resources_Department.classes.helplers
@@ -12,8 +13,46 @@ namespace Human_Resources_Department.classes.helplers
         public ExcelHelpler()
         {
             excel = new Excel.Application();
-            workBook = excel.Workbooks.Add(Type.Missing);
-            worksSheet = workBook.Sheets[1];
+        }
+
+        public bool ExportExcel()
+        {
+            try
+            {
+                workBook = excel.Workbooks.Add(Type.Missing);
+                worksSheet = workBook.Sheets[1];
+                return true;
+            }
+            catch
+            {
+                MessageBox.Show("Помилка");
+                return false;
+            }
+        }
+
+        public bool OpenExcel()
+        {
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    workBook = excel.Workbooks.Open(dialog.FileName);
+                    worksSheet = workBook.Sheets[1];
+                    return true;
+                }
+                catch
+                {
+                    MessageBox.Show("Помилка");
+                    return false;
+                }
+            }
+
+            return false;
         }
 
         public void SetValue(int row, int col, object val, bool isFormula = false)
@@ -30,6 +69,11 @@ namespace Human_Resources_Department.classes.helplers
         {
             excel.Visible = toggle;
             excel.UserControl = toggle;
+        }
+        
+        public void CloseExcel()
+        {
+            workBook.Close();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
+using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.main;
 
@@ -25,6 +26,10 @@ namespace Human_Resources_Department.forms
 
             WindowState = FormWindowState.Maximized;
             AcceptButton = button4;
+
+            ExcelHelpler excel = new ExcelHelpler();
+            excel.OpenExcel();
+            excel.CloseExcel();
         }
 
         /// <summary>
@@ -162,17 +167,6 @@ namespace Human_Resources_Department.forms
         
         private void FormChooseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "Ви впевнені, що хочете залишити поточний проект?",
-                Text,
-                MessageBoxButtons.YesNo
-            );
-
-            if (result == DialogResult.No)
-                return;
-
-            Hide();
-
             // Close and clear all data.
             EmployeesLV.ClearAllData();
             EmployeesPanel.ClearAllData();
@@ -182,8 +176,6 @@ namespace Human_Resources_Department.forms
 
             if ( ! SelectProject() )
                 Application.ExitThread();
-
-            Show();
         }
 
         private void FormInsertToolStripMenuItem_Click(object sender, EventArgs e)

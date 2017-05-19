@@ -134,6 +134,10 @@ namespace Human_Resources_Department.forms
                 return;
 
             ExcelHelpler excel = new ExcelHelpler();
+
+            if ( ! excel.ExportExcel() )
+                return;
+
             int row = 0;
 
             excel.SetValue(row, I_ID,     "#");
@@ -159,11 +163,11 @@ namespace Human_Resources_Department.forms
                 excel.SetValue(row, I_CLEAR,  ReplaceComma(GetItem(i, I_CLEAR).ToString()));
             }
 
-            excel.SetValue(row + 1, I_SALARY, "=SUM(D2:D" + row + ")", true);
-            excel.SetValue(row + 1, I_NDFL, "=SUM(E2:E" + row + ")", true);
-            excel.SetValue(row + 1, I_VZ, "=SUM(F2:F" + row + ")", true);
-            excel.SetValue(row + 1, I_ESV, "=SUM(G2:G" + row + ")", true);
-            excel.SetValue(row + 1, I_CLEAR, "=SUM(H2:H" + row + ")", true);
+            excel.SetValue(row++, I_SALARY, "=SUM(D2:D" + row + ")", true);
+            excel.SetValue(row, I_NDFL, "=SUM(E2:E" + row + ")", true);
+            excel.SetValue(row, I_VZ, "=SUM(F2:F" + row + ")", true);
+            excel.SetValue(row, I_ESV, "=SUM(G2:G" + row + ")", true);
+            excel.SetValue(row, I_CLEAR, "=SUM(H2:H" + row + ")", true);
 
             excel.SetVisible();
         }

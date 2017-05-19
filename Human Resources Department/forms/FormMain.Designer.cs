@@ -404,8 +404,8 @@
             // 
             this.formChooseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.formChooseToolStripMenuItem.Name = "formChooseToolStripMenuItem";
-            this.formChooseToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
-            this.formChooseToolStripMenuItem.Text = "Вибір фірми";
+            this.formChooseToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.formChooseToolStripMenuItem.Text = "Вибір філіала";
             this.formChooseToolStripMenuItem.Click += new System.EventHandler(this.FormChooseToolStripMenuItem_Click);
             // 
             // пошукToolStripMenuItem
