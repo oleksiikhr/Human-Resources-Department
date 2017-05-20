@@ -21,15 +21,6 @@ namespace Human_Resources_Department.classes.employees.db
             }
         }
 
-        public static void CreateTableEmployees()
-        {
-            try
-            {
-                CreateTable<MainTable>();
-            }
-            catch { }
-        }
-
         public static IEnumerable<MainTable> GetAllData(bool allEmployees = false)
         {
             if (allEmployees)

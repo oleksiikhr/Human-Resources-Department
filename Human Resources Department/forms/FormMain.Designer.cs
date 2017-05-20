@@ -61,14 +61,17 @@
             this.fieldFName = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вибірФіліалаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.імпортВExcelkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.експортЗExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вихідToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.додатиПрацівникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.імпортЗExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.експортВExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.посадиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.зарплатаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.фільтрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.зарплатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -407,11 +410,41 @@
             // 
             // formChooseToolStripMenuItem
             // 
+            this.formChooseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вибірФіліалаToolStripMenuItem,
+            this.імпортВExcelkToolStripMenuItem,
+            this.експортЗExcelToolStripMenuItem,
+            this.вихідToolStripMenuItem});
             this.formChooseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.formChooseToolStripMenuItem.Name = "formChooseToolStripMenuItem";
-            this.formChooseToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.formChooseToolStripMenuItem.Text = "Вибір філіала";
-            this.formChooseToolStripMenuItem.Click += new System.EventHandler(this.FormChooseToolStripMenuItem_Click);
+            this.formChooseToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.formChooseToolStripMenuItem.Text = "Меню";
+            // 
+            // вибірФіліалаToolStripMenuItem
+            // 
+            this.вибірФіліалаToolStripMenuItem.Name = "вибірФіліалаToolStripMenuItem";
+            this.вибірФіліалаToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.вибірФіліалаToolStripMenuItem.Text = "Вибір філіала";
+            this.вибірФіліалаToolStripMenuItem.Click += new System.EventHandler(this.FormChooseToolStripMenuItem_Click);
+            // 
+            // імпортВExcelkToolStripMenuItem
+            // 
+            this.імпортВExcelkToolStripMenuItem.Name = "імпортВExcelkToolStripMenuItem";
+            this.імпортВExcelkToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.імпортВExcelkToolStripMenuItem.Text = "Імпорт в Excel";
+            // 
+            // експортЗExcelToolStripMenuItem
+            // 
+            this.експортЗExcelToolStripMenuItem.Name = "експортЗExcelToolStripMenuItem";
+            this.експортЗExcelToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.експортЗExcelToolStripMenuItem.Text = "Експорт з Excel";
+            // 
+            // вихідToolStripMenuItem
+            // 
+            this.вихідToolStripMenuItem.Name = "вихідToolStripMenuItem";
+            this.вихідToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.вихідToolStripMenuItem.Text = "Вихід";
+            this.вихідToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // пошукToolStripMenuItem
             // 
@@ -429,7 +462,6 @@
             this.додатиПрацівникаToolStripMenuItem,
             this.пошукToolStripMenuItem,
             this.фільтрToolStripMenuItem,
-            this.зарплатаToolStripMenuItem,
             this.проПрограмуToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -442,31 +474,33 @@
             // 
             this.додатиПрацівникаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.додатиToolStripMenuItem,
-            this.імпортЗExcelToolStripMenuItem,
-            this.експортВExcelToolStripMenuItem});
+            this.посадиToolStripMenuItem,
+            this.зарплатаToolStripMenuItem1});
             this.додатиПрацівникаToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.додатиПрацівникаToolStripMenuItem.Name = "додатиПрацівникаToolStripMenuItem";
-            this.додатиПрацівникаToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.додатиПрацівникаToolStripMenuItem.Text = "Працівники";
+            this.додатиПрацівникаToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.додатиПрацівникаToolStripMenuItem.Text = "Філіал";
             // 
             // додатиToolStripMenuItem
             // 
             this.додатиToolStripMenuItem.Name = "додатиToolStripMenuItem";
-            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.додатиToolStripMenuItem.Text = "Додати";
+            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.додатиToolStripMenuItem.Text = "Додати працівника";
             this.додатиToolStripMenuItem.Click += new System.EventHandler(this.FormInsertToolStripMenuItem_Click);
             // 
-            // імпортЗExcelToolStripMenuItem
+            // посадиToolStripMenuItem
             // 
-            this.імпортЗExcelToolStripMenuItem.Name = "імпортЗExcelToolStripMenuItem";
-            this.імпортЗExcelToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.імпортЗExcelToolStripMenuItem.Text = "Імпорт в Excel";
+            this.посадиToolStripMenuItem.Name = "посадиToolStripMenuItem";
+            this.посадиToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.посадиToolStripMenuItem.Text = "Посади";
+            this.посадиToolStripMenuItem.Click += new System.EventHandler(this.JobsToolStripMenuItem_Click);
             // 
-            // експортВExcelToolStripMenuItem
+            // зарплатаToolStripMenuItem1
             // 
-            this.експортВExcelToolStripMenuItem.Name = "експортВExcelToolStripMenuItem";
-            this.експортВExcelToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.експортВExcelToolStripMenuItem.Text = "Експорт з Excel";
+            this.зарплатаToolStripMenuItem1.Name = "зарплатаToolStripMenuItem1";
+            this.зарплатаToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
+            this.зарплатаToolStripMenuItem1.Text = "Зарплата";
+            this.зарплатаToolStripMenuItem1.Click += new System.EventHandler(this.SalaryToolStripMenuItem_Click);
             // 
             // фільтрToolStripMenuItem
             // 
@@ -475,14 +509,6 @@
             this.фільтрToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.фільтрToolStripMenuItem.Text = "Фільтри";
             this.фільтрToolStripMenuItem.Click += new System.EventHandler(this.FormFilterToolStripMenuItem_Click);
-            // 
-            // зарплатаToolStripMenuItem
-            // 
-            this.зарплатаToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.зарплатаToolStripMenuItem.Name = "зарплатаToolStripMenuItem";
-            this.зарплатаToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.зарплатаToolStripMenuItem.Text = "Зарплата";
-            this.зарплатаToolStripMenuItem.Click += new System.EventHandler(this.SalaryToolStripMenuItem_Click);
             // 
             // проПрограмуToolStripMenuItem
             // 
@@ -699,15 +725,18 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem зарплатаToolStripMenuItem;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ToolStripMenuItem додатиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem імпортЗExcelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem експортВExcelToolStripMenuItem;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ToolStripMenuItem вибірФіліалаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem імпортВExcelkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem експортЗExcelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вихідToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem посадиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem зарплатаToolStripMenuItem1;
     }
 }
 

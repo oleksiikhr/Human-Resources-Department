@@ -2,6 +2,9 @@
 
 using Human_Resources_Department.classes.employees.db;
 using Human_Resources_Department.classes.db.pass;
+using Human_Resources_Department.classes.db.jobs;
+using Human_Resources_Department.classes.db.army;
+using Human_Resources_Department.classes.db.edu;
 
 namespace Human_Resources_Department.classes.db
 {
@@ -59,12 +62,27 @@ namespace Human_Resources_Department.classes.db
             }
         }
 
+        public static int DeleteObject<T>(object id)
+        {
+            try
+            {
+                return con.Delete<T>(id);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public static void CreateDatabases(string uriToFile)
         {
             SetFile(uriToFile);
 
             CreateTable<MainTable>();
             CreateTable<PassTable>();
+            CreateTable<JobsTable>();
+            CreateTable<ArmyTable>();
+            CreateTable<EduTable>();
             // ..
             instanse = true;
         }

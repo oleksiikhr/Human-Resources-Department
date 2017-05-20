@@ -39,6 +39,6 @@ namespace Human_Resources_Department.classes.employees.db
 
         public int TimeTableNum { get; set; } // Табельный №
 
-        public int JobsId { get; set; } // Должность с таб. Jobs
+        public int JobsId { get; set; } // ID должности с таб. Jobs
     }
 }

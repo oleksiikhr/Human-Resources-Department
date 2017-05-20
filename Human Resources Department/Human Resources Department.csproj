@@ -91,6 +91,12 @@
       <DependentUpon>BoxAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="classes\Config.cs" />
+    <Compile Include="classes\db\army\ArmyModel.cs" />
+    <Compile Include="classes\db\army\ArmyTable.cs" />
+    <Compile Include="classes\db\edu\EduModel.cs" />
+    <Compile Include="classes\db\edu\EduTable.cs" />
+    <Compile Include="classes\db\jobs\JobsModel.cs" />
+    <Compile Include="classes\db\jobs\JobsTable.cs" />
     <Compile Include="classes\db\main\MainModel.cs" />
     <Compile Include="classes\db\Database.cs" />
     <Compile Include="classes\db\main\MainTable.cs" />
@@ -122,6 +128,12 @@
     </Compile>
     <Compile Include="forms\FormInsert.Designer.cs">
       <DependentUpon>FormInsert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormJobs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormJobs.Designer.cs">
+      <DependentUpon>FormJobs.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FormMain.cs">
       <SubType>Form</SubType>
@@ -162,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormInsert.resx">
       <DependentUpon>FormInsert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormJobs.resx">
+      <DependentUpon>FormJobs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -216,9 +231,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="classes\db\jobs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.1\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.1\build\net40\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

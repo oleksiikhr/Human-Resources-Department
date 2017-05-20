@@ -174,8 +174,6 @@ namespace Human_Resources_Department.forms
             Hide();
 
             // Close and clear all data.
-            Database.CloseConnection();
-
             EmployeesLV.ClearAllData();
             EmployeesPanel.ClearAllData();
 
@@ -191,9 +189,6 @@ namespace Human_Resources_Department.forms
         private void FormInsertToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EmployeesPanel.Enabled();
-
-            //FormInsert f = new FormInsert();
-            //f.Show(this);
             
             using ( FormEmployee f = new FormEmployee() )
             {
@@ -242,6 +237,19 @@ namespace Human_Resources_Department.forms
             {
                 b.ShowDialog();
             }
+        }
+
+        private void JobsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using ( FormJobs f = new FormJobs() )
+            {
+                f.ShowDialog();
+            }
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         /// <summary>
