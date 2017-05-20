@@ -30,7 +30,9 @@ namespace Human_Resources_Department.classes.employees.db
         public bool IsActivity { get; set; }
         
         public DateTime EmploymentDate { get; set; } // Дата приёма на работу
-        
+
+        public DateTime DateDismissal { get; set; } // Дата звільнення з роботи
+
         public DateTime UpdateAt { get; set; }
 
         public int IndividualTaxNum { get; set; } // ИНН
