@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes.helplers;
@@ -59,14 +58,18 @@ namespace Human_Resources_Department.classes.employees.main
 
             foreach (var one in data)
             {
-                l.Items.Add (new ListViewItem( new[] {
-                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job),
-                    T(one.Email), T(one.TelWork), T(one.IsActivity),
-                    T(one.EmploymentDate), T(one.UpdateAt)
+                l.Items.Add(new ListViewItem(new[] {
+                    T(one.Id), T(one.FName)
                 }));
 
-                if (!one.IsActivity)
-                    l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
+                //l.Items.Add(new ListViewItem(new[] {
+                //    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job),
+                //    T(one.Email), T(one.TelWork), T(one.IsActivity),
+                //    T(one.EmploymentDate), T(one.UpdateAt)
+                //}));
+
+                //if (!one.IsActivity)
+                //    l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
             }
         }
 

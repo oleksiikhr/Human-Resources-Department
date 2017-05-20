@@ -144,7 +144,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(327, 8);
+            this.label3.Location = new System.Drawing.Point(330, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 6;
@@ -152,7 +152,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(330, 24);
+            this.textBox3.Location = new System.Drawing.Point(333, 24);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(142, 20);
             this.textBox3.TabIndex = 5;
@@ -170,9 +170,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(534, 7);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Підрозділ";
+            this.label4.Text = "Посада";
             // 
             // FormEmployee
             // 
@@ -189,6 +189,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEmployee";

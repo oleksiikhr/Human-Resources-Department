@@ -192,8 +192,14 @@ namespace Human_Resources_Department.forms
         {
             EmployeesPanel.Enabled();
 
-            FormInsert f = new FormInsert();
-            f.Show(this);
+            //FormInsert f = new FormInsert();
+            //f.Show(this);
+            
+            using ( FormEmployee f = new FormEmployee() )
+            {
+                f.ShowDialog();
+            }
+
         }
 
         private void FormSearchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,8 +229,8 @@ namespace Human_Resources_Department.forms
                 MessageBox.Show("Оберіть працівника");
                 return;
             }
-
-            using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedIndex()) )
+            
+            using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedIndex() + 1) )
             {
                 f.ShowDialog();
             }

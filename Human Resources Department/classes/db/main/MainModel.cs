@@ -44,5 +44,10 @@ namespace Human_Resources_Department.classes.employees.db
             return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name
                 + " WHERE id = ?", new object[] { id });
         }
+
+        public static int GetCountRecords()
+        {
+            return con.Table<MainTable>().Count();
+        }
     }
 }
