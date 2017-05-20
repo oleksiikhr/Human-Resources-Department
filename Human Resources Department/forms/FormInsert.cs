@@ -35,7 +35,7 @@ namespace Human_Resources_Department.forms
                 return;
             }
             
-            int isInsert = Database.Insert(new MainTable
+            int isInsert = Database.Insert( new MainTable
             {
                 FName = textBox1.Text,
                 //LName = textBox2.Text,

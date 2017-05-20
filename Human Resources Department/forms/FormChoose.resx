@@ -355,10 +355,13 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 0</value>
+    <value>233, 0</value>
+  </data>
+  <data name="label3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 10, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 15</value>
+    <value>79, 15</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>

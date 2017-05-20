@@ -11,6 +11,8 @@ namespace Human_Resources_Department.classes.employees.db
         [NotNull]
         public string FName { get; set; }
 
+        // Возможно зарплата!!!
+
         public string LName { get; set; }
 
         public string MName { get; set; }
@@ -25,6 +27,10 @@ namespace Human_Resources_Department.classes.employees.db
 
         public string About { get; set; } // Описание
 
+        public string IndividualTaxNum { get; set; } // ИНН
+
+        public string TimeTableNum { get; set; } // Табельный №
+
         public bool Sex { get; set; }
 
         public bool IsActivity { get; set; }
@@ -34,10 +40,6 @@ namespace Human_Resources_Department.classes.employees.db
         public DateTime DateDismissal { get; set; } // Дата звільнення з роботи
 
         public DateTime UpdateAt { get; set; }
-
-        public int IndividualTaxNum { get; set; } // ИНН
-
-        public int TimeTableNum { get; set; } // Табельный №
 
         public int JobsId { get; set; } // ID должности с таб. Jobs
     }

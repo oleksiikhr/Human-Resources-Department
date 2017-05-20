@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
@@ -73,6 +74,7 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -126,6 +128,7 @@
             this.label18.Size = new System.Drawing.Size(18, 15);
             this.label18.TabIndex = 76;
             this.label18.Text = "...";
+            this.label18.Click += new System.EventHandler(this.Label18_Click);
             // 
             // label16
             // 
@@ -138,15 +141,16 @@
             this.label16.Size = new System.Drawing.Size(16, 15);
             this.label16.TabIndex = 75;
             this.label16.Text = "X";
+            this.label16.Click += new System.EventHandler(this.Label16_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(48, 198);
+            this.label17.Location = new System.Drawing.Point(49, 198);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(90, 13);
+            this.label17.Size = new System.Drawing.Size(68, 13);
             this.label17.TabIndex = 74;
-            this.label17.Text = "Файл не вибран";
+            this.label17.Text = "Фотографія";
             // 
             // groupBox2
             // 
@@ -268,6 +272,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Location = new System.Drawing.Point(335, 85);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
@@ -490,6 +495,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "Закрити";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // comboBox2
             // 
@@ -514,18 +520,25 @@
             // 
             // label19
             // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
+            this.label19.BackColor = System.Drawing.Color.DarkSlateGray;
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(297, 435);
+            this.label19.Location = new System.Drawing.Point(271, 432);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(84, 18);
+            this.label19.Padding = new System.Windows.Forms.Padding(20, 4, 20, 4);
+            this.label19.Size = new System.Drawing.Size(106, 23);
             this.label19.TabIndex = 13;
             this.label19.Text = "Збережено";
             this.label19.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // FormEmployee
             // 
@@ -611,5 +624,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Timer timer1;
     }
 }

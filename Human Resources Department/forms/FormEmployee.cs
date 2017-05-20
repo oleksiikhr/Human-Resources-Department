@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.db.jobs;
+using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.db;
 
 namespace Human_Resources_Department.forms
@@ -12,7 +14,7 @@ namespace Human_Resources_Department.forms
     {
         private int id;
         private bool isNew;
-
+        
         public FormEmployee(int id = 0)
         {
             InitializeComponent();
@@ -53,39 +55,116 @@ namespace Human_Resources_Department.forms
 
             try
             {
-                var data = MainModel.GetOneData(id).First();
-                string job = JobsModel.GetJobs(data.JobsId).First().Title;
+                var main = MainModel.GetOneData(id).First();
 
-                MessageBox.Show(job);
-                
-                textBox2.Text = data.FName;
-                comboBox1.Text = job;
+                // Top
+                textBox2.Text = main.FName;
+                textBox1.Text = main.LName;
+                textBox3.Text = main.MName;
+                comboBox1.Text = JobsModel.GetJobs(main.JobsId).First().Title;
+
+                // Middle Main
+                textBox9.Text = main.TimeTableNum.ToString();
+                textBox8.Text = main.IndividualTaxNum.ToString();
+                comboBox3.Text = main.Sex ? "Чоловік" : "Жінка";
+
+                textBox5.Text = main.Email;
+                textBox6.Text = main.TelWork;
+                textBox7.Text = main.TelHome;
+
+                dateTimePicker2.Value = main.EmploymentDate;
+                dateTimePicker3.Value = main.DateDismissal;
+                dateTimePicker1.Value = main.UpdateAt;
+
+                textBox4.Text = main.About;
+
+                // Bottom
+                comboBox2.Text = main.IsActivity ? "Працює" : "Звільнений";
+
+                // Img
+                pictureBox1.Image = Employees.GetImage(id);
             }
             catch { }
         }
         
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (isNew)
+            int jobID = string.IsNullOrWhiteSpace(comboBox1.Text)
+                ? 0
+                : JobsModel.GetJobs(comboBox1.Text).First().Id;
+
+            var main = new MainTable
             {
-                int jobID = JobsModel.GetJobs(comboBox1.Text).First().Id;
+                Id = id,
+                FName = textBox2.Text, // Top
+                MName = textBox3.Text,
+                LName = textBox1.Text,
+                JobsId = jobID,
+                TimeTableNum = textBox9.Text, // Middle Main
+                IndividualTaxNum = textBox8.Text,
+                Sex = comboBox3.Text.Equals("Чоловік"),
+                EmploymentDate = dateTimePicker2.Value.Date,
+                DateDismissal = dateTimePicker3.Value.Date,
+                UpdateAt = DateTime.Today,
+                Email = textBox5.Text,
+                TelWork = textBox6.Text,
+                TelHome = textBox7.Text,
+                About = textBox4.Text,
+                IsActivity = comboBox2.Text.Equals("Працює") // Bottom
+            };
 
-                MessageBox.Show(jobID.ToString());
+            int isUpdated = 0;
+            if (isNew)
+                isUpdated = MainModel.Insert(main);
+            else
+                isUpdated = MainModel.Update(main);
 
-                MainModel.Insert(new MainTable
-                {
-                    FName = textBox2.Text,
-                    MName = textBox3.Text,
-                    LName = textBox1.Text,
-                    JobsId = jobID
-                });
-                return;
+            if (isUpdated == 1)
+            {
+                label19.BackColor = Color.DarkSlateGray;
+                label19.Text = "Збережено";
+            }
+            else
+            {
+                label19.BackColor = Color.FromArgb(185, 46, 59);
+                label19.Text = "Не збережено";
             }
 
-            MainModel.Update(new MainTable {
-                Id = id,
-                FName = textBox2.Text
-            });
+            label19.Visible = true;
+            timer1.Enabled = true;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            label19.Visible = false;
+            timer1.Enabled = false;
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Label16_Click(object sender, EventArgs e)
+        {
+            DeleteImage();
+        }
+
+        private void Label18_Click(object sender, EventArgs e)
+        {
+            DeleteImage();
+            Employees.AddImage(id);
+            pictureBox1.Image = Employees.GetImage(id);
+        }
+
+        private void DeleteImage()
+        {
+            if (pictureBox1.Image != null)
+            {
+                pictureBox1.Image = null;
+                Employees.CloseImage(id);
+                Employees.DeleteImage(id);
+            }
         }
     }
 }

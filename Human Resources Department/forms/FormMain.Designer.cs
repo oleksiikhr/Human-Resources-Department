@@ -94,7 +94,7 @@
             this.findField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.findField.Location = new System.Drawing.Point(285, 31);
             this.findField.Name = "findField";
-            this.findField.Size = new System.Drawing.Size(138, 20);
+            this.findField.Size = new System.Drawing.Size(156, 20);
             this.findField.TabIndex = 0;
             this.findField.Text = "Швидкий пошук по Прізвищу";
             this.findField.Enter += new System.EventHandler(this.FindField_Enter);
@@ -466,7 +466,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(758, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(776, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -527,9 +527,9 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(422, 31);
+            this.button4.Location = new System.Drawing.Point(440, 31);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(71, 20);
+            this.button4.Size = new System.Drawing.Size(62, 20);
             this.button4.TabIndex = 6;
             this.button4.Text = "Знайти";
             this.button4.UseMnemonic = false;
@@ -558,7 +558,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.Location = new System.Drawing.Point(285, 57);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(461, 517);
+            this.listView1.Size = new System.Drawing.Size(479, 517);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
@@ -572,9 +572,9 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(499, 31);
+            this.button6.Location = new System.Drawing.Point(508, 31);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(108, 20);
+            this.button6.Size = new System.Drawing.Size(106, 20);
             this.button6.TabIndex = 24;
             this.button6.Text = "Скинути фільтри";
             this.button6.UseMnemonic = false;
@@ -641,11 +641,11 @@
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(613, 33);
+            this.checkBox1.Location = new System.Drawing.Point(620, 33);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(133, 17);
+            this.checkBox1.Size = new System.Drawing.Size(144, 17);
             this.checkBox1.TabIndex = 38;
-            this.checkBox1.Text = "Показати звільнених";
+            this.checkBox1.Text = "Показувати звільнених";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // FormMain
@@ -653,7 +653,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(758, 593);
+            this.ClientSize = new System.Drawing.Size(776, 593);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button8);

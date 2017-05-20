@@ -85,7 +85,7 @@ namespace Human_Resources_Department.forms
             if ( ! IsSelected() )
                 return;
 
-            pictureBox1.Image = Employees.GetImageUrl( GetSelectedID() );
+            pictureBox1.Image = Employees.GetImage( GetSelectedID() );
             textBox1.Text = GetSelectedItem(I_FNAME).ToString();
             textBox5.Text = GetSelectedItem(I_LNAME).ToString();
             textBox2.Text = GetSelectedItem(I_SALARY).ToString();

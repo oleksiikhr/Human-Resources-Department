@@ -340,6 +340,8 @@ namespace Human_Resources_Department.forms
         /// </summary>
         private void Button8_Click(object sender, EventArgs e)
         {
+            return; // Temporary
+
             if (EmployeesLV.GetCountItems() <= 0)
                 return;
 
