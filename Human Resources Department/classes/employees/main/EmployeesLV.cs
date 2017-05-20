@@ -53,16 +53,16 @@ namespace Human_Resources_Department.classes.employees.main
             l.Columns.Insert(I_UPDATE_AT,    "Оновлення");
         }
 
-        public static void GetAllData()
+        public static void GetAllData(bool allEmployees = false)
         {
-            var data = MainModel.GetAllData();            
+            var data = MainModel.GetAllData(allEmployees);            
 
             foreach (var one in data)
             {
                 l.Items.Add (new ListViewItem( new[] {
-                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
-                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
-                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
+                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job),
+                    T(one.Email), T(one.TelWork), T(one.IsActivity),
+                    T(one.EmploymentDate), T(one.UpdateAt)
                 }));
 
                 if (!one.IsActivity)
@@ -122,9 +122,7 @@ namespace Human_Resources_Department.classes.employees.main
             foreach (var one in data)
             {
                 l.Items.Add( new ListViewItem( new[] {
-                    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job), T(one.City),
-                    T(one.Email), T(one.Tel), T(one.Family), T(one.Salary), T(one.IsActivity),
-                    T(one.IsFulltime), T(one.Birthday), T(one.SetCompany), T(one.UpdateAt)
+                    T(one.Id), T(one.FName) // ..
                 }));
             }
         }

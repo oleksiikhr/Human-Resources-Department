@@ -17,26 +17,26 @@ namespace Human_Resources_Department.classes.employees.db
         
         public string Job { get; set; }
         
-        public string City { get; set; }
-        
         public string Email { get; set; }
         
-        public string Tel { get; set; }
-        
-        public string Family { get; set; }
-        
-        public double Salary { get; set; }
+        public string TelWork { get; set; }
+
+        public string TelHome { get; set; }
+
+        public string About { get; set; } // Описание
 
         public bool Sex { get; set; }
 
         public bool IsActivity { get; set; }
-
-        public bool IsFulltime { get; set; }
         
-        public DateTime Birthday { get; set; }
-        
-        public DateTime SetCompany { get; set; }
+        public DateTime EmploymentDate { get; set; } // Дата приёма на работу
         
         public DateTime UpdateAt { get; set; }
+
+        public int IndividualTaxNum { get; set; } // ИНН
+
+        public int TimeTableNum { get; set; } // Табельный №
+
+        public int JobsId { get; set; } // Должность с таб. Jobs
     }
 }

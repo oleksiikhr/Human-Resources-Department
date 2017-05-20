@@ -255,7 +255,7 @@ namespace Human_Resources_Department.forms
 
                         EmployeesLV.SetListBox(listView1);
                         EmployeesLV.SetNameColumns();
-                        EmployeesLV.GetAllData();
+                        EmployeesLV.GetAllData(checkBox1.Checked);
 
                         EmployeesPanel.SetPanel(panelEmployee);
                         EmployeesPanel.Enabled();
@@ -283,31 +283,31 @@ namespace Human_Resources_Department.forms
         {
             EmployeesPanel.Enabled();
 
-            EmployeesPanel.AddInfo(fieldFName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
-            EmployeesPanel.AddInfo(fieldLName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
-            EmployeesPanel.AddInfo(fieldMName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
-            EmployeesPanel.AddInfo(fieldJob,         EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB));
-            EmployeesPanel.AddInfo(fieldCity,        EmployeesLV.GetSelectedCell(EmployeesLV.I_CITY));
-            EmployeesPanel.AddInfo(fieldEmail,       EmployeesLV.GetSelectedCell(EmployeesLV.I_EMAIL));
-            EmployeesPanel.AddInfo(fieldTel,         EmployeesLV.GetSelectedCell(EmployeesLV.I_TEL));
-            EmployeesPanel.AddInfo(fieldFamily,      EmployeesLV.GetSelectedCell(EmployeesLV.I_FAMILY));
-            EmployeesPanel.AddInfo(fieldSalary,      EmployeesLV.GetSelectedCell(EmployeesLV.I_SALARY));
-            EmployeesPanel.AddInfo(fieldIsFulltime,  EmployeesLV.GetSelectedCell(EmployeesLV.I_IS_FULLTIME).Equals("Так"));
-            EmployeesPanel.AddInfo(fieldBirthday,    EmployeesLV.GetSelectedCell(EmployeesLV.I_BIRTHDAY));
-            EmployeesPanel.AddInfo(fieldSetCompany,  EmployeesLV.GetSelectedCell(EmployeesLV.I_SETCOMPANY));
-            EmployeesPanel.AddInfo(fieldUpdateAt,    EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));
-            EmployeesPanel.AddInfo(pictureBox1,      Employees.GetImageUrl(EmployeesLV.GetSelectedIndex() + 1));
+            EmployeesPanel.AddInfo(fieldFName, EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
+            //EmployeesPanel.AddInfo(fieldLName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
+            //EmployeesPanel.AddInfo(fieldMName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
+            //EmployeesPanel.AddInfo(fieldJob,         EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB));
+            //EmployeesPanel.AddInfo(fieldCity,        EmployeesLV.GetSelectedCell(EmployeesLV.I_CITY));
+            //EmployeesPanel.AddInfo(fieldEmail,       EmployeesLV.GetSelectedCell(EmployeesLV.I_EMAIL));
+            //EmployeesPanel.AddInfo(fieldTel,         EmployeesLV.GetSelectedCell(EmployeesLV.I_TEL));
+            //EmployeesPanel.AddInfo(fieldFamily,      EmployeesLV.GetSelectedCell(EmployeesLV.I_FAMILY));
+            //EmployeesPanel.AddInfo(fieldSalary,      EmployeesLV.GetSelectedCell(EmployeesLV.I_SALARY));
+            //EmployeesPanel.AddInfo(fieldIsFulltime,  EmployeesLV.GetSelectedCell(EmployeesLV.I_IS_FULLTIME).Equals("Так"));
+            //EmployeesPanel.AddInfo(fieldBirthday,    EmployeesLV.GetSelectedCell(EmployeesLV.I_BIRTHDAY));
+            //EmployeesPanel.AddInfo(fieldSetCompany,  EmployeesLV.GetSelectedCell(EmployeesLV.I_SETCOMPANY));
+            //EmployeesPanel.AddInfo(fieldUpdateAt,    EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));
+            //EmployeesPanel.AddInfo(pictureBox1,      Employees.GetImageUrl(EmployeesLV.GetSelectedIndex() + 1));
 
-            if ( EmployeesLV.EmployeeIsActivity() )
-            {
-                button5.BackColor = Color.Brown;
-                button5.Text = "Звільнити";
-            }
-            else
-            {
-                button5.BackColor = Color.FromArgb(84, 110, 122);
-                button5.Text = "Поновити";
-            }
+            //if ( EmployeesLV.EmployeeIsActivity() )
+            //{
+            //    button5.BackColor = Color.Brown;
+            //    button5.Text = "Звільнити";
+            //}
+            //else
+            //{
+            //    button5.BackColor = Color.FromArgb(84, 110, 122);
+            //    button5.Text = "Поновити";
+            //}
         }
         
         /// <summary>
@@ -318,7 +318,7 @@ namespace Human_Resources_Department.forms
             EmployeesPanel.ClearAllData();
             EmployeesLV.ClearAllData();
             EmployeesLV.SetNameColumns();
-            EmployeesLV.GetAllData();
+            EmployeesLV.GetAllData(checkBox1.Checked);
         }
 
         /// <summary>

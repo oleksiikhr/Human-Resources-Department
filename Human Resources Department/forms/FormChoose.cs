@@ -35,6 +35,8 @@ namespace Human_Resources_Department.forms
             if (!initialOpen || listBox1.Items.Count != 1)
                 return;
 
+            return; // Temporary
+
             listBox1.SelectedItem = listBox1.Items[0];
             initialOpen = false;
 
@@ -72,6 +74,7 @@ namespace Human_Resources_Department.forms
                     Directory.CreateDirectory(folder);
                     Directory.CreateDirectory(folder + "\\img");
                     Database.CreateDatabases(folder + "\\" + Database.FILE_NAME);
+                    Database.CloseConnection();
                 }
                 catch
                 {
@@ -138,7 +141,7 @@ namespace Human_Resources_Department.forms
                 }
                 catch
                 {
-                    MessageBox.Show("Не можливо видалити філіал, так як він відкритий", "Помилка");
+                    MessageBox.Show("Не можливо видалити філіал, так як він використовується", "Помилка");
                     return;
                 }
 

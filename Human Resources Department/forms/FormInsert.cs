@@ -38,19 +38,19 @@ namespace Human_Resources_Department.forms
             int isInsert = Database.Insert(new MainTable
             {
                 FName = textBox1.Text,
-                LName = textBox2.Text,
-                MName = textBox3.Text,
-                Job = textBox5.Text,
-                City = textBox4.Text,
-                Family = textBox9.Text,
-                Email = textBox8.Text,
-                Tel = textBox10.Text,
-                Salary = salary,
-                IsActivity = true,
-                IsFulltime = checkBox1.Checked,
-                Birthday = dateTimePicker1.Value.Date,
-                SetCompany = dateTimePicker2.Value.Date,
-                UpdateAt = DateTime.Today,
+                //LName = textBox2.Text,
+                //MName = textBox3.Text,
+                //Job = textBox5.Text,
+                //City = textBox4.Text,
+                //Family = textBox9.Text,
+                //Email = textBox8.Text,
+                //TelWork = textBox10.Text,
+                //Salary = salary,
+                //IsActivity = true,
+                //IsFulltime = checkBox1.Checked,
+                //Birthday = dateTimePicker1.Value.Date,
+                //EmploymentDate = dateTimePicker2.Value.Date,
+                //UpdateAt = DateTime.Today,
             });
 
             if (isInsert == 1)
