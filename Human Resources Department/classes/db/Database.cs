@@ -50,11 +50,11 @@ namespace Human_Resources_Department.classes.db
             }
         }
 
-        public static int Update(string q, object[] args)
+        public static int Update(object ob)
         {
             try
             {
-                return con.Execute(q, args);
+                return con.Update(ob);
             }
             catch
             {

@@ -17,7 +17,6 @@ namespace Human_Resources_Department.forms
             
             foreach (var job in jobs)
             {
-                MessageBox.Show(job.Id.ToString());
                 listBox1.Items.Add(job.Title);
             }
 
@@ -44,7 +43,7 @@ namespace Human_Resources_Department.forms
                 return;
 
             int id = 0;
-            var jobs = JobsModel.GetJobsByTitle(listBox1.SelectedItem.ToString());
+            var jobs = JobsModel.GetJobs(listBox1.SelectedItem.ToString());
             foreach (var job in jobs)
             {
                 id = job.Id;
@@ -53,6 +52,8 @@ namespace Human_Resources_Department.forms
 
             if (id == 0)
                 return;
+
+            // Если пользователь привязан к этому ID
 
             int isDeleted = JobsModel.DeleteObject<JobsTable>(id);
             if (isDeleted == 1)
