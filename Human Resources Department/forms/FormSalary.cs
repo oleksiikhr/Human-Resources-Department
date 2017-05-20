@@ -30,7 +30,7 @@ namespace Human_Resources_Department.forms
             HPanel.ActivateToggle(panel1);
 
             SetColumns();
-            FillData();
+            FillListView();
         }
 
         private void SetColumns()
@@ -45,7 +45,7 @@ namespace Human_Resources_Department.forms
             listView1.Columns.Add("Чиста зарплата");
         }
 
-        private void FillData()
+        private void FillListView()
         {
             //try
             //{

@@ -10,6 +10,7 @@ namespace Human_Resources_Department.forms
     public partial class FormChoose : Form
     {
         private bool is_open;
+        private static bool initialOpen = true;
 
         public FormChoose()
         {
@@ -30,6 +31,16 @@ namespace Human_Resources_Department.forms
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
                 Close();
             }
+
+            if (!initialOpen || listBox1.Items.Count != 1)
+                return;
+
+            listBox1.SelectedItem = listBox1.Items[0];
+            initialOpen = false;
+
+            Config.currentFolder = Config.projectFolder + "\\" + listBox1.SelectedItem;
+            is_open = true;
+            Close();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -127,7 +138,7 @@ namespace Human_Resources_Department.forms
                 }
                 catch
                 {
-                    MessageBox.Show("Закрийте проект, перш ніж видаляти", "Помилка");
+                    MessageBox.Show("Не можливо видалити філіал, так як він відкритий", "Помилка");
                     return;
                 }
 
@@ -142,6 +153,7 @@ namespace Human_Resources_Department.forms
         {
             Config.currentFolder = Config.projectFolder + "\\" + listBox1.SelectedItem;
             is_open = true;
+            initialOpen = false;
             Close();
         }
 
