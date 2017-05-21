@@ -30,17 +30,11 @@
         {
             this.findField = new System.Windows.Forms.TextBox();
             this.panelEmployee = new System.Windows.Forms.Panel();
-            this.fieldIsFulltime = new System.Windows.Forms.CheckBox();
             this.fieldUpdateAt = new System.Windows.Forms.DateTimePicker();
-            this.button5 = new System.Windows.Forms.Button();
             this.fieldSetCompany = new System.Windows.Forms.DateTimePicker();
             this.fieldBirthday = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
             this.fieldCity = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.fieldFamily = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.fieldLName = new System.Windows.Forms.TextBox();
@@ -53,13 +47,11 @@
             this.fieldTel = new System.Windows.Forms.TextBox();
             this.fieldEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.fieldJob = new System.Windows.Forms.TextBox();
             this.fieldSalary = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.fieldFName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вибірФіліалаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.імпортВExcelkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,13 +66,9 @@
             this.фільтрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panelEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,7 +82,7 @@
             this.findField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.findField.Location = new System.Drawing.Point(285, 31);
             this.findField.Name = "findField";
-            this.findField.Size = new System.Drawing.Size(156, 20);
+            this.findField.Size = new System.Drawing.Size(184, 20);
             this.findField.TabIndex = 0;
             this.findField.Text = "Швидкий пошук по Прізвищу";
             this.findField.Enter += new System.EventHandler(this.FindField_Enter);
@@ -104,17 +92,11 @@
             // 
             this.panelEmployee.BackColor = System.Drawing.Color.White;
             this.panelEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelEmployee.Controls.Add(this.fieldIsFulltime);
             this.panelEmployee.Controls.Add(this.fieldUpdateAt);
-            this.panelEmployee.Controls.Add(this.button5);
             this.panelEmployee.Controls.Add(this.fieldSetCompany);
             this.panelEmployee.Controls.Add(this.fieldBirthday);
-            this.panelEmployee.Controls.Add(this.button3);
             this.panelEmployee.Controls.Add(this.fieldCity);
             this.panelEmployee.Controls.Add(this.label12);
-            this.panelEmployee.Controls.Add(this.fieldFamily);
-            this.panelEmployee.Controls.Add(this.label11);
-            this.panelEmployee.Controls.Add(this.button2);
             this.panelEmployee.Controls.Add(this.label10);
             this.panelEmployee.Controls.Add(this.label4);
             this.panelEmployee.Controls.Add(this.fieldLName);
@@ -127,127 +109,57 @@
             this.panelEmployee.Controls.Add(this.fieldTel);
             this.panelEmployee.Controls.Add(this.fieldEmail);
             this.panelEmployee.Controls.Add(this.label5);
-            this.panelEmployee.Controls.Add(this.label6);
             this.panelEmployee.Controls.Add(this.fieldJob);
             this.panelEmployee.Controls.Add(this.fieldSalary);
             this.panelEmployee.Controls.Add(this.label3);
             this.panelEmployee.Controls.Add(this.label1);
             this.panelEmployee.Controls.Add(this.fieldFName);
-            this.panelEmployee.Location = new System.Drawing.Point(12, 50);
+            this.panelEmployee.Location = new System.Drawing.Point(12, 53);
             this.panelEmployee.Name = "panelEmployee";
-            this.panelEmployee.Size = new System.Drawing.Size(255, 400);
+            this.panelEmployee.Size = new System.Drawing.Size(255, 573);
             this.panelEmployee.TabIndex = 4;
-            // 
-            // fieldIsFulltime
-            // 
-            this.fieldIsFulltime.AutoSize = true;
-            this.fieldIsFulltime.Location = new System.Drawing.Point(8, 303);
-            this.fieldIsFulltime.Name = "fieldIsFulltime";
-            this.fieldIsFulltime.Size = new System.Drawing.Size(115, 17);
-            this.fieldIsFulltime.TabIndex = 33;
-            this.fieldIsFulltime.Text = "Повна зайнятість";
-            this.fieldIsFulltime.UseVisualStyleBackColor = true;
             // 
             // fieldUpdateAt
             // 
-            this.fieldUpdateAt.Location = new System.Drawing.Point(129, 303);
+            this.fieldUpdateAt.Location = new System.Drawing.Point(6, 542);
             this.fieldUpdateAt.Name = "fieldUpdateAt";
-            this.fieldUpdateAt.Size = new System.Drawing.Size(120, 20);
+            this.fieldUpdateAt.Size = new System.Drawing.Size(242, 20);
             this.fieldUpdateAt.TabIndex = 32;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(4, 363);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(120, 23);
-            this.button5.TabIndex = 20;
-            this.button5.Text = "Звільнити";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // fieldSetCompany
             // 
-            this.fieldSetCompany.Location = new System.Drawing.Point(128, 264);
+            this.fieldSetCompany.Location = new System.Drawing.Point(6, 503);
             this.fieldSetCompany.Name = "fieldSetCompany";
-            this.fieldSetCompany.Size = new System.Drawing.Size(120, 20);
+            this.fieldSetCompany.Size = new System.Drawing.Size(242, 20);
             this.fieldSetCompany.TabIndex = 31;
             // 
             // fieldBirthday
             // 
-            this.fieldBirthday.Location = new System.Drawing.Point(3, 264);
+            this.fieldBirthday.Location = new System.Drawing.Point(6, 464);
             this.fieldBirthday.Name = "fieldBirthday";
-            this.fieldBirthday.Size = new System.Drawing.Size(120, 20);
+            this.fieldBirthday.Size = new System.Drawing.Size(242, 20);
             this.fieldBirthday.TabIndex = 30;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(130, 363);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 23);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Відмінити";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // fieldCity
             // 
-            this.fieldCity.Location = new System.Drawing.Point(3, 142);
+            this.fieldCity.Location = new System.Drawing.Point(6, 308);
             this.fieldCity.Name = "fieldCity";
-            this.fieldCity.Size = new System.Drawing.Size(120, 20);
+            this.fieldCity.Size = new System.Drawing.Size(242, 20);
             this.fieldCity.TabIndex = 6;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 126);
+            this.label12.Location = new System.Drawing.Point(3, 292);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 13);
             this.label12.TabIndex = 25;
             this.label12.Text = "Місто";
             // 
-            // fieldFamily
-            // 
-            this.fieldFamily.Location = new System.Drawing.Point(128, 225);
-            this.fieldFamily.Name = "fieldFamily";
-            this.fieldFamily.Size = new System.Drawing.Size(122, 20);
-            this.fieldFamily.TabIndex = 11;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(125, 209);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(80, 13);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Сімейний стан";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(4, 334);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(245, 23);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Зберегти";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(127, 87);
+            this.label10.Location = new System.Drawing.Point(3, 253);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 13);
             this.label10.TabIndex = 20;
@@ -256,7 +168,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 248);
+            this.label4.Location = new System.Drawing.Point(3, 448);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 13);
             this.label4.TabIndex = 6;
@@ -264,22 +176,22 @@
             // 
             // fieldLName
             // 
-            this.fieldLName.Location = new System.Drawing.Point(129, 61);
+            this.fieldLName.Location = new System.Drawing.Point(6, 230);
             this.fieldLName.Name = "fieldLName";
-            this.fieldLName.Size = new System.Drawing.Size(120, 20);
+            this.fieldLName.Size = new System.Drawing.Size(242, 20);
             this.fieldLName.TabIndex = 2;
             // 
             // fieldMName
             // 
-            this.fieldMName.Location = new System.Drawing.Point(130, 103);
+            this.fieldMName.Location = new System.Drawing.Point(6, 269);
             this.fieldMName.Name = "fieldMName";
-            this.fieldMName.Size = new System.Drawing.Size(120, 20);
+            this.fieldMName.Size = new System.Drawing.Size(242, 20);
             this.fieldMName.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(126, 45);
+            this.label2.Location = new System.Drawing.Point(3, 214);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 3;
@@ -288,7 +200,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(126, 287);
+            this.label9.Location = new System.Drawing.Point(3, 526);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 13);
             this.label9.TabIndex = 17;
@@ -297,81 +209,73 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(128, 248);
+            this.label7.Location = new System.Drawing.Point(3, 487);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 13);
+            this.label7.Size = new System.Drawing.Size(114, 13);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Назначений";
+            this.label7.Text = "Прийнятий на роботу";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 167);
+            this.label8.Location = new System.Drawing.Point(3, 331);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.Size = new System.Drawing.Size(76, 13);
             this.label8.TabIndex = 14;
-            this.label8.Text = "Телефон";
+            this.label8.Text = "Телефон роб.";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(50, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 143);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // fieldTel
             // 
-            this.fieldTel.Location = new System.Drawing.Point(3, 183);
+            this.fieldTel.Location = new System.Drawing.Point(6, 347);
             this.fieldTel.Name = "fieldTel";
-            this.fieldTel.Size = new System.Drawing.Size(120, 20);
+            this.fieldTel.Size = new System.Drawing.Size(242, 20);
             this.fieldTel.TabIndex = 8;
             // 
             // fieldEmail
             // 
-            this.fieldEmail.Location = new System.Drawing.Point(128, 183);
+            this.fieldEmail.Location = new System.Drawing.Point(6, 425);
             this.fieldEmail.Name = "fieldEmail";
-            this.fieldEmail.Size = new System.Drawing.Size(122, 20);
+            this.fieldEmail.Size = new System.Drawing.Size(242, 20);
             this.fieldEmail.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(125, 167);
+            this.label5.Location = new System.Drawing.Point(3, 409);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Email";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(126, 126);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Посада";
-            // 
             // fieldJob
             // 
-            this.fieldJob.Location = new System.Drawing.Point(129, 142);
+            this.fieldJob.Location = new System.Drawing.Point(50, 146);
             this.fieldJob.Name = "fieldJob";
-            this.fieldJob.Size = new System.Drawing.Size(120, 20);
+            this.fieldJob.Size = new System.Drawing.Size(150, 20);
             this.fieldJob.TabIndex = 5;
+            this.fieldJob.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // fieldSalary
             // 
-            this.fieldSalary.Location = new System.Drawing.Point(3, 225);
+            this.fieldSalary.Location = new System.Drawing.Point(6, 386);
             this.fieldSalary.Name = "fieldSalary";
-            this.fieldSalary.Size = new System.Drawing.Size(120, 20);
+            this.fieldSalary.Size = new System.Drawing.Size(242, 20);
             this.fieldSalary.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 209);
+            this.label3.Location = new System.Drawing.Point(3, 370);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 7;
@@ -380,7 +284,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(126, 6);
+            this.label1.Location = new System.Drawing.Point(3, 175);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 2;
@@ -388,25 +292,10 @@
             // 
             // fieldFName
             // 
-            this.fieldFName.Location = new System.Drawing.Point(129, 22);
+            this.fieldFName.Location = new System.Drawing.Point(6, 191);
             this.fieldFName.Name = "fieldFName";
-            this.fieldFName.Size = new System.Drawing.Size(120, 20);
+            this.fieldFName.Size = new System.Drawing.Size(242, 20);
             this.fieldFName.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(166, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 19);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Редагувати";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // formChooseToolStripMenuItem
             // 
@@ -527,7 +416,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(440, 31);
+            this.button4.Location = new System.Drawing.Point(464, 31);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(62, 20);
             this.button4.TabIndex = 6;
@@ -535,20 +424,6 @@
             this.button4.UseMnemonic = false;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoEllipsis = true;
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label15.Location = new System.Drawing.Point(12, 32);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(124, 15);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "Вибраний співробітник";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listView1
             // 
@@ -558,7 +433,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.Location = new System.Drawing.Point(285, 57);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(479, 517);
+            this.listView1.Size = new System.Drawing.Size(479, 569);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
@@ -572,11 +447,11 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(508, 31);
+            this.button6.Location = new System.Drawing.Point(532, 31);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(106, 20);
+            this.button6.Size = new System.Drawing.Size(153, 20);
             this.button6.TabIndex = 24;
-            this.button6.Text = "Скинути фільтри";
+            this.button6.Text = "Оновити / Скинути фільтри";
             this.button6.UseMnemonic = false;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
@@ -584,68 +459,28 @@
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.button7.Enabled = false;
             this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(12, 456);
+            this.button7.Location = new System.Drawing.Point(12, 31);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(255, 23);
             this.button7.TabIndex = 34;
-            this.button7.Text = "Відкирити картку працівника";
+            this.button7.Text = "Оберіть працівника";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.EmployeeToolStripMenuItem_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 509);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(255, 64);
-            this.listBox1.TabIndex = 35;
-            // 
-            // label13
-            // 
-            this.label13.AutoEllipsis = true;
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.White;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label13.Location = new System.Drawing.Point(12, 491);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(138, 15);
-            this.label13.TabIndex = 36;
-            this.label13.Text = "Статистика (з фільтрами)";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(110)))), ((int)(((byte)(122)))));
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(166, 490);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(101, 19);
-            this.button8.TabIndex = 37;
-            this.button8.Text = "Оновити";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // checkBox1
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(620, 33);
+            this.checkBox1.Location = new System.Drawing.Point(691, 33);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(144, 17);
+            this.checkBox1.Size = new System.Drawing.Size(73, 17);
             this.checkBox1.TabIndex = 38;
-            this.checkBox1.Text = "Показувати звільнених";
+            this.checkBox1.Text = "Звільнені";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // FormMain
@@ -653,20 +488,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(776, 593);
+            this.ClientSize = new System.Drawing.Size(776, 639);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panelEmployee);
             this.Controls.Add(this.findField);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.button1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -691,7 +521,6 @@
         private System.Windows.Forms.TextBox fieldEmail;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox fieldJob;
         private System.Windows.Forms.TextBox fieldSalary;
         private System.Windows.Forms.Label label3;
@@ -703,33 +532,22 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox fieldMName;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox fieldFamily;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ToolStripMenuItem formChooseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пошукToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TextBox fieldCity;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem фільтрToolStripMenuItem;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ToolStripMenuItem додатиПрацівникаToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker fieldBirthday;
         private System.Windows.Forms.DateTimePicker fieldSetCompany;
         private System.Windows.Forms.DateTimePicker fieldUpdateAt;
-        private System.Windows.Forms.CheckBox fieldIsFulltime;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ToolStripMenuItem додатиToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolStripMenuItem вибірФіліалаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem імпортВExcelkToolStripMenuItem;

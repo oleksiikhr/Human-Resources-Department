@@ -58,27 +58,6 @@ namespace Human_Resources_Department.classes.employees.main
             }
         }
 
-        public static int UpdateData(object[] args)
-        {
-            //return new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-            //    .Update(
-            //        "UPDATE " + typeof(EmployeesTable).Name
-            //        + " SET FName = ?, LName = ?, MName = ?, Job = ?, City = ?, Email = ?,"
-            //        + " Tel = ?, Family = ?, Salary = ?, IsFulltime = ?, Birthday = ?,"
-            //        + " SetCompany = ?, UpdateAt = ? WHERE id = ?", args
-            //    );
-            return 0;
-        }
-
-        public static int UpdateActivity(bool isActivity, int id)
-        {
-            //return new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile).Update(
-            //    "UPDATE " + typeof(EmployeesTable).Name + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?",
-            //        new object[] { isActivity, DateTime.Today, id }
-            //);
-            return 0;
-        }
-
         public static bool IsNull()
         {
             return p == null;

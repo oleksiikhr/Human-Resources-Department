@@ -86,38 +86,21 @@ namespace Human_Resources_Department.classes.employees.main
                 l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
         }
 
-        public static void UpdateItems(int index, MainTable mt)
+        public static void UpdateItems(int i, MainTable mt)
         {
-            l.Items[index].SubItems[I_FNAME].Text = T(mt.FName);
-        }
+            l.Items[i].SubItems[I_FNAME].Text = T(mt.FName);
+            l.Items[i].SubItems[I_MNAME].Text = T(mt.MName);
+            l.Items[i].SubItems[I_LNAME].Text = T(mt.LName);
+            l.Items[i].SubItems[I_SEX].Text = mt.Sex ? "Чоловік" : "Жінка";
+            l.Items[i].SubItems[I_EMAIL].Text = T(mt.Email);
+            l.Items[i].SubItems[I_TEL_WORK].Text = T(mt.TelWork);
+            l.Items[i].SubItems[I_TEL_HOME].Text = T(mt.TelHome);
+            l.Items[i].SubItems[I_IS_ACTIVITY].Text = T(mt.IsActivity);
+            l.Items[i].SubItems[I_EMPLOYMENT_DATE].Text = T(mt.EmploymentDate);
+            l.Items[i].SubItems[I_UPDATE_AT].Text = T(mt.UpdateAt);
 
-        public static void UpdateSelectedData()
-        {
-            int index = GetSelectedIndex();
-
-            //var data = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-            //        .GetOneData(Convert.ToInt32( l.Items[GetSelectedIndex()].SubItems[I_ID].Text) );
-
-            //foreach (var one in data)
-            //{
-            //    l.Items[index].SubItems[I_FNAME].Text       = T(one.FName);
-            //    l.Items[index].SubItems[I_LNAME].Text       = T(one.LName);
-            //    l.Items[index].SubItems[I_MNAME].Text       = T(one.MName);
-            //    l.Items[index].SubItems[I_JOB].Text         = T(one.Job);
-            //    l.Items[index].SubItems[I_CITY].Text        = T(one.City);
-            //    l.Items[index].SubItems[I_EMAIL].Text       = T(one.Email);
-            //    l.Items[index].SubItems[I_TEL].Text         = T(one.Tel);
-            //    l.Items[index].SubItems[I_FAMILY].Text      = T(one.Family);
-            //    l.Items[index].SubItems[I_SALARY].Text      = T(one.Salary);
-            //    l.Items[index].SubItems[I_IS_ACTIVITY].Text = T(one.IsActivity);
-            //    l.Items[index].SubItems[I_IS_FULLTIME].Text = T(one.IsFulltime);
-            //    l.Items[index].SubItems[I_BIRTHDAY].Text    = T(one.Birthday);
-            //    l.Items[index].SubItems[I_SETCOMPANY].Text  = T(one.SetCompany);
-            //    l.Items[index].SubItems[I_UPDATE_AT].Text   = T(one.UpdateAt);
-                
-            //    if (!one.IsActivity)
-            //        l.Items[index].BackColor = Color.FromArgb(255, 205, 210);
-            //}
+            if (!mt.IsActivity)
+                l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
         }
 
         public static void FindCellAndSetFocus(string text, int cell, bool isLower = false)
@@ -135,19 +118,7 @@ namespace Human_Resources_Department.classes.employees.main
                 }
             }
         }
-
-        public static void AddNewToBDAndToLV()
-        {
-            var data = MainModel.GetOneByID(GetCountItems() + 1);
-
-            foreach (var one in data)
-            {
-                l.Items.Add( new ListViewItem( new[] {
-                    T(one.Id), T(one.FName) // ..
-                }));
-            }
-        }
-
+        
         public static int GetSelectedID()
         {
             return Convert.ToInt32(l.SelectedItems[0].SubItems[0].Text);
@@ -209,50 +180,6 @@ namespace Human_Resources_Department.classes.employees.main
         public static void Close()
         {
             l = null;
-        }
-
-        // |---------------------------------------
-        // | Basic info for ListBox.
-        // |---------------------------------------
-        // |
-        // | dismissed - Количество уволенных сотрудников.
-        // | salary    - Сумма всех зарплат сотрудников.
-        // | countEdit - Количество редактирований за сегодня.
-        // | countFull - Количество работников на полный рабочий день.
-        // |
-        public static object[] GetBasicInfo()
-        {
-            return new object[] { "" };
-            //int dismissed = 0;
-            //double salary = 0;
-            //int countEdit = 0;
-            //int countFull = 0;
-            //int birthdayToday = 0;
-            //int birthdayTomorrow = 0;
-
-            //for (int i = 0; i < GetCountItems(); i++)
-            //{
-            //    if ( ! l.Items[i].SubItems[I_IS_ACTIVITY].Text.Equals("Так") )
-            //        dismissed++;
-
-            //    if (l.Items[i].SubItems[I_UPDATE_AT].Text.Equals(DateTime.Today.ToShortDateString()))
-            //        countEdit++;
-
-            //    if ( l.Items[i].SubItems[I_IS_FULLTIME].Text.Equals("Так") )
-            //        countFull++;
-
-            //    salary += Double.Parse( l.Items[i].SubItems[I_SALARY].Text );
-
-            //    if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.ToShortDateString()))
-            //        birthdayToday++;
-
-            //    if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.AddDays(1).ToShortDateString()))
-            //        birthdayTomorrow++;
-            //}
-
-            //return new object[] {
-            //    dismissed, salary, countEdit, countFull, birthdayToday, birthdayTomorrow
-            //};
         }
     }
 }

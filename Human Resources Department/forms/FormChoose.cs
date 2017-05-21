@@ -35,8 +35,6 @@ namespace Human_Resources_Department.forms
             if (!initialOpen || listBox1.Items.Count != 1)
                 return;
 
-            return; // Temporary
-
             listBox1.SelectedItem = listBox1.Items[0];
             initialOpen = false;
 
