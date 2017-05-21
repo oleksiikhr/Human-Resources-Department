@@ -39,7 +39,7 @@ namespace Human_Resources_Department.classes.employees.db
         public static IEnumerable<MainTable> GetByJobsID(int id)
         {
             return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name
-                + " WHERE JobsId = ? LIMIT 1", new object[] { id });
+                + " WHERE JobId = ? LIMIT 1", new object[] { id });
         }
 
         public static int GetCountRecords()

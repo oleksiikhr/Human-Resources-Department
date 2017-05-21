@@ -127,6 +127,7 @@ namespace Human_Resources_Department.forms
                 else
                     EmployeesLV.UpdateOneData(id);
 
+                EmployeesLV.UpdateSelected();
                 label19.BackColor = Color.DarkSlateGray;
                 label19.Text = "Збережено";
             }

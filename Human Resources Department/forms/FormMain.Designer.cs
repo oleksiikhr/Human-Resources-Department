@@ -32,7 +32,7 @@
             this.panelEmployee = new System.Windows.Forms.Panel();
             this.fieldUpdateAt = new System.Windows.Forms.DateTimePicker();
             this.fieldSetCompany = new System.Windows.Forms.DateTimePicker();
-            this.fieldBirthday = new System.Windows.Forms.DateTimePicker();
+            this.fieldEmployment = new System.Windows.Forms.DateTimePicker();
             this.fieldCity = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -94,7 +94,7 @@
             this.panelEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelEmployee.Controls.Add(this.fieldUpdateAt);
             this.panelEmployee.Controls.Add(this.fieldSetCompany);
-            this.panelEmployee.Controls.Add(this.fieldBirthday);
+            this.panelEmployee.Controls.Add(this.fieldEmployment);
             this.panelEmployee.Controls.Add(this.fieldCity);
             this.panelEmployee.Controls.Add(this.label12);
             this.panelEmployee.Controls.Add(this.label10);
@@ -133,12 +133,12 @@
             this.fieldSetCompany.Size = new System.Drawing.Size(242, 20);
             this.fieldSetCompany.TabIndex = 31;
             // 
-            // fieldBirthday
+            // fieldEmployment
             // 
-            this.fieldBirthday.Location = new System.Drawing.Point(6, 464);
-            this.fieldBirthday.Name = "fieldBirthday";
-            this.fieldBirthday.Size = new System.Drawing.Size(242, 20);
-            this.fieldBirthday.TabIndex = 30;
+            this.fieldEmployment.Location = new System.Drawing.Point(6, 464);
+            this.fieldEmployment.Name = "fieldEmployment";
+            this.fieldEmployment.Size = new System.Drawing.Size(242, 20);
+            this.fieldEmployment.TabIndex = 30;
             // 
             // fieldCity
             // 
@@ -211,9 +211,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 487);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 13);
+            this.label7.Size = new System.Drawing.Size(88, 13);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Прийнятий на роботу";
+            this.label7.Text = "Дата прийняття";
             // 
             // label8
             // 
@@ -229,7 +229,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(50, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 143);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 141);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -259,7 +259,7 @@
             // 
             // fieldJob
             // 
-            this.fieldJob.Location = new System.Drawing.Point(50, 146);
+            this.fieldJob.Location = new System.Drawing.Point(50, 145);
             this.fieldJob.Name = "fieldJob";
             this.fieldJob.Size = new System.Drawing.Size(150, 20);
             this.fieldJob.TabIndex = 5;
@@ -540,7 +540,7 @@
         private System.Windows.Forms.ToolStripMenuItem фільтрToolStripMenuItem;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripMenuItem додатиПрацівникаToolStripMenuItem;
-        private System.Windows.Forms.DateTimePicker fieldBirthday;
+        private System.Windows.Forms.DateTimePicker fieldEmployment;
         private System.Windows.Forms.DateTimePicker fieldSetCompany;
         private System.Windows.Forms.DateTimePicker fieldUpdateAt;
         private System.Windows.Forms.ListView listView1;

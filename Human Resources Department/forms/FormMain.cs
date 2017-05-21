@@ -210,24 +210,17 @@ namespace Human_Resources_Department.forms
         /// </summary>
         private void FillPanelEmployee()
         {
-            EmployeesPanel.AddInfo(fieldFName, EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
-            EmployeesPanel.AddInfo(fieldLName, EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
-            EmployeesPanel.AddInfo(fieldMName, EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
-            EmployeesPanel.AddInfo(fieldJob,   EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB_ID));
-
-            //EmployeesPanel.AddInfo(fieldLName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
-            //EmployeesPanel.AddInfo(fieldMName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
-            //EmployeesPanel.AddInfo(fieldJob,         EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB));
-            //EmployeesPanel.AddInfo(fieldCity,        EmployeesLV.GetSelectedCell(EmployeesLV.I_CITY));
-            //EmployeesPanel.AddInfo(fieldEmail,       EmployeesLV.GetSelectedCell(EmployeesLV.I_EMAIL));
-            //EmployeesPanel.AddInfo(fieldTel,         EmployeesLV.GetSelectedCell(EmployeesLV.I_TEL));
-            //EmployeesPanel.AddInfo(fieldFamily,      EmployeesLV.GetSelectedCell(EmployeesLV.I_FAMILY));
-            //EmployeesPanel.AddInfo(fieldSalary,      EmployeesLV.GetSelectedCell(EmployeesLV.I_SALARY));
-            //EmployeesPanel.AddInfo(fieldIsFulltime,  EmployeesLV.GetSelectedCell(EmployeesLV.I_IS_FULLTIME).Equals("Так"));
-            //EmployeesPanel.AddInfo(fieldBirthday,    EmployeesLV.GetSelectedCell(EmployeesLV.I_BIRTHDAY));
-            //EmployeesPanel.AddInfo(fieldSetCompany,  EmployeesLV.GetSelectedCell(EmployeesLV.I_SETCOMPANY));
-            //EmployeesPanel.AddInfo(fieldUpdateAt,    EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));
-            //EmployeesPanel.AddInfo(pictureBox1,      Employees.GetImageUrl(EmployeesLV.GetSelectedIndex() + 1));
+            EmployeesPanel.AddInfo(pictureBox1,     Employees.GetImage(EmployeesLV.GetSelectedIndex() + 1));
+            EmployeesPanel.AddInfo(fieldFName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
+            EmployeesPanel.AddInfo(fieldLName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
+            EmployeesPanel.AddInfo(fieldMName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
+            EmployeesPanel.AddInfo(fieldJob,        EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB_ID));
+            // City
+            EmployeesPanel.AddInfo(fieldTel,        EmployeesLV.GetSelectedCell(EmployeesLV.I_TEL_WORK));
+            // Salary
+            EmployeesPanel.AddInfo(fieldEmail,      EmployeesLV.GetSelectedCell(EmployeesLV.I_EMAIL));
+            EmployeesPanel.AddInfo(fieldEmployment, EmployeesLV.GetSelectedCell(EmployeesLV.I_EMPLOYMENT_DATE));
+            EmployeesPanel.AddInfo(fieldUpdateAt,   EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));
 
             button7.Enabled = true;
             button7.Text = "Відкрити картку #" + EmployeesLV.GetSelectedID();

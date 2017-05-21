@@ -140,6 +140,13 @@ namespace Human_Resources_Department.classes.employees.main
             return Convert.ToInt32(l.SelectedItems[0].SubItems[0].Text);
         }
 
+        public static void UpdateSelected()
+        {
+            int index = GetSelectedIndex();
+            l.Items[index].Selected = false;
+            l.Items[index].Selected = true;
+        }
+
         public static void Delete(int index)
         {
             l.Items[index].Remove();

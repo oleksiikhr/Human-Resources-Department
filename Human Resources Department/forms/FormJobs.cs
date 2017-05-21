@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using System.Collections.Generic;
-
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.db.jobs;
@@ -56,8 +54,8 @@ namespace Human_Resources_Department.forms
             if (employeeByID.Count() != 0)
             {
                 MessageBox.Show(
-                    "Працівник " + employeeByID.First().LName + " " + employeeByID.First().FName
-                    + " [#" + employeeByID.First().Id + "] займає цю посаду",
+                    "Працівник: " + employeeByID.First().LName + " " + employeeByID.First().FName
+                    + " [#" + employeeByID.First().Id + "] - займає цю посаду",
                     "Помилка"
                 );
                 return;
