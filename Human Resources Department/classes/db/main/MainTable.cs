@@ -39,6 +39,6 @@ namespace Human_Resources_Department.classes.employees.db
 
         public DateTime UpdateAt { get; set; }
 
-        public int JobsId { get; set; } // ID должности с таб. Jobs
+        public int JobId { get; set; } // ID должности с таб. Jobs
     }
 }

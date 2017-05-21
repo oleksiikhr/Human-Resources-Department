@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.db.jobs;
 
 namespace Human_Resources_Department.classes.employees.main
 {
@@ -16,13 +17,14 @@ namespace Human_Resources_Department.classes.employees.main
         public const int I_FNAME           = 1;
         public const int I_LNAME           = 2;
         public const int I_MNAME           = 3;
-        public const int I_EMAIL           = 4;
-        public const int I_TEL_WORK        = 5;
-        public const int I_TEL_HOME        = 6;
-        public const int I_SEX             = 7;
-        public const int I_IS_ACTIVITY     = 8;
-        public const int I_EMPLOYMENT_DATE = 9;
-        public const int I_UPDATE_AT       = 10;
+        public const int I_JOB_ID          = 4;
+        public const int I_EMAIL           = 5;
+        public const int I_TEL_WORK        = 6;
+        public const int I_TEL_HOME        = 7;
+        public const int I_SEX             = 8;
+        public const int I_IS_ACTIVITY     = 9;
+        public const int I_EMPLOYMENT_DATE = 10;
+        public const int I_UPDATE_AT       = 11;
 
         public static void SetListBox(ListView listView)
         {
@@ -37,6 +39,7 @@ namespace Human_Resources_Department.classes.employees.main
             l.Columns.Insert(I_FNAME,           "Ім'я");
             l.Columns.Insert(I_LNAME,           "Прізвище");
             l.Columns.Insert(I_MNAME,           "По-батькові");
+            l.Columns.Insert(I_JOB_ID,          "Посада");
             l.Columns.Insert(I_EMAIL,           "Email");
             l.Columns.Insert(I_TEL_WORK,        "Телефон роб.");
             l.Columns.Insert(I_TEL_HOME,        "Телефон дом.");
@@ -76,31 +79,44 @@ namespace Human_Resources_Department.classes.employees.main
 
         public static void AddItems(MainTable mt)
         {
+            var job = JobsModel.GetOneJobs(mt.JobId);
+            string JobTitle = job.Count() > 0 ? job.First().Title : "";
+
             l.Items.Add(new ListViewItem(new[] {
-                T(mt.Id), T(mt.FName), T(mt.LName), T(mt.MName), T(mt.Email), T(mt.TelWork),
-                T(mt.TelHome), mt.Sex ? "Чоловік" : "Жінка", T(mt.IsActivity),
+                T(mt.Id), T(mt.FName), T(mt.LName), T(mt.MName), JobTitle, T(mt.Email),
+                T(mt.TelWork), T(mt.TelHome), mt.Sex ? "Чоловік" : "Жінка", T(mt.IsActivity),
                 T(mt.EmploymentDate), T(mt.UpdateAt)
             }));
 
-            if (!mt.IsActivity)
-                l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
+            ColorRows(GetCountItems() - 1, mt);
         }
 
         public static void UpdateItems(int i, MainTable mt)
         {
-            l.Items[i].SubItems[I_FNAME].Text = T(mt.FName);
-            l.Items[i].SubItems[I_MNAME].Text = T(mt.MName);
-            l.Items[i].SubItems[I_LNAME].Text = T(mt.LName);
-            l.Items[i].SubItems[I_SEX].Text = mt.Sex ? "Чоловік" : "Жінка";
-            l.Items[i].SubItems[I_EMAIL].Text = T(mt.Email);
-            l.Items[i].SubItems[I_TEL_WORK].Text = T(mt.TelWork);
-            l.Items[i].SubItems[I_TEL_HOME].Text = T(mt.TelHome);
-            l.Items[i].SubItems[I_IS_ACTIVITY].Text = T(mt.IsActivity);
-            l.Items[i].SubItems[I_EMPLOYMENT_DATE].Text = T(mt.EmploymentDate);
-            l.Items[i].SubItems[I_UPDATE_AT].Text = T(mt.UpdateAt);
+            var job = JobsModel.GetOneJobs(mt.JobId);
+            string JobTitle = job.Count() > 0 ? job.First().Title : "";
 
+            l.Items[i].SubItems[I_FNAME].Text           = T(mt.FName);
+            l.Items[i].SubItems[I_MNAME].Text           = T(mt.MName);
+            l.Items[i].SubItems[I_LNAME].Text           = T(mt.LName);
+            l.Items[i].SubItems[I_JOB_ID].Text          = JobTitle;
+            l.Items[i].SubItems[I_SEX].Text             = mt.Sex ? "Чоловік" : "Жінка";
+            l.Items[i].SubItems[I_EMAIL].Text           = T(mt.Email);
+            l.Items[i].SubItems[I_TEL_WORK].Text        = T(mt.TelWork);
+            l.Items[i].SubItems[I_TEL_HOME].Text        = T(mt.TelHome);
+            l.Items[i].SubItems[I_IS_ACTIVITY].Text     = T(mt.IsActivity);
+            l.Items[i].SubItems[I_EMPLOYMENT_DATE].Text = T(mt.EmploymentDate);
+            l.Items[i].SubItems[I_UPDATE_AT].Text       = T(mt.UpdateAt);
+            
+            ColorRows(i, mt);
+        }
+
+        private static void ColorRows(int i, MainTable mt)
+        {
             if (!mt.IsActivity)
-                l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
+                l.Items[i].BackColor = Color.FromArgb(255, 205, 210);
+            else if (mt.UpdateAt == DateTime.Today)
+                l.Items[i].BackColor = Color.FromArgb(192, 192, 192);
         }
 
         public static void FindCellAndSetFocus(string text, int cell, bool isLower = false)

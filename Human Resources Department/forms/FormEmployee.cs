@@ -62,7 +62,7 @@ namespace Human_Resources_Department.forms
             }
             catch { return; }
 
-            var employeesJobID = JobsModel.GetOneJobs(main.JobsId);
+            var employeesJobID = JobsModel.GetOneJobs(main.JobId);
 
             // Top
             textBox2.Text = main.FName;
@@ -104,7 +104,7 @@ namespace Human_Resources_Department.forms
                 FName = textBox2.Text, // Top
                 MName = textBox3.Text,
                 LName = textBox1.Text,
-                JobsId = jobID,
+                JobId = jobID,
                 TimeTableNum = textBox9.Text, // Middle Main
                 IndividualTaxNum = textBox8.Text,
                 Sex = comboBox3.Text.Equals("Чоловік"),

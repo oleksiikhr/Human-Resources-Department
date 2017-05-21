@@ -16,7 +16,7 @@ namespace Human_Resources_Department.forms
         {
             InitializeComponent();
 
-            IEnumerable<JobsTable> jobs = JobsModel.GetAllJobs();
+            var jobs = JobsModel.GetAllJobs();
             
             foreach (var job in jobs)
             {

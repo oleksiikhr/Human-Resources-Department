@@ -68,8 +68,6 @@ namespace Human_Resources_Department.forms
                 return;
             }
 
-            button7.Enabled = true;
-            button7.Text = "Відкрити картку #" + EmployeesLV.GetSelectedID();
             FillPanelEmployee();
         }
         
@@ -113,7 +111,6 @@ namespace Human_Resources_Department.forms
             {
                 f.ShowDialog();
             }
-
         }
 
         private void FormSearchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -214,6 +211,10 @@ namespace Human_Resources_Department.forms
         private void FillPanelEmployee()
         {
             EmployeesPanel.AddInfo(fieldFName, EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
+            EmployeesPanel.AddInfo(fieldLName, EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
+            EmployeesPanel.AddInfo(fieldMName, EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
+            EmployeesPanel.AddInfo(fieldJob,   EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB_ID));
+
             //EmployeesPanel.AddInfo(fieldLName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
             //EmployeesPanel.AddInfo(fieldMName,       EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
             //EmployeesPanel.AddInfo(fieldJob,         EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB));
@@ -227,6 +228,9 @@ namespace Human_Resources_Department.forms
             //EmployeesPanel.AddInfo(fieldSetCompany,  EmployeesLV.GetSelectedCell(EmployeesLV.I_SETCOMPANY));
             //EmployeesPanel.AddInfo(fieldUpdateAt,    EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));
             //EmployeesPanel.AddInfo(pictureBox1,      Employees.GetImageUrl(EmployeesLV.GetSelectedIndex() + 1));
+
+            button7.Enabled = true;
+            button7.Text = "Відкрити картку #" + EmployeesLV.GetSelectedID();
         }
         
         /// <summary>
