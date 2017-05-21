@@ -142,9 +142,16 @@ namespace Human_Resources_Department.classes.employees.main
 
         public static void UpdateSelected()
         {
-            int index = GetSelectedIndex();
-            l.Items[index].Selected = false;
-            l.Items[index].Selected = true;
+            if ( IsSelected() )
+            {
+                int index = GetSelectedIndex();
+                l.Items[index].Selected = false;
+                l.Items[index].Selected = true;
+            }
+            else
+            {
+                l.Items[GetCountItems() - 1].Selected = true;
+            }
         }
 
         public static void Delete(int index)

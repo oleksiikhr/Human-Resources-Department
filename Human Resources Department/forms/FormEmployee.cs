@@ -168,9 +168,8 @@ namespace Human_Resources_Department.forms
         {
             if (pictureBox1.Image != null)
             {
-                pictureBox1.Image = null;
-                Employees.CloseImage(id);
                 Employees.DeleteImage(id);
+                pictureBox1.Image = Employees.GetImage(id);
             }
         }
     }

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.db;
-using Human_Resources_Department.classes.helplers;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.main;
 
@@ -93,8 +91,9 @@ namespace Human_Resources_Department.forms
 
             EmployeesLV.Close();
             EmployeesPanel.Close();
-
+            
             Database.CloseConnection();
+            Employees.CloseImage();
 
             button7.Enabled = false;
             button7.Text = "Оберіть працівника";
@@ -140,6 +139,8 @@ namespace Human_Resources_Department.forms
                 MessageBox.Show("Оберіть працівника");
                 return;
             }
+
+            Employees.CloseImage();
             
             using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedID()) )
             {
@@ -210,7 +211,9 @@ namespace Human_Resources_Department.forms
         /// </summary>
         private void FillPanelEmployee()
         {
-            EmployeesPanel.AddInfo(pictureBox1,     Employees.GetImage(EmployeesLV.GetSelectedIndex() + 1));
+            Employees.CloseImage();
+            EmployeesPanel.AddInfo(pictureBox1, Employees.GetImage(EmployeesLV.GetSelectedID()));
+
             EmployeesPanel.AddInfo(fieldFName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
             EmployeesPanel.AddInfo(fieldLName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
             EmployeesPanel.AddInfo(fieldMName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));

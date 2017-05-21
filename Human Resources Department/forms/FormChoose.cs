@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.db;
+using Human_Resources_Department.classes.employees;
 
 namespace Human_Resources_Department.forms
 {
@@ -31,6 +32,8 @@ namespace Human_Resources_Department.forms
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
                 Close();
             }
+
+            return;
 
             if (!initialOpen || listBox1.Items.Count != 1)
                 return;
@@ -133,6 +136,8 @@ namespace Human_Resources_Department.forms
 
             if (result == DialogResult.Yes)
             {
+                Employees.CloseImage();
+
                 try
                 {
                     new DirectoryInfo(Config.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);

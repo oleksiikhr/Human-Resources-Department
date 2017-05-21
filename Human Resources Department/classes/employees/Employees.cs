@@ -11,10 +11,10 @@ namespace Human_Resources_Department.classes.employees
         /// <summary>
         /// Get the picture of the active employee from the folder in the format (JPG|PNG).
         /// </summary>
-        public static Image GetImage(int num)
+        public static Image GetImage(int id)
         {
             img = null;
-            string path = Config.currentFolder + "\\img\\" + num;
+            string path = Config.currentFolder + "\\img\\" + id;
 
             try
             {
@@ -52,6 +52,8 @@ namespace Human_Resources_Department.classes.employees
 
         public static void DeleteImage(int id)
         {
+            CloseImage();
+
             string path = Config.currentFolder + "\\img\\" + id;
 
             try
@@ -64,9 +66,13 @@ namespace Human_Resources_Department.classes.employees
             catch { }
         }
 
-        public static void CloseImage(int id)
+        public static void CloseImage()
         {
-            img.Dispose();
+            if (img != null)
+            {
+                img.Dispose();
+                img = null;
+            }
         }
     }
 }
