@@ -7,6 +7,7 @@ using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.db.jobs;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.employees.main;
 
 namespace Human_Resources_Department.forms
 {
@@ -45,7 +46,7 @@ namespace Human_Resources_Department.forms
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 0;
 
-            Text = Config.PROJECT_NAME + " - Додавання нового працівника: #" + id;
+            Text = Config.PROJECT_NAME + " - Додати нового працівника: #" + id;
         }
 
         public void ExistsEmployee(int id)
@@ -121,6 +122,11 @@ namespace Human_Resources_Department.forms
 
             if (isUpdated == 1)
             {
+                if (isNew)
+                    EmployeesLV.AddOneData(id);
+                else
+                    EmployeesLV.UpdateOneData(id);
+
                 label19.BackColor = Color.DarkSlateGray;
                 label19.Text = "Збережено";
             }

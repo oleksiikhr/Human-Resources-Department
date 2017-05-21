@@ -159,7 +159,7 @@ namespace Human_Resources_Department.forms
             // Update the DB.
             int isUpdated = EmployeesPanel.UpdateActivity(
                 !EmployeesLV.EmployeeIsActivity(),
-                Convert.ToInt32(EmployeesLV.GetSelectedCell(EmployeesLV.I_ID))
+                Convert.ToInt32( EmployeesLV.GetSelectedCell(EmployeesLV.I_ID) )
             );
 
             if (isUpdated == 1)
@@ -225,7 +225,7 @@ namespace Human_Resources_Department.forms
                 return;
             }
             
-            using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedIndex() + 1) )
+            using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedID()) )
             {
                 f.ShowDialog();
             }
@@ -269,7 +269,7 @@ namespace Human_Resources_Department.forms
 
                         EmployeesLV.SetListBox(listView1);
                         EmployeesLV.SetNameColumns();
-                        EmployeesLV.GetAllData(checkBox1.Checked);
+                        EmployeesLV.GetAllData(!checkBox1.Checked);
 
                         EmployeesPanel.SetPanel(panelEmployee);
                         EmployeesPanel.Enabled();
@@ -332,7 +332,7 @@ namespace Human_Resources_Department.forms
             EmployeesPanel.ClearAllData();
             EmployeesLV.ClearAllData();
             EmployeesLV.SetNameColumns();
-            EmployeesLV.GetAllData(checkBox1.Checked);
+            EmployeesLV.GetAllData(!checkBox1.Checked);
         }
 
         /// <summary>
@@ -340,21 +340,19 @@ namespace Human_Resources_Department.forms
         /// </summary>
         private void Button8_Click(object sender, EventArgs e)
         {
-            return; // Temporary
+            //if (EmployeesLV.GetCountItems() <= 0)
+            //    return;
 
-            if (EmployeesLV.GetCountItems() <= 0)
-                return;
+            //var data = EmployeesLV.GetBasicInfo();
 
-            var data = EmployeesLV.GetBasicInfo();
+            //listBox1.Items.Clear();
 
-            listBox1.Items.Clear();
-
-            listBox1.Items.Add("Працівників: " + EmployeesLV.GetCountItems());
-            listBox1.Items.Add("Звільнених: " + data[0]);
-            listBox1.Items.Add("Зарплата: " + data[1]);
-            listBox1.Items.Add("Редагувань сьогодні: " + data[2]);
-            listBox1.Items.Add("На повний робочий день: " + data[3]);
-            listBox1.Items.Add("День народжень сьогодні/завтра: " + data[4] + "/" + data[5]);
+            //listBox1.Items.Add("Працівників: " + EmployeesLV.GetCountItems());
+            //listBox1.Items.Add("Звільнених: " + data[0]);
+            //listBox1.Items.Add("Зарплата: " + data[1]);
+            //listBox1.Items.Add("Редагувань сьогодні: " + data[2]);
+            //listBox1.Items.Add("На повний робочий день: " + data[3]);
+            //listBox1.Items.Add("День народжень сьогодні/завтра: " + data[4] + "/" + data[5]);
         }
     }
 }

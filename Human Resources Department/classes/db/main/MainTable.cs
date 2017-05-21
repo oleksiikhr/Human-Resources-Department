@@ -17,8 +17,6 @@ namespace Human_Resources_Department.classes.employees.db
 
         public string MName { get; set; }
         
-        public string Job { get; set; }
-        
         public string Email { get; set; }
         
         public string TelWork { get; set; }

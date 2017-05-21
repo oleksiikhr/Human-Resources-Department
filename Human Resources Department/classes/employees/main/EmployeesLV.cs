@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes.helplers;
@@ -10,21 +12,17 @@ namespace Human_Resources_Department.classes.employees.main
     {
         private static ListView l;
 
-        public const int I_ID           = 0;
-        public const int I_FNAME        = 1;
-        public const int I_LNAME        = 2;
-        public const int I_MNAME        = 3;
-        public const int I_JOB          = 4;
-        public const int I_CITY         = 5;
-        public const int I_EMAIL        = 6;
-        public const int I_TEL          = 7;
-        public const int I_FAMILY       = 8;
-        public const int I_SALARY       = 9;
-        public const int I_IS_ACTIVITY  = 10;
-        public const int I_IS_FULLTIME  = 11;
-        public const int I_BIRTHDAY     = 12;
-        public const int I_SETCOMPANY   = 13;
-        public const int I_UPDATE_AT    = 14;
+        public const int I_ID              = 0;
+        public const int I_FNAME           = 1;
+        public const int I_LNAME           = 2;
+        public const int I_MNAME           = 3;
+        public const int I_EMAIL           = 4;
+        public const int I_TEL_WORK        = 5;
+        public const int I_TEL_HOME        = 6;
+        public const int I_SEX             = 7;
+        public const int I_IS_ACTIVITY     = 8;
+        public const int I_EMPLOYMENT_DATE = 9;
+        public const int I_UPDATE_AT       = 10;
 
         public static void SetListBox(ListView listView)
         {
@@ -35,21 +33,17 @@ namespace Human_Resources_Department.classes.employees.main
 
         public static void SetNameColumns()
         {
-            l.Columns.Insert(I_ID,           "#");
-            l.Columns.Insert(I_FNAME,        "Ім'я");
-            l.Columns.Insert(I_LNAME,        "Прізвище");
-            l.Columns.Insert(I_MNAME,        "По-батькові");
-            l.Columns.Insert(I_JOB,          "Посада");
-            l.Columns.Insert(I_CITY,         "Місто");
-            l.Columns.Insert(I_EMAIL,        "Email");
-            l.Columns.Insert(I_TEL,          "Телефон");
-            l.Columns.Insert(I_FAMILY,       "Сімейний стан");
-            l.Columns.Insert(I_SALARY,       "Зарплата");
-            l.Columns.Insert(I_IS_ACTIVITY,  "Активний");
-            l.Columns.Insert(I_IS_FULLTIME,  "Зайнятість");
-            l.Columns.Insert(I_BIRTHDAY,     "Народився");
-            l.Columns.Insert(I_SETCOMPANY,   "Назначений");
-            l.Columns.Insert(I_UPDATE_AT,    "Оновлення");
+            l.Columns.Insert(I_ID,              "#");
+            l.Columns.Insert(I_FNAME,           "Ім'я");
+            l.Columns.Insert(I_LNAME,           "Прізвище");
+            l.Columns.Insert(I_MNAME,           "По-батькові");
+            l.Columns.Insert(I_EMAIL,           "Email");
+            l.Columns.Insert(I_TEL_WORK,        "Телефон роб.");
+            l.Columns.Insert(I_TEL_HOME,        "Телефон дом.");
+            l.Columns.Insert(I_SEX,             "Стать");
+            l.Columns.Insert(I_IS_ACTIVITY,     "Працює");
+            l.Columns.Insert(I_EMPLOYMENT_DATE, "Прийнятий на работу");
+            l.Columns.Insert(I_UPDATE_AT,       "Останнє оновлення");
         }
 
         public static void GetAllData(bool allEmployees = false)
@@ -58,19 +52,43 @@ namespace Human_Resources_Department.classes.employees.main
 
             foreach (var one in data)
             {
-                l.Items.Add(new ListViewItem(new[] {
-                    T(one.Id), T(one.FName)
-                }));
-
-                //l.Items.Add(new ListViewItem(new[] {
-                //    T(one.Id), T(one.FName), T(one.LName), T(one.MName), T(one.Job),
-                //    T(one.Email), T(one.TelWork), T(one.IsActivity),
-                //    T(one.EmploymentDate), T(one.UpdateAt)
-                //}));
-
-                //if (!one.IsActivity)
-                //    l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
+                AddItems(one);
             }
+        }
+
+        public static void AddOneData(int id)
+        {
+            var employee = MainModel.GetOneByID(id).First();
+
+            AddItems(employee);
+        }
+
+        public static void UpdateOneData(int id)
+        {
+            if ( ! IsSelected() )
+                return;
+
+            var employee = MainModel.GetOneByID(id).First();
+            int index = GetSelectedIndex();
+
+            UpdateItems(index, employee);
+        }
+
+        public static void AddItems(MainTable mt)
+        {
+            l.Items.Add(new ListViewItem(new[] {
+                T(mt.Id), T(mt.FName), T(mt.LName), T(mt.MName), T(mt.Email), T(mt.TelWork),
+                T(mt.TelHome), mt.Sex ? "Чоловік" : "Жінка", T(mt.IsActivity),
+                T(mt.EmploymentDate), T(mt.UpdateAt)
+            }));
+
+            if (!mt.IsActivity)
+                l.Items[GetCountItems() - 1].BackColor = Color.FromArgb(255, 205, 210);
+        }
+
+        public static void UpdateItems(int index, MainTable mt)
+        {
+            l.Items[index].SubItems[I_FNAME].Text = T(mt.FName);
         }
 
         public static void UpdateSelectedData()
@@ -128,6 +146,11 @@ namespace Human_Resources_Department.classes.employees.main
                     T(one.Id), T(one.FName) // ..
                 }));
             }
+        }
+
+        public static int GetSelectedID()
+        {
+            return Convert.ToInt32(l.SelectedItems[0].SubItems[0].Text);
         }
 
         public static void Delete(int index)
@@ -199,36 +222,37 @@ namespace Human_Resources_Department.classes.employees.main
         // |
         public static object[] GetBasicInfo()
         {
-            int dismissed = 0;
-            double salary = 0;
-            int countEdit = 0;
-            int countFull = 0;
-            int birthdayToday = 0;
-            int birthdayTomorrow = 0;
+            return new object[] { "" };
+            //int dismissed = 0;
+            //double salary = 0;
+            //int countEdit = 0;
+            //int countFull = 0;
+            //int birthdayToday = 0;
+            //int birthdayTomorrow = 0;
 
-            for (int i = 0; i < GetCountItems(); i++)
-            {
-                if ( ! l.Items[i].SubItems[I_IS_ACTIVITY].Text.Equals("Так") )
-                    dismissed++;
+            //for (int i = 0; i < GetCountItems(); i++)
+            //{
+            //    if ( ! l.Items[i].SubItems[I_IS_ACTIVITY].Text.Equals("Так") )
+            //        dismissed++;
 
-                if (l.Items[i].SubItems[I_UPDATE_AT].Text.Equals(DateTime.Today.ToShortDateString()))
-                    countEdit++;
+            //    if (l.Items[i].SubItems[I_UPDATE_AT].Text.Equals(DateTime.Today.ToShortDateString()))
+            //        countEdit++;
 
-                if ( l.Items[i].SubItems[I_IS_FULLTIME].Text.Equals("Так") )
-                    countFull++;
+            //    if ( l.Items[i].SubItems[I_IS_FULLTIME].Text.Equals("Так") )
+            //        countFull++;
 
-                salary += Double.Parse( l.Items[i].SubItems[I_SALARY].Text );
+            //    salary += Double.Parse( l.Items[i].SubItems[I_SALARY].Text );
 
-                if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.ToShortDateString()))
-                    birthdayToday++;
+            //    if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.ToShortDateString()))
+            //        birthdayToday++;
 
-                if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.AddDays(1).ToShortDateString()))
-                    birthdayTomorrow++;
-            }
+            //    if (l.Items[i].SubItems[I_BIRTHDAY].Text.Equals(DateTime.Today.AddDays(1).ToShortDateString()))
+            //        birthdayTomorrow++;
+            //}
 
-            return new object[] {
-                dismissed, salary, countEdit, countFull, birthdayToday, birthdayTomorrow
-            };
+            //return new object[] {
+            //    dismissed, salary, countEdit, countFull, birthdayToday, birthdayTomorrow
+            //};
         }
     }
 }
