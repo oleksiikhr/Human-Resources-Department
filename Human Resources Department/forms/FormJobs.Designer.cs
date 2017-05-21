@@ -42,7 +42,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(307, 108);
+            this.listBox1.Size = new System.Drawing.Size(307, 95);
             this.listBox1.TabIndex = 0;
             // 
             // button1
@@ -52,7 +52,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(223, 127);
+            this.button1.Location = new System.Drawing.Point(223, 114);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 20);
             this.button1.TabIndex = 1;
@@ -70,7 +70,7 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(325, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 108);
+            this.button2.Size = new System.Drawing.Size(68, 95);
             this.button2.TabIndex = 2;
             this.button2.Text = "Видалити";
             this.button2.UseVisualStyleBackColor = false;
@@ -80,7 +80,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(12, 127);
+            this.textBox1.Location = new System.Drawing.Point(12, 114);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(205, 20);
             this.textBox1.TabIndex = 3;
@@ -89,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 159);
+            this.ClientSize = new System.Drawing.Size(405, 146);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

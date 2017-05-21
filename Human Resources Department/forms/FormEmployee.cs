@@ -53,45 +53,49 @@ namespace Human_Resources_Department.forms
             this.id = id;
             Text = Config.PROJECT_NAME + " - Картка працівника: #" + id;
 
+            MainTable main;
+
             try
             {
-                var main = MainModel.GetOneData(id).First();
-
-                // Top
-                textBox2.Text = main.FName;
-                textBox1.Text = main.LName;
-                textBox3.Text = main.MName;
-                comboBox1.Text = JobsModel.GetJobs(main.JobsId).First().Title;
-
-                // Middle Main
-                textBox9.Text = main.TimeTableNum.ToString();
-                textBox8.Text = main.IndividualTaxNum.ToString();
-                comboBox3.Text = main.Sex ? "Чоловік" : "Жінка";
-
-                textBox5.Text = main.Email;
-                textBox6.Text = main.TelWork;
-                textBox7.Text = main.TelHome;
-
-                dateTimePicker2.Value = main.EmploymentDate;
-                dateTimePicker3.Value = main.DateDismissal;
-                dateTimePicker1.Value = main.UpdateAt;
-
-                textBox4.Text = main.About;
-
-                // Bottom
-                comboBox2.Text = main.IsActivity ? "Працює" : "Звільнений";
-
-                // Img
-                pictureBox1.Image = Employees.GetImage(id);
+                main = MainModel.GetOneByID(id).First();
             }
-            catch { }
+            catch { return; }
+
+            var employeesJobID = JobsModel.GetOneJobs(main.JobsId);
+
+            // Top
+            textBox2.Text = main.FName;
+            textBox1.Text = main.LName;
+            textBox3.Text = main.MName;
+            comboBox1.Text = employeesJobID.Count() != 0 ? employeesJobID.First().Title : "";
+
+            // Middle Main
+            textBox9.Text = main.TimeTableNum.ToString();
+            textBox8.Text = main.IndividualTaxNum.ToString();
+            comboBox3.Text = main.Sex ? "Чоловік" : "Жінка";
+
+            textBox5.Text = main.Email;
+            textBox6.Text = main.TelWork;
+            textBox7.Text = main.TelHome;
+
+            dateTimePicker2.Value = main.EmploymentDate;
+            dateTimePicker3.Value = main.DateDismissal;
+            dateTimePicker1.Value = main.UpdateAt;
+
+            textBox4.Text = main.About;
+
+            // Bottom
+            comboBox2.Text = main.IsActivity ? "Працює" : "Звільнений";
+
+            // Img
+            pictureBox1.Image = Employees.GetImage(id);
         }
         
         private void Button1_Click(object sender, EventArgs e)
         {
             int jobID = string.IsNullOrWhiteSpace(comboBox1.Text)
                 ? 0
-                : JobsModel.GetJobs(comboBox1.Text).First().Id;
+                : JobsModel.GetOneJobs(comboBox1.Text).First().Id;
 
             var main = new MainTable
             {
@@ -113,11 +117,7 @@ namespace Human_Resources_Department.forms
                 IsActivity = comboBox2.Text.Equals("Працює") // Bottom
             };
 
-            int isUpdated = 0;
-            if (isNew)
-                isUpdated = MainModel.Insert(main);
-            else
-                isUpdated = MainModel.Update(main);
+            int isUpdated = isNew ? MainModel.Insert(main) : MainModel.Update(main);
 
             if (isUpdated == 1)
             {

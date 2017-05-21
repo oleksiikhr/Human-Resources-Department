@@ -30,10 +30,16 @@ namespace Human_Resources_Department.classes.employees.db
             return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name);
         }
 
-        public static IEnumerable<MainTable> GetOneData(int id)
+        public static IEnumerable<MainTable> GetOneByID(int id)
         {
             return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name
-                + " WHERE id = ?", new object[] { id });
+                + " WHERE id = ? LIMIT 1", new object[] { id });
+        }
+
+        public static IEnumerable<MainTable> GetByJobsID(int id)
+        {
+            return QueryEmployees("SELECT * FROM " + typeof(MainTable).Name
+                + " WHERE JobsId = ? LIMIT 1", new object[] { id });
         }
 
         public static int GetCountRecords()

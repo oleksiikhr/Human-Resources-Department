@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.db.jobs;
+using Human_Resources_Department.classes.employees.db;
+
 namespace Human_Resources_Department.forms
 {
     public partial class FormJobs : Form
@@ -42,18 +45,23 @@ namespace Human_Resources_Department.forms
             if (listBox1.SelectedItems.Count == 0)
                 return;
 
-            int id = 0;
-            var jobs = JobsModel.GetJobs(listBox1.SelectedItem.ToString());
-            foreach (var job in jobs)
-            {
-                id = job.Id;
-                break;
-            }
-
+            int id = JobsModel.GetOneJobs(listBox1.SelectedItem.ToString()).First().Id;
+            
             if (id == 0)
                 return;
 
+            var employeeByID = MainModel.GetByJobsID(id);
+
             // Если пользователь привязан к этому ID
+            if (employeeByID.Count() != 0)
+            {
+                MessageBox.Show(
+                    "Працівник " + employeeByID.First().LName + " " + employeeByID.First().FName
+                    + " [#" + employeeByID.First().Id + "] займає цю посаду",
+                    "Помилка"
+                );
+                return;
+            }
 
             int isDeleted = JobsModel.DeleteObject<JobsTable>(id);
             if (isDeleted == 1)

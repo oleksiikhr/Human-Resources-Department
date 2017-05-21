@@ -120,7 +120,7 @@ namespace Human_Resources_Department.classes.employees.main
 
         public static void AddNewToBDAndToLV()
         {
-            var data = MainModel.GetOneData(GetCountItems() + 1);
+            var data = MainModel.GetOneByID(GetCountItems() + 1);
 
             foreach (var one in data)
             {

@@ -24,16 +24,16 @@ namespace Human_Resources_Department.classes.db.jobs
             return QueryJobs("SELECT * FROM " + typeof(JobsTable).Name);
         }
 
-        public static IEnumerable<JobsTable> GetJobs(string title)
+        public static IEnumerable<JobsTable> GetOneJobs(string title)
         {
             return QueryJobs("SELECT * FROM " + typeof(JobsTable).Name
-                + " WHERE Title = ?", new object[] { title });
+                + " WHERE Title = ? LIMIT 1", new object[] { title });
         }
 
-        public static IEnumerable<JobsTable> GetJobs(int id)
+        public static IEnumerable<JobsTable> GetOneJobs(int id)
         {
             return QueryJobs("SELECT * FROM " + typeof(JobsTable).Name
-                + " WHERE Id = ?", new object[] { id });
+                + " WHERE Id = ? LIMIT 1", new object[] { id });
         }
     }
 }
