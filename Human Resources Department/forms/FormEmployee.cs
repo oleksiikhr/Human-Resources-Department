@@ -38,7 +38,6 @@ namespace Human_Resources_Department.forms
         public void NewEmployee()
         {
             isNew = true;
-            id = MainModel.GetCountRecords() + 1;
 
             if (comboBox1.Items.Count > 0)
                 comboBox1.SelectedIndex = 0;
@@ -46,7 +45,7 @@ namespace Human_Resources_Department.forms
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 0;
 
-            Text = Config.PROJECT_NAME + " - Додати нового працівника: #" + id;
+            Text = Config.PROJECT_NAME + " - Додати нового працівника";
         }
 
         public void ExistsEmployee(int id)
@@ -94,6 +93,9 @@ namespace Human_Resources_Department.forms
         
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (isNew)
+                id = MainModel.GetCountRecords() + 1;
+
             int jobID = string.IsNullOrWhiteSpace(comboBox1.Text)
                 ? 0
                 : JobsModel.GetOneJobs(comboBox1.Text).First().Id;

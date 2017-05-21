@@ -106,6 +106,8 @@ namespace Human_Resources_Department.forms
 
         private void FormInsertToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Employees.CloseImage();
+
             using ( FormEmployee f = new FormEmployee() )
             {
                 f.ShowDialog();
@@ -218,9 +220,7 @@ namespace Human_Resources_Department.forms
             EmployeesPanel.AddInfo(fieldLName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));
             EmployeesPanel.AddInfo(fieldMName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_MNAME));
             EmployeesPanel.AddInfo(fieldJob,        EmployeesLV.GetSelectedCell(EmployeesLV.I_JOB_ID));
-            // City
-            EmployeesPanel.AddInfo(fieldTel,        EmployeesLV.GetSelectedCell(EmployeesLV.I_TEL_WORK));
-            // Salary
+            EmployeesPanel.AddInfo(fieldTelWork,    EmployeesLV.GetSelectedCell(EmployeesLV.I_TEL_WORK));
             EmployeesPanel.AddInfo(fieldEmail,      EmployeesLV.GetSelectedCell(EmployeesLV.I_EMAIL));
             EmployeesPanel.AddInfo(fieldEmployment, EmployeesLV.GetSelectedCell(EmployeesLV.I_EMPLOYMENT_DATE));
             EmployeesPanel.AddInfo(fieldUpdateAt,   EmployeesLV.GetSelectedCell(EmployeesLV.I_UPDATE_AT));

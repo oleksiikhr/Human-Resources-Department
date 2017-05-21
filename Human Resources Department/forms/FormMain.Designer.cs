@@ -31,12 +31,8 @@
             this.findField = new System.Windows.Forms.TextBox();
             this.panelEmployee = new System.Windows.Forms.Panel();
             this.fieldUpdateAt = new System.Windows.Forms.DateTimePicker();
-            this.fieldSetCompany = new System.Windows.Forms.DateTimePicker();
             this.fieldEmployment = new System.Windows.Forms.DateTimePicker();
-            this.fieldCity = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.fieldLName = new System.Windows.Forms.TextBox();
             this.fieldMName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,12 +40,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.fieldTel = new System.Windows.Forms.TextBox();
+            this.fieldTelWork = new System.Windows.Forms.TextBox();
             this.fieldEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.fieldJob = new System.Windows.Forms.TextBox();
-            this.fieldSalary = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.fieldFName = new System.Windows.Forms.TextBox();
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,12 +87,8 @@
             this.panelEmployee.BackColor = System.Drawing.Color.White;
             this.panelEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelEmployee.Controls.Add(this.fieldUpdateAt);
-            this.panelEmployee.Controls.Add(this.fieldSetCompany);
             this.panelEmployee.Controls.Add(this.fieldEmployment);
-            this.panelEmployee.Controls.Add(this.fieldCity);
-            this.panelEmployee.Controls.Add(this.label12);
             this.panelEmployee.Controls.Add(this.label10);
-            this.panelEmployee.Controls.Add(this.label4);
             this.panelEmployee.Controls.Add(this.fieldLName);
             this.panelEmployee.Controls.Add(this.fieldMName);
             this.panelEmployee.Controls.Add(this.label2);
@@ -106,55 +96,30 @@
             this.panelEmployee.Controls.Add(this.label7);
             this.panelEmployee.Controls.Add(this.label8);
             this.panelEmployee.Controls.Add(this.pictureBox1);
-            this.panelEmployee.Controls.Add(this.fieldTel);
+            this.panelEmployee.Controls.Add(this.fieldTelWork);
             this.panelEmployee.Controls.Add(this.fieldEmail);
             this.panelEmployee.Controls.Add(this.label5);
             this.panelEmployee.Controls.Add(this.fieldJob);
-            this.panelEmployee.Controls.Add(this.fieldSalary);
-            this.panelEmployee.Controls.Add(this.label3);
             this.panelEmployee.Controls.Add(this.label1);
             this.panelEmployee.Controls.Add(this.fieldFName);
             this.panelEmployee.Location = new System.Drawing.Point(12, 53);
             this.panelEmployee.Name = "panelEmployee";
-            this.panelEmployee.Size = new System.Drawing.Size(255, 573);
+            this.panelEmployee.Size = new System.Drawing.Size(255, 458);
             this.panelEmployee.TabIndex = 4;
             // 
             // fieldUpdateAt
             // 
-            this.fieldUpdateAt.Location = new System.Drawing.Point(6, 542);
+            this.fieldUpdateAt.Location = new System.Drawing.Point(6, 425);
             this.fieldUpdateAt.Name = "fieldUpdateAt";
             this.fieldUpdateAt.Size = new System.Drawing.Size(242, 20);
             this.fieldUpdateAt.TabIndex = 32;
             // 
-            // fieldSetCompany
-            // 
-            this.fieldSetCompany.Location = new System.Drawing.Point(6, 503);
-            this.fieldSetCompany.Name = "fieldSetCompany";
-            this.fieldSetCompany.Size = new System.Drawing.Size(242, 20);
-            this.fieldSetCompany.TabIndex = 31;
-            // 
             // fieldEmployment
             // 
-            this.fieldEmployment.Location = new System.Drawing.Point(6, 464);
+            this.fieldEmployment.Location = new System.Drawing.Point(6, 386);
             this.fieldEmployment.Name = "fieldEmployment";
             this.fieldEmployment.Size = new System.Drawing.Size(242, 20);
-            this.fieldEmployment.TabIndex = 30;
-            // 
-            // fieldCity
-            // 
-            this.fieldCity.Location = new System.Drawing.Point(6, 308);
-            this.fieldCity.Name = "fieldCity";
-            this.fieldCity.Size = new System.Drawing.Size(242, 20);
-            this.fieldCity.TabIndex = 6;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 292);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 13);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "Місто";
+            this.fieldEmployment.TabIndex = 31;
             // 
             // label10
             // 
@@ -164,15 +129,6 @@
             this.label10.Size = new System.Drawing.Size(67, 13);
             this.label10.TabIndex = 20;
             this.label10.Text = "По-батькові";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 448);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Дата народження";
             // 
             // fieldLName
             // 
@@ -200,7 +156,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 526);
+            this.label9.Location = new System.Drawing.Point(3, 409);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 13);
             this.label9.TabIndex = 17;
@@ -209,7 +165,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 487);
+            this.label7.Location = new System.Drawing.Point(3, 370);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 13);
             this.label7.TabIndex = 15;
@@ -218,7 +174,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 331);
+            this.label8.Location = new System.Drawing.Point(3, 292);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 13);
             this.label8.TabIndex = 14;
@@ -234,16 +190,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // fieldTel
+            // fieldTelWork
             // 
-            this.fieldTel.Location = new System.Drawing.Point(6, 347);
-            this.fieldTel.Name = "fieldTel";
-            this.fieldTel.Size = new System.Drawing.Size(242, 20);
-            this.fieldTel.TabIndex = 8;
+            this.fieldTelWork.Location = new System.Drawing.Point(6, 308);
+            this.fieldTelWork.Name = "fieldTelWork";
+            this.fieldTelWork.Size = new System.Drawing.Size(242, 20);
+            this.fieldTelWork.TabIndex = 8;
             // 
             // fieldEmail
             // 
-            this.fieldEmail.Location = new System.Drawing.Point(6, 425);
+            this.fieldEmail.Location = new System.Drawing.Point(6, 347);
             this.fieldEmail.Name = "fieldEmail";
             this.fieldEmail.Size = new System.Drawing.Size(242, 20);
             this.fieldEmail.TabIndex = 9;
@@ -251,7 +207,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 409);
+            this.label5.Location = new System.Drawing.Point(3, 331);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 11;
@@ -264,22 +220,6 @@
             this.fieldJob.Size = new System.Drawing.Size(150, 20);
             this.fieldJob.TabIndex = 5;
             this.fieldJob.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fieldSalary
-            // 
-            this.fieldSalary.Location = new System.Drawing.Point(6, 386);
-            this.fieldSalary.Name = "fieldSalary";
-            this.fieldSalary.Size = new System.Drawing.Size(242, 20);
-            this.fieldSalary.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 370);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Зарплата";
             // 
             // label1
             // 
@@ -433,7 +373,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.Location = new System.Drawing.Point(285, 57);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(479, 569);
+            this.listView1.Size = new System.Drawing.Size(479, 454);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
@@ -488,7 +428,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(776, 639);
+            this.ClientSize = new System.Drawing.Size(776, 520);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -517,14 +457,11 @@
         private System.Windows.Forms.Panel panelEmployee;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox fieldTel;
+        private System.Windows.Forms.TextBox fieldTelWork;
         private System.Windows.Forms.TextBox fieldEmail;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox fieldJob;
-        private System.Windows.Forms.TextBox fieldSalary;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox fieldLName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -535,13 +472,10 @@
         private System.Windows.Forms.ToolStripMenuItem formChooseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пошукToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.TextBox fieldCity;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem фільтрToolStripMenuItem;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripMenuItem додатиПрацівникаToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker fieldEmployment;
-        private System.Windows.Forms.DateTimePicker fieldSetCompany;
         private System.Windows.Forms.DateTimePicker fieldUpdateAt;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button6;

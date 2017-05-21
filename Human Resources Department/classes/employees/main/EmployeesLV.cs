@@ -20,11 +20,10 @@ namespace Human_Resources_Department.classes.employees.main
         public const int I_JOB_ID          = 4;
         public const int I_EMAIL           = 5;
         public const int I_TEL_WORK        = 6;
-        public const int I_TEL_HOME        = 7;
-        public const int I_SEX             = 8;
-        public const int I_IS_ACTIVITY     = 9;
-        public const int I_EMPLOYMENT_DATE = 10;
-        public const int I_UPDATE_AT       = 11;
+        public const int I_SEX             = 7;
+        public const int I_IS_ACTIVITY     = 8;
+        public const int I_EMPLOYMENT_DATE = 9;
+        public const int I_UPDATE_AT       = 10;
 
         public static void SetListBox(ListView listView)
         {
@@ -42,7 +41,6 @@ namespace Human_Resources_Department.classes.employees.main
             l.Columns.Insert(I_JOB_ID,          "Посада");
             l.Columns.Insert(I_EMAIL,           "Email");
             l.Columns.Insert(I_TEL_WORK,        "Телефон роб.");
-            l.Columns.Insert(I_TEL_HOME,        "Телефон дом.");
             l.Columns.Insert(I_SEX,             "Стать");
             l.Columns.Insert(I_IS_ACTIVITY,     "Працює");
             l.Columns.Insert(I_EMPLOYMENT_DATE, "Прийнятий на работу");
@@ -84,7 +82,7 @@ namespace Human_Resources_Department.classes.employees.main
 
             l.Items.Add(new ListViewItem(new[] {
                 T(mt.Id), T(mt.FName), T(mt.LName), T(mt.MName), JobTitle, T(mt.Email),
-                T(mt.TelWork), T(mt.TelHome), mt.Sex ? "Чоловік" : "Жінка", T(mt.IsActivity),
+                T(mt.TelWork), mt.Sex ? "Чоловік" : "Жінка", T(mt.IsActivity),
                 T(mt.EmploymentDate), T(mt.UpdateAt)
             }));
 
@@ -103,7 +101,6 @@ namespace Human_Resources_Department.classes.employees.main
             l.Items[i].SubItems[I_SEX].Text             = mt.Sex ? "Чоловік" : "Жінка";
             l.Items[i].SubItems[I_EMAIL].Text           = T(mt.Email);
             l.Items[i].SubItems[I_TEL_WORK].Text        = T(mt.TelWork);
-            l.Items[i].SubItems[I_TEL_HOME].Text        = T(mt.TelHome);
             l.Items[i].SubItems[I_IS_ACTIVITY].Text     = T(mt.IsActivity);
             l.Items[i].SubItems[I_EMPLOYMENT_DATE].Text = T(mt.EmploymentDate);
             l.Items[i].SubItems[I_UPDATE_AT].Text       = T(mt.UpdateAt);
@@ -116,7 +113,7 @@ namespace Human_Resources_Department.classes.employees.main
             if (!mt.IsActivity)
                 l.Items[i].BackColor = Color.FromArgb(255, 205, 210);
             else if (mt.UpdateAt == DateTime.Today)
-                l.Items[i].BackColor = Color.FromArgb(192, 192, 192);
+                l.Items[i].BackColor = Color.FromArgb(200, 200, 200);
         }
 
         public static void FindCellAndSetFocus(string text, int cell, bool isLower = false)
