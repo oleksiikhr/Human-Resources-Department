@@ -25,13 +25,6 @@ namespace Human_Resources_Department.forms
 
             WindowState = FormWindowState.Maximized;
             AcceptButton = button4;
-
-            //ExcelHelpler excel = new ExcelHelpler();
-
-            //if ( ! excel.OpenExcel() )
-            //    return;
-
-            //excel.CloseExcel();
         }
 
         /// <summary>
@@ -93,7 +86,6 @@ namespace Human_Resources_Department.forms
             EmployeesPanel.Close();
             
             Database.CloseConnection();
-            Employees.CloseImage();
 
             button7.Enabled = false;
             button7.Text = "Оберіть працівника";
@@ -106,8 +98,6 @@ namespace Human_Resources_Department.forms
 
         private void FormInsertToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Employees.CloseImage();
-
             using ( FormEmployee f = new FormEmployee() )
             {
                 f.ShowDialog();
@@ -116,22 +106,29 @@ namespace Human_Resources_Department.forms
 
         private void FormSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSearch f = new FormSearch();
+            FormFind f = new FormFind(true);
             f.Show(this);
         }
 
         private void FormFilterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormFilter f = new FormFilter();
+            FormFind f = new FormFind(false);
             f.Show(this);
         }
 
         private void SalaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            pictureBox1.Image = null;
+            Employees.CloseImage();
+            Employees.isOpen = true;
+
             using ( FormSalary f = new FormSalary() )
             {
                 f.ShowDialog();
             }
+            
+            Employees.isOpen = false;
+            EmployeesLV.UpdateSelected();
         }
 
         private void EmployeeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,12 +139,17 @@ namespace Human_Resources_Department.forms
                 return;
             }
 
+            pictureBox1.Image = null;
             Employees.CloseImage();
-            
+            Employees.isOpen = true;
+
             using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedID()) )
             {
                 f.ShowDialog();
             }
+
+            Employees.isOpen = false;
+            EmployeesLV.UpdateSelected();
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -184,7 +186,7 @@ namespace Human_Resources_Department.forms
                 {
                     try
                     {
-                        Database.SetFile(Config.currentFolder + "\\" + Database.FILE_NAME);
+                        Database.SetConnection(Config.currentFolder + "\\" + Database.FILE_NAME);
 
                         EmployeesLV.SetListBox(listView1);
                         EmployeesLV.SetNameColumns();
@@ -213,8 +215,8 @@ namespace Human_Resources_Department.forms
         /// </summary>
         private void FillPanelEmployee()
         {
-            Employees.CloseImage();
-            EmployeesPanel.AddInfo(pictureBox1, Employees.GetImage(EmployeesLV.GetSelectedID()));
+            if (!Employees.isOpen)
+                EmployeesPanel.AddInfo(pictureBox1,     Employees.GetImage(EmployeesLV.GetSelectedID()));
 
             EmployeesPanel.AddInfo(fieldFName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_FNAME));
             EmployeesPanel.AddInfo(fieldLName,      EmployeesLV.GetSelectedCell(EmployeesLV.I_LNAME));

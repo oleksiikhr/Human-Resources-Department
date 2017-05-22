@@ -16,7 +16,7 @@ namespace Human_Resources_Department.classes.db
 
         protected static SQLiteConnection con;
 
-        public static void SetFile(string uriToFile)
+        public static void SetConnection(string uriToFile)
         {
             if (instanse)
                 return;
@@ -76,7 +76,7 @@ namespace Human_Resources_Department.classes.db
 
         public static void CreateDatabases(string uriToFile)
         {
-            SetFile(uriToFile);
+            SetConnection(uriToFile);
 
             CreateTable<MainTable>();
             CreateTable<PassTable>();

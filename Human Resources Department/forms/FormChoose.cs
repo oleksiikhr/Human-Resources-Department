@@ -136,8 +136,6 @@ namespace Human_Resources_Department.forms
 
             if (result == DialogResult.Yes)
             {
-                Employees.CloseImage();
-
                 try
                 {
                     new DirectoryInfo(Config.projectFolder + "\\" + listBox1.SelectedItem).Delete(true);

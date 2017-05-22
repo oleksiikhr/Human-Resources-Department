@@ -11,8 +11,6 @@ namespace Human_Resources_Department.classes.employees.db
         [NotNull]
         public string FName { get; set; }
 
-        // Возможно зарплата!!!
-
         public string LName { get; set; }
 
         public string MName { get; set; }
@@ -30,7 +28,7 @@ namespace Human_Resources_Department.classes.employees.db
         public string TimeTableNum { get; set; } // Табельный №
 
         public bool Sex { get; set; }
-
+        
         public bool IsActivity { get; set; }
         
         public DateTime EmploymentDate { get; set; } // Дата приёма на работу
@@ -40,5 +38,7 @@ namespace Human_Resources_Department.classes.employees.db
         public DateTime UpdateAt { get; set; }
 
         public int JobId { get; set; } // ID должности с таб. Jobs
+
+        public double Salary { get; set; }
     }
 }

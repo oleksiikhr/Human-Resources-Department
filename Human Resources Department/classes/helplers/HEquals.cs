@@ -34,5 +34,14 @@ namespace Human_Resources_Department.classes.helplers
 
             return true;
         }
+
+        public static bool E(ComboBox cb, CheckBox isActive, int iRow, int iCell)
+        {
+            if (isActive.Checked)
+                return string.Equals(cb.Text,
+                    EmployeesLV.GetValueItem(iRow, iCell).ToString());
+
+            return true;
+        }
     }
 }

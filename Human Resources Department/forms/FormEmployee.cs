@@ -82,6 +82,7 @@ namespace Human_Resources_Department.forms
             dateTimePicker3.Value = main.DateDismissal;
             dateTimePicker1.Value = main.UpdateAt;
 
+            textBox10.Text = main.Salary.ToString();
             textBox4.Text = main.About;
 
             // Bottom
@@ -100,6 +101,14 @@ namespace Human_Resources_Department.forms
                 ? 0
                 : JobsModel.GetOneJobs(comboBox1.Text).First().Id;
 
+            bool isCorrectSalary = Double.TryParse(textBox10.Text, out double salary);
+
+            if (!isCorrectSalary)
+            {
+                MessageBox.Show("Зарплата не вірна");
+                return;
+            }
+
             var main = new MainTable
             {
                 Id = id,
@@ -117,6 +126,7 @@ namespace Human_Resources_Department.forms
                 TelWork = textBox6.Text,
                 TelHome = textBox7.Text,
                 About = textBox4.Text,
+                Salary = salary,
                 IsActivity = comboBox2.Text.Equals("Працює") // Bottom
             };
 
@@ -170,9 +180,10 @@ namespace Human_Resources_Department.forms
         {
             if (pictureBox1.Image != null)
             {
-                Employees.DeleteImage(id);
-                pictureBox1.Image = Employees.GetImage(id);
+                pictureBox1.Image = null;
             }
+
+            Employees.DeleteImage(id);
         }
     }
 }

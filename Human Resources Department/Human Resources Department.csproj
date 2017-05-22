@@ -123,6 +123,12 @@
     <Compile Include="forms\FormFilter.Designer.cs">
       <DependentUpon>FormFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\FormFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormFind.Designer.cs">
+      <DependentUpon>FormFind.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\FormJobs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormFilter.resx">
       <DependentUpon>FormFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormFind.resx">
+      <DependentUpon>FormFind.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormJobs.resx">
       <DependentUpon>FormJobs.cs</DependentUpon>

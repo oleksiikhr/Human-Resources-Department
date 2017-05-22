@@ -112,8 +112,8 @@ namespace Human_Resources_Department.classes.employees.main
         {
             if (!mt.IsActivity)
                 l.Items[i].BackColor = Color.FromArgb(255, 205, 210);
-            else if (mt.UpdateAt == DateTime.Today)
-                l.Items[i].BackColor = Color.FromArgb(200, 200, 200);
+            //else if (mt.UpdateAt == DateTime.Today)
+            //    l.Items[i].BackColor = Color.FromArgb(200, 200, 200);
         }
 
         public static void FindCellAndSetFocus(string text, int cell, bool isLower = false)

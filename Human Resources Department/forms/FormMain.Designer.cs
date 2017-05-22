@@ -48,8 +48,6 @@
             this.fieldFName = new System.Windows.Forms.TextBox();
             this.formChooseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вибірФіліалаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.імпортВExcelkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.експортЗExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вихідToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -241,8 +239,6 @@
             // 
             this.formChooseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вибірФіліалаToolStripMenuItem,
-            this.імпортВExcelkToolStripMenuItem,
-            this.експортЗExcelToolStripMenuItem,
             this.вихідToolStripMenuItem});
             this.formChooseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.formChooseToolStripMenuItem.Name = "formChooseToolStripMenuItem";
@@ -252,26 +248,14 @@
             // вибірФіліалаToolStripMenuItem
             // 
             this.вибірФіліалаToolStripMenuItem.Name = "вибірФіліалаToolStripMenuItem";
-            this.вибірФіліалаToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.вибірФіліалаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.вибірФіліалаToolStripMenuItem.Text = "Вибір філіала";
             this.вибірФіліалаToolStripMenuItem.Click += new System.EventHandler(this.FormChooseToolStripMenuItem_Click);
-            // 
-            // імпортВExcelkToolStripMenuItem
-            // 
-            this.імпортВExcelkToolStripMenuItem.Name = "імпортВExcelkToolStripMenuItem";
-            this.імпортВExcelkToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.імпортВExcelkToolStripMenuItem.Text = "Імпорт в Excel";
-            // 
-            // експортЗExcelToolStripMenuItem
-            // 
-            this.експортЗExcelToolStripMenuItem.Name = "експортЗExcelToolStripMenuItem";
-            this.експортЗExcelToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.експортЗExcelToolStripMenuItem.Text = "Експорт з Excel";
             // 
             // вихідToolStripMenuItem
             // 
             this.вихідToolStripMenuItem.Name = "вихідToolStripMenuItem";
-            this.вихідToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.вихідToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.вихідToolStripMenuItem.Text = "Вихід";
             this.вихідToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -484,8 +468,6 @@
         private System.Windows.Forms.ToolStripMenuItem додатиToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolStripMenuItem вибірФіліалаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem імпортВExcelkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem експортЗExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вихідToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem посадиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem зарплатаToolStripMenuItem1;

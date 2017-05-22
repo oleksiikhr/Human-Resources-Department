@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,13 +8,15 @@ namespace Human_Resources_Department.classes.employees
     class Employees
     {
         private static Image img;
+        public static bool isOpen;
 
         /// <summary>
         /// Get the picture of the active employee from the folder in the format (JPG|PNG).
         /// </summary>
         public static Image GetImage(int id)
         {
-            img = null;
+            CloseImage();
+
             string path = Config.currentFolder + "\\img\\" + id;
 
             try
@@ -63,7 +66,7 @@ namespace Human_Resources_Department.classes.employees
                 else if ( File.Exists(path + ".png") )
                     File.Delete(path + ".png");
             }
-            catch { }
+            catch { MessageBox.Show("Зображення використовується"); }
         }
 
         public static void CloseImage()
@@ -73,6 +76,14 @@ namespace Human_Resources_Department.classes.employees
                 img.Dispose();
                 img = null;
             }
+        }
+
+        public static string GetInitial(string name)
+        {
+            if (name.Length > 0)
+                return name.Substring(0, 1);
+
+            return "";
         }
     }
 }
