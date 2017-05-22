@@ -181,9 +181,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(63, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 141);
+            this.pictureBox1.Size = new System.Drawing.Size(126, 141);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -213,9 +213,9 @@
             // 
             // fieldJob
             // 
-            this.fieldJob.Location = new System.Drawing.Point(50, 145);
+            this.fieldJob.Location = new System.Drawing.Point(63, 145);
             this.fieldJob.Name = "fieldJob";
-            this.fieldJob.Size = new System.Drawing.Size(150, 20);
+            this.fieldJob.Size = new System.Drawing.Size(126, 20);
             this.fieldJob.TabIndex = 5;
             this.fieldJob.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -248,14 +248,14 @@
             // вибірФіліалаToolStripMenuItem
             // 
             this.вибірФіліалаToolStripMenuItem.Name = "вибірФіліалаToolStripMenuItem";
-            this.вибірФіліалаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.вибірФіліалаToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.вибірФіліалаToolStripMenuItem.Text = "Вибір філіала";
             this.вибірФіліалаToolStripMenuItem.Click += new System.EventHandler(this.FormChooseToolStripMenuItem_Click);
             // 
             // вихідToolStripMenuItem
             // 
             this.вихідToolStripMenuItem.Name = "вихідToolStripMenuItem";
-            this.вихідToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.вихідToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.вихідToolStripMenuItem.Text = "Вихід";
             this.вихідToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 

@@ -8,6 +8,7 @@ using Human_Resources_Department.classes.db.jobs;
 using Human_Resources_Department.classes.employees;
 using Human_Resources_Department.classes.employees.db;
 using Human_Resources_Department.classes.employees.main;
+using Human_Resources_Department.classes.helplers;
 
 namespace Human_Resources_Department.forms
 {
@@ -179,9 +180,7 @@ namespace Human_Resources_Department.forms
         private void DeleteImage()
         {
             if (pictureBox1.Image != null)
-            {
                 pictureBox1.Image = null;
-            }
 
             Employees.DeleteImage(id);
         }

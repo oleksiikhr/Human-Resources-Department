@@ -8,9 +8,6 @@ namespace Human_Resources_Department.classes.db.pass
         [PrimaryKey, AutoIncrement, Unique]
         public int Id { get; set; }
 
-        [Unique]
-        public int IdEmployee { get; set; }
-
         /* Identification [I] - Удостоверение личности */
 
         public string ISeries { get; set; }
