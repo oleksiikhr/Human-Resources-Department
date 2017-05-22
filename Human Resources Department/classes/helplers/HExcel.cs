@@ -4,13 +4,13 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Human_Resources_Department.classes.helplers
 {
-    class ExcelHelpler
+    class HExcel
     {
         private Excel.Application excel;
         private Excel.Workbook workBook;
         private Excel.Worksheet worksSheet;
 
-        public ExcelHelpler()
+        public HExcel()
         {
             excel = new Excel.Application();
         }

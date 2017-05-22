@@ -2,8 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using Human_Resources_Department.classes.employees.db;
-
 namespace Human_Resources_Department.classes.employees.main
 {
     class EmployeesPanel
@@ -55,25 +53,6 @@ namespace Human_Resources_Department.classes.employees.main
                 else if ( c.GetType() == typeof(Button) )
                     (c as Button).Enabled = toggle;
             }
-        }
-
-        public static int UpdateData(object[] args)
-        {
-            return new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-                .Update(
-                    "UPDATE " + typeof(EmployeesTable).Name
-                    + " SET FName = ?, LName = ?, MName = ?, Job = ?, City = ?, Email = ?,"
-                    + " Tel = ?, Family = ?, Salary = ?, IsFulltime = ?, Birthday = ?,"
-                    + " SetCompany = ?, UpdateAt = ? WHERE id = ?", args
-                );
-        }
-
-        public static int UpdateActivity(bool isActivity, int id)
-        {
-            return new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile).Update(
-                "UPDATE " + typeof(EmployeesTable).Name + " SET IsActivity = ?, UpdateAt = ? WHERE id = ?",
-                    new object[] { isActivity, DateTime.Today, id }
-            );
         }
 
         public static bool IsNull()

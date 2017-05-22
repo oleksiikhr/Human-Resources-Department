@@ -3,19 +3,20 @@ using System.IO;
 using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
-using Human_Resources_Department.classes.employees.db;
+using Human_Resources_Department.classes.db;
 
 namespace Human_Resources_Department.forms
 {
     public partial class FormChoose : Form
     {
         private bool is_open;
+        private static bool initialOpen = true;
 
         public FormChoose()
         {
             InitializeComponent();
 
-            this.Text = Config.PROJECT_NAME + " - Вибір фірми";
+            Text = Config.PROJECT_NAME + " - Вибір філіала";
         }
 
         private void InitialForm_Load(object sender, EventArgs e)
@@ -28,15 +29,26 @@ namespace Human_Resources_Department.forms
             catch
             {
                 MessageBox.Show("Неможливо створити папку для збережень", "Помилка");
-                this.Close();
+                Close();
             }
+
+            initialOpen = false;
+
+            if (!initialOpen || listBox1.Items.Count != 1)
+                return;
+
+            listBox1.SelectedItem = listBox1.Items[0];
+
+            Config.currentFolder = Config.projectFolder + "\\" + listBox1.SelectedItem;
+            is_open = true;
+            Close();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             if ( String.IsNullOrWhiteSpace(textBox1.Text) )
             {
-                MessageBox.Show("Введіть ім'я нової фірми", "Помилка");
+                MessageBox.Show("Введіть ім'я нового філіала", "Помилка");
                 return;
             }
 
@@ -60,7 +72,8 @@ namespace Human_Resources_Department.forms
                 {
                     Directory.CreateDirectory(folder);
                     Directory.CreateDirectory(folder + "\\img");
-                    new EmployeesModel(folder + "\\" + EmployeesModel.nameFile).CreateTable<EmployeesTable>();
+                    Database.CreateDatabases(folder + "\\" + Database.FILE_NAME);
+                    Database.CloseConnection();
                 }
                 catch
                 {
@@ -106,7 +119,8 @@ namespace Human_Resources_Department.forms
             {
                 button3.Enabled = true;
                 button4.Enabled = true;
-                this.Text = Config.PROJECT_NAME + " - " + listBox1.SelectedItem;
+
+                Text = Config.PROJECT_NAME + " - " + listBox1.SelectedItem;
             }
         }
 
@@ -126,7 +140,7 @@ namespace Human_Resources_Department.forms
                 }
                 catch
                 {
-                    MessageBox.Show("Закрийте проект, перш ніж видаляти", "Помилка");
+                    MessageBox.Show("Не можливо видалити філіал, так як він використовується", "Помилка");
                     return;
                 }
 
@@ -140,8 +154,9 @@ namespace Human_Resources_Department.forms
         private void Button3_Click(object sender, EventArgs e)
         {
             Config.currentFolder = Config.projectFolder + "\\" + listBox1.SelectedItem;
-            this.is_open = true;
-            this.Close();
+            is_open = true;
+            initialOpen = false;
+            Close();
         }
 
         public string GetURI()
@@ -156,7 +171,7 @@ namespace Human_Resources_Department.forms
 
         public bool IsOpen()
         {
-            return this.is_open;
+            return is_open;
         }
     }
 }

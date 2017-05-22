@@ -11,32 +11,30 @@ namespace Human_Resources_Department.forms
     public partial class FormSalary : Form
     {
         private const int I_ID     = 0;
-        private const int I_FNAME  = 1;
-        private const int I_LNAME  = 2;
-        private const int I_SALARY = 3;
-        private const int I_NDFL   = 4;
-        private const int I_VZ     = 5;
-        private const int I_ESV    = 6;
-        private const int I_CLEAR  = 7;
+        private const int I_PIB    = 1;
+        private const int I_SALARY = 2;
+        private const int I_NDFL   = 3;
+        private const int I_VZ     = 4;
+        private const int I_ESV    = 5;
+        private const int I_CLEAR  = 6;
 
         public FormSalary()
         {
             InitializeComponent();
 
-            this.Text = Config.PROJECT_NAME + " - Зарплата";
+            Text = Config.PROJECT_NAME + " - Зарплата";
 
-            LVHelpler.Normillize(listView1);
-            PanelHelpler.ActivateToggle(panel1);
+            HListView.Normillize(listView1);
+            HPanel.ActivateToggle(panel1);
 
             SetColumns();
-            FillData();
+            FillListView();
         }
 
         private void SetColumns()
         {
             listView1.Columns.Add("#");
-            listView1.Columns.Add("Ім'я");
-            listView1.Columns.Add("Прізвище");
+            listView1.Columns.Add("ПІБ");
             listView1.Columns.Add("Зарплата");
             listView1.Columns.Add("НДФЛ");
             listView1.Columns.Add("ВЗ");
@@ -44,27 +42,29 @@ namespace Human_Resources_Department.forms
             listView1.Columns.Add("Чиста зарплата");
         }
 
-        private void FillData()
+        private void FillListView()
         {
             try
             {
-                var data = new EmployeesModel(Config.currentFolder + "\\" + EmployeesModel.nameFile)
-                    .GetAllData(true);
-
+                var data = MainModel.GetAllData(true);
+                
                 foreach (var one in data)
                 {
-                    var salary = new SalaryHelpler(one.Salary);
+                    var salary = new HSalary(one.Salary);
+                    string name = HListView.T(one.LName) + " "
+                        + Employees.GetInitial(one.FName) + ". "
+                        + Employees.GetInitial(one.MName) + ".";
 
-                    listView1.Items.Add( new ListViewItem( new[] {
-                        LVHelpler.T(one.Id), LVHelpler.T(one.FName), LVHelpler.T(one.LName), LVHelpler.T(one.Salary),
-                        salary.GetNDFL().ToString(), salary.GetVZ().ToString(),
-                        salary.GetESV().ToString(), salary.GetClearSalary().ToString()
+                    listView1.Items.Add(new ListViewItem(new[] {
+                        HListView.T(one.Id), name, HListView.T(one.Salary),
+                        HListView.T(salary.GetNDFL()), HListView.T(salary.GetVZ()),
+                        HListView.T(salary.GetESV()), HListView.T(salary.GetClearSalary())
                     }));
                 }
             }
             catch
             {
-                Close();
+                Dispose();
             }
         }
 
@@ -84,9 +84,8 @@ namespace Human_Resources_Department.forms
             if ( ! IsSelected() )
                 return;
 
-            pictureBox1.Image = Employees.GetImageUrl( GetSelectedID() );
-            textBox1.Text = GetSelectedItem(I_FNAME).ToString();
-            textBox5.Text = GetSelectedItem(I_LNAME).ToString();
+            pictureBox1.Image = Employees.GetImage( GetSelectedID() );
+            textBox1.Text = GetSelectedItem(I_PIB).ToString();
             textBox2.Text = GetSelectedItem(I_SALARY).ToString();
             textBox3.Text = GetSelectedItem(I_NDFL).ToString();
             textBox4.Text = GetSelectedItem(I_VZ).ToString();
@@ -120,20 +119,12 @@ namespace Human_Resources_Department.forms
             return Convert.ToInt32( listView1.SelectedItems[0].SubItems[I_ID].Text );
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            if ( listView1.Items.Count == 0 )
-                return;
-
-            ScreenshotHelpler.CreateWithDialog(panel1);
-        }
-
         private void Button2_Click(object sender, EventArgs e)
         {
             if ( listView1.Items.Count == 0 )
                 return;
 
-            ExcelHelpler excel = new ExcelHelpler();
+            HExcel excel = new HExcel();
 
             if ( ! excel.ExportExcel() )
                 return;
@@ -141,8 +132,7 @@ namespace Human_Resources_Department.forms
             int row = 0;
 
             excel.SetValue(row, I_ID,     "#");
-            excel.SetValue(row, I_FNAME,  "Ім'я");
-            excel.SetValue(row, I_LNAME,  "Прізвище");
+            excel.SetValue(row, I_PIB,    "ПІБ");
             excel.SetValue(row, I_SALARY, "Зарплата");
             excel.SetValue(row, I_NDFL,   "НДФЛ");
             excel.SetValue(row, I_VZ,     "ВЗ");
@@ -154,8 +144,7 @@ namespace Human_Resources_Department.forms
                 row = i + 1;
 
                 excel.SetValue(row, I_ID,     GetItem(i, I_ID));
-                excel.SetValue(row, I_FNAME,  GetItem(i, I_FNAME));
-                excel.SetValue(row, I_LNAME,  GetItem(i, I_LNAME));
+                excel.SetValue(row, I_PIB,    GetItem(i, I_PIB));
                 excel.SetValue(row, I_SALARY, ReplaceComma(GetItem(i, I_SALARY).ToString()));
                 excel.SetValue(row, I_NDFL,   ReplaceComma(GetItem(i, I_NDFL).ToString()));
                 excel.SetValue(row, I_VZ,     ReplaceComma(GetItem(i, I_VZ).ToString()));
@@ -163,11 +152,11 @@ namespace Human_Resources_Department.forms
                 excel.SetValue(row, I_CLEAR,  ReplaceComma(GetItem(i, I_CLEAR).ToString()));
             }
 
-            excel.SetValue(row++, I_SALARY, "=SUM(D2:D" + row + ")", true);
-            excel.SetValue(row, I_NDFL, "=SUM(E2:E" + row + ")", true);
-            excel.SetValue(row, I_VZ, "=SUM(F2:F" + row + ")", true);
-            excel.SetValue(row, I_ESV, "=SUM(G2:G" + row + ")", true);
-            excel.SetValue(row, I_CLEAR, "=SUM(H2:H" + row + ")", true);
+            excel.SetValue(++row, I_SALARY, "=SUM(C2:C" + row + ")", true);
+            excel.SetValue(row, I_NDFL, "=SUM(D2:D" + row + ")", true);
+            excel.SetValue(row, I_VZ, "=SUM(E2:E" + row + ")", true);
+            excel.SetValue(row, I_ESV, "=SUM(F2:F" + row + ")", true);
+            excel.SetValue(row, I_CLEAR, "=SUM(G2:G" + row + ")", true);
 
             excel.SetVisible();
         }
