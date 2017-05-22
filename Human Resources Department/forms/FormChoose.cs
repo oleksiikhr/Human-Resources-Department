@@ -4,7 +4,6 @@ using System.Windows.Forms;
 
 using Human_Resources_Department.classes;
 using Human_Resources_Department.classes.db;
-using Human_Resources_Department.classes.employees;
 
 namespace Human_Resources_Department.forms
 {
@@ -33,13 +32,12 @@ namespace Human_Resources_Department.forms
                 Close();
             }
 
-            return;
+            initialOpen = false;
 
             if (!initialOpen || listBox1.Items.Count != 1)
                 return;
 
             listBox1.SelectedItem = listBox1.Items[0];
-            initialOpen = false;
 
             Config.currentFolder = Config.projectFolder + "\\" + listBox1.SelectedItem;
             is_open = true;
