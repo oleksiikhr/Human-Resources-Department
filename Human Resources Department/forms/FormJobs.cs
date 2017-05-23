@@ -10,6 +10,9 @@ namespace Human_Resources_Department.forms
 {
     public partial class FormJobs : Form
     {
+        private bool isEdit;
+        private int editIndex;
+
         public FormJobs()
         {
             InitializeComponent();
@@ -28,6 +31,23 @@ namespace Human_Resources_Department.forms
         {
             if ( string.IsNullOrWhiteSpace(textBox1.Text) )
                 return;
+
+            if (isEdit)
+            {
+                int isUpdate = JobsModel.Update( new JobsTable {
+                    Id = JobsModel.GetOneJobs(listBox1.SelectedItem.ToString()).First().Id,
+                    Title = textBox1.Text
+                });
+
+                if (isUpdate == 1)
+                {
+                    listBox1.Items.Remove(listBox1.SelectedItem);
+                    listBox1.Items.Add(textBox1.Text);
+                    textBox1.Text = string.Empty;
+                }
+
+                return;
+            }
 
             int isInsert = JobsModel.Insert(new JobsTable
             {
@@ -66,6 +86,29 @@ namespace Human_Resources_Department.forms
             {
                 listBox1.Items.Remove(listBox1.SelectedItem);
             }
+        }
+
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null)
+            {
+                isEdit = false;
+                button1.Text = "Додати";
+                return;
+            }
+
+            isEdit = true;
+            button1.Text = "Оновити";
+            editIndex = listBox1.SelectedIndex;
+            textBox1.Text = listBox1.SelectedItem.ToString();
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            isEdit = false;
+            button1.Text = "Додати";
+            textBox1.Text = string.Empty;
+            listBox1.SelectedItem = null;
         }
     }
 }
