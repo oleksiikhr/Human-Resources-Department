@@ -25,7 +25,7 @@ namespace Human_Resources_Department.forms
             }
             else
             {
-                title.Text = "Фільтри";
+                title.Text = "ФІЛЬТРИ";
                 button1.Text = "Відфільтрувати";
                 Text = Config.PROJECT_NAME + " - Фільтри";
             }
@@ -37,13 +37,9 @@ namespace Human_Resources_Department.forms
         private void Button1_Click(object sender, EventArgs e)
         {
             if (isSearch)
-            {
                 Search();
-            }
             else
-            {
                 Filter();
-            }
         }
         
         private void Search()

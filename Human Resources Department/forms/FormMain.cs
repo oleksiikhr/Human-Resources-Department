@@ -118,17 +118,14 @@ namespace Human_Resources_Department.forms
 
         private void SalaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = null;
-            Employees.CloseImage();
-            Employees.isOpen = true;
+            OpenOtherFormWithImage();
 
             using ( FormSalary f = new FormSalary() )
             {
                 f.ShowDialog();
             }
             
-            Employees.isOpen = false;
-            EmployeesLV.UpdateSelected();
+            OpenOtherFormWithImage(false);
         }
 
         private void EmployeeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,17 +136,14 @@ namespace Human_Resources_Department.forms
                 return;
             }
 
-            pictureBox1.Image = null;
-            Employees.CloseImage();
-            Employees.isOpen = true;
+            OpenOtherFormWithImage();
 
             using ( FormEmployee f = new FormEmployee(EmployeesLV.GetSelectedID()) )
             {
                 f.ShowDialog();
             }
 
-            Employees.isOpen = false;
-            EmployeesLV.UpdateSelected();
+            OpenOtherFormWithImage(false);
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,6 +234,20 @@ namespace Human_Resources_Department.forms
             EmployeesLV.ClearAllData();
             EmployeesLV.SetNameColumns();
             EmployeesLV.GetAllData(!checkBox1.Checked);
+        }
+
+        private void OpenOtherFormWithImage(bool isOpen = true)
+        {
+            if (isOpen)
+            {
+                pictureBox1.Image = null;
+                Employees.CloseImage();
+                Employees.isOpen = true;
+                return;
+            }
+
+            Employees.isOpen = false;
+            EmployeesLV.UpdateSelected();
         }
     }
 }

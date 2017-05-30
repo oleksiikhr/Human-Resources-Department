@@ -18,6 +18,14 @@ namespace Human_Resources_Department.forms
         private const int I_ESV    = 5;
         private const int I_CLEAR  = 6;
 
+        private const string I_ID_STR     = "#";
+        private const string I_PIB_STR    = "ПІБ";
+        private const string I_SALARY_STR = "Зарплата";
+        private const string I_NDFL_STR   = "НДФЛ";
+        private const string I_VZ_STR     = "ВЗ";
+        private const string I_ESV_STR    = "ЄСВ";
+        private const string I_CLEAR_STR  = "Чиста зарплата";
+
         public FormSalary()
         {
             InitializeComponent();
@@ -33,13 +41,13 @@ namespace Human_Resources_Department.forms
 
         private void SetColumns()
         {
-            listView1.Columns.Add("#");
-            listView1.Columns.Add("ПІБ");
-            listView1.Columns.Add("Зарплата");
-            listView1.Columns.Add("НДФЛ");
-            listView1.Columns.Add("ВЗ");
-            listView1.Columns.Add("ЄСВ");
-            listView1.Columns.Add("Чиста зарплата");
+            listView1.Columns.Add(I_ID_STR);
+            listView1.Columns.Add(I_PIB_STR);
+            listView1.Columns.Add(I_SALARY_STR);
+            listView1.Columns.Add(I_NDFL_STR);
+            listView1.Columns.Add(I_VZ_STR);
+            listView1.Columns.Add(I_ESV_STR);
+            listView1.Columns.Add(I_CLEAR_STR);
         }
 
         private void FillListView()
@@ -130,16 +138,17 @@ namespace Human_Resources_Department.forms
                 return;
 
             int row = 0;
+            int count = listView1.Items.Count;
 
-            excel.SetValue(row, I_ID,     "#");
-            excel.SetValue(row, I_PIB,    "ПІБ");
-            excel.SetValue(row, I_SALARY, "Зарплата");
-            excel.SetValue(row, I_NDFL,   "НДФЛ");
-            excel.SetValue(row, I_VZ,     "ВЗ");
-            excel.SetValue(row, I_ESV,    "ЄСВ");
-            excel.SetValue(row, I_CLEAR,  "Чиста зарплата");
+            excel.SetValue(row, I_ID,     I_ID_STR);
+            excel.SetValue(row, I_PIB,    I_PIB_STR);
+            excel.SetValue(row, I_SALARY, I_SALARY_STR);
+            excel.SetValue(row, I_NDFL,   I_NDFL_STR);
+            excel.SetValue(row, I_VZ,     I_VZ_STR);
+            excel.SetValue(row, I_ESV,    I_ESV_STR);
+            excel.SetValue(row, I_CLEAR,  I_CLEAR_STR);
 
-            for (int i = 0; i < listView1.Items.Count; i++)
+            for (int i = 0; i < count; i++)
             {
                 row = i + 1;
 
